@@ -93,3 +93,4 @@ multiple elements may use them if need be
     - Sync functionality in Git basically pulls and pushes in one action so that your code is kept up to date with each change you commit
     - Visual Studio and VS Code have this built in but I'm not sure about other editors
 - Avoid editing the master branch directly
+- Make sure your commits have appropriate summaries and/or descriptions
