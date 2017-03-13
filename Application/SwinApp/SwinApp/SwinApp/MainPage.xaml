@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SwinApp"
              x:Class="SwinApp.MainPage">
-    <StackLayout x:Name="StackMain">
+    <StackLayout x:Name="StackMain" VerticalOptions="Center">
+        <Image Source="http://emspace.com.au/sites/emspace.com.au/files/imagecache/client_teaser/content/project/image_small/swinburne-logo.png" />
         <Label Text="Welcome to SwinApp" 
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
