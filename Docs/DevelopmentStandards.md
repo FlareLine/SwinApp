@@ -88,7 +88,7 @@ multiple elements may use them if need be
 ### Usage
 
 - Do not use Git sparingly by any means, if you make a change; commit the code.
-- Having smaller commits is much more beneficial than larger commits are it means that the commits are more meaningful and signify the true steps taken to develop a solution
+- Having smaller commits is much more beneficial than larger commits as it means that the commits are more meaningful and signify the true steps taken to develop a solution
 - Use a text editor/IDE with built in Git support and also ensure it has a "Sync" function as that helps to avoid merge conflicts
     - Sync functionality in Git basically pulls and pushes in one action so that your code is kept up to date with each change you commit
     - Visual Studio and VS Code have this built in but I'm not sure about other editors
