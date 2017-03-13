@@ -94,3 +94,5 @@ multiple elements may use them if need be
     - Visual Studio and VS Code have this built in but I'm not sure about other editors
 - Avoid editing the master branch directly
 - The only repercussion to committing too much is that fucking bot mighn't shut up
+
+**Let's make a ripper app gaiz**
