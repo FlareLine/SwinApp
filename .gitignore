@@ -1,4 +1,2 @@
-Application/SwinApp/SwinApp/SwinApp.Android/bin
-Application/SwinApp/SwinApp/SwinApp.Android/obj
-Application/SwinApp/SwinApp/SwinApp.iOS/bin
-Application/SwinApp/SwinApp/SwinApp.iOS/obj
+bin/
+obj/
