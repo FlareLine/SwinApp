@@ -24,6 +24,10 @@ Current Contributors (blame these people if they suck):
 ### Element Structure
 - If the element is a container, use typical XML brackets
 - For everything else, the tag must be self closing
+    - Whilst this isn't exactly well formed XAML's design is based around C# classes and properties and so each attribute of the XAML element is linked to the class' property
+    - There are a few times where using it like a HTML tag may work, this doesn't necessarily mean you should use it
+        - Don't: `<Label>Hello</Label>`
+        - Do: `<Label Text="Hello"/>` 
 ### Event Handling
 - I don't mind where you set your event handling for your XAML but stick with it for the page at least. 
     - If you use the XAML means of using the associated attribute use that for elements on the page
@@ -49,7 +53,7 @@ multiple elements may use them if need be
     - It is also a good job skill so hey
 
 ---
-## CSharp
+## C\#
 
 ### Language Conventions
 - Any formatting related to code indentation and presentation can usually be fixed with a linter or built in key shortcuts
@@ -61,8 +65,19 @@ multiple elements may use them if need be
     - `public string PublicString = "YO";`
 - Indentation should use tabs
 - Curly braces should be placed on the line after the definition, not on the same line
-
+- Class names must be capitalized
+- Async code must end the in the suffix `Async`
+- Interfaces must begin with the prefix of a capital I
 ### Asynchronous Programming
 - Async/Await is the best feature of C# for modern application development and if you don't believe me fight me dog
 - Async/Await must be used for any of the following scenarios:
-    - 
+    - Downloading Content from the Internet
+    - Navigating between pages
+    - Application functionality (where available)
+    - Any loading of large amounts of data
+        - Times where databinding is not an option yet the data is large
+- The reason we must utilize asynchronous programming is purely for UX:
+    - Reduces lag
+    - Allows for loading screens
+    - Gives the user freedom to do things whilst another thing loads
+- Async in C# has a modern set of conventions which can be found [here](https://gist.github.com/jonlabelle/841146854b23b305b50fa5542f84b20c)
