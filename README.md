@@ -1,5 +1,3 @@
 # SwinApp
 
-> It's like the best thing for students yes
-
-The ultimate app for uni MadDogs
+The Github Repository for Swinburne University of Technology's new and improved mobile application.
