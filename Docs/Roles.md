@@ -1,6 +1,15 @@
 # Team Roles
 
-
 **Ethan Wright**
-- Team Leader
-- The OG
+
+
+**Alex Billson**
+
+
+**Josiah Dean**
+
+
+**Campbell Graham**
+
+
+**Kiran Surname**
