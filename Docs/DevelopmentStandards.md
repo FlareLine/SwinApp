@@ -32,19 +32,13 @@ Current Contributors (blame these people if they suck):
 - I don't mind where you set your event handling for your XAML but stick with it for the page at least. 
     - If you use the XAML means of using the associated attribute use that for elements on the page
         - `<Element x:Name="TestElement" Clicked="ClickEvent"/>`
-    - If you prefer to set your events in the main method of the page that is fine too but do that for all elements
         - `TestElement.Clicked += ClickEvent;`
-- Note that I prefer using your .cs file to set events only because it provides richer intellisense and autocompletion options than setting it in the XAML file
 - Events should be explicitly defined as opposed to being anonymous arrow functions
-    - Using Visual Studio's autocompletion will fix this
 - Do not use shit names for your events, they need to be descriptive and also generic so that
 multiple elements may use them if need be
-    - Rather than do something like `ClickEvent` describe the action taking place
 - Keep the event code to a minimum and instead write the bulk of the code in seperate functions that are called by the event.
     - This allows for code to be reused as events can only be mapped to similar elements
-
 ### Data Binding
-- This is a must, if it is possible to data bind something then you must do it.
 - Data binding is necessary as it is a sure fire way of knowing that:
     - Our elements are up to date
     - The data being presented is formatted according to the .xaml
@@ -94,3 +88,5 @@ multiple elements may use them if need be
     - Visual Studio and VS Code have this built in but I'm not sure about other editors
 - Avoid editing the master branch directly
 - Make sure your commits have appropriate summaries and/or descriptions
+- The only repercussion to committing too much is that fucking bot mighn't shut up
+**Let's make a ripper app gaiz**
