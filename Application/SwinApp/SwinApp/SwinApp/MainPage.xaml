@@ -5,9 +5,14 @@
              x:Class="SwinApp.MainPage">
     <StackLayout x:Name="StackMain" VerticalOptions="Center">
         <Image Source="http://emspace.com.au/sites/emspace.com.au/files/imagecache/client_teaser/content/project/image_small/swinburne-logo.png" />
-        <Label Text="Welcome to SwinApp" VerticalOptions="Center" HorizontalOptions="Center" />
+        <StackLayout x:Name="WelcomeArea" VerticalOptions="Center">
+            <Label Text="Welcome to SwinApp" VerticalOptions="Center" HorizontalOptions="Center" />
+        </StackLayout>
+        
+        <BoxView Color="Red" HeightRequest="2" HorizontalOptions="FillAndExpand" />
+        
         <StackLayout x:Name="BlackBoardArea" VerticalOptions="Center">
-            <Label Text="BlackBoard Notification Area" VeriticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="BlackBoard Notification Area" VerticalOptions="Center" HorizontalOptions="Center" />
         </StackLayout>
     </StackLayout>
 </ContentPage>
