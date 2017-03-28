@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace SwinApp
@@ -31,4 +31,26 @@ namespace SwinApp
 			// Handle when your app resumes
 		}
 	}
+    /// <summary>
+    /// A set of Debugging tools for making development easier
+    /// Note that these tools they shouldn't be "usable" unless debugging
+    /// </summary>
+    public static class DebuggingTools
+    {
+        /// <summary>
+        /// A simple extension method for dumping the JSON of an object to the 
+        /// debugging console.
+        /// </summary>
+        /// <example>
+        /// ExampleObject example = new ExampleObject();
+        /// example.Dump();
+        /// </example>
+        public static void Dump(this object obj)
+        {
+#if DEBUG
+            System.Diagnostics.Debug.WriteLine(JsonConvert.SerializeObject(obj), Formatting.Indented);
+#endif
+        }
+    }
+
 }
