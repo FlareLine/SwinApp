@@ -13,7 +13,7 @@ namespace SwinApp
 		{
 			InitializeComponent();
 
-			MainPage = new SwinApp.MainPage();
+            MainPage = new NavigationPage(new MainPage());
 		}
 
 		protected override void OnStart ()

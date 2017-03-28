@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SwinApp.Library
 {
@@ -9,18 +10,27 @@ namespace SwinApp.Library
     {
         public Dictionary<string, double> Main { get; set; }
 
+        /**
+         * Anything without JsonIgnore are properties that don't exist in the JSON we are downloading
+         * This ensures that Json which is changed 
+         */
         [JsonIgnore]
-        public int Min => Main.ContainsKey("temp_min") ? (int)Main["temp_min"] : -1;
+        public int Min => Main != null && Main.ContainsKey("temp_min") ? (int)Main["temp_min"] : -1;
 
         [JsonIgnore]
-        public int Max => Main.ContainsKey("temp_max") ? (int)Main["temp_max"] : -1;
+        public int Max => Main != null && Main.ContainsKey("temp_max") ? (int)Main["temp_max"] : -1;
 
         [JsonIgnore]
-        public int Current => Main.ContainsKey("temp") ? (int)Main["temp"] : -1;
+        public int Current => Main != null && Main.ContainsKey("temp") ? (int)Main["temp"] : -1;
+
+        [JsonIgnore]
+        public string Description => Main != null ? $"Currently {Current}°C" : "Loading Weather...";
     }
     public class WeatherConnection
     {
+        // Do not do this in future, not a great idea
         const string API_KEY = "f91384009591225adb5f7b65358e3ea6";
+        // The formatted endpoint which we reference
         private string _endpoint = $@"http://api.openweathermap.org/data/2.5/weather?q=Hawthorne,au&units=metric&APPID={API_KEY}";
 
         private WeatherModel _weather = new WeatherModel();
@@ -29,9 +39,12 @@ namespace SwinApp.Library
 
         public WeatherConnection()
         {
-            DownloadWeather();
         }
-        public async void DownloadWeather()
+        /**
+         * Using the API class, we download the weather data from the API using 
+         * the key and endpoint
+         */
+        public async Task DownloadWeatherAsync()
         {
             _weather = await API<WeatherModel>.GetAsync(_endpoint);
         }

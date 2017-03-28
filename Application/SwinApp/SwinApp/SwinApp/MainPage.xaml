@@ -8,5 +8,6 @@
         <Label Text="Welcome to SwinApp" 
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
+        <Button x:Name="ButtonWeather" Text="View Weather"/>
     </StackLayout>
 </ContentPage>

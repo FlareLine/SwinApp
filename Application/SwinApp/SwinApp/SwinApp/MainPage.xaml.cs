@@ -12,6 +12,7 @@ namespace SwinApp
 		public MainPage()
 		{
 			InitializeComponent();
+            ButtonWeather.Clicked += (send, ev) => Navigation.PushAsync(new WeatherPage());
 		}
 	}
 }

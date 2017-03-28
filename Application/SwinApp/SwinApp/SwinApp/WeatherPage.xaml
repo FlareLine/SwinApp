@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SwinApp.Weather"
+             x:Class="SwinApp.WeatherPage"
              Title="Weather">
     <Grid x:Name="GridMain">
         <Grid.RowDefinitions>
@@ -9,6 +9,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextCell x:Name="TextWeather"/>
+        <!--Bind the text of TextWeather to "Description" property of Weather-->
+        <Label x:Name="TextWeather" Grid.Row="1" HorizontalTextAlignment="Center" FontSize="60" Text="{Binding Description}"/>
     </Grid>
 </ContentPage>
