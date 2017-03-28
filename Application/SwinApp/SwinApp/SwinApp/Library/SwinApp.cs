@@ -16,11 +16,15 @@ namespace SwinApp.Library
     /// <summary>
     /// A generic API query class, needs the type provided for serialization
     /// </summary>
-    /// <typeparam name="T">The type which you are trying to get</typeparam>
-    /// <param name="endpoint">The endpoint which you are querying</param>
-    /// <param name="headers">A dictionary of header values to be applied to the request, this is optional</param>
+    /// <typeparam name="T">The type which you are referencing</typeparam>
     public static class API<T>
     {
+        /// <summary>
+        /// A basic GET request with support for headers
+        /// </summary>
+        /// <param name="endpoint">The endpoint which you are querying</param>
+        /// <param name="headers">A dictionary of header values to be applied to the request, this is optional</param>
+        /// <returns>A serialized JSON request as a C# object</returns>
         public static async Task<T> GetAsync(string endpoint, Dictionary<string, string> headers = null)
         {
             using (HttpClient client = new HttpClient())
