@@ -13,7 +13,10 @@ namespace SwinApp
 		{
 			InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new MainPage())
+            {
+                BarBackgroundColor = Color.FromHex("#dc2d27"),
+            };
 		}
 
 		protected override void OnStart ()

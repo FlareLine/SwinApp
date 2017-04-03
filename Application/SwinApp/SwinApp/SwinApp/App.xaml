@@ -5,6 +5,13 @@
 	<Application.Resources>
 
 		<!-- Application resource dictionary -->
-
+        <ResourceDictionary>
+            
+            <Color x:Key="SwinburneRed">#dc2d27</Color>
+            
+            <Style TargetType="TabbedPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource SwinburneRed}"/>
+            </Style>
+        </ResourceDictionary>
 	</Application.Resources>
 </Application>

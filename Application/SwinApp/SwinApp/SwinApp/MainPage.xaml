@@ -1,13 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SwinApp"
-             x:Class="SwinApp.MainPage">
-    <StackLayout x:Name="StackMain" VerticalOptions="Center">
-        <Image Source="http://emspace.com.au/sites/emspace.com.au/files/imagecache/client_teaser/content/project/image_small/swinburne-logo.png" />
-        <Label Text="Welcome to SwinApp" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-        <Button x:Name="ButtonWeather" Text="View Weather"/>
-    </StackLayout>
-</ContentPage>
+             x:Class="SwinApp.MainPage"
+            Title="SwinApp"
+            BarBackgroundColor="{StaticResource SwinburneRed}"
+            >
+    <ContentPage Title="Dashboard">
+        <StackLayout x:Name="StackMain" VerticalOptions="StartAndExpand">
+            <!--<Image Source="http://emspace.com.au/sites/emspace.com.au/files/imagecache/client_teaser/content/project/image_small/swinburne-logo.png" />
+            <Label Text="Welcome to SwinApp" 
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+            <Button x:Name="ButtonWeather" Text="View Weather"/>-->
+            <ListView x:Name="ListDashboard" RowHeight="80" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout>
+                                    <Label Text="{Binding PrimaryContent}" TextColor="Green" Grid.Row="0" FontSize="18"/>
+                                    <Label Text="{Binding SecondaryContent}" Grid.Row="1"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Schedule">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label FontSize="Medium" TextColor="Red" Text="Welcome to my timetable harahar yes"/>
+        </Grid>
+    </ContentPage>
+</TabbedPage>

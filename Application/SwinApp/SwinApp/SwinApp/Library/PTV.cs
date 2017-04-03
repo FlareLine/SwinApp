@@ -13,7 +13,7 @@ namespace SwinApp.Library
         /// </summary>
         /// <param name="arguments"></param>
         /// <returns></returns>
-        public async static Task<string> QueryPTVAsync(string arguments)
+        public async static Task<string> GetPTVStringAsync(string arguments)
         {
             string key = "6baf66a7-8816-4056-8e93-94c3b66ec822"; // supplied by PTV
             int developerId = 3000193; // supplied by PTV
