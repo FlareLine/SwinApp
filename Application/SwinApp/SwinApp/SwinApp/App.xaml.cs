@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SwinApp.Library;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
@@ -12,8 +13,8 @@ namespace SwinApp
 		public App ()
 		{
 			InitializeComponent();
-
-            MainPage = new NavigationPage(new MainPage())
+            Student scope = new Student();
+            MainPage = new NavigationPage(new MainPage(scope))
             {
                 BarBackgroundColor = Color.FromHex("#dc2d27"),
             };

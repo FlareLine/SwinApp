@@ -14,6 +14,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Library\DashItems.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\PTV.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\Student.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SwinApp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Weather.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">

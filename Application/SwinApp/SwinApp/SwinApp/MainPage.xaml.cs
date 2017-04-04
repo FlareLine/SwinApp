@@ -10,22 +10,16 @@ namespace SwinApp
 {
 	public partial class MainPage : TabbedPage
 	{
-        private WeatherDashItem _weatherDash = new WeatherDashItem();
-        private List<IDashItem> _items = new List<IDashItem>()
-        {
-            new SampleDashItem("Hello\n friends", "Alex"),
-            new SampleDashItem("It is I,\n Alex", "Ethan")
-        };
-		public MainPage()
+        public Student _scope;
+		public MainPage(Student scope)
 		{
+            _scope = scope;
 			InitializeComponent();
-            ListDashboard.ItemsSource = _items;
+            ListDashboard.ItemsSource = scope.DashBoardItems;
 		}
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             NavigationPage.SetHasNavigationBar(this, false);
-            await _weatherDash.LoadWeather();
-            _items.Add(_weatherDash);
             base.OnAppearing();
         }
     }
