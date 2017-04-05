@@ -10,12 +10,10 @@ namespace SwinApp
 {
 	public partial class MainPage : TabbedPage
 	{
-        public Student _scope;
-		public MainPage(Student scope)
+		public MainPage()
 		{
-            _scope = scope;
 			InitializeComponent();
-            ListDashboard.ItemsSource = scope.DashBoardItems;
+            ListDashboard.ItemsSource = User.DashBoardItems;
 		}
         protected override void OnAppearing()
         {

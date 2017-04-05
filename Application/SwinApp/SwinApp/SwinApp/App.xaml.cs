@@ -13,8 +13,7 @@ namespace SwinApp
 		public App ()
 		{
 			InitializeComponent();
-            Student scope = new Student();
-            MainPage = new NavigationPage(new MainPage(scope))
+            MainPage = new NavigationPage(new MainPage())
             {
                 BarBackgroundColor = Color.FromHex("#dc2d27"),
             };

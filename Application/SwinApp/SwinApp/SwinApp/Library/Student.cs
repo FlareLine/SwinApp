@@ -11,24 +11,16 @@ namespace SwinApp.Library
     /// <remarks>
     /// Possibly make it static/global?
     /// </remarks>
-    public class Student
+    public static class User
     {
-        private ObservableCollection<IDashItem> _dashBoardItems;
+        private static ObservableCollection<IDashItem> _dashBoardItems = new ObservableCollection<IDashItem>();
 
-        public ObservableCollection<IDashItem> DashBoardItems
+        public static ObservableCollection<IDashItem> DashBoardItems
         {
             get { return _dashBoardItems; }
         }
 
-        public Student()
-        {
-            _dashBoardItems = new ObservableCollection<IDashItem>();
-            LoadWeather();
-#if DEBUG
-            _dashBoardItems.Add(new SampleDashItem("Aye Kids", "Alex"));
-#endif
-        }
-        private async void LoadWeather()
+        public static async void LoadWeather()
         {
             WeatherDashItem weatherDash = new WeatherDashItem();
             await weatherDash.LoadWeather();
