@@ -6,11 +6,8 @@ using System.Text;
 namespace SwinApp.Library
 {
     /// <summary>
-    /// A Student class is the scope of SwinApp and should be passed in between each view
+    /// A Student class is the scope of SwinApp 
     /// </summary>
-    /// <remarks>
-    /// Possibly make it static/global?
-    /// </remarks>
     public static class User
     {
         private static ObservableCollection<IDashItem> _dashBoardItems = new ObservableCollection<IDashItem>();
@@ -25,6 +22,14 @@ namespace SwinApp.Library
             WeatherDashItem weatherDash = new WeatherDashItem();
             await weatherDash.LoadWeather();
             _dashBoardItems.Add(weatherDash);
+        }
+        static User()
+        {
+            LoadWeather();
+#if DEBUG
+            _dashBoardItems.Add(new SampleDashItem("Welcome to SwinApp", "Creators of SwinApp"));
+            _dashBoardItems.Add(new SampleDashItem("Remember, learning is fun", "Creators of SwinApp"));
+#endif
         }
     }
 }

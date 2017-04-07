@@ -13,19 +13,23 @@
                VerticalOptions="Center" 
                HorizontalOptions="Center" />
             <Button x:Name="ButtonWeather" Text="View Weather"/>-->
-            <ListView x:Name="ListDashboard" RowHeight="80" HasUnevenRows="True">
+            <ListView x:Name="ListDashboard" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <StackLayout>
-                                    <Label Text="{Binding PrimaryContent}" TextColor="Green" Grid.Row="0" FontSize="18"/>
-                                    <Label Text="{Binding SecondaryContent}" Grid.Row="1"/>
-                                </StackLayout>
+                                <Frame Style="{StaticResource FrameCard}" Margin="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="3*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding PrimaryContent}" Grid.Row="0" FontSize="Large" FontAttributes="Bold"/>
+                                        </StackLayout>
+                                        <Label Text="{Binding SecondaryContent}" Grid.Row="1"/>
+                                    </Grid>
+                                </Frame>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

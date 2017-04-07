@@ -22,6 +22,10 @@
          colorControlHighlight and colorSwitchThumbNormal. -->
     <item name="windowActionModeOverlay">true</item>
 
+    <item name="android:colorFocusedHighlight">@android:color/transparent</item>
+    <item name="android:colorActivatedHighlight">@android:color/transparent</item>
+    <item name="android:activatedBackgroundIndicator">@android:color/transparent</item>
+
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
 
