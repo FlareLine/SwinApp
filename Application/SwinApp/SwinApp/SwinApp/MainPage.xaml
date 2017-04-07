@@ -7,13 +7,13 @@
             BarBackgroundColor="{StaticResource SwinburneRed}"
             >
     <ContentPage Title="Dashboard">
-        <StackLayout x:Name="StackMain" VerticalOptions="StartAndExpand">
+        <StackLayout x:Name="StackMain" VerticalOptions="FillAndExpand">
             <!--<Image Source="http://emspace.com.au/sites/emspace.com.au/files/imagecache/client_teaser/content/project/image_small/swinburne-logo.png" />
             <Label Text="Welcome to SwinApp" 
                VerticalOptions="Center" 
                HorizontalOptions="Center" />
             <Button x:Name="ButtonWeather" Text="View Weather"/>-->
-            <ListView x:Name="ListDashboard" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None">
+            <ListView x:Name="ListDashboard" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" VerticalOptions="FillAndExpand">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -37,7 +37,7 @@
             </ListView>
         </StackLayout>
     </ContentPage>
-    <ContentPage Title="Schedule">
+    <!--<ContentPage Title="Schedule">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -45,6 +45,27 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Label FontSize="Medium" TextColor="Red" Text="Welcome to my timetable harahar yes"/>
+        </Grid>
+    </ContentPage>-->
+    <ContentPage Title="Menu">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ListView x:Name="ListMenu" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <StackLayout Margin="10,15">
+                                    <Label VerticalOptions="CenterAndExpand" FontSize="Medium" Text="{Binding Title}"/>
+                                    <Label VerticalOptions="End" Text="{Binding Desc}"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </ContentPage>
 </TabbedPage>
