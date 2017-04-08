@@ -36,9 +36,9 @@ namespace SwinApp.Library
         public async Task LoadWeather()
         {
             await _conn.DownloadWeatherAsync();
-            _weather = $"The current weather is {_conn.Weather.Current} degrees";
+            _weather = _conn.Weather.Description;
         }
         public string PrimaryContent => _weather;
-        public string SecondaryContent => _conn.Weather.Current > 20 ? "You probs don't need a jumper mate" : "Fuck it's chilly aye?";
+        public string SecondaryContent => _conn.Weather.Current > 20 ? "Beautiful weather outside" : "You might need a jumper";
     }
 }

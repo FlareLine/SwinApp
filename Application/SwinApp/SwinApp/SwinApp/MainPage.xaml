@@ -25,9 +25,9 @@
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding PrimaryContent}" Grid.Row="0" FontSize="Large" FontAttributes="Bold"/>
+                                            <Label Text="{Binding PrimaryContent}" Grid.Row="0" FontSize="32" FontAttributes="Bold"/>
                                         </StackLayout>
-                                        <Label Text="{Binding SecondaryContent}" Grid.Row="1"/>
+                                        <Label Text="{Binding SecondaryContent}" FontSize="Medium" Grid.Row="1"/>
                                     </Grid>
                                 </Frame>
                             </Grid>
@@ -37,16 +37,16 @@
             </ListView>
         </StackLayout>
     </ContentPage>
-    <!--<ContentPage Title="Schedule">
+    <ContentPage Title="Schedule">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label FontSize="Medium" TextColor="Red" Text="Welcome to my timetable harahar yes"/>
+            <Label FontSize="Medium" TextColor="Gray" HorizontalTextAlignment="Center" Grid.Row="1" Text="Welcome to my timetable harahar yes"/>
         </Grid>
-    </ContentPage>-->
+    </ContentPage>
     <ContentPage Title="Menu">
         <Grid>
             <Grid.RowDefinitions>
@@ -57,7 +57,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
-                                <StackLayout Margin="10,15">
+                                <StackLayout Margin="15,20">
                                     <Label VerticalOptions="CenterAndExpand" FontSize="Medium" Text="{Binding Title}"/>
                                     <Label VerticalOptions="End" Text="{Binding Desc}"/>
                                 </StackLayout>
