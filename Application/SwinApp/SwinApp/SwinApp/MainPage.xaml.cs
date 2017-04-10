@@ -26,6 +26,10 @@ namespace SwinApp
             NavigationPage.SetHasNavigationBar(this, false);
             base.OnAppearing();
         }
+
+        private async void ShowContextMenu(object sender, EventArgs e) => await DisplayActionSheet("Add New...", "Close", "", new string[] { "Reminder" });
+
+        private void AssertPlusVisibility(object sender, ScrolledEventArgs e) => ButtonAndroidPlus.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
     }
     public class MenuItem
     {

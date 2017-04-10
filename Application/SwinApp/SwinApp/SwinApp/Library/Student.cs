@@ -10,9 +10,9 @@ namespace SwinApp.Library
     /// </summary>
     public static class User
     {
-        private static ObservableCollection<IDashItem> _dashBoardItems = new ObservableCollection<IDashItem>();
+        private static ObservableCollection<IDashCard> _dashBoardItems = new ObservableCollection<IDashCard>();
 
-        public static ObservableCollection<IDashItem> DashBoardItems
+        public static ObservableCollection<IDashCard> DashBoardItems
         {
             get { return _dashBoardItems; }
         }
@@ -21,14 +21,14 @@ namespace SwinApp.Library
         {
             WeatherDashItem weatherDash = new WeatherDashItem();
             await weatherDash.LoadWeather();
-            _dashBoardItems.Add(weatherDash);
+            //_dashBoardItems.Add(weatherDash);
         }
         static User()
         {
             LoadWeather();
 #if DEBUG
-            _dashBoardItems.Add(new SampleDashItem("Welcome to SwinApp", "Creators of SwinApp"));
-            _dashBoardItems.Add(new SampleDashItem("Remember, learning is fun", "Creators of SwinApp"));
+            _dashBoardItems.Add(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
+            _dashBoardItems.Add(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
 #endif
         }
     }

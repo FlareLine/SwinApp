@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace SwinApp.Library
 {
@@ -9,6 +10,12 @@ namespace SwinApp.Library
     {
         string PrimaryContent { get; }
         string SecondaryContent { get; }
+    }
+    public interface IDashCard
+    {
+        string Title { get; }
+        Grid Content { get; }
+        void Load();
     }
     public class SampleDashItem : IDashItem
     {
@@ -25,6 +32,31 @@ namespace SwinApp.Library
 
         public string SecondaryContent => _author;
     }
+
+    public class TextContentDashCard : ViewModel, IDashCard
+    {
+        private Grid _content;
+        private string _title;
+
+        public string Title => _title;
+
+        public Grid Content => _content;
+
+        public TextContentDashCard(string title, string textContent)
+        {
+            _title = title;
+            _content = new Grid();
+            _content.Children.Add(new Label() { Text = textContent });
+            NotifyPropertyChanged("Content");
+            NotifyPropertyChanged("Title");
+        }
+
+        public void Load()
+        {
+            
+        }
+    }
+
     public class WeatherDashItem : IDashItem
     {
         private WeatherConnection _conn;

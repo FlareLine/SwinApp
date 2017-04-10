@@ -13,28 +13,36 @@
                VerticalOptions="Center" 
                HorizontalOptions="Center" />
             <Button x:Name="ButtonWeather" Text="View Weather"/>-->
-            <ListView x:Name="ListDashboard" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" VerticalOptions="FillAndExpand">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Frame Style="{StaticResource FrameCard}" Margin="5">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="3*"/>
-                                            <RowDefinition Height="*"/>
-                                        </Grid.RowDefinitions>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding PrimaryContent}" Grid.Row="0" FontSize="32" FontAttributes="Bold"/>
-                                        </StackLayout>
-                                        <Label Text="{Binding SecondaryContent}" FontSize="Medium" Grid.Row="1"/>
-                                    </Grid>
-                                </Frame>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ScrollView x:Name="ScrollFeed" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand">
+                <ListView x:Name="ListDashboard" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Frame Style="{StaticResource FrameCard}" Margin="5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="3*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding Title}" Grid.Row="0" FontSize="32" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                            <Label FontSize="Medium" Grid.Row="1"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+            <Grid>
+                <Grid.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean" Android="True" iOS="False"/>
+                </Grid.IsVisible>
+                <Button x:Name="ButtonAndroidPlus" Clicked="ShowContextMenu" HorizontalOptions="FillAndExpand" Text="+" BackgroundColor="White" FontAttributes="Bold" FontSize="Large"/>
+            </Grid>
         </StackLayout>
     </ContentPage>
     <ContentPage Title="Schedule">
@@ -47,7 +55,7 @@
             <Label FontSize="Medium" TextColor="Gray" HorizontalTextAlignment="Center" Grid.Row="1" Text="Welcome to my timetable harahar yes"/>
         </Grid>
     </ContentPage>
-    <ContentPage Title="Menu">
+    <ContentPage Title="☰" >
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

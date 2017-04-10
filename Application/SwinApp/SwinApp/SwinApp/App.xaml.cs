@@ -5,6 +5,7 @@ using System.Text;
 using SwinApp.Library;
 using Newtonsoft.Json;
 using Xamarin.Forms;
+using System.ComponentModel;
 
 namespace SwinApp
 {
@@ -55,5 +56,16 @@ namespace SwinApp
 #endif
         }
     }
+    /// <summary>
+    /// A basic class for implementing INotifyProperty changed
+    /// </summary>
+    public class ViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        protected void NotifyPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+    }
 }
