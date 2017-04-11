@@ -20,5 +20,10 @@ namespace SwinApp.Components
             BindingContext = _planned;
 			InitializeComponent ();
 		}
+
+        private void ModifyData(object sender, FocusEventArgs e)
+        {
+            _planned.Refresh();
+        }
     }
 }

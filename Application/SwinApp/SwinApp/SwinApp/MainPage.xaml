@@ -20,7 +20,7 @@
                             <ViewCell>
                                 <Grid>
                                     <Frame Style="{StaticResource FrameCard}" Margin="5">
-                                        <StackLayout Orientation="Vertical">
+                                        <StackLayout Orientation="Vertical" Padding="1">
                                             <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"/>
                                             <ContentView Content="{Binding Content}"/>
                                         </StackLayout>

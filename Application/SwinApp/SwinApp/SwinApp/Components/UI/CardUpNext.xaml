@@ -4,8 +4,16 @@
              x:Class="SwinApp.Components.CardUpNext">
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="4*"/>
+        <ColumnDefinition Width="3*"/>
     </Grid.ColumnDefinitions>
-    <Label Grid.Column="0" Text="{Binding Time}"/>
-    <Label Grid.Column="1" Text="{Binding Name"/>
+    <StackLayout Grid.Column="0" HorizontalOptions="Center" Unfocused="ModifyData">
+        <Label Text="{Binding When, StringFormat='{0:mm}'}" FontSize="40"/>
+        <Label Text="Mins" FontSize="Medium"/>
+    </StackLayout>
+    <Frame Grid.Column="1" BackgroundColor="#E0443E">
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label  Text="{Binding Name}" FontSize="Medium" TextColor="White"/>
+            <Label Text="{Binding Time, StringFormat='{0:T}'}" TextColor="White" FontSize="Small"/>
+        </StackLayout>
+    </Frame>
 </Grid>

@@ -13,6 +13,10 @@ namespace SwinApp.Library
         string Name { get; set; }
 
         DateTime Time { get; set; }
+
+        TimeSpan When { get; }
+
+        void Refresh();
     }
     /// <summary>
     /// Very simple planned event card
@@ -41,15 +45,24 @@ namespace SwinApp.Library
                 if (value != _time)
                 {
                     NotifyPropertyChanged("Time");
+                    NotifyPropertyChanged("When");
                     _time = value;
                 }
             }
         }
 
+        public TimeSpan When => Time - DateTime.Now;
+
         public SamplePlanned(string name, DateTime time)
         {
             Name = name;
             Time = time;
+        }
+
+        public void Refresh()
+        {
+            NotifyPropertyChanged("Time");
+            NotifyPropertyChanged("When");
         }
 
         public void Load()
