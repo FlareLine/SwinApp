@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwinApp.Components.CardUpNext">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="4*"/>
+    </Grid.ColumnDefinitions>
+    <Label Grid.Column="0" Text="{Binding Time}"/>
+    <Label Grid.Column="1" Text="{Binding Name"/>
+</Grid>
