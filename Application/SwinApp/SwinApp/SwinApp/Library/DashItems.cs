@@ -11,6 +11,9 @@ namespace SwinApp.Library
         string PrimaryContent { get; }
         string SecondaryContent { get; }
     }
+    /// <summary>
+    /// The interface for dashboard cards
+    /// </summary>
     public interface IDashCard
     {
         string Title { get; }

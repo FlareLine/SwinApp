@@ -24,7 +24,7 @@ namespace SwinApp.Library
         public int Current => Main != null && Main.ContainsKey("temp") ? (int)Main["temp"] : -1;
 
         [JsonIgnore]
-        public string Description => Main != null ? $"Currently {Current}°C" : "Loading Weather...";
+        public string Description => Main != null ? $"Currently {Current}°C \n(Max. {Max}°C)" : "Loading Weather...";
     }
     public class WeatherConnection
     {
