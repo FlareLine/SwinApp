@@ -29,6 +29,8 @@ namespace SwinApp.Library
 #if DEBUG
             _dashBoardItems.Add(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
             _dashBoardItems.Add(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
+            // TODO: Fix this instantiation
+            //_dashBoardItems.Add(new UpNextCard(new SamplePlanned("Test Event", DateTime.Now)));
 #endif
         }
     }

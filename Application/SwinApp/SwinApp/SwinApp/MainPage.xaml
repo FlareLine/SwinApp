@@ -20,16 +20,10 @@
                             <ViewCell>
                                 <Grid>
                                     <Frame Style="{StaticResource FrameCard}" Margin="5">
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="3*"/>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label Text="{Binding Title}" Grid.Row="0" FontSize="32" FontAttributes="Bold"/>
-                                            </StackLayout>
-                                            <Label FontSize="Medium" Grid.Row="1"/>
-                                        </Grid>
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"/>
+                                            <ContentView Content="{Binding Content}"/>
+                                        </StackLayout>
                                     </Frame>
                                 </Grid>
                             </ViewCell>

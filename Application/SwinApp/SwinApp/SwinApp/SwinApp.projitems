@@ -12,10 +12,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardUpNext.xaml.cs">
+      <DependentUpon>CardUpNext.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Library\DashItems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\Planning.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\PTV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Student.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SwinApp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\UpNextCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Weather.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -42,6 +48,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Components\" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardUpNext.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Components\UI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Library\ViewModels\" />
   </ItemGroup>
 </Project>
