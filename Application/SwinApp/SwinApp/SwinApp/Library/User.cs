@@ -23,6 +23,10 @@ namespace SwinApp.Library
             await weatherDash.LoadWeather();
             //_dashBoardItems.Add(weatherDash);
         }
+        private static void LoadBlackboardAnnouncements()
+        {
+
+        }
         static User()
         {
             LoadWeather();
