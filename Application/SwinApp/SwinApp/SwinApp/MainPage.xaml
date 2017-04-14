@@ -6,6 +6,7 @@
             Title="SwinApp"
             BarBackgroundColor="{StaticResource SwinburneRed}"
             >
+    <!--Dashboard Page-->
     <ContentPage Title="Dashboard">
         <StackLayout x:Name="StackMain" VerticalOptions="FillAndExpand">
             <!--<Image Source="http://emspace.com.au/sites/emspace.com.au/files/imagecache/client_teaser/content/project/image_small/swinburne-logo.png" />
@@ -13,12 +14,12 @@
                VerticalOptions="Center" 
                HorizontalOptions="Center" />
             <Button x:Name="ButtonWeather" Text="View Weather"/>-->
-            <ScrollView x:Name="ScrollFeed" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand">
-                <ListView x:Name="ListDashboard" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None">
+            <ScrollView x:Name="ScrollFeed" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
+                <ListView x:Name="ListDashboard" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid>
+                                <Grid Padding="0">
                                     <Frame Style="{StaticResource FrameCard}" Margin="5">
                                         <StackLayout Orientation="Vertical" Padding="1">
                                             <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"/>
@@ -31,7 +32,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
-            <Grid>
+            <Grid Padding="0" BackgroundColor="Transparent">
                 <Grid.IsVisible>
                     <OnPlatform x:TypeArguments="x:Boolean" Android="True" iOS="False"/>
                 </Grid.IsVisible>
@@ -39,6 +40,7 @@
             </Grid>
         </StackLayout>
     </ContentPage>
+    <!--Schedule Page-->
     <ContentPage Title="Schedule">
         <Grid>
             <Grid.RowDefinitions>
@@ -49,6 +51,7 @@
             <Label FontSize="Medium" TextColor="Gray" HorizontalTextAlignment="Center" Grid.Row="1" Text="Welcome to my timetable harahar yes"/>
         </Grid>
     </ContentPage>
+    <!--Menu/More Page-->
     <ContentPage Title="☰" >
         <Grid>
             <Grid.RowDefinitions>

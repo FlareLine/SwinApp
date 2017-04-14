@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwinApp.Components.CardBBAnnouncement">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="5*"/>
+    </Grid.ColumnDefinitions>
+    <Frame Grid.Column="1">
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label  Text="{Binding Title}" FontSize="Medium" />
+            <Label Text="{Binding Body}" LineBreakMode="TailTruncation" FontSize="Small"/>
+        </StackLayout>
+    </Frame>
+</Grid>

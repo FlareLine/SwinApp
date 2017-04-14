@@ -35,7 +35,9 @@ namespace SwinApp.Library
 
         public string SecondaryContent => _author;
     }
-
+    /// <summary>
+    /// Simple dash card for text content
+    /// </summary>
     public class TextContentDashCard : ViewModel, IDashCard
     {
         private Grid _content;
@@ -59,7 +61,9 @@ namespace SwinApp.Library
             
         }
     }
-
+    /// <summary>
+    /// Dash card for weather
+    /// </summary>
     public class WeatherDashItem : IDashItem
     {
         private WeatherConnection _conn;
