@@ -13,7 +13,7 @@
     <Frame Grid.Column="1" BackgroundColor="#E0443E">
         <StackLayout VerticalOptions="CenterAndExpand">
             <Label  Text="{Binding Name}" FontSize="Medium" TextColor="White"/>
-            <Label Text="{Binding Time, StringFormat='{0:T}'}" TextColor="White" FontSize="Small"/>
+            <Label Text="{Binding Time, StringFormat='{0:MMMM d, yyyy'}" TextColor="White" FontSize="Small"/>
         </StackLayout>
     </Frame>
 </Grid>

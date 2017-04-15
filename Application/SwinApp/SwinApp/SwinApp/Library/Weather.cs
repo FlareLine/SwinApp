@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,7 +47,14 @@ namespace SwinApp.Library
          */
         public async Task DownloadWeatherAsync()
         {
-            _weather = await API<WeatherModel>.GetAsync(_endpoint);
+            try
+            {
+                _weather = await API<WeatherModel>.GetAsync(_endpoint);
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
         }
     }
 }

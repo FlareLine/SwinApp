@@ -10,7 +10,7 @@
                     <Grid Padding="0">
                         <StackLayout>
                             <Label Text="{Binding Title}"/>
-                            <Label Text="{Binding Created, StringFormat='{0:dd/MM/YY}'"/>
+                            <Label Text="{Binding Created, StringFormat='{0:dd/MM/YY}'}"/>
                         </StackLayout>
                     </Grid>
                 </ViewCell>
