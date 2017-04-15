@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -57,7 +58,7 @@ namespace SwinApp.Library
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
-        public static async Task<PTVPayLoad> RequestPTVPayloadAsync(string req)
+        public static async Task<PTVPayload> RequestPTVPayloadAsync(string req)
         {
             string results = await GetPTVStringAsync(req);
             // list to store departures
@@ -132,7 +133,7 @@ namespace SwinApp.Library
         }
     }
 
-    public class PTVPayLoad
+    public class PTVPayload
     {
         public List<Departure> Departures { get; set; }
         public List<Route> Routes { get; set; }
