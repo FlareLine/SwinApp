@@ -3,13 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.Components.CardBBAnnouncement">
     <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="5"/>
         <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="5*"/>
+        <ColumnDefinition Width="5"/>
     </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
     <Frame Grid.Column="1">
         <StackLayout VerticalOptions="CenterAndExpand">
             <Label  Text="{Binding Title}" FontSize="Medium" />
-            <Label Text="{Binding Body}" LineBreakMode="TailTruncation" FontSize="Small"/>
+            <Label x:Name="TextBody" Text="{Binding Body}" LineBreakMode="TailTruncation" FontSize="Small"/>
         </StackLayout>
     </Frame>
+    <Grid x:Name="GridShowAll" Grid.ColumnSpan="3" Grid.Row="1">
+        <Label HorizontalTextAlignment="End" Text="Show All Announcements"/>
+    </Grid>
 </Grid>

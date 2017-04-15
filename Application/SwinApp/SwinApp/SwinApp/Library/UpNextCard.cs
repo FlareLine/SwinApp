@@ -23,5 +23,10 @@ namespace SwinApp.Library
         {
             throw new NotImplementedException();
         }
+
+        public void Open()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

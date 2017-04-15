@@ -24,5 +24,10 @@ namespace SwinApp.Library
         {
             await _weather.Load();
         }
+
+        public void Open()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

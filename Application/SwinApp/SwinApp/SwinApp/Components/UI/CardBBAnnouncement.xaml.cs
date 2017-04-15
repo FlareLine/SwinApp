@@ -13,6 +13,22 @@ namespace SwinApp.Components
         {
             InitializeComponent();
             BindingContext = _announcment = announcement;
+            var expandGesture = new TapGestureRecognizer();
+            expandGesture.Tapped += ExpandDetails;
+            TextBody.GestureRecognizers.Add(expandGesture);
+            var viewAllGesture = new TapGestureRecognizer();
+            viewAllGesture.Tapped += ViewAll;
+            GridShowAll.GestureRecognizers.Add(viewAllGesture);
+        }
+
+        private async void ViewAll(object sender, EventArgs e)
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new AnnouncementPage());
+        }
+
+        private void ExpandDetails(object sender, EventArgs e)
+        {
+            TextBody.LineBreakMode = TextBody.LineBreakMode == LineBreakMode.TailTruncation ? LineBreakMode.WordWrap : LineBreakMode.TailTruncation;
         }
     }
 }

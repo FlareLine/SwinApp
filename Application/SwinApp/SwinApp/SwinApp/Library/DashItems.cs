@@ -16,9 +16,22 @@ namespace SwinApp.Library
     /// </summary>
     public interface IDashCard
     {
+        /// <summary>
+        /// The Title is the text which appears at the top of the card
+        /// </summary>
         string Title { get; }
+        /// <summary>
+        /// Content is the content of the card, utilsing a grid
+        /// </summary>
         Grid Content { get; }
+        /// <summary>
+        /// Use Load to provide a standard loading method for the card
+        /// </summary>
         void Load();
+        /// <summary>
+        /// Use Open to provide opening logic for an entire card if necessary
+        /// </summary>
+        void Open();
     }
     public class SampleDashItem : IDashItem
     {
@@ -59,6 +72,11 @@ namespace SwinApp.Library
         public void Load()
         {
             
+        }
+
+        public void Open()
+        {
+            throw new NotImplementedException();
         }
     }
     /// <summary>
