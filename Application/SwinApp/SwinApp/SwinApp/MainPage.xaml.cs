@@ -14,13 +14,24 @@ namespace SwinApp
 		{
 			InitializeComponent();
             ListDashboard.ItemsSource = User.DashBoardItems;
-            ListMenu.ItemsSource = new List<MenuItem>
+            ListMenu.ItemsSource = new List<MenuItem>()
             {
                 new MenuItem("Timetable", "See your classes"),
                 new MenuItem("Campus", "Find your way around"),
                 new MenuItem("Transport", "Get home easily")
             };
+            
+            /*
+            var viewTransportGesture = new TapGestureRecognizer();
+            viewTransportGesture.Tapped += ViewTransportPage;
+            ListMenu.Item[2].GestureRecognizers.Add(viewTransportGesture);
+            */
 		}
+        //private async void ViewTransportPage(object sender, EventArgs e)
+        //{
+        //    await Application.Current.MainPage.Navigation.PushAsync(new TransportPage());
+        //}
+
         protected override void OnAppearing()
         {
             NavigationPage.SetHasNavigationBar(this, false);
@@ -35,10 +46,18 @@ namespace SwinApp
     {
         public string Title { get; set; }
         public string Desc { get; set; }
+        public Page DestPage { get; set; }
         public MenuItem(string t, string d)
         {
             Title = t;
             Desc = d;
+            DestPage = null;
+        }
+        public MenuItem(string t, string d, Page p)
+        {
+            Title = t;
+            Desc = d;
+            DestPage = p;
         }
     }
 }
