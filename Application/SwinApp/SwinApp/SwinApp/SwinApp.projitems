@@ -29,7 +29,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Library\BBAnnouncementCard.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\Blackboard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardAnnouncement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardUnit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\DashItems.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Planning.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\PTV.cs" />

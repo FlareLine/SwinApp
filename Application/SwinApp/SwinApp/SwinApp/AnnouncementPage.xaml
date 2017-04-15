@@ -3,18 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.AnnouncementPage"
              Title="Blackboard Announcements">
-    <ListView x:Name="ListAnnouncementTime">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <Grid Padding="0">
-                        <StackLayout Margin="2,5">
-                            <Label Text="{Binding Title}"/>
-                            <Label Text="{Binding Created, StringFormat='{0:dd/MM/yyyy}'}"/>
-                        </StackLayout>
-                    </Grid>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <StackLayout Padding="5,0">
+        <ListView x:Name="ListAnnouncementTime" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="0">
+                            <StackLayout Margin="5">
+                                <Label Text="{Binding Title}" FontAttributes="Bold"/>
+                                <Label Text="{Binding Created, StringFormat='{0:dd/MM/yyyy}'}"/>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label x:Name="LabelPickerAnnouncementFilter">Filter by...</Label>
+        <Picker x:Name="PickerAnnouncementFilter"/>
+    </StackLayout>
 </ContentPage>
