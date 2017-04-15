@@ -15,7 +15,7 @@ namespace SwinApp
 		public AnnouncementPage ()
 		{
 			InitializeComponent ();
-            //ListAnnouncement.ItemsSource = User.Announcements;
+            ListAnnouncement.ItemsSource = User.Announcements;
         }
 	}
 }
