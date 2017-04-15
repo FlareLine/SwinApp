@@ -19,6 +19,6 @@
             </ListView.ItemTemplate>
         </ListView>
         <Label x:Name="LabelPickerAnnouncementFilter">Filter by...</Label>
-        <Picker x:Name="PickerAnnouncementFilter"/>
+        <Picker x:Name="PickerAnnouncementFilter" Title="Select a Unit"/>
     </StackLayout>
 </ContentPage>
