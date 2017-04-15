@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.AnnouncementPage"
              Title="Blackboard Announcements">
-    <ListView x:Name="ListAnnouncement">
+    <ListView x:Name="ListAnnouncementTime">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
                     <Grid Padding="0">
-                        <StackLayout>
+                        <StackLayout Margin="2,5">
                             <Label Text="{Binding Title}"/>
-                            <Label Text="{Binding Created, StringFormat='{0:dd/MM/YY}'}"/>
+                            <Label Text="{Binding Created, StringFormat='{0:dd/MM/yyyy}'}"/>
                         </StackLayout>
                     </Grid>
                 </ViewCell>
