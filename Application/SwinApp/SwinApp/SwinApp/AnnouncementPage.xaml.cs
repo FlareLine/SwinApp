@@ -28,7 +28,6 @@ namespace SwinApp
 
         private void ChangeFilter(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
         }
     }
 }
