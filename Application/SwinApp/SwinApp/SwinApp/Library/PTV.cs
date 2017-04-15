@@ -14,8 +14,7 @@ namespace SwinApp.Library
         private static string _devID = (string)App.Current.Resources["PTV_DEV_ID"];
         // developer KEY supplied by PTV
         private static string _devKey = (string)App.Current.Resources["PTV_DEV_KEY"];
-        // PTV stop ID for Glenferrie station
-        private const string ID = "1080";
+
         /// <summary>
         /// Query the PTV api and return a string of 
         /// </summary>
@@ -50,7 +49,7 @@ namespace SwinApp.Library
             // make the request to the API and await a response before returning some data
             using (var client = new HttpClient())
             {
-                return await client.GetStringAsync($"http://timetableapi.ptv.vic.gov.au/{url}");
+                return await client.GetStringAsync($"http://timetableapi.ptv.vic.gov.au{url}");
             }
         }
         /// <summary>
@@ -62,9 +61,25 @@ namespace SwinApp.Library
         {
             string results = await GetPTVStringAsync(req);
             // list to store departures
-            return JsonConvert.DeserializeObject<PTVPayLoad>(results);
+            return JsonConvert.DeserializeObject<PTVPayload>(results, new JsonSerializerSettings
+            {
+                MissingMemberHandling = MissingMemberHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore,
+                Error = HandleDeserializationError
+            });
         }
-    }
+
+        /// <summary>
+        /// Handle any errors regarding receiving a null routes{}
+        /// This stops the program trying to put the null object into the Routes list
+        /// </summary>
+        public static void HandleDeserializationError(object sender, ErrorEventArgs errorArgs)
+		{
+			var currentError = errorArgs.ErrorContext.Error.Message;
+            errorArgs.ErrorContext.Handled = true;
+		}
+}
+
     public class Departure
     {
         public string route_id { get; set; }
@@ -93,8 +108,33 @@ namespace SwinApp.Library
             platform_number = p;
         }
     }
+
+    public class Route
+    {
+        public int route_type { get; set; }
+        public int route_id { get; set; }
+        public string route_name { get; set; }
+        public string route_number { get; set; }
+
+        /// <summary>
+        /// Creates a new <see cref="T:Route"/>with the specified parameters.
+        /// </summary>
+        /// <param name="t">The route type (0 = train)</param>
+        /// <param name="i">The id of the route (in the database)</param>
+        /// <param name="n">The name of the route</param>
+        /// <param name="m">The number of the route</param>
+        public Route(int t, int i, string n, string m)
+        {
+            route_type = t;
+            route_id = i;
+            route_number = n;
+            route_name = m;
+        }
+    }
+
     public class PTVPayLoad
     {
         public List<Departure> Departures { get; set; }
+        public List<Route> Routes { get; set; }
     }
 }
