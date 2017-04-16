@@ -11,14 +11,15 @@ using Xamarin.Forms.Xaml;
 
 namespace SwinApp
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AnnouncementPage : ContentPage
 	{
-        private ObservableCollection<BlackboardUnit> _unitFilters;
+        private ObservableCollection<BlackboardAnnouncement> _announcementFiltered = new ObservableCollection<BlackboardAnnouncement>();
 		public AnnouncementPage ()
 		{
 			InitializeComponent ();
-            User.Units.ForEach(u => _unitFilters.Add(u));
-            ListAnnouncementTime.ItemsSource = _unitFilters;
+            User.Announcements.ForEach(u => _announcementFiltered.Add(u));
+            ListAnnouncementTime.ItemsSource = User.Announcements;
             PickerAnnouncementFilter.Items.Add("All");
             PickerAnnouncementFilter.SelectedIndex = 0;
             foreach (var u in User.UnitPairs)
