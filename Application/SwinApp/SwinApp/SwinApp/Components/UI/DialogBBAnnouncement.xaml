@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SwinApp.Components.UI.DialogBBAnnouncement">
+             x:Class="SwinApp.Components.DialogBBAnnouncement">
     <StackLayout x:Name="StackAnnouncement">
         <Label x:Name="LabelHeading" FontSize="Large" FontAttributes="Bold" Text="{Binding Title}"/>
         <Label x:Name="LabelCreated" FontSize="Small" Text="{Binding Created, StringFormat='{0:dd/MM/yyyy}'}"/>

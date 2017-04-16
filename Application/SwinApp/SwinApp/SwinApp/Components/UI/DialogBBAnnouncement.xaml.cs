@@ -14,7 +14,7 @@ namespace SwinApp.Components
 	{
 		public DialogBBAnnouncement ()
 		{
-			InitializeComponent ();
+			InitializeComponent();
 		}
 	}
 }
