@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SwinApp.Components.UI
+namespace SwinApp.Components
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DialogBBAnnouncement : ContentPage
