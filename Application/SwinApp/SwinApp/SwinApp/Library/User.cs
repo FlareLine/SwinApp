@@ -11,6 +11,11 @@ namespace SwinApp.Library
     /// </summary>
     public static class User
     {
+        /// <summary>
+        /// Used to allow for prototype dummy data
+        /// </summary>
+        public const bool USE_PROTOTYPE_DATA = true;
+
         private static ObservableCollection<IDashCard> _dashBoardItems = new ObservableCollection<IDashCard>();
 
         public static ObservableCollection<IDashCard> DashBoardItems
@@ -36,41 +41,43 @@ namespace SwinApp.Library
         }
         private static void LoadBlackboardAnnouncements()
         {
-#if DEBUG
-            _announcements.Add(new BlackboardAnnouncement()
+            if (USE_PROTOTYPE_DATA)
             {
-                Id = Guid.NewGuid().ToString(),
-                Title = "Test Blackboard Announcement",
-                Body = "Welcome to Blackboard, it's pretty sweet aye? Lots of cool stuff to mess with. \n Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem  \n Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem \n Lorem ",
-                Created = DateTime.Now
-            });
-#else
-#endif
+                _announcements.Add(new BlackboardAnnouncement()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Title = "Test Blackboard Announcement",
+                    Body = "Welcome to Blackboard, it's pretty sweet aye? Lots of cool stuff to mess with. \n Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem  \n Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem \n Lorem ",
+                    Created = DateTime.Now
+                });
+            }
         }
         private static void LoadBlackboardUnits()
         {
-#if DEBUG
-            _units.Add(new BlackboardUnit()
+            if (USE_PROTOTYPE_DATA)
             {
-                Name = "Test Unit",
-                Id = new Random().Next(100).ToString(),
-                UUID = Guid.NewGuid().ToString(),
-            });
-#endif
+                _units.Add(new BlackboardUnit()
+                {
+                    Name = "Test Unit",
+                    Id = new Random().Next(100).ToString(),
+                    UUID = Guid.NewGuid().ToString(),
+                });
+            }
         }
         static User()
         {
+            _dashBoardItems.Add(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
             LoadWeather();
             LoadBlackboardAnnouncements();
             LoadBlackboardUnits();
             foreach (BlackboardAnnouncement a in Announcements)
                 _dashBoardItems.Add(new BBAnnouncementCard(a));
-#if DEBUG
-            _dashBoardItems.Add(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
-            _dashBoardItems.Add(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
-            _dashBoardItems.Add(new UpNextCard(new SamplePlanned("Test Event", DateTime.Now.AddMinutes(5))));
-            _dashBoardItems.Add(new WeatherCard());
-#endif
+            if (USE_PROTOTYPE_DATA)
+            {
+                _dashBoardItems.Add(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
+                _dashBoardItems.Add(new UpNextCard(new SamplePlanned("Test Event", DateTime.Now.AddMinutes(5))));
+                _dashBoardItems.Add(new WeatherCard());
+            }
         }
     }
 }
