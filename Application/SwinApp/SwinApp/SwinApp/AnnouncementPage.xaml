@@ -4,7 +4,7 @@
              x:Class="SwinApp.AnnouncementPage"
              Title="Blackboard Announcements">
     <StackLayout Padding="5,0">
-        <ListView x:Name="ListAnnouncementTime" HasUnevenRows="True">
+        <ListView x:Name="ListAnnouncements" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

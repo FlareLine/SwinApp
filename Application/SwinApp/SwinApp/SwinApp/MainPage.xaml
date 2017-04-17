@@ -52,7 +52,7 @@
         </Grid>
     </ContentPage>
     <!--Menu/More Page-->
-    <ContentPage Title="☰" >
+    <ContentPage Title="&#9776;" >
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

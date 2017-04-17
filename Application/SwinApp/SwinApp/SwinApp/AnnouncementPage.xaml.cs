@@ -1,4 +1,5 @@
 ﻿using SwinApp.Library;
+using SwinApp.Components;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,13 +20,16 @@ namespace SwinApp
 		{
 			InitializeComponent ();
             User.Announcements.ForEach(u => _announcementFiltered.Add(u));
-            ListAnnouncementTime.ItemsSource = User.Announcements;
+            ListAnnouncements.ItemsSource = User.Announcements;
             PickerAnnouncementFilter.Items.Add("All");
             PickerAnnouncementFilter.SelectedIndex = 0;
             foreach (var u in User.UnitPairs)
                 PickerAnnouncementFilter.Items.Add(u.Key);
             PickerAnnouncementFilter.SelectedIndexChanged += ChangeFilter;
+            ListAnnouncements.ItemTapped += OpenAnnouncement;
         }
+
+        private async void OpenAnnouncement(object sender, ItemTappedEventArgs e) => await Navigation.PushAsync(new DialogBBAnnouncement(ListAnnouncements.SelectedItem as BlackboardAnnouncement));
 
         private void ChangeFilter(object sender, EventArgs e)
         {
