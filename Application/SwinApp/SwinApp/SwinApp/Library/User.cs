@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SwinApp.Library
 {
@@ -33,11 +34,9 @@ namespace SwinApp.Library
 
         public static Dictionary<string, string> UnitPairs => _units.ToDictionary(u => u.Name, u => u.UUID);
 
-        public static async void LoadWeather()
+        public static async Task AddDashCard(IDashCard card)
         {
-            WeatherDashItem weatherDash = new WeatherDashItem();
-            await weatherDash.LoadWeather();
-            //_dashBoardItems.Add(weatherDash);
+            await Task.Run(() => _dashBoardItems.Add(card));
         }
         private static void LoadBlackboardAnnouncements()
         {
@@ -67,7 +66,6 @@ namespace SwinApp.Library
         static User()
         {
             _dashBoardItems.Add(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
-            LoadWeather();
             LoadBlackboardAnnouncements();
             LoadBlackboardUnits();
             foreach (BlackboardAnnouncement a in Announcements)

@@ -10,7 +10,8 @@ using Xamarin.Forms.Xaml;
 
 namespace SwinApp.Components
 {
-	public partial class CardWeather : Grid
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    partial class CardWeather : Grid
 	{
         WeatherViewModel vm;
 		public CardWeather (WeatherViewModel viewmodel)
