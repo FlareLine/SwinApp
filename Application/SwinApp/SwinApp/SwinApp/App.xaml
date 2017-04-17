@@ -11,6 +11,7 @@
             
             <Style TargetType="TabbedPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource SwinburneRed}"/>
+                <Setter Property="BarTextColor" Value="White"/>
             </Style>
             <Style TargetType="Frame" x:Key="FrameCard">
                 <Setter Property="HasShadow" Value="True"/>
