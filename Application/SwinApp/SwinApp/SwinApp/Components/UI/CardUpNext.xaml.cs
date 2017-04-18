@@ -10,8 +10,8 @@ using SwinApp.Library;
 
 namespace SwinApp.Components
 {
-	//[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CardUpNext : Grid
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CardUpNext : Grid
 	{
         private IPlanned _planned;
 		public CardUpNext (IPlanned planned)
