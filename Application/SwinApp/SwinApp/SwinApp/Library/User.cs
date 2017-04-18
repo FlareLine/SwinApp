@@ -63,19 +63,25 @@ namespace SwinApp.Library
                 });
             }
         }
+        public static async Task LoadUserData()
+        {
+            await Task.Run(() =>
+            {
+                _dashBoardItems.Add(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
+                LoadBlackboardAnnouncements();
+                LoadBlackboardUnits();
+                foreach (BlackboardAnnouncement a in Announcements)
+                    _dashBoardItems.Add(new BBAnnouncementCard(a));
+                if (USE_PROTOTYPE_DATA)
+                {
+                    _dashBoardItems.Add(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
+                    _dashBoardItems.Add(new UpNextCard(new SamplePlanned("Test Event", DateTime.Now.AddMinutes(5))));
+                    _dashBoardItems.Add(new WeatherCard());
+                }
+            });
+        }
         static User()
         {
-            _dashBoardItems.Add(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
-            LoadBlackboardAnnouncements();
-            LoadBlackboardUnits();
-            foreach (BlackboardAnnouncement a in Announcements)
-                _dashBoardItems.Add(new BBAnnouncementCard(a));
-            if (USE_PROTOTYPE_DATA)
-            {
-                _dashBoardItems.Add(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
-                _dashBoardItems.Add(new UpNextCard(new SamplePlanned("Test Event", DateTime.Now.AddMinutes(5))));
-                _dashBoardItems.Add(new WeatherCard());
-            }
         }
     }
 }

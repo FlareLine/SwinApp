@@ -36,10 +36,18 @@ namespace SwinApp
                 await Navigation.PushAsync(menuItem.Page);
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             NavigationPage.SetHasNavigationBar(this, false);
             base.OnAppearing();
+            try
+            {
+                await User.LoadUserData();
+            }
+            catch (Exception e)
+            {
+                User.DashBoardItems.Add(new TextContentDashCard("An Error Occurred", $"Details: {e.Message}"));
+            }
         }
 
         private async void ShowContextMenu(object sender, EventArgs e) => await DisplayActionSheet("Add New...", "Close", "", new string[] { "Reminder" });
