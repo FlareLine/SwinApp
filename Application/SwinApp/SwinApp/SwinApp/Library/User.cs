@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Linq;
 
 namespace SwinApp.Library
 {
@@ -21,6 +22,11 @@ namespace SwinApp.Library
 
         public static List<BlackboardAnnouncement> Announcements => _announcements;
 
+        private static List<BlackboardUnit> _units = new List<BlackboardUnit>();
+
+        public static List<BlackboardUnit> Units => _units;
+
+        public static Dictionary<string, string> UnitPairs => _units.ToDictionary(u => u.Name, u => u.UUID);
 
         public static async void LoadWeather()
         {
@@ -41,10 +47,22 @@ namespace SwinApp.Library
 #else
 #endif
         }
+        private static void LoadBlackboardUnits()
+        {
+#if DEBUG
+            _units.Add(new BlackboardUnit()
+            {
+                Name = "Test Unit",
+                Id = new Random().Next(100).ToString(),
+                UUID = Guid.NewGuid().ToString(),
+            });
+#endif
+        }
         static User()
         {
             LoadWeather();
             LoadBlackboardAnnouncements();
+            LoadBlackboardUnits();
             foreach (BlackboardAnnouncement a in Announcements)
                 _dashBoardItems.Add(new BBAnnouncementCard(a));
 #if DEBUG

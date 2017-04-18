@@ -62,7 +62,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
-                                <StackLayout Margin="15,20">
+                                <StackLayout Margin="10,12">
                                     <Label VerticalOptions="CenterAndExpand" FontSize="Medium" Text="{Binding Title}"/>
                                     <Label VerticalOptions="End" Text="{Binding Desc}"/>
                                 </StackLayout>
