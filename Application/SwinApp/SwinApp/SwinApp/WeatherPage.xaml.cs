@@ -10,6 +10,7 @@ using SwinApp.Library;
 
 namespace SwinApp
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WeatherPage : ContentPage
     {
         WeatherConnection _conn = new WeatherConnection();

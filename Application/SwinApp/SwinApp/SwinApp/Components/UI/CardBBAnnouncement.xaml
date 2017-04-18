@@ -13,6 +13,6 @@
         </StackLayout>
     </Frame>
     <Grid x:Name="GridShowAll" Grid.Row="1">
-        <Label HorizontalTextAlignment="End" Text="Show All Announcements"/>
+        <Label HorizontalTextAlignment="End" VerticalTextAlignment="Center" Text="Show All Announcements"/>
     </Grid>
 </Grid>

@@ -28,8 +28,13 @@
       <DependentUpon>CardWeather.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\DialogBBAnnouncement.xaml.cs">
+      <DependentUpon>DialogBBAnnouncement.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Library\BBAnnouncementCard.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\Blackboard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardAnnouncement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardUnit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\DashItems.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Planning.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\PTV.cs" />
@@ -83,6 +88,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)AnnouncementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\DialogBBAnnouncement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
