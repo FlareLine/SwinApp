@@ -133,9 +133,27 @@ namespace SwinApp.Library
         }
     }
 
+	public class Stop
+	{
+		public string stop_name { get; set; }
+		public int stop_id { get; set; }
+
+		/// <summary>
+		/// Creates a new <see cref="T:Stop"/>with the specified parameters.
+		/// </summary>
+		/// <param name="n">The stop name (e.g. 'Glenferrie')</param>
+		/// <param name="i">The stop id (not number)</param>
+		public Stop(string n, int i)
+		{
+			stop_name = n;
+			stop_id = i;
+		}
+	}
+
     public class PTVPayload
     {
         public List<Departure> Departures { get; set; }
         public List<Route> Routes { get; set; }
+		public List<Stop> Stops { get; set; }
     }
 }
