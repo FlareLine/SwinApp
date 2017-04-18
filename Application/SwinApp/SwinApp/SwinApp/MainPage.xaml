@@ -69,8 +69,8 @@
                                 <!-- ALTERNATIVE RENDERING, RESULTS IN A ~1 Second Faster Loading Time -->
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="2"/>
-                                    <RowDefinition Height="3*"/>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="20"/>
                                     <RowDefinition Height="2"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
