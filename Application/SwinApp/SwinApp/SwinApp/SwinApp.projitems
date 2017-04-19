@@ -48,6 +48,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)TransportPage.xaml.cs">
+      <DependentUpon>TransportPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)WeatherPage.xaml.cs">
