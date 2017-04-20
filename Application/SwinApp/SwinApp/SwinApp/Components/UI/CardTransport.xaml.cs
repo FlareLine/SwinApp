@@ -13,7 +13,6 @@ namespace SwinApp.Components.UI
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CardTransport : Grid
 	{
-		private TransportCard card;
 
 		public CardTransport ()
 		{
