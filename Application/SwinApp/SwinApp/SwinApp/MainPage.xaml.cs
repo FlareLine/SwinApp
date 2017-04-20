@@ -15,7 +15,6 @@ namespace SwinApp
 		public MainPage()
 		{
 			InitializeComponent();
-            ListDashboard.ItemsSource = User.DashBoardItems;
             ListMenu.ItemsSource = new List<MenuItem>
             {
                 new MenuItem("Timetable", "See your classes"),
@@ -42,7 +41,9 @@ namespace SwinApp
             base.OnAppearing();
             try
             {
-                await User.LoadUserData();
+
+                User.LoadUserData();
+                Device.BeginInvokeOnMainThread(() => ListDashboard.ItemsSource = User.DashBoardItems);
             }
             catch (Exception e)
             {

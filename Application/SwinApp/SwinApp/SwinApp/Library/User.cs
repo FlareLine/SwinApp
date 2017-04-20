@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Threading;
+using Xamarin.Forms;
 
 namespace SwinApp.Library
 {
@@ -63,23 +65,26 @@ namespace SwinApp.Library
                 });
             }
         }
-        public static async Task LoadUserData()
+        public static void LoadUserData()
         {
-            await Task.Run(() =>
+            AddDashItemSafe(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
+            LoadBlackboardAnnouncements();
+            LoadBlackboardUnits();
+            foreach (BlackboardAnnouncement a in Announcements)
+                AddDashItemSafe(new BBAnnouncementCard(a));
+            if (USE_PROTOTYPE_DATA)
             {
-                _dashBoardItems.Add(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
-                LoadBlackboardAnnouncements();
-                LoadBlackboardUnits();
-                foreach (BlackboardAnnouncement a in Announcements)
-                    _dashBoardItems.Add(new BBAnnouncementCard(a));
-                if (USE_PROTOTYPE_DATA)
-                {
-                    _dashBoardItems.Add(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
-                    _dashBoardItems.Add(new UpNextCard(new SamplePlanned("Test Event", DateTime.Now.AddMinutes(5))));
-                    _dashBoardItems.Add(new WeatherCard());
-                }
-            });
+                AddDashItemSafe(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
+                AddDashItemSafe(new UpNextCard(new SamplePlanned("Test Event", DateTime.Now.AddMinutes(5))));
+                AddDashItemSafe(new WeatherCard());
+            }
         }
+        /// <summary>
+        /// Safely add DashItem when using asynchronous threads
+        /// </summary>
+        /// <param name="card"></param>
+        public static void AddDashItemSafe(IDashCard card) => Device.BeginInvokeOnMainThread(() => _dashBoardItems.Add(card));
+
         static User()
         {
         }
