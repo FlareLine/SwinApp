@@ -11,14 +11,17 @@ namespace SwinApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : TabbedPage
-	{
-		public MainPage()
-		{
-			InitializeComponent();
+    {
+        public MainPage()
+        {
+            InitializeComponent();
             ListMenu.ItemsSource = new List<MenuItem>
             {
                 new MenuItem("Timetable", "See your classes"),
-                new MenuItem("Campus", "Find your way around"),
+                new MenuItem("Campus", "Find your way around")
+                {
+                    Page = new GoogleMapPage()
+                },
                 new MenuItem("Transport", "Get home easily"),
                 new MenuItem("Announcements", "Keep in the loop with all going on at Uni")
                 {
@@ -26,7 +29,7 @@ namespace SwinApp
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
-		}
+        }
 
         private async void MenuSelection(object sender, ItemTappedEventArgs e)
         {
@@ -35,13 +38,12 @@ namespace SwinApp
                 await Navigation.PushAsync(menuItem.Page);
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             NavigationPage.SetHasNavigationBar(this, false);
             base.OnAppearing();
             try
             {
-
                 User.LoadUserData();
                 Device.BeginInvokeOnMainThread(() => ListDashboard.ItemsSource = User.DashBoardItems);
             }

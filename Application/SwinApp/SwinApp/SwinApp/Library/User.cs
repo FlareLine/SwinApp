@@ -42,6 +42,7 @@ namespace SwinApp.Library
         }
         private static void LoadBlackboardAnnouncements()
         {
+            _announcements = new List<BlackboardAnnouncement>();
             if (USE_PROTOTYPE_DATA)
             {
                 _announcements.Add(new BlackboardAnnouncement()
@@ -55,6 +56,7 @@ namespace SwinApp.Library
         }
         private static void LoadBlackboardUnits()
         {
+            _units = new List<BlackboardUnit>();
             if (USE_PROTOTYPE_DATA)
             {
                 _units.Add(new BlackboardUnit()
@@ -67,6 +69,7 @@ namespace SwinApp.Library
         }
         public static void LoadUserData()
         {
+            ClearDashItemsSafe();
             AddDashItemSafe(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
             LoadBlackboardAnnouncements();
             LoadBlackboardUnits();
@@ -79,6 +82,10 @@ namespace SwinApp.Library
                 AddDashItemSafe(new WeatherCard());
             }
         }
+        /// <summary>
+        /// Safely clear the dashitems of all its contents
+        /// </summary>
+        private static void ClearDashItemsSafe() => Device.BeginInvokeOnMainThread(() => _dashBoardItems.Clear());
         /// <summary>
         /// Safely add DashItem when using asynchronous threads
         /// </summary>
