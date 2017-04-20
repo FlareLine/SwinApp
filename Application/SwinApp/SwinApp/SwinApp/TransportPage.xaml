@@ -3,16 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.TransportPage"
              Title="Transport Guide">
-    <StackLayout>
-        <Picker x:Name="Picker1" HorizontalOptions="FillAndExpand">
-            <Picker.Items>
-                <x:String>1</x:String>
-                <x:String>2</x:String>
-                <x:String>3</x:String>
-                <x:String>4</x:String>
-                <x:String>5</x:String>
-                <x:String>23423</x:String>
-            </Picker.Items>
-        </Picker>
-    </StackLayout>
+    <Grid x:Name="TrainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+    </Grid>
 </ContentPage>

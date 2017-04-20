@@ -40,6 +40,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Library\PTV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SwinApp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\TransportCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\WeatherViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\WeatherCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\UpNextCard.cs" />
