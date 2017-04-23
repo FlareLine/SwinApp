@@ -18,7 +18,7 @@ namespace SwinApp
             ListMenu.ItemsSource = new List<MenuItem>
             {
                 new MenuItem("Timetable", "See your classes"),
-                new MenuItem("Campus", "Find your way around")
+                new MenuItem("Campus Map", "Find your way around")
                 {
                     Page = new GoogleMapPage()
                 },

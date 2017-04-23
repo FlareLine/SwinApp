@@ -15,7 +15,7 @@ namespace SwinApp
         public GoogleMapPage()
         {
             InitializeComponent();
-            WebMap.Source = @"https://www.google.com";
+            WebMap.Source = "https://www.google.com/maps/d/viewer?mid=1XWZ-gWAvWTQrkiVk_59U3GOu_8I";
         }
     }
 }

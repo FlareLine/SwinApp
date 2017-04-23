@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SwinApp.GoogleMapPage">
+             x:Class="SwinApp.GoogleMapPage"
+             Title="Glenferrie Campus">
     <Grid>
-        <WebView x:Name="WebMap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+        <WebView x:Name="WebMap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="1000" HeightRequest="1000"/>
     </Grid>
 </ContentPage>
