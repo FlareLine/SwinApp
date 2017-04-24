@@ -2,11 +2,46 @@
 <Grid xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.Components.UI.CardTransport">
-    <Grid.RowDefinitions>
-        <RowDefinition Height="*" x:Name="{Binding Route}"/>
-        <RowDefinition Height="*" x:Name="{Binding Platform}"/>
-        <RowDefinition Height="*" x:Name="{Binding Time}"/>
-    </Grid.RowDefinitions>
+    <Grid x:Name="CityCard">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Text="{Binding Route}" Grid.Row="0"/>
+        <Label Text="{Binding Time}" Grid.Row="1"/>
+        <Label Text="{Binding Platform}" Grid.Row="2"/>
+    </Grid>
+    <Grid x:Name="LilydaleCard">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Text="{Binding Route}" Grid.Row="0"/>
+        <Label Text="{Binding Time}" Grid.Row="1"/>
+        <Label Text="{Binding Platform}" Grid.Row="2"/>
+    </Grid>
+    <Grid x:Name="AlameinCard">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Text="{Binding Route}" Grid.Row="0"/>
+        <Label Text="{Binding Time}" Grid.Row="1"/>
+        <Label Text="{Binding Platform}" Grid.Row="2"/>
+    </Grid>
+    <Grid x:Name="BelgraveCard">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Text="{Binding Route}" Grid.Row="0"/>
+        <Label Text="{Binding Time}" Grid.Row="1"/>
+        <Label Text="{Binding Platform}" Grid.Row="2"/>
+    </Grid>
 </Grid>
     
     

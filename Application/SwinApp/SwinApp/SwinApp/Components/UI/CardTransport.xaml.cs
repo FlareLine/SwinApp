@@ -13,10 +13,16 @@ namespace SwinApp.Components.UI
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CardTransport : Grid
 	{
+		TransportViewModel tvm;
 
-		public CardTransport ()
+		public CardTransport (TransportViewModel t)
 		{
 			InitializeComponent ();
+
+			tvm = t;
+
+			CityCard.BindingContext;
+
 		}
 	}
 }

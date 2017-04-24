@@ -9,11 +9,13 @@ namespace SwinApp.Library
     class TransportCard : IDashCard
     {
 
-    private Grid _content;
+		private TransportViewModel _tvm;
+		private Grid _content;
 
 		public TransportCard()
 		{
-			_content = new CardTransport();
+			_tvm = new TransportViewModel();
+			_content = new CardTransport(_tvm);
 		}
 
 		public string Title => "Next Trains";
@@ -22,6 +24,7 @@ namespace SwinApp.Library
 
 		public void Load()
 		{
+			await _tvm.Load();
 		}
 
 		public void Open()
