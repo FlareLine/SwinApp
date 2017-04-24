@@ -79,7 +79,14 @@ namespace SwinApp.Library
 			var currentError = errorArgs.ErrorContext.Error.Message;
             errorArgs.ErrorContext.Handled = true;
 		}
-}
+
+		public static int GetGlenferrieID()
+		{
+			PTV payload = await RequestPTVPayloadAsync("stops/")
+
+			return 0;
+		}
+	}
 
     public class Departure
     {
