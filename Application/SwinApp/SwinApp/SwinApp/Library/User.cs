@@ -35,6 +35,10 @@ namespace SwinApp.Library
 
         public static List<BlackboardUnit> Units => _units;
 
+        private static List<Reminder> _reminders = new List<Reminder>();
+
+        public static List<Reminder> Reminders => _reminders;
+
         public static Dictionary<string, string> UnitPairs => _units.ToDictionary(u => u.Name, u => u.UUID);
 
         public static async Task AddDashCard(IDashCard card)
@@ -82,6 +86,14 @@ namespace SwinApp.Library
                 AddDashItemSafe(new UpNextCard(new SamplePlanned("Test Event", DateTime.Now.AddMinutes(5))));
                 AddDashItemSafe(new WeatherCard());
             }
+            //if the file doesn't exist, set _reminders to be an empty List of Reminder
+            _reminders = SwinIO<List<Reminder>>.Read("reminders.json") ?? new List<Reminder>();
+        }
+
+        public static void WriteReminder(Reminder reminder)
+        {
+            _reminders.Add(reminder);
+            SwinIO<List<Reminder>>.Write("reminders.json", _reminders);
         }
         /// <summary>
         /// Safely clear the dashitems of all its contents
