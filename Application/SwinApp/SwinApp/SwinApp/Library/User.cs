@@ -5,6 +5,8 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
+using Xamarin.Forms;
 
 namespace SwinApp.Library
 {
@@ -45,6 +47,7 @@ namespace SwinApp.Library
         }
         private static void LoadBlackboardAnnouncements()
         {
+            _announcements = new List<BlackboardAnnouncement>();
             if (USE_PROTOTYPE_DATA)
             {
                 _announcements.Add(new BlackboardAnnouncement()
@@ -58,6 +61,7 @@ namespace SwinApp.Library
         }
         private static void LoadBlackboardUnits()
         {
+            _units = new List<BlackboardUnit>();
             if (USE_PROTOTYPE_DATA)
             {
                 _units.Add(new BlackboardUnit()
@@ -68,23 +72,31 @@ namespace SwinApp.Library
                 });
             }
         }
-        public static async Task LoadUserData()
+        public static void LoadUserData()
         {
-            await Task.Run(() =>
+            ClearDashItemsSafe();
+            AddDashItemSafe(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
+            LoadBlackboardAnnouncements();
+            LoadBlackboardUnits();
+            foreach (BlackboardAnnouncement a in Announcements)
+                AddDashItemSafe(new BBAnnouncementCard(a));
+            if (USE_PROTOTYPE_DATA)
             {
-                _dashBoardItems.Add(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
-                LoadBlackboardAnnouncements();
-                LoadBlackboardUnits();
-                foreach (BlackboardAnnouncement a in Announcements)
-                    _dashBoardItems.Add(new BBAnnouncementCard(a));
-                if (USE_PROTOTYPE_DATA)
-                {
-                    _dashBoardItems.Add(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
-                    _dashBoardItems.Add(new UpNextCard(new SamplePlanned("Test Event", DateTime.Now.AddMinutes(5))));
-                    _dashBoardItems.Add(new WeatherCard());
-                }
-            });
+                AddDashItemSafe(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
+                AddDashItemSafe(new UpNextCard(new SamplePlanned("Test Event", DateTime.Now.AddMinutes(5))));
+                AddDashItemSafe(new WeatherCard());
+            }
         }
+        /// <summary>
+        /// Safely clear the dashitems of all its contents
+        /// </summary>
+        private static void ClearDashItemsSafe() => Device.BeginInvokeOnMainThread(() => _dashBoardItems.Clear());
+        /// <summary>
+        /// Safely add DashItem when using asynchronous threads
+        /// </summary>
+        /// <param name="card"></param>
+        public static void AddDashItemSafe(IDashCard card) => Device.BeginInvokeOnMainThread(() => _dashBoardItems.Add(card));
+
         static User()
         {
         }
