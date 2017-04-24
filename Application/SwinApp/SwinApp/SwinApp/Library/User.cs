@@ -37,10 +37,6 @@ namespace SwinApp.Library
 
         public static Dictionary<string, string> UnitPairs => _units.ToDictionary(u => u.Name, u => u.UUID);
 
-        private static List<Reminder> _reminders = new List<Reminder>();
-
-        public static List<Reminder> Reminders => _reminders;
-
         public static async Task AddDashCard(IDashCard card)
         {
             await Task.Run(() => _dashBoardItems.Add(card));
