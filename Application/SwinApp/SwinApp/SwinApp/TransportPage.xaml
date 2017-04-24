@@ -4,7 +4,4 @@
              x:Class="SwinApp.TransportPage"
              x:Name="TransportPage"
              Title="Transport Guide">
-    <Grid x:Name="TrainList">
-        
-    </Grid>
 </ContentPage>

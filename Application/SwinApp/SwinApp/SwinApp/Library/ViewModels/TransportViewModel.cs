@@ -13,7 +13,6 @@ namespace SwinApp.Library
 		public async Task Load()
 		{
 			Payload = await PTV.RequestPTVPayloadAsync(Request);
-			return null;
 		}
 	}
 }

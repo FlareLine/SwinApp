@@ -17,8 +17,6 @@ namespace SwinApp
         public TransportPage()
         {
             InitializeComponent();
-
-			TrainList.Children.Add(new TransportCard());
 		}
 	}
 }

@@ -20,9 +20,6 @@ namespace SwinApp.Components.UI
 			InitializeComponent ();
 
 			tvm = t;
-
-			CityCard.BindingContext;
-
 		}
 	}
 }
