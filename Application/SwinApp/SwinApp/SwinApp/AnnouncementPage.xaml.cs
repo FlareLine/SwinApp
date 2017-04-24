@@ -21,6 +21,12 @@ namespace SwinApp
         public AnnouncementPage()
         {
             InitializeComponent();
+            ToolbarItems.Add(new ToolbarItem()
+            {
+                Text = "Refresh",
+                Command = new Command(() => RefreshAnnouncements()),
+                // TODO: ADD ICON
+            });
         }
 
         private async void OpenAnnouncement(object sender, ItemTappedEventArgs e) => await Navigation.PushAsync(new DialogBBAnnouncement(ListAnnouncements.SelectedItem as BlackboardAnnouncement));
@@ -28,7 +34,7 @@ namespace SwinApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            User.Announcements.ForEach(u => _announcementFiltered.Add(u));
+            RefreshAnnouncements();
             ListAnnouncements.ItemsSource = _announcementFiltered;
             ListAnnouncements.ItemTapped += OpenAnnouncement;
             SwitchDate.Toggled += EnableFilter;
@@ -54,6 +60,17 @@ namespace SwinApp
             else
                 _announcementFiltered = new ObservableCollection<BlackboardAnnouncement>(User.Announcements);
             ListAnnouncements.ItemsSource = _announcementFiltered;
+        }
+        /// <summary>
+        /// Refresh the available announcements to view
+        /// </summary>
+        /// <remarks>
+        /// May be able to merge with ApplySwitchFilter
+        /// </remarks>
+        private void RefreshAnnouncements()
+        {
+            _announcementFiltered.Clear();
+            ApplySwitchFilter();
         }
     }
 }
