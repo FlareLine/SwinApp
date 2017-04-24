@@ -25,7 +25,6 @@ namespace SwinApp
             {
                 Text = "Refresh",
                 Command = new Command(() => RefreshAnnouncements()),
-                // TODO: ADD ICON
             });
         }
 
@@ -51,11 +50,8 @@ namespace SwinApp
             _isFiltering = SwitchDate.IsToggled;
             if (_isFiltering)
             {
-                if (_filterDate.Date != DateAnnouncementFilter.Date.Date)
-                {
-                    _filterDate = DateAnnouncementFilter.Date;
-                    _announcementFiltered = new ObservableCollection<BlackboardAnnouncement>(User.Announcements.Where(a => a.Created.Date == DateAnnouncementFilter.Date));
-                }
+                _filterDate = DateAnnouncementFilter.Date;
+                _announcementFiltered = new ObservableCollection<BlackboardAnnouncement>(User.Announcements.Where(a => a.Created.Date == DateAnnouncementFilter.Date));
             }
             else
                 _announcementFiltered = new ObservableCollection<BlackboardAnnouncement>(User.Announcements);

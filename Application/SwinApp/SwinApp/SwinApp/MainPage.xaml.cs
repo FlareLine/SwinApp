@@ -45,7 +45,7 @@ namespace SwinApp
             try
             {
                 User.LoadUserData();
-                Device.BeginInvokeOnMainThread(() => ListDashboard.ItemsSource = User.DashBoardItems);
+                ListDashboard.ItemsSource = User.DashBoardItems;
             }
             catch (Exception e)
             {
