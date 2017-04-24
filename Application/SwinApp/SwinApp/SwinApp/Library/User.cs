@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace SwinApp.Library
 {
@@ -33,6 +34,10 @@ namespace SwinApp.Library
         public static List<BlackboardUnit> Units => _units;
 
         public static Dictionary<string, string> UnitPairs => _units.ToDictionary(u => u.Name, u => u.UUID);
+
+        private static List<Reminder> _reminders = new List<Reminder>();
+
+        public static List<Reminder> Reminders => _reminders;
 
         public static async Task AddDashCard(IDashCard card)
         {
