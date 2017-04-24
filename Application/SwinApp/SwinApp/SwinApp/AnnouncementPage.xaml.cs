@@ -26,6 +26,9 @@ namespace SwinApp
                 Text = "Refresh",
                 Command = new Command(() => RefreshAnnouncements()),
             });
+            ListAnnouncements.ItemTapped += OpenAnnouncement;
+            SwitchDate.Toggled += EnableFilter;
+            DateAnnouncementFilter.DateSelected += ChangeFilter;
         }
 
         private async void OpenAnnouncement(object sender, ItemTappedEventArgs e) => await Navigation.PushAsync(new DialogBBAnnouncement(ListAnnouncements.SelectedItem as BlackboardAnnouncement));
@@ -35,9 +38,6 @@ namespace SwinApp
             base.OnAppearing();
             RefreshAnnouncements();
             ListAnnouncements.ItemsSource = _announcementFiltered;
-            ListAnnouncements.ItemTapped += OpenAnnouncement;
-            SwitchDate.Toggled += EnableFilter;
-            DateAnnouncementFilter.DateSelected += ChangeFilter;
         }
 
         private void EnableFilter(object sender, ToggledEventArgs e) => ApplySwitchFilter();
