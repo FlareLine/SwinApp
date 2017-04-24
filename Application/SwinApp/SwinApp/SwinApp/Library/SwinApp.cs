@@ -47,7 +47,13 @@ namespace SwinApp.Library
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>
-        public static T Read(string filename) => JsonConvert.DeserializeObject<T>(File.ReadAllText(filename));
+        public static T Read(string filename)
+        {
+            if (File.Exists(filename))
+                return JsonConvert.DeserializeObject<T>(File.ReadAllText(filename));
+            else
+                return default(T);
+        }
         /// <summary>
         /// Read a file's contents and serialize it asynchronously
         /// </summary>
@@ -59,7 +65,7 @@ namespace SwinApp.Library
         /// </summary>
         /// <param name="filename">the filename of what you're writing to</param>
         /// <param name="obj">the object you're saving</param>
-        public static void Write(string filename, T obj) => File.WriteAllText(filename,JsonConvert.SerializeObject(obj));
+        public static void Write(string filename, T obj) => File.WriteAllText(filename, JsonConvert.SerializeObject(obj));
         /// <summary>
         /// Write a file's content as serialized json asynchronously
         /// </summary>
