@@ -25,8 +25,10 @@ namespace SwinApp
             {
                 Text = "Refresh",
                 Command = new Command(() => RefreshAnnouncements()),
-                // TODO: ADD ICON
             });
+            ListAnnouncements.ItemTapped += OpenAnnouncement;
+            SwitchDate.Toggled += EnableFilter;
+            DateAnnouncementFilter.DateSelected += ChangeFilter;
         }
 
         private async void OpenAnnouncement(object sender, ItemTappedEventArgs e) => await Navigation.PushAsync(new DialogBBAnnouncement(ListAnnouncements.SelectedItem as BlackboardAnnouncement));
@@ -36,9 +38,6 @@ namespace SwinApp
             base.OnAppearing();
             RefreshAnnouncements();
             ListAnnouncements.ItemsSource = _announcementFiltered;
-            ListAnnouncements.ItemTapped += OpenAnnouncement;
-            SwitchDate.Toggled += EnableFilter;
-            DateAnnouncementFilter.DateSelected += ChangeFilter;
         }
 
         private void EnableFilter(object sender, ToggledEventArgs e) => ApplySwitchFilter();
@@ -51,11 +50,8 @@ namespace SwinApp
             _isFiltering = SwitchDate.IsToggled;
             if (_isFiltering)
             {
-                if (_filterDate.Date != DateAnnouncementFilter.Date.Date)
-                {
-                    _filterDate = DateAnnouncementFilter.Date;
-                    _announcementFiltered = new ObservableCollection<BlackboardAnnouncement>(User.Announcements.Where(a => a.Created.Date == DateAnnouncementFilter.Date));
-                }
+                _filterDate = DateAnnouncementFilter.Date;
+                _announcementFiltered = new ObservableCollection<BlackboardAnnouncement>(User.Announcements.Where(a => a.Created.Date == DateAnnouncementFilter.Date));
             }
             else
                 _announcementFiltered = new ObservableCollection<BlackboardAnnouncement>(User.Announcements);

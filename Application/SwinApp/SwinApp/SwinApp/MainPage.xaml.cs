@@ -29,6 +29,7 @@ namespace SwinApp
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
+            ListDashboard.ItemsSource = User.DashBoardItems;
         }
 
         private async void MenuSelection(object sender, ItemTappedEventArgs e)
@@ -45,7 +46,6 @@ namespace SwinApp
             try
             {
                 User.LoadUserData();
-                Device.BeginInvokeOnMainThread(() => ListDashboard.ItemsSource = User.DashBoardItems);
             }
             catch (Exception e)
             {
