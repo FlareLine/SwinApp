@@ -32,7 +32,7 @@ namespace SwinApp.Library
         // Do not do this in future, not a great idea
         const string API_KEY = "f91384009591225adb5f7b65358e3ea6";
         // The formatted endpoint which we reference
-        private string _endpoint = $@"http://api.openweathermap.org/data/2.5/weather?q=Hawthorne,au&units=metric&APPID={API_KEY}";
+        private string _endpoint = $@"http://api.openweathermap.org/data/2.5/weather?q=Hawthorn,au&units=metric&APPID={API_KEY}";
 
         private WeatherModel _weather = new WeatherModel();
 
