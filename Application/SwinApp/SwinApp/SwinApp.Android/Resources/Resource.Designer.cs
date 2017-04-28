@@ -2207,7 +2207,7 @@ namespace SwinApp.Droid
 			public const int notification_template_icon_bg = 2130837667;
 			
 			// aapt resource value: 0x7f0200a2
-			public const int SplashScreen = 2130837666;
+			public const int splashscreen = 2130837666;
 			
 			static Drawable()
 			{
