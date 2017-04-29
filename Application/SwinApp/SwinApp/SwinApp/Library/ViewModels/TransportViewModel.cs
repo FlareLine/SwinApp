@@ -13,10 +13,15 @@ namespace SwinApp.Library
 		
 		public PTVPayload Payload { get; set; }
 
+		public TransportViewModel(string request)
+		{
+			Request = request;
+		}
+
 		public async Task Load()
 		{
-
 			Payload = await PTV.RequestPTVPayloadAsync(Request);
+			Line = 
 		}
 	}
 }

@@ -79,13 +79,6 @@ namespace SwinApp.Library
 			var currentError = errorArgs.ErrorContext.Error.Message;
             errorArgs.ErrorContext.Handled = true;
 		}
-
-		public static int GetGlenferrieID()
-		{
-			PTV payload = await RequestPTVPayloadAsync("stops/")
-
-			return 0;
-		}
 	}
 
     public class Departure
@@ -162,5 +155,5 @@ namespace SwinApp.Library
         public List<Departure> Departures { get; set; }
         public List<Route> Routes { get; set; }
 		public List<Stop> Stops { get; set; }
-    }
+	}
 }

@@ -21,4 +21,9 @@ namespace SwinApp
 			Trains = new TransportGrid();
 		}
 	}
+
+	public partial class TransportGrid : Grid
+	{
+
+	}
 }

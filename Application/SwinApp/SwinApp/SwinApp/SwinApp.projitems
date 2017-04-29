@@ -20,9 +20,6 @@
       <DependentUpon>CardBBAnnouncement.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardTransport.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardUpNext.xaml.cs">
       <DependentUpon>CardUpNext.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -35,9 +32,6 @@
       <DependentUpon>DialogBBAnnouncement.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\TransportGrid.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Library\BBAnnouncementCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardAnnouncement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardUnit.cs" />
@@ -46,7 +40,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Library\PTV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SwinApp.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\TransportCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\TransportViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\WeatherViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\WeatherCard.cs" />
@@ -112,22 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)TransportPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardTransport.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardTransport.xaml.cs">
-      <DependentUpon>CardTransport.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\TransportGrid.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
