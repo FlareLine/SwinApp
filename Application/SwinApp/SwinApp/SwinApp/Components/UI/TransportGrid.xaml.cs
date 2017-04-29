@@ -11,15 +11,16 @@ using Xamarin.Forms.Xaml;
 namespace SwinApp.Components.UI
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CardTransport : Grid
+	public partial class TransportGrid : Grid
 	{
-		TransportViewModel tvm;
-
-		public CardTransport (TransportViewModel t)
+		public TransportGrid ()
 		{
 			InitializeComponent ();
 
-			tvm = t;
+			TrainCity = new TransportCard();
+			TrainBelgrave = new TransportCard();
+			TrainLilydale = new TransportCard();
+			TrainAlamein = new TransportCard();
 		}
 	}
 }

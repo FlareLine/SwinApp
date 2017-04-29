@@ -35,6 +35,9 @@
       <DependentUpon>DialogBBAnnouncement.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\TransportGrid.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Library\BBAnnouncementCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardAnnouncement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardUnit.cs" />
@@ -121,6 +124,11 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardTransport.xaml.cs">
       <DependentUpon>CardTransport.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\TransportGrid.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace SwinApp.Library
 {
-    class TransportCard : IDashCard
+    class TransportCard : Grid, IDashCard
     {
 
 		private TransportViewModel _tvm;
@@ -15,7 +15,6 @@ namespace SwinApp.Library
 		public TransportCard()
 		{
 			_tvm = new TransportViewModel();
-			_content = new CardTransport(_tvm);
 		}
 
 		public string Title => "Next Trains";
@@ -24,7 +23,6 @@ namespace SwinApp.Library
 
 		public void Load()
 		{
-			await _tvm.Load();
 		}
 
 		public void Open()

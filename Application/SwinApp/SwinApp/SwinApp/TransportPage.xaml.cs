@@ -17,6 +17,8 @@ namespace SwinApp
         public TransportPage()
         {
             InitializeComponent();
+
+			Trains = new TransportGrid();
 		}
 	}
 }
