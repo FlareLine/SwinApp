@@ -1,8 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SwinApp.TransportPage"
-             x:Name="TransportPage"
-             Title="Transport Guide">
-    <Grid x:Name="TrainGrid"/>
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="SwinApp.TransportPage"
+			 x:Name="TransportPage"
+			 Title="Transport Guide">
+    <Grid x:Name="Train_City">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Text="{Binding Line}" Grid.Row="0"/>
+        <Label Text="{Binding Time}" Grid.Row="1"/>
+        <Label Text="{Binding Platform}" Grid.Row="2"/>
+    </Grid>
+    <Grid x:Name="Train_Lilydale">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Text="{Binding Line}" Grid.Row="0"/>
+        <Label Text="{Binding Time}" Grid.Row="1"/>
+        <Label Text="{Binding Platform}" Grid.Row="2"/>
+    </Grid>
+    <Grid x:Name="Train_Belgrave">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Text="{Binding Line}" Grid.Row="0"/>
+        <Label Text="{Binding Time}" Grid.Row="1"/>
+        <Label Text="{Binding Platform}" Grid.Row="2"/>
+    </Grid>
+    <Grid x:Name="Train_Alamein">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Text="{Binding Line}" Grid.Row="0"/>
+        <Label Text="{Binding Time}" Grid.Row="1"/>
+        <Label Text="{Binding Platform}" Grid.Row="2"/>
+    </Grid>
 </ContentPage>

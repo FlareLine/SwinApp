@@ -1,4 +1,5 @@
-﻿using SwinApp.Library;
+﻿using SwinApp.Components;
+using SwinApp.Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace SwinApp
         public TransportPage()
         {
             InitializeComponent();
+
+			Train_Alamein.BindingContext = new TrainDetails("Alamein", "blah time", 2);
 		}
 	}
 }
