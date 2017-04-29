@@ -1,5 +1,4 @@
-﻿using SwinApp.Components.UI;
-using SwinApp.Library;
+﻿using SwinApp.Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,12 +17,7 @@ namespace SwinApp
         {
             InitializeComponent();
 
-			Trains = new TransportGrid();
+			TrainGrid.Children.Add(, 0, 1, 0, 1);
 		}
-	}
-
-	public partial class TransportGrid : Grid
-	{
-
 	}
 }

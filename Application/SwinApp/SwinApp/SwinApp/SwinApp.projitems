@@ -32,6 +32,10 @@
       <DependentUpon>DialogBBAnnouncement.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\TrainCard.xaml.cs">
+      <DependentUpon>TrainCard.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Library\BBAnnouncementCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardAnnouncement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardUnit.cs" />
@@ -40,7 +44,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Library\PTV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SwinApp.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\TransportViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\TrainCardViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\WeatherViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\WeatherCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\UpNextCard.cs" />
@@ -87,6 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardBBAnnouncement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\TrainCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace SwinApp.Library
 {
-	public class TransportViewModel : ViewModel
+	public class TrainCardViewModel : ViewModel
 	{
 		public string Request { get; set; }
 
@@ -13,7 +13,7 @@ namespace SwinApp.Library
 		
 		public PTVPayload Payload { get; set; }
 
-		public TransportViewModel(string request)
+		public TrainCardViewModel(string request)
 		{
 			Request = request;
 		}
@@ -21,7 +21,7 @@ namespace SwinApp.Library
 		public async Task Load()
 		{
 			Payload = await PTV.RequestPTVPayloadAsync(Request);
-			Line = 
+
 		}
 	}
 }
