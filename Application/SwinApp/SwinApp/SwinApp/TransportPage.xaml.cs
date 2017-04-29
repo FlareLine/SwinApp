@@ -16,8 +16,6 @@ namespace SwinApp
         public TransportPage()
         {
             InitializeComponent();
-
-			TrainGrid.Children.Add(, 0, 1, 0, 1);
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SwinApp.Library;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,14 +8,21 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SwinApp.Components.UI
+namespace SwinApp.Components
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TrainCard : ContentPage
+	public partial class TrainCard : Grid
 	{
-		public TrainCard ()
+		TrainCardViewModel vm;
+		public TrainCard(TrainCardViewModel viewmodel)
 		{
-			InitializeComponent ();
+			vm = viewmodel;
+			BindingContext = vm;
+		}
+
+		public void Load()
+		{
+
 		}
 	}
 }
