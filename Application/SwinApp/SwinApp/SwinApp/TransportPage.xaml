@@ -6,9 +6,9 @@
 			 Title="Transport Guide">
     <Grid x:Name="Train_City">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="3"/>
         </Grid.RowDefinitions>
         <Label Text="{Binding Line}" Grid.Row="0"/>
         <Label Text="{Binding Time}" Grid.Row="1"/>
@@ -16,9 +16,9 @@
     </Grid>
     <Grid x:Name="Train_Lilydale">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="3"/>
         </Grid.RowDefinitions>
         <Label Text="{Binding Line}" Grid.Row="0"/>
         <Label Text="{Binding Time}" Grid.Row="1"/>
@@ -26,9 +26,9 @@
     </Grid>
     <Grid x:Name="Train_Belgrave">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="3"/>
         </Grid.RowDefinitions>
         <Label Text="{Binding Line}" Grid.Row="0"/>
         <Label Text="{Binding Time}" Grid.Row="1"/>
@@ -36,9 +36,9 @@
     </Grid>
     <Grid x:Name="Train_Alamein">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="3"/>
         </Grid.RowDefinitions>
         <Label Text="{Binding Line}" Grid.Row="0"/>
         <Label Text="{Binding Time}" Grid.Row="1"/>
