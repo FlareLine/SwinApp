@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwinApp.Components.CardReminder">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="3*" />
+    </Grid.ColumnDefinitions>
+    <StackLayout Grid.Column="0">
+        <Label Text="{Binding Time.Day} - {Binding Time.Month}"></Label>
+        <Label Text="{Binding Time.Hour}:{Binding Time.Minute}"></Label>
+    </StackLayout>
+    <StackLayout Grid.Column="1">
+        <Label Text="Reminder"></Label>
+        <Label Text="{Binding Description}"></Label>
+    </StackLayout>
+</Grid>

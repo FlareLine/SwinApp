@@ -10,6 +10,7 @@ namespace SwinApp.Library
 
         public DateTime Time { get; set; }
 
+        //return how far in the future the event is
         public TimeSpan When => Time - DateTime.Now;
 
         string Description { get; set; }
