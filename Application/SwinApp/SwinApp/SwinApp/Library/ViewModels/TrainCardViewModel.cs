@@ -32,7 +32,10 @@ namespace SwinApp.Library
 			string s = null;
 			try
 			{
-				s = DateTime.Parse(dep.estimated_departure_utc).ToShortTimeString();
+				if (dep.estimated_departure_utc == null)
+					s = DateTime.Parse(dep.scheduled_departure_utc).ToShortTimeString();
+				else
+					s = DateTime.Parse(dep.estimated_departure_utc).ToShortTimeString();
 			} catch(Exception e)
 			{
 				Console.WriteLine(e.Message);
