@@ -12,27 +12,46 @@ namespace SwinApp.Library
 
 		TransportLink tl = new TransportLink();
 
-		public TrainCardViewModel(Direction d)
+		public TrainCardViewModel(RouteDirection r, RouteDirection d)
 		{
-			Departure departure = null; //tl.GetNextDeparture((int) d).Result;
+			GetDeparture(r, d);
+			
+			//Line = Enum.GetName(typeof(RouteDirection), departure);
 
-
-			Line = DateTime.Now.ToShortTimeString();
-			//Line = Enum.GetName(typeof(Direction), departure);
-
-			Time = DateTime.Now.ToShortDateString();
+			//Time = DateTime.Now.ToShortDateString();
 			//Time = DateTime.Parse(departure.estimated_departure_utc).ToShortTimeString();
 
-			Platform = "Bawsda";
+			//Platform = "Bawsda";
 			//Platform = departure.platform_number;
+		}
+
+		public async void GetDeparture(RouteDirection r, RouteDirection d)
+		{
+			Departure dep = await tl.GetNextDeparture((int) r, (int) d);
+			Line = ((RouteDirection) int.Parse(dep.route_id)).ToString();
+			string s = null;
+			try
+			{
+				s = DateTime.Parse(dep.estimated_departure_utc).ToShortTimeString();
+			} catch(Exception e)
+			{
+				Console.WriteLine(e.Message);
+				Time = s ?? "NULLTIME";
+			}
+			Platform = dep.platform_number;
+			Console.WriteLine("TIME: " + (s ?? "NULLTIME"));
 		}
 	}
 
-	public enum Direction
+	public enum RouteDirection
 	{
-		City = 1,
-		Alamein = 0,
-		Belgrave = 2,
-		Lilydale = 9
+		CityRoute = 1,
+		CityDirection = 1,
+		AlameinRoute = 1,
+		AlameinDirection = 0,
+		BelgraveRoute = 2,
+		BelgraveDirection = 3,
+		LilydaleRoute = 9,
+		LilydaleDirection = 9
 	}
 }

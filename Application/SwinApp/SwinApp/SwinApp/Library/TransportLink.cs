@@ -7,9 +7,9 @@ namespace SwinApp.Library
 {
     class TransportLink
     {
-		public async Task<Departure> GetNextDeparture(int d)
+		public async Task<Departure> GetNextDeparture(int r, int d)
 		{
-			return (await PTV.RequestPTVPayloadAsync($"departures/route_type/0/stop/1080/route/0?direction_id={d}&max_results=1")).Departures[0];
+			return (await PTV.RequestPTVPayloadAsync($"departures/route_type/0/stop/1080/route/{r}?direction_id={d}&max_results=1")).Departures[0];
 		}
     }
 }
