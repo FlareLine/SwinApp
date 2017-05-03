@@ -29,6 +29,7 @@ namespace SwinApp
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
+
         }
 
         private async void MenuSelection(object sender, ItemTappedEventArgs e)
@@ -53,7 +54,23 @@ namespace SwinApp
             }
         }
 
-        private async void ShowContextMenu(object sender, EventArgs e) => await DisplayActionSheet("Add New...", "Close", "", new string[] { "Reminder" });
+        private async void ShowContextMenu(object sender, EventArgs e)
+        {
+            string check = await DisplayActionSheet("Add New...", "Close", "", new string[] { "Reminder" });
+            if (check == "Reminder")
+            {
+                //create new reminder through use of pop up window, then add it to the users reminders
+                //after this, re-write reminders to the json file
+                AddNewReminder();
+                
+            }
+        }
+
+        private void AddNewReminder()
+        {
+            Navigation.PushAsync(new NewReminderPage());
+
+        }
 
         private void AssertPlusVisibility(object sender, ScrolledEventArgs e) => ButtonAndroidPlus.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
     }
