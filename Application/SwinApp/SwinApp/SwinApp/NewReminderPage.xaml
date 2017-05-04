@@ -28,7 +28,7 @@
             <Editor></Editor>
         </StackLayout>
         <StackLayout Grid.Row="4">
-            <Button Text="Submit" Clicked="Submit"></Button>
+            <Button x:Name="ButtonSubmit" Text="Submit"></Button>
         </StackLayout>
     </Grid>
 </ContentPage>

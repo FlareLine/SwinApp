@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 
 namespace SwinApp
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+	//[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NewReminderPage : ContentPage
 	{
         private DateTime _datetime;
@@ -22,19 +22,22 @@ namespace SwinApp
 		{
 			InitializeComponent ();
             dateField.MinimumDate = DateTime.Today;
-
+            ButtonSubmit.Clicked += ClickSubmit;
         }
 
+        private async void ClickSubmit(object sender, EventArgs e) => await Submit();
 
-        void Submit()
+        public async Task Submit()
         {
             _datetime = dateField.Date;
+            _datetime += timeField.Time;
             _title = titleField.Text;
             _description = descriptionField.Text;
 
             User.WriteReminder(new Reminder(_datetime, _title, _description));
-            DisplayAlert("Success!", "Reminder was added :)", "close");
-            Application.Current.MainPage.Navigation.PopAsync();
+            await DisplayAlert("Success!", "Reminder was added :)", "close");
+            await Application.Current.MainPage.Navigation.PopAsync();
+
         }
 	}
 }

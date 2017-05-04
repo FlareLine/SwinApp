@@ -66,10 +66,9 @@ namespace SwinApp
             }
         }
 
-        private void AddNewReminder()
+        private async void AddNewReminder()
         {
-            Navigation.PushAsync(new NewReminderPage());
-
+            await Navigation.PushAsync(new NewReminderPage());
         }
 
         private void AssertPlusVisibility(object sender, ScrolledEventArgs e) => ButtonAndroidPlus.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;

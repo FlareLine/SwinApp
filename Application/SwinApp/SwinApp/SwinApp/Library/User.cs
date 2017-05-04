@@ -90,10 +90,23 @@ namespace SwinApp.Library
             _reminders = SwinIO<List<Reminder>>.Read("reminders.json") ?? new List<Reminder>();
         }
 
-        public static void WriteReminder(Reminder reminder)
+        public static async void WriteReminder(Reminder reminder)
         {
             _reminders.Add(reminder);
-            SwinIO<List<Reminder>>.Write("reminders.json", _reminders);
+            await SwinIO<List<Reminder>>.WriteAsync("reminders.json", _reminders);
+
+            //test code to see if remindrs are being stored, leave here for now in case it is needed later
+            //_reminders.Clear();
+
+            //_reminders = SwinIO<List<Reminder>>.Read("reminders.json");
+
+            //string test = "";
+
+            //foreach (Reminder r in _reminders){
+            //    test += r.Name;
+            //}
+
+            //await Application.Current.MainPage.DisplayAlert("reminder output", test, "close");
         }
         /// <summary>
         /// Safely clear the dashitems of all its contents
