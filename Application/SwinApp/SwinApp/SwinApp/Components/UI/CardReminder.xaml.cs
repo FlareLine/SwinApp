@@ -13,11 +13,11 @@ namespace SwinApp.Components
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CardReminder : Grid
 	{
-        private Reminder _reminder;
+        public Reminder _reminder;
 		public CardReminder (Reminder reminder)
 		{
             _reminder = reminder;
-            BindingContext = _reminder;
+            BindingContext = _reminder = reminder;
 			InitializeComponent ();
 		}
 	}

@@ -85,7 +85,7 @@ namespace SwinApp.Library
                 AddDashItemSafe(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
                 AddDashItemSafe(new UpNextCard(new SamplePlanned("Test Event", DateTime.Now.AddMinutes(5))));
                 AddDashItemSafe(new WeatherCard());
-                AddDashItemSafe(new ScheduledReminderCard(new Reminder(DateTime.Now, "Test Reminder", "This is a sample reminder card")));
+                AddDashItemSafe(new ScheduledReminderCard(new Reminder(DateTime.Now, "Test Reminder", "This is an upcoming reminder")));
             }
             //if the file doesn't exist, set _reminders to be an empty List of Reminder
             _reminders = SwinIO<List<Reminder>>.Read("reminders.json") ?? new List<Reminder>();

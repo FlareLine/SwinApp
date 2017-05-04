@@ -8,7 +8,6 @@ namespace SwinApp.Library
 {
     class ScheduledReminderCard : IDashCard
     {
-        private IPlanned _planned;
         private Grid _content;
         private Reminder _reminder;
 

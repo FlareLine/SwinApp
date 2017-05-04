@@ -4,14 +4,16 @@
              x:Class="SwinApp.Components.CardReminder">
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="3*" />
+        <ColumnDefinition Width="2*" />
     </Grid.ColumnDefinitions>
-    <StackLayout Grid.Column="0">
-        <Label Text="{Binding Time.Day} - {Binding Time.Month}"></Label>
-        <Label Text="{Binding Time.Hour}:{Binding Time.Minute}"></Label>
+    <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+        <Label Text="{Binding DateMonth}" FontSize="Medium"></Label>
+        <Label Text="{Binding TimeOfDay}" FontSize="Medium"></Label>
     </StackLayout>
-    <StackLayout Grid.Column="1">
-        <Label Text="{Binding Title}"></Label>
-        <Label Text="{Binding Description}"></Label>
-    </StackLayout>
+    <Frame Grid.Column="1" BackgroundColor="#E0443E">
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Label Text="{Binding Name}" FontSize="Medium" Font="Bold" TextColor="White"></Label>
+            <Label Text="{Binding Description}" TextColor="White"></Label>
+        </StackLayout>
+    </Frame>
 </Grid>
