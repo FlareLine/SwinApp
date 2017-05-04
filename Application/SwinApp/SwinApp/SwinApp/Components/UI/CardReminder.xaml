@@ -11,7 +11,7 @@
         <Label Text="{Binding Time.Hour}:{Binding Time.Minute}"></Label>
     </StackLayout>
     <StackLayout Grid.Column="1">
-        <Label Text="Reminder"></Label>
+        <Label Text="{Binding Title}"></Label>
         <Label Text="{Binding Description}"></Label>
     </StackLayout>
 </Grid>
