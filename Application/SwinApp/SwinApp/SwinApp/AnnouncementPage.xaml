@@ -4,7 +4,7 @@
              x:Class="SwinApp.AnnouncementPage"
              Title="Blackboard Announcements">
     <StackLayout Padding="5,0">
-        <ListView x:Name="ListAnnouncementTime" HasUnevenRows="True">
+        <ListView x:Name="ListAnnouncements" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -18,7 +18,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Label x:Name="LabelPickerAnnouncementFilter">Filter by...</Label>
-        <Picker x:Name="PickerAnnouncementFilter" Title="Select a Unit"/>
+        <StackLayout Orientation="Horizontal">
+            <Label x:Name="LabelPickerAnnouncementFilter">Filter by Date</Label>
+            <Switch x:Name="SwitchDate"/>
+        </StackLayout>
+        <DatePicker x:Name="DateAnnouncementFilter"/>
     </StackLayout>
 </ContentPage>

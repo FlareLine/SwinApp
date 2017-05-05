@@ -6,10 +6,12 @@ using SwinApp.Library;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using System.ComponentModel;
+using Xamarin.Forms.Xaml;
 
 namespace SwinApp
 {
-	public partial class App : Application
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class App : Application
 	{
 		public App ()
 		{

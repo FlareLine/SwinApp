@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using SwinApp.Library;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace SwinApp.Components
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CardBBAnnouncement : Grid
     {
         private BlackboardAnnouncement _announcment;

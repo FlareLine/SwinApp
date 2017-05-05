@@ -9,11 +9,13 @@ using Android.OS;
 
 namespace SwinApp.Droid
 {
-	[Activity (Label = "SwinApp", Icon = "@drawable/icon", Theme="@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity (Label = "SwinApp", Icon = "@drawable/icon", Theme="@style/SplashScreen", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
+            base.SetTheme(Resource.Style.MainTheme);
+
             RequestWindowFeature(WindowFeatures.NoTitle);
 
             TabLayoutResource = Resource.Layout.Tabbar;

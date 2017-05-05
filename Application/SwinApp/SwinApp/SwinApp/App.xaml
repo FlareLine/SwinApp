@@ -11,11 +11,14 @@
             
             <Style TargetType="TabbedPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource SwinburneRed}"/>
+                <Setter Property="BarTextColor" Value="White"/>
             </Style>
+            
             <Style TargetType="Frame" x:Key="FrameCard">
                 <Setter Property="HasShadow" Value="True"/>
                 <Setter Property="OutlineColor" Value="{StaticResource SwinburneRed}"/>
             </Style>
+            
             <x:String x:Key="PTV_DEV_ID">3000193</x:String>
             <x:String x:Key="PTV_DEV_KEY">6baf66a7-8816-4056-8e93-94c3b66ec822</x:String>
         </ResourceDictionary>

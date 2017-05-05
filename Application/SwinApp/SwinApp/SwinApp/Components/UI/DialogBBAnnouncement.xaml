@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwinApp.Components.DialogBBAnnouncement"
+             >
+    <Grid x:Name="StackAnnouncement">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Frame Style="{StaticResource FrameCard}" HorizontalOptions="Center" Margin="5,4">
+            <StackLayout>
+                <Label x:Name="LabelHeading" FontSize="Large" FontAttributes="Bold" Text="{Binding Title}"/>
+                <Label x:Name="LabelCreated" FontSize="Small" Text="{Binding Created, StringFormat='{0:dd/MM/yyyy}'}"/>
+                <ScrollView  Margin="2">
+                    <Label x:Name="LabelBody" Text="{Binding Body}"/>
+                </ScrollView>
+            </StackLayout>
+        </Frame>
+        <Button Grid.Row="1" x:Name="ButtonExitAnnouncement" HorizontalOptions="FillAndExpand" Text="Close" BackgroundColor="White" FontSize="Medium"/>
+    </Grid>
+</ContentPage>

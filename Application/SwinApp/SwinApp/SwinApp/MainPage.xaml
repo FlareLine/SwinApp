@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:SwinApp"
-             x:Class="SwinApp.MainPage"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:SwinApp"
+            x:Class="SwinApp.MainPage"
             Title="SwinApp"
             BarBackgroundColor="{StaticResource SwinburneRed}"
             >
@@ -52,7 +52,7 @@
         </Grid>
     </ContentPage>
     <!--Menu/More Page-->
-    <ContentPage Title="☰" >
+    <ContentPage Title="&#9776;" >
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -62,10 +62,24 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
-                                <StackLayout Margin="10,12">
+                                <!--<StackLayout Margin="10,12">
                                     <Label VerticalOptions="CenterAndExpand" FontSize="Medium" Text="{Binding Title}"/>
                                     <Label VerticalOptions="End" Text="{Binding Desc}"/>
-                                </StackLayout>
+                                </StackLayout>-->
+                                <!-- ALTERNATIVE RENDERING, RESULTS IN A ~1 Second Faster Loading Time -->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="2"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="1"/>
+                                </Grid.ColumnDefinitions>
+                                <Label VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" FontSize="Medium" Text="{Binding Title}"/>
+                                <Label VerticalOptions="End" Grid.Row="2" Grid.Column="1" Text="{Binding Desc}"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
