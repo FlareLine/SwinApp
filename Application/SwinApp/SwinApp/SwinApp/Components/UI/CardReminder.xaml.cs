@@ -25,6 +25,7 @@ namespace SwinApp.Components
         public void DeleteReminder()
         {
             User.DeleteReminder(_reminder);
+            User.RefreshReminders();
         }
 
         private void ClickDelete(object sender, EventArgs e) => DeleteReminder();

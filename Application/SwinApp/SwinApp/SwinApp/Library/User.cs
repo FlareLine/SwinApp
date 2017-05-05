@@ -93,10 +93,7 @@ namespace SwinApp.Library
             //if the file doesn't exist, set _reminders to be an empty List of Reminder
             _reminders = SwinIO<List<Reminder>>.Read("reminders.json") ?? new List<Reminder>();
 
-            foreach (Reminder r in _reminders)
-            {
-                AddScheduleItemSafe(new ScheduledReminderCard(r));
-            }
+            RefreshReminders();
         }
 
         public static async void WriteReminder(Reminder reminder)
@@ -140,6 +137,35 @@ namespace SwinApp.Library
         public static void RemoveDashItemSafe(IDashCard cardToDelete)
         {
             _dashBoardItems.Remove(cardToDelete);
+        }
+
+        public static void RemoveScheduleItem(Grid grid)
+        {          
+            int index = -1;
+
+            foreach (IDashCard c in _scheduleItems)
+            {
+                if (c.Content == grid)
+                    index = _scheduleItems.IndexOf(c);
+            }
+
+            if (index != -1)
+                _scheduleItems.RemoveAt(index);
+        }
+
+        //clear reminders, re add from array
+        public static void RefreshReminders()
+        {
+            _scheduleItems.Clear();
+
+            //sort by date
+            _reminders.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
+
+
+            foreach (Reminder r in _reminders)
+            {
+                AddScheduleItemSafe(new ScheduledReminderCard(r));
+            }
         }
 
         static User()
