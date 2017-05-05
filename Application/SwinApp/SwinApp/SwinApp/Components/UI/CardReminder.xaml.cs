@@ -17,7 +17,7 @@ namespace SwinApp.Components
 		public CardReminder (Reminder reminder)
 		{
             _reminder = reminder;
-            BindingContext = _reminder = reminder;
+            BindingContext = _reminder;
 			InitializeComponent ();
             ButtonDeleteReminder.Clicked += ClickDelete;
 		}

@@ -24,8 +24,8 @@
             <Entry x:Name="titleField"></Entry>
         </StackLayout>
         <StackLayout Grid.Row="3">
-            <Label x:Name="descriptionField" Text="Description:" FontSize="Medium"></Label>
-            <Editor></Editor>
+            <Label Text="Description:" FontSize="Medium"></Label>
+            <Editor x:Name="descriptionField"></Editor>
         </StackLayout>
         <StackLayout Grid.Row="4">
             <Button x:Name="ButtonSubmit" Text="Submit"></Button>

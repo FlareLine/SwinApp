@@ -42,14 +42,31 @@
     </ContentPage>
     <!--Schedule Page-->
     <ContentPage Title="Schedule">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Label FontSize="Medium" TextColor="Gray" HorizontalTextAlignment="Center" Grid.Row="1" Text="Welcome to my timetable harahar yes"/>
-        </Grid>
+        <StackLayout x:Name="StackSchedule" VerticalOptions="FillAndExpand">
+            <!--<Image Source="http://emspace.com.au/sites/emspace.com.au/files/imagecache/client_teaser/content/project/image_small/swinburne-logo.png" />
+            <Label Text="Welcome to SwinApp" 
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+            <Button x:Name="ButtonWeather" Text="View Weather"/>-->
+            <ScrollView x:Name="ScrollSchedule" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
+                <ListView x:Name="ListSchedule" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="0">
+                                    <Frame Style="{StaticResource FrameCard}" Margin="5">
+                                        <StackLayout Orientation="Vertical" Padding="1">
+                                            <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"/>
+                                            <ContentView Content="{Binding Content}"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </StackLayout>
     </ContentPage>
     <!--Menu/More Page-->
     <ContentPage Title="&#9776;" >

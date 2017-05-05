@@ -27,6 +27,10 @@ namespace SwinApp.Library
             get { return _dashBoardItems; }
         }
 
+        private static ObservableCollection<IDashCard> _scheduleItems = new ObservableCollection<IDashCard>();
+
+        public static ObservableCollection<IDashCard> ScheduleItems => _scheduleItems;
+
         private static List<BlackboardAnnouncement> _announcements = new List<BlackboardAnnouncement>();
 
         public static List<BlackboardAnnouncement> Announcements => _announcements;
@@ -85,10 +89,14 @@ namespace SwinApp.Library
                 AddDashItemSafe(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
                 AddDashItemSafe(new UpNextCard(new SamplePlanned("Test Event", DateTime.Now.AddMinutes(5))));
                 AddDashItemSafe(new WeatherCard());
-                AddDashItemSafe(new ScheduledReminderCard(new Reminder(DateTime.Now, "Test Reminder", "This is an upcoming reminder")));
             }
             //if the file doesn't exist, set _reminders to be an empty List of Reminder
             _reminders = SwinIO<List<Reminder>>.Read("reminders.json") ?? new List<Reminder>();
+
+            foreach (Reminder r in _reminders)
+            {
+                AddScheduleItemSafe(new ScheduledReminderCard(r));
+            }
         }
 
         public static async void WriteReminder(Reminder reminder)
@@ -125,6 +133,14 @@ namespace SwinApp.Library
         /// </summary>
         /// <param name="card"></param>
         public static void AddDashItemSafe(IDashCard card) => Device.BeginInvokeOnMainThread(() => _dashBoardItems.Add(card));
+
+        public static void AddScheduleItemSafe(IDashCard card) => Device.BeginInvokeOnMainThread(() => _scheduleItems.Add(card));
+
+        //Causes unhanded exception
+        public static void RemoveDashItemSafe(IDashCard cardToDelete)
+        {
+            _dashBoardItems.Remove(cardToDelete);
+        }
 
         static User()
         {
