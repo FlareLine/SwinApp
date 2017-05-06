@@ -14,19 +14,22 @@ namespace SwinApp
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TransportPage : ContentPage
 	{
-		List<TrainCardViewModel> viewModelList = new List<TrainCardViewModel>();
+		List<TrainCardViewModel> viewModelList = new List<TrainCardViewModel> { new TrainCardViewModel(0, 1), new TrainCardViewModel(1, 0), new TrainCardViewModel(2, 3), new TrainCardViewModel(9, 9) };
+	
 
         public TransportPage()
         {
             InitializeComponent();
+			TrainCity.BindingContext = viewModelList[0];
+			TrainAlamein.BindingContext = viewModelList[1];
+			TrainBelgrave.BindingContext = viewModelList[2];
+			TrainLilydale.BindingContext = viewModelList[3];
 		}
 
-		protected async override void OnAppearing()
+		public async void OnAppearing()
 		{
-			TrainCity.BindingContext = new TrainCardViewModel(0, 1);
-			TrainAlamein.BindingContext = new TrainCardViewModel(1, 0);
-			TrainBelgrave.BindingContext = new TrainCardViewModel(2, 3);
-			TrainLilydale.BindingContext = new TrainCardViewModel(9, 9);
+			foreach (TrainCardViewModel vm in viewModelList)
+				vm.GetDeparture();
 		}
 	}
 }

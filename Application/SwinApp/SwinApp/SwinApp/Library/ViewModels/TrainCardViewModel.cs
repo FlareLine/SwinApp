@@ -58,13 +58,18 @@ namespace SwinApp.Library
 			}
 		}
 
+		public int Route { get; set; }
+		public int Direction { get; set; }
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		TransportLink tl = new TransportLink();
 
 		public TrainCardViewModel(int r, int d)
 		{
-			GetDeparture(r, d);
+			Route = r;
+			Direction = d;
+			GetDeparture();
 			
 			//Line = Enum.GetName(typeof(Direction), d);
 
@@ -75,9 +80,9 @@ namespace SwinApp.Library
 			//Platform = departure.platform_number;
 		}
 
-		public async void GetDeparture(int r, int d)
+		public async void GetDeparture()
 		{
-			Departure dep = await tl.GetNextDeparture(r, d);
+			Departure dep = await tl.GetNextDeparture(Route, Direction);
 
 			int arrivalTime = 0;
 			if (dep.estimated_departure_utc == null)
@@ -104,7 +109,7 @@ namespace SwinApp.Library
 			Console.WriteLine($"XX {Line}, {Platform}, {Time} XX");
 		}
 
-		private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+		new private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
