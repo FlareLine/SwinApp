@@ -110,50 +110,8 @@ namespace SwinApp.Library
         }
     }
 
-    public class Route
-    {
-        public int route_type { get; set; }
-        public int route_id { get; set; }
-        public string route_name { get; set; }
-        public string route_number { get; set; }
-
-        /// <summary>
-        /// Creates a new <see cref="T:Route"/>with the specified parameters.
-        /// </summary>
-        /// <param name="t">The route type (0 = train)</param>
-        /// <param name="i">The id of the route (in the database)</param>
-        /// <param name="n">The name of the route</param>
-        /// <param name="m">The number of the route</param>
-        public Route(int t, int i, string n, string m)
-        {
-            route_type = t;
-            route_id = i;
-            route_number = n;
-            route_name = m;
-        }
-    }
-
-	public class Stop
-	{
-		public string stop_name { get; set; }
-		public int stop_id { get; set; }
-
-		/// <summary>
-		/// Creates a new <see cref="T:Stop"/>with the specified parameters.
-		/// </summary>
-		/// <param name="n">The stop name (e.g. 'Glenferrie')</param>
-		/// <param name="i">The stop id (not number)</param>
-		public Stop(string n, int i)
-		{
-			stop_name = n;
-			stop_id = i;
-		}
-	}
-
     public class PTVPayload
     {
         public List<Departure> Departures { get; set; }
-        public List<Route> Routes { get; set; }
-		public List<Stop> Stops { get; set; }
 	}
 }

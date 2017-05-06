@@ -38,17 +38,19 @@ namespace SwinApp.Library
 					s = DateTime.Parse(dep.estimated_departure_utc).ToShortTimeString();
 			} catch(Exception e)
 			{
-				Console.WriteLine(e.Message);
-				Time = s ?? "NULLTIME";
 			}
 			Platform = dep.platform_number;
-			Console.WriteLine("TIME: " + (s ?? "NULLTIME"));
+
+			Console.WriteLine("-------------");
+			Console.WriteLine("Line: " + Line);
+			Console.WriteLine("Time: " + Time);
+			Console.WriteLine("Platform: " + Platform);
+			Console.WriteLine("-------------");
 		}
 	}
 
 	public enum RouteDirection
 	{
-		CityRoute = 1,
 		CityDirection = 1,
 		AlameinRoute = 1,
 		AlameinDirection = 0,
