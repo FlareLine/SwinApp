@@ -26,6 +26,10 @@ namespace SwinApp
                 new MenuItem("Announcements", "Keep in the loop with all going on at Uni")
                 {
                     Page = new AnnouncementPage()
+                },
+                new MenuItem("More from Swinburne", "Other apps and links from Swinburne, helping you stay on track")
+                {
+                    Page = new LinksPage()
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
