@@ -109,6 +109,13 @@ namespace SwinApp.Library
 
             //await Application.Current.MainPage.DisplayAlert("reminder output", test, "close");
         }
+
+        public static async void DeleteReminder(Reminder reminder)
+        {
+            User.Reminders.RemoveAll(r => r == reminder);
+            await SwinIO<List<Reminder>>.WriteAsync("reminders.json", User.Reminders);
+        }
+
         /// <summary>
         /// Safely clear the dashitems of all its contents
         /// </summary>

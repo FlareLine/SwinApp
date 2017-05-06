@@ -25,7 +25,7 @@
     </Grid>
 
     <StackLayout Orientation="Horizontal" Grid.Row="1">
-        <Button HorizontalOptions="End" Text="Delete"></Button>
+        <Button x:Name="ButtonDeleteReminder" HorizontalOptions="End" Text="Delete"></Button>
     </StackLayout>
     
     

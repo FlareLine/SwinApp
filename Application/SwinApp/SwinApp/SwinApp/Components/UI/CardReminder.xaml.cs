@@ -19,6 +19,14 @@ namespace SwinApp.Components
             _reminder = reminder;
             BindingContext = _reminder = reminder;
 			InitializeComponent ();
+            ButtonDeleteReminder.Clicked += ClickDelete;
 		}
-	}
+
+        public void DeleteReminder()
+        {
+            User.DeleteReminder(_reminder);
+        }
+
+        private void ClickDelete(object sender, EventArgs e) => DeleteReminder();
+    }
 }
