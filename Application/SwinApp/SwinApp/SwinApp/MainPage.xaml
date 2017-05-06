@@ -36,18 +36,13 @@
                 <Grid.IsVisible>
                     <OnPlatform x:TypeArguments="x:Boolean" Android="True" iOS="False"/>
                 </Grid.IsVisible>
-                <Button x:Name="ButtonAndroidPlus" Clicked="ShowContextMenu" HorizontalOptions="FillAndExpand" Text="+" BackgroundColor="White" FontAttributes="Bold" FontSize="Large"/>
+                <Button x:Name="ButtonAndroidPlusFeed" Clicked="ShowContextMenu" HorizontalOptions="FillAndExpand" Text="+" BackgroundColor="White" FontAttributes="Bold" FontSize="Large"/>
             </Grid>
         </StackLayout>
     </ContentPage>
     <!--Schedule Page-->
     <ContentPage Title="Schedule">
         <StackLayout x:Name="StackSchedule" VerticalOptions="FillAndExpand">
-            <!--<Image Source="http://emspace.com.au/sites/emspace.com.au/files/imagecache/client_teaser/content/project/image_small/swinburne-logo.png" />
-            <Label Text="Welcome to SwinApp" 
-               VerticalOptions="Center" 
-               HorizontalOptions="Center" />
-            <Button x:Name="ButtonWeather" Text="View Weather"/>-->
             <ScrollView x:Name="ScrollSchedule" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
                 <ListView x:Name="ListSchedule" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
                     <ListView.ItemTemplate>
@@ -66,6 +61,12 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
+            <Grid Padding="0" BackgroundColor="Transparent">
+                <Grid.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean" Android="True" iOS="False"/>
+                </Grid.IsVisible>
+                <Button x:Name="ButtonAndroidPlusSchedule" Clicked="ShowContextMenu" HorizontalOptions="FillAndExpand" Text="+" BackgroundColor="White" FontAttributes="Bold" FontSize="Large"/>
+            </Grid>
         </StackLayout>
     </ContentPage>
     <!--Menu/More Page-->

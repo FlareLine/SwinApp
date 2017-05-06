@@ -36,6 +36,11 @@ namespace SwinApp
 
         }
 
+        private void RefreshSchedule()
+        {
+            ListSchedule.BeginRefresh();
+        }
+
         private async void MenuSelection(object sender, ItemTappedEventArgs e)
         {
             var menuItem = ListMenu.SelectedItem as MenuItem;
@@ -76,7 +81,11 @@ namespace SwinApp
             await Navigation.PushAsync(new NewReminderPage());
         }
 
-        private void AssertPlusVisibility(object sender, ScrolledEventArgs e) => ButtonAndroidPlus.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
+        private void AssertPlusVisibility(object sender, ScrolledEventArgs e) {
+            ButtonAndroidPlusFeed.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
+            ButtonAndroidPlusSchedule.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
+        }
+        
     }
     public class MenuItem
     {
