@@ -23,16 +23,10 @@ namespace SwinApp
 
 		protected async override void OnAppearing()
 		{
-			foreach (RouteDirection d in Enum.GetValues(typeof(RouteDirection)))
-				if (d.ToString().Contains("Direction"))
-				{
-					Enum.TryParse(d.ToString().Replace("Direction", "Route"), out RouteDirection r);
-					viewModelList.Add(new TrainCardViewModel(r, d));
-				}
-			TrainCity.BindingContext = viewModelList[0];
-			TrainAlamein.BindingContext = viewModelList[1];
-			TrainBelgrave.BindingContext = viewModelList[2];
-			TrainLilydale.BindingContext = viewModelList[3];
+			TrainCity.BindingContext = new TrainCardViewModel(0, 1);
+			TrainAlamein.BindingContext = new TrainCardViewModel(1, 0);
+			TrainBelgrave.BindingContext = new TrainCardViewModel(2, 3);
+			TrainLilydale.BindingContext = new TrainCardViewModel(9, 9);
 		}
 	}
 }
