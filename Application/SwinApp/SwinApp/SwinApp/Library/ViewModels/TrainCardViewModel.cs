@@ -74,7 +74,9 @@ namespace SwinApp.Library
             // You're calling this already
 			//GetDeparture();
 			
-			//Line = Enum.GetName(typeof(Direction), d);
+			Line = Enum.GetName(typeof(Direction), d);
+			Time = "--";
+			Platform = "--";
 
 			//Time = DateTime.Now.ToShortDateString();
 			//Time = DateTime.Parse(departure.estimated_departure_utc).ToShortTimeString();
@@ -99,7 +101,7 @@ namespace SwinApp.Library
             {
                 int hours = arrivalTime / 60;
                 int mins = arrivalTime % 60;
-                wholeTime = $"{hours}h {mins}m";
+                wholeTime = $"{hours}hrs {mins} m";
             }
             else
             {

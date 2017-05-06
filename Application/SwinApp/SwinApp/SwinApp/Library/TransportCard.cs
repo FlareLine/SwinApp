@@ -1,53 +1,32 @@
-﻿using SwinApp.Components.UI;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
 
 namespace SwinApp.Library
 {
-    public class TransportCard : Grid, IDashCard
-    {
+	class TransportCard : IDashCard
+	{
 
-		private TransportViewModel _tvm;
-		private TrainDetailsGrid _content;
-		public string Title { get; set; }
+		private Grid _content;
 
-		//public event PropertyChangedEventHandler PropertyChanged;
-
-		public TransportCard(String title)
+		public TransportCard()
 		{
-			_tvm = new TransportViewModel();
-			Title = title;
+
 		}
 
-		public Grid Content
-		{
-            // What in tarnation are you trying with this?
-            // You only databind value
-			set
-			{
-				//if (_content != value)
-				//{
-				//	if (PropertyChanged != null)
-				//	{
-				//		PropertyChanged(this, new PropertyChangedEventArgs("DateTime"));
-				//	}
-				//}
-			}
-			get
-			{
-				return _content;
-			}
-		}
+		public string Title => "Next Trains";
+
+		public Grid Content => _content;
 
 		public void Load()
 		{
+			throw new NotImplementedException();
 		}
 
 		public void Open()
 		{
+			throw new NotImplementedException();
 		}
-    }
+	}
 }

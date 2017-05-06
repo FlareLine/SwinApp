@@ -15,7 +15,7 @@ namespace SwinApp
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TransportPage : ContentPage
 	{
-		ObservableCollection<TrainCardViewModel> viewModelList = new ObservableCollection<TrainCardViewModel> { new TrainCardViewModel(0, 1), new TrainCardViewModel(1, 0), new TrainCardViewModel(2, 3), new TrainCardViewModel(9, 9) };
+		List<TrainCardViewModel> viewModelList = new List<TrainCardViewModel> { new TrainCardViewModel(0, 1), new TrainCardViewModel(1, 0), new TrainCardViewModel(2, 3), new TrainCardViewModel(9, 9) };
 	
 
         public TransportPage()
@@ -27,7 +27,7 @@ namespace SwinApp
 			TrainLilydale.BindingContext = viewModelList[3];
 		}
 
-		public async override void OnAppearing()
+		protected async override void OnAppearing()
 		{
 			foreach (TrainCardViewModel vm in viewModelList)
 				await vm.GetDeparture();
