@@ -7,14 +7,14 @@ using Xamarin.Forms;
 
 namespace SwinApp.Library
 {
-    class TransportCard : Grid, IDashCard, INotifyPropertyChanged
+    public class TransportCard : Grid, IDashCard
     {
 
 		private TransportViewModel _tvm;
 		private TrainDetailsGrid _content;
 		public string Title { get; set; }
 
-		public event PropertyChangedEventHandler PropertyChanged;
+		//public event PropertyChangedEventHandler PropertyChanged;
 
 		public TransportCard(String title)
 		{
@@ -22,17 +22,19 @@ namespace SwinApp.Library
 			Title = title;
 		}
 
-		public TrainGrid Content
+		public Grid Content
 		{
+            // What in tarnation are you trying with this?
+            // You only databind value
 			set
 			{
-				if (_content != value)
-				{
-					if (PropertyChanged != null)
-					{
-						PropertyChanged(this, new PropertyChangedEventArgs("DateTime"));
-					}
-				}
+				//if (_content != value)
+				//{
+				//	if (PropertyChanged != null)
+				//	{
+				//		PropertyChanged(this, new PropertyChangedEventArgs("DateTime"));
+				//	}
+				//}
 			}
 			get
 			{

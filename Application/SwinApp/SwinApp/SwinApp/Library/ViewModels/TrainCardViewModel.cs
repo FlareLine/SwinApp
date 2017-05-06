@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwinApp.Library
 {
-	public class TrainCardViewModel : ViewModel, INotifyPropertyChanged
+	public class TrainCardViewModel : ViewModel
 	{
 		private string _line;
 		private string _time;
@@ -23,8 +23,8 @@ namespace SwinApp.Library
 				if (value != _line)
 				{
 					_line = value;
-					NotifyPropertyChanged();
-				}
+					NotifyPropertyChanged("Line");
+                }
 			}
 		}
 		public string Time
@@ -38,8 +38,9 @@ namespace SwinApp.Library
 				if (value != _time)
 				{
 					_time = value;
-					NotifyPropertyChanged();
-				}
+					NotifyPropertyChanged("Time");
+
+                }
 			}
 		}
 		public string Platform
@@ -53,8 +54,9 @@ namespace SwinApp.Library
 				if (value != _platform)
 				{
 					_platform = value;
-					NotifyPropertyChanged();
-				}
+					NotifyPropertyChanged("Platform");
+
+                }
 			}
 		}
 
@@ -69,7 +71,8 @@ namespace SwinApp.Library
 		{
 			Route = r;
 			Direction = d;
-			GetDeparture();
+            // You're calling this already
+			//GetDeparture();
 			
 			//Line = Enum.GetName(typeof(Direction), d);
 
@@ -80,39 +83,35 @@ namespace SwinApp.Library
 			//Platform = departure.platform_number;
 		}
 
-		public async void GetDeparture()
-		{
-			Departure dep = await tl.GetNextDeparture(Route, Direction);
+        public async Task GetDeparture()
+        {
+            Departure dep = await tl.GetNextDeparture(Route, Direction);
 
-			int arrivalTime = 0;
-			if (dep.estimated_departure_utc == null)
-				arrivalTime = (int) DateTime.Parse(dep.scheduled_departure_utc).Subtract(DateTime.Now).TotalMinutes;
-			else
-				arrivalTime = (int) DateTime.Parse(dep.estimated_departure_utc).Subtract(DateTime.Now).TotalMinutes;
+            int arrivalTime = 0;
+            if (dep.estimated_departure_utc == null)
+                arrivalTime = (int)DateTime.Parse(dep.scheduled_departure_utc).Subtract(DateTime.Now).TotalMinutes;
+            else
+                arrivalTime = (int)DateTime.Parse(dep.estimated_departure_utc).Subtract(DateTime.Now).TotalMinutes;
 
-			string wholeTime = "";
+            string wholeTime = "";
 
-			if (arrivalTime > 60)
-			{
-				int hours = arrivalTime / 60;
-				int mins = arrivalTime % 60;
-				wholeTime = $"{hours}h {mins}m";
-			} else
-			{
-				wholeTime = $"{arrivalTime} mins";
-			}
+            if (arrivalTime > 60)
+            {
+                int hours = arrivalTime / 60;
+                int mins = arrivalTime % 60;
+                wholeTime = $"{hours}h {mins}m";
+            }
+            else
+            {
+                wholeTime = $"{arrivalTime} mins";
+            }
 
-			Line = Enum.Parse(typeof(Direction), dep.direction_id).ToString();
-			Time = wholeTime;
-			Platform = "Platform " + (dep.platform_number ?? "--");
+            Line = Enum.Parse(typeof(Direction), dep.direction_id).ToString();
+            Time = wholeTime;
+            Platform = "Platform " + (dep.platform_number ?? "--");
 
-			Console.WriteLine($"XX {Line}, {Platform}, {Time} XX");
-		}
-
-		new private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
+            Console.WriteLine($"XX {Line}, {Platform}, {Time} XX");
+        }
 
 	}
 
