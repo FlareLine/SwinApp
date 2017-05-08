@@ -21,7 +21,7 @@
       <DependentUpon>CardReminder.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Library\AnnouncementPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)AnnouncementPage.xaml.cs">
       <DependentUpon>AnnouncementPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -118,7 +118,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Library\AnnouncementPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)AnnouncementPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

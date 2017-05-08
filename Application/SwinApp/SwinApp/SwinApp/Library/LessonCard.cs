@@ -21,12 +21,12 @@ namespace SwinApp.Library
 
 		// Not yet implemented
 		public void Load() {
-			throw new NotImplementedException();
+			
 		}
 
 		// Not yet implemented
 		public void Open() {
-			throw new NotImplementedException();
+			
 		}
     }
 }
