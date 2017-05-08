@@ -2,32 +2,23 @@
 <Grid xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.Components.CardReminder">
-    <Grid.RowDefinitions>
-        <RowDefinition></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
-    </Grid.RowDefinitions>
-
-    <Grid Grid.Row="0">
+    
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />
             <ColumnDefinition Width="7*" />
         </Grid.ColumnDefinitions>
+    
         <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="{Binding DateMonth}" FontSize="Medium"></Label>
+            <Label Text="{Binding Day}" FontSize="Medium"></Label>
             <Label Text="{Binding TimeOfDay}" FontSize="Medium"></Label>
+            <Label Text="{Binding DateMonth}" FontSize="Medium"></Label>
         </StackLayout>
-        <Frame Grid.Column="1" BackgroundColor="#E0443E">
-            <StackLayout VerticalOptions="FillAndExpand">
-                <Label Text="{Binding Name}" FontSize="Medium" Font="Bold" TextColor="White"></Label>
-                <Label Text="{Binding Description}" TextColor="White"></Label>
-            </StackLayout>
-        </Frame>
-    </Grid>
-
-    <StackLayout Orientation="Horizontal" Grid.Row="1">
-        <Button x:Name="ButtonDeleteReminder" BackgroundColor="White" TextColor="Black" HorizontalOptions="FillAndExpand" Text="Delete"></Button>
-    </StackLayout>
     
-    
-    
+    <Frame Grid.Column="1" BackgroundColor="#E0443E">
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Label Text="{Binding Name}" Font="Bold" FontSize="Medium" TextColor="White"></Label>
+            <Label Text="{Binding Description}" TextColor="White"></Label>
+            <Label Text="Delete" x:Name="ButtonDeleteReminder" HorizontalOptions="End" Font="Bold" FontSize="Medium" TextColor="#660000"></Label>
+        </StackLayout>
+    </Frame>
 </Grid>

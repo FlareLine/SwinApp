@@ -34,6 +34,15 @@ namespace SwinApp.Library
             }
         }
 
+        [JsonIgnore]
+        public string Day
+        {
+            get
+            {
+                return (Time.DayOfWeek.ToString());
+            }
+        }
+
         public Reminder(DateTime reminderDateTime, string title, string description)
         {
             Time = reminderDateTime;
