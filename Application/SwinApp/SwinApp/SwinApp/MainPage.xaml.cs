@@ -30,6 +30,7 @@ namespace SwinApp
             };
             ListMenu.ItemTapped += MenuSelection;
             ListDashboard.ItemsSource = User.DashBoardItems;
+            ListSchedule.ItemsSource = User.ScheduleItems;
         }
 
         private async void MenuSelection(object sender, ItemTappedEventArgs e)
@@ -53,7 +54,10 @@ namespace SwinApp
             }
         }
 
-        private async void ShowContextMenu(object sender, EventArgs e) => await DisplayActionSheet("Add New...", "Close", "", new string[] { "Reminder" });
+        private async void ShowContextMenu(object sender, EventArgs e)
+        {
+            await DisplayActionSheet("Add New...", "Close", "", new string[] { "Reminder" });
+        }
 
         private void AssertPlusVisibility(object sender, ScrolledEventArgs e) => ButtonAndroidPlusFeed.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
     }

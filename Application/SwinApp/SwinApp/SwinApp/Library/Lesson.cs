@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace SwinApp.Library
 {
@@ -27,14 +28,17 @@ namespace SwinApp.Library
 		private string _location;
 		private LessonType _type;	// The type of lesson (e.g., Lecture, Tutorial)
 
-		public Lesson(string name, DateTime time, string unitCode, string location, string type) {
+		public Lesson(string name, DateTime time, string unitCode, string location, string type, Color cardColor = default(Color)) {
 			Name = name;
 			Time = time;
 			
 			UnitCode = unitCode;
 			Location = location;
 			Type = type;
-		}
+
+            _lessonColor = cardColor == default(Color) ? Color.FromHex("#E0443E") : cardColor;
+
+        }
 
 		public string Name { get => _name; set => _name = value; }
 		public DateTime Time { get => _time; set => _time = value; }
@@ -51,7 +55,13 @@ namespace SwinApp.Library
 			}
 		}
 
-		[JsonIgnore]
+        private Color _lessonColor;
+        
+
+        public Color LessonColor => _lessonColor;
+
+
+        [JsonIgnore]
 		public string Day { get => Time.DayOfWeek.ToString(); }
 
 		[JsonIgnore]
@@ -59,6 +69,9 @@ namespace SwinApp.Library
 
 		[JsonIgnore]
 		public string Date { get => Time.ToString("dd/MM/yy"); }
+
+        [JsonIgnore]
+        public string Description => $"{Name} ({UnitCode})";
 
 		/// <summary>
 		/// Not yet implemented

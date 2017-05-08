@@ -12,11 +12,17 @@
             <Label Text="{Binding TimeOfDay}"></Label>
             <Label Text="{Binding Date}"></Label>
         </StackLayout>
-        <Frame Grid.Column="1" BackgroundColor="#E0443E">
+        <Frame Grid.Column="1" BackgroundColor="{Binding LessonColor}">
+            <Frame.Resources>
+                <ResourceDictionary>
+                    <Style TargetType="Label">
+                        <Setter Property="TextColor" Value="#fff"/>
+                    </Style>
+                </ResourceDictionary>
+            </Frame.Resources>
             <StackLayout>
                 <!--What is currently binding Name should display both Name and UnitCode-->
-                <Label Text="{Binding Name}"></Label>
-                <Label Text="{Binding Type}"></Label>
+                <Label Text="{Binding Description}"></Label>
                 <Label Text="{Binding Location}"></Label>
             </StackLayout>
         </Frame>

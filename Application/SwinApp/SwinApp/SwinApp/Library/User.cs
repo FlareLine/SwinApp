@@ -49,6 +49,8 @@ namespace SwinApp.Library
 
         public static Dictionary<string, string> UnitPairs => _units.ToDictionary(u => u.Name, u => u.UUID);
 
+        private static UpNextCard _upNextCard;
+
         public static async Task AddDashCard(IDashCard card)
         {
             await Task.Run(() => _dashBoardItems.Add(card));
@@ -92,13 +94,14 @@ namespace SwinApp.Library
             if (USE_PROTOTYPE_DATA)
             {
                 AddDashItemSafe(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
-                AddDashItemSafe(new UpNextCard(NextPlanned));
+                _upNextCard = new UpNextCard(NextPlanned);
+                AddDashItemSafe(_upNextCard);
                 AddDashItemSafe(new WeatherCard());
             }
             //if the file doesn't exist, set _reminders to be an empty List of Reminder
             _reminders = SwinIO<List<Reminder>>.Read("reminders.json") ?? new List<Reminder>();
 
-            RefreshReminders();
+            RefreshSchedule();
         }
         private static IPlanned NextPlanned
         {
@@ -121,6 +124,10 @@ namespace SwinApp.Library
             if (USE_PROTOTYPE_DATA)
             {
                 _lessons.Add(new Lesson("Epic Lecture", DateTime.Today.AddHours(1), "EP1010", "EN1001", "Lecture"));
+                _lessons.Add(new Lesson("Awesome Tute", DateTime.Today.AddHours(1.5), "AT1234", "ATC0420", "Tutorial", Color.FromHex("#E0B4E8")));
+                _lessons.Add(new Lesson("Powerful Tute", DateTime.Today.AddMinutes(40), "AT1234", "ATC0420", "Tutorial", Color.FromHex("#E0B4E8")));
+                _lessons.Add(new Lesson("Awesome Tute", DateTime.Today.AddHours(1.5), "AT1234", "ATC0420", "Tutorial", Color.FromHex("#E0B4E8")));
+
             }
         }
 
@@ -128,7 +135,7 @@ namespace SwinApp.Library
         {
             _reminders.Add(reminder);
             await SwinIO<List<Reminder>>.WriteAsync("reminders.json", _reminders);
-            RefreshReminders();
+            RefreshSchedule();
 
             //test code to see if remindrs are being stored, leave here for now in case it is needed later
             //_reminders.Clear();
@@ -169,7 +176,7 @@ namespace SwinApp.Library
         }
 
         public static void RemoveScheduleItem(Grid grid)
-        {          
+        {
             int index = -1;
 
             foreach (IDashCard c in _scheduleItems)
@@ -183,13 +190,13 @@ namespace SwinApp.Library
         }
 
         //clear reminders, re add from array
-        public static void RefreshReminders()
+        public static void RefreshSchedule()
         {
             _scheduleItems.Clear();
 
             //sort by date
             _reminders.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
-
+            _lessons.Sort((l1, l2) => DateTime.Compare(l1.Time, l2.Time));
 
             foreach (Reminder r in _reminders)
             {
@@ -200,6 +207,7 @@ namespace SwinApp.Library
             {
                 AddScheduleItemSafe(new LessonCard(l));
             }
+            _upNextCard.UpdateContext(NextPlanned);
         }
 
         static User()
