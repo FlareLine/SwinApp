@@ -31,8 +31,11 @@ namespace SwinApp
 
 		protected async override void OnAppearing()
 		{
+			base.OnAppearing();
 			foreach (CardTransport card in Trains)
+			{
 				card.Update();
+			}
 		}
 	}
 }
