@@ -145,7 +145,7 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\fa_sun.png" />
+    <BundleResource Include="Resources\fa_sun.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\allocatelogo.png" />

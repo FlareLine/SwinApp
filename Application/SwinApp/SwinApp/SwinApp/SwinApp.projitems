@@ -20,6 +20,15 @@
       <DependentUpon>CardBBAnnouncement.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardExternalLink.xaml.cs">
+      <DependentUpon>CardExternalLink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardLesson.xaml.cs">
+      <DependentUpon>CardLesson.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardReminder.xaml.cs">
+      <DependentUpon>CardReminder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardUpNext.xaml.cs">
       <DependentUpon>CardUpNext.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -40,6 +49,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardAnnouncement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardUnit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\DashItems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\Lesson.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\LessonCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Planning.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\PTV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Reminder.cs" />
@@ -116,5 +127,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Components\UI\CardExternalLink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Components\UI\CardLesson.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Components\UI\CardReminder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>
