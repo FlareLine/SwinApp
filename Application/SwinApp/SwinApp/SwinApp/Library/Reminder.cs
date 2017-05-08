@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Newtonsoft.Json;
 
 namespace SwinApp.Library
@@ -11,7 +9,7 @@ namespace SwinApp.Library
 
         public DateTime Time { get; set; }
 
-        //return how far in the future the event is
+        // Return how far in the future the event is
         public TimeSpan When => Time - DateTime.Now;
 
         public string Description { get; set; }
@@ -46,9 +44,5 @@ namespace SwinApp.Library
         public void Refresh()
         {
         }
-
-        
-
-        
     }
 }
