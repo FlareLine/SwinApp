@@ -26,19 +26,10 @@ namespace SwinApp
                 new MenuItem("Announcements", "Keep in the loop with all going on at Uni")
                 {
                     Page = new AnnouncementPage()
-                },
-                new MenuItem("More from Swinburne", "Other apps and links from Swinburne")
-                {
-                    Page = new LinksPage()
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
-
-        }
-
-        private void RefreshSchedule()
-        {
-            ListSchedule.BeginRefresh();
+            ListDashboard.ItemsSource = User.DashBoardItems;
         }
 
         private async void MenuSelection(object sender, ItemTappedEventArgs e)
@@ -55,8 +46,6 @@ namespace SwinApp
             try
             {
                 User.LoadUserData();
-                ListDashboard.ItemsSource = User.DashBoardItems;
-                ListSchedule.ItemsSource = User.ScheduleItems;
             }
             catch (Exception e)
             {
@@ -64,28 +53,9 @@ namespace SwinApp
             }
         }
 
-        private async void ShowContextMenu(object sender, EventArgs e)
-        {
-            string check = await DisplayActionSheet("Add New...", "Close", "", new string[] { "Reminder" });
-            if (check == "Reminder")
-            {
-                //create new reminder through use of pop up window, then add it to the users reminders
-                //after this, re-write reminders to the json file
-                AddNewReminder();
-                
-            }
-        }
+        private async void ShowContextMenu(object sender, EventArgs e) => await DisplayActionSheet("Add New...", "Close", "", new string[] { "Reminder" });
 
-        private async void AddNewReminder()
-        {
-            await Navigation.PushAsync(new NewReminderPage());
-        }
-
-        private void AssertPlusVisibility(object sender, ScrolledEventArgs e) {
-            ButtonAndroidPlusFeed.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
-            ButtonAndroidPlusSchedule.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
-        }
-        
+        private void AssertPlusVisibility(object sender, ScrolledEventArgs e) => ButtonAndroidPlus.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
     }
     public class MenuItem
     {
