@@ -13,15 +13,11 @@
       <DependentUpon>CardExternalLink.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardLesson.xaml.cs">
-      <DependentUpon>CardLesson.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardReminder.xaml.cs">
       <DependentUpon>CardReminder.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)AnnouncementPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Library\AnnouncementPage.xaml.cs">
       <DependentUpon>AnnouncementPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -52,12 +48,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardAnnouncement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardUnit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\DashItems.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\LessonCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Planning.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\PTV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Reminder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ScheduledReminderCard.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\Lesson.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SwinApp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\WeatherViewModel.cs" />
@@ -118,7 +112,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)AnnouncementPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Library\AnnouncementPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -165,9 +159,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardLesson.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
+    <Folder Include="$(MSBuildThisFileDirectory)Library\Images\" />
   </ItemGroup>
 </Project>

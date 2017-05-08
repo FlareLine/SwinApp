@@ -19,8 +19,13 @@ namespace SwinApp.Components
             _reminder = reminder;
             BindingContext = _reminder;
 			InitializeComponent ();
-            ButtonDeleteReminder.Clicked += ClickDelete;
-		}
+
+            TapGestureRecognizer tap = new TapGestureRecognizer();
+            tap.Tapped += (object sender, EventArgs e) => {
+                DeleteReminder();
+            };
+            ButtonDeleteReminder.GestureRecognizers.Add(tap);
+        }
 
         public void DeleteReminder()
         {

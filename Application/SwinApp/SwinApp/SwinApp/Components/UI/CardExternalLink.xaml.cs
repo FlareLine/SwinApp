@@ -15,12 +15,15 @@ namespace SwinApp.Components.UI
         private Uri _URL;
         private string _title;
         private string _descripion;
+        private string _imageAddress;
 
-		public CardExternalLink (string title, string description, Uri URL)
+
+		public CardExternalLink (string title, string description, Uri URL, string address)
 		{
             _URL = URL;
             _title = title;
             _descripion = description;
+            _imageAddress = address;
             BindingContext = this;
             InitializeComponent ();
 
@@ -29,6 +32,11 @@ namespace SwinApp.Components.UI
                 OpenLink();
             };
             this.GestureRecognizers.Add(tap);
+
+            menuIcon.Source = ImageSource.FromFile(_imageAddress);
+              
+
+            
         }
 
         private void OpenLink()
@@ -39,6 +47,8 @@ namespace SwinApp.Components.UI
         public string Title => _title;
 
         public string Description => _descripion;
+
+        public string ImageAddress => _imageAddress;
 
         private void ClickOpen(object sender, EventArgs e) => OpenLink();
     }

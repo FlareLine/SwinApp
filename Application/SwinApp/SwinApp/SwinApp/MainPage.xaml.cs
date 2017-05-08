@@ -27,7 +27,7 @@ namespace SwinApp
                 {
                     Page = new AnnouncementPage()
                 },
-                new MenuItem("More from Swinburne", "Other apps and links from Swinburne, helping you stay on track")
+                new MenuItem("More from Swinburne", "Other apps and links from Swinburne")
                 {
                     Page = new LinksPage()
                 }

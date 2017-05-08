@@ -129,6 +129,7 @@ namespace SwinApp.Library
         {
             _reminders.Add(reminder);
             await SwinIO<List<Reminder>>.WriteAsync("reminders.json", _reminders);
+            RefreshReminders();
 
             //test code to see if remindrs are being stored, leave here for now in case it is needed later
             //_reminders.Clear();
