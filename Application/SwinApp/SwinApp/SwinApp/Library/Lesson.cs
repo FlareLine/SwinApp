@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace SwinApp.Library
 {
@@ -8,6 +9,7 @@ namespace SwinApp.Library
 	/// </summary>
     public class Lesson : IPlanned
     {
+		// Should this have [JsonIgnore] ?
 		// There are probably more types than this...
 		// The more I type, the less useful I think this enumeration will be
 		enum LessonType
@@ -28,7 +30,7 @@ namespace SwinApp.Library
 		public Lesson(string name, DateTime time, string unitCode, string location, string type) {
 			Name = name;
 			Time = time;
-
+			
 			UnitCode = unitCode;
 			Location = location;
 			Type = type;
@@ -41,13 +43,22 @@ namespace SwinApp.Library
 		public string UnitCode { get => _unitCode; set => _unitCode = value; }
 		public string Location { get => _location; set => _location = value; }
 		public string Type {
-			get => Enum.GetName(typeof(LessonType), _type);
+			get => _type.ToString();
 			set {
 				if (!Enum.TryParse(value, true, out _type)) {
 					_type = LessonType.Lecture;
 				}
 			}
-		}		
+		}
+
+		[JsonIgnore]
+		public string Day { get => Time.DayOfWeek.ToString(); }
+
+		[JsonIgnore]
+		public string TimeOfDay { get => Time.ToString("HH:mm tt"); }
+
+		[JsonIgnore]
+		public string Date { get => Time.ToString("dd/MM/yy"); }
 
 		/// <summary>
 		/// Not yet implemented
