@@ -17,6 +17,7 @@ namespace SwinApp.Components
             BindingContext = _announcment = announcement;
             var expandGesture = new TapGestureRecognizer();
             expandGesture.Tapped += ExpandDetails;
+            TextTitle.GestureRecognizers.Add(expandGesture);
             TextBody.GestureRecognizers.Add(expandGesture);
             var viewAllGesture = new TapGestureRecognizer();
             viewAllGesture.Tapped += ViewAll;
