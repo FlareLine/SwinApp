@@ -55,7 +55,7 @@ namespace SwinApp
 
         private async void ShowContextMenu(object sender, EventArgs e) => await DisplayActionSheet("Add New...", "Close", "", new string[] { "Reminder" });
 
-        private void AssertPlusVisibility(object sender, ScrolledEventArgs e) => ButtonAndroidPlus.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
+        private void AssertPlusVisibility(object sender, ScrolledEventArgs e) => ButtonAndroidPlusFeed.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
     }
     public class MenuItem
     {
