@@ -31,10 +31,10 @@ namespace SwinApp.Library
             throw new NotImplementedException();
         }
 
-        public void UpdateContext(IPlanned planned)
-        {
-            _planned = planned;
-            _card.UpdateContext(_planned);
-        }
+        //public void UpdateContext(IPlanned planned)
+        //{
+        //    _planned = planned;
+        //    _card.UpdateContext(_planned);
+        //}
     }
 }

@@ -207,7 +207,6 @@ namespace SwinApp.Library
             {
                 AddScheduleItemSafe(new LessonCard(l));
             }
-            _upNextCard.UpdateContext(NextPlanned);
         }
 
         static User()
