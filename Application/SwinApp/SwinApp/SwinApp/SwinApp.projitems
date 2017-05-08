@@ -9,6 +9,18 @@
     <Import_RootNamespace>SwinApp</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardExternalLink.xaml.cs">
+      <DependentUpon>CardExternalLink.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardLesson.xaml.cs">
+      <DependentUpon>CardLesson.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardReminder.xaml.cs">
+      <DependentUpon>CardReminder.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)AnnouncementPage.xaml.cs">
       <DependentUpon>AnnouncementPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -18,10 +30,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardBBAnnouncement.xaml.cs">
       <DependentUpon>CardBBAnnouncement.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardTransport.xaml.cs">
-    	<DependentUpon>CardTransport.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardUpNext.xaml.cs">
@@ -36,25 +44,38 @@
       <DependentUpon>DialogBBAnnouncement.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)GoogleMapPage.xaml.cs">
+      <DependentUpon>GoogleMapPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Library\BBAnnouncementCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardAnnouncement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardUnit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\DashItems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\LessonCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Planning.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\PTV.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\TransportLink.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\Reminder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\ScheduledReminderCard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\Lesson.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SwinApp.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\TrainCardViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\WeatherViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\WeatherCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\UpNextCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Weather.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LinksPage.xaml.cs">
+      <DependentUpon>LinksPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)NewReminderPage.xaml.cs">
+      <DependentUpon>NewReminderPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)TransportPage.xaml.cs">
-      <DependentUpon>TransportPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)WeatherPage.xaml.cs">
@@ -114,7 +135,38 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardTransport.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)GoogleMapPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardReminder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)NewReminderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)LinksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardExternalLink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardLesson.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

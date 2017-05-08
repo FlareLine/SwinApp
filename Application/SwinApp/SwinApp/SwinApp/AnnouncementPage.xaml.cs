@@ -13,27 +13,60 @@ using Xamarin.Forms.Xaml;
 namespace SwinApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AnnouncementPage : ContentPage
-	{
+    public partial class AnnouncementPage : ContentPage
+    {
+        private bool _isFiltering = false;
+        private DateTime _filterDate = DateTime.Now.AddYears(1); // Initialize fresh date
         private ObservableCollection<BlackboardAnnouncement> _announcementFiltered = new ObservableCollection<BlackboardAnnouncement>();
-		public AnnouncementPage ()
-		{
-			InitializeComponent ();
-            User.Announcements.ForEach(u => _announcementFiltered.Add(u));
-            ListAnnouncements.ItemsSource = User.Announcements;
-            PickerAnnouncementFilter.Items.Add("All");
-            PickerAnnouncementFilter.SelectedIndex = 0;
-            foreach (var u in User.UnitPairs)
-                PickerAnnouncementFilter.Items.Add(u.Key);
-            PickerAnnouncementFilter.SelectedIndexChanged += ChangeFilter;
+        public AnnouncementPage()
+        {
+            InitializeComponent();
+            ToolbarItems.Add(new ToolbarItem()
+            {
+                Text = "Refresh",
+                Command = new Command(() => RefreshAnnouncements()),
+            });
             ListAnnouncements.ItemTapped += OpenAnnouncement;
+            SwitchDate.Toggled += EnableFilter;
+            DateAnnouncementFilter.DateSelected += ChangeFilter;
         }
 
         private async void OpenAnnouncement(object sender, ItemTappedEventArgs e) => await Navigation.PushAsync(new DialogBBAnnouncement(ListAnnouncements.SelectedItem as BlackboardAnnouncement));
 
-        private void ChangeFilter(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
+            base.OnAppearing();
+            RefreshAnnouncements();
+            ListAnnouncements.ItemsSource = _announcementFiltered;
+        }
 
+        private void EnableFilter(object sender, ToggledEventArgs e) => ApplySwitchFilter();
+        private void ChangeFilter(object sender, EventArgs e) => ApplySwitchFilter();
+        /// <summary>
+        /// Apply filter for dates if selected
+        /// </summary>
+        private void ApplySwitchFilter()
+        {
+            _isFiltering = SwitchDate.IsToggled;
+            if (_isFiltering)
+            {
+                _filterDate = DateAnnouncementFilter.Date;
+                _announcementFiltered = new ObservableCollection<BlackboardAnnouncement>(User.Announcements.Where(a => a.Created.Date == DateAnnouncementFilter.Date));
+            }
+            else
+                _announcementFiltered = new ObservableCollection<BlackboardAnnouncement>(User.Announcements);
+            ListAnnouncements.ItemsSource = _announcementFiltered;
+        }
+        /// <summary>
+        /// Refresh the available announcements to view
+        /// </summary>
+        /// <remarks>
+        /// May be able to merge with ApplySwitchFilter
+        /// </remarks>
+        private void RefreshAnnouncements()
+        {
+            _announcementFiltered.Clear();
+            ApplySwitchFilter();
         }
     }
 }

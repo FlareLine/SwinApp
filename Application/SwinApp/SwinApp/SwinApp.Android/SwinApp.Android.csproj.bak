@@ -17,7 +17,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
     <JavaMaximumHeapSize />
@@ -125,6 +125,17 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\fa_sun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\allocatelogo.png" />
+    <AndroidResource Include="Resources\Drawable\blackboardlogo.png" />
+    <AndroidResource Include="Resources\Drawable\contactslogo.png" />
+    <AndroidResource Include="Resources\Drawable\librarylogo.png" />
+    <AndroidResource Include="Resources\Drawable\newslogo.png" />
+    <AndroidResource Include="Resources\Drawable\safeswinlogo.png" />
+    <AndroidResource Include="Resources\Drawable\ssaalogo.png" />
+    <AndroidResource Include="Resources\Drawable\studyspaceslogo.png" />
+    <AndroidResource Include="Resources\Drawable\swinburnelogo.png" />
   </ItemGroup>
   <Import Project="..\SwinApp\SwinApp.projitems" Label="Shared" Condition="Exists('..\SwinApp\SwinApp.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

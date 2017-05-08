@@ -145,7 +145,18 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\fa_sun.png" />
+    <BundleResource Include="Resources\fa_sun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\allocatelogo.png" />
+    <BundleResource Include="Resources\blackboardlogo.png" />
+    <BundleResource Include="Resources\contactslogo.png" />
+    <BundleResource Include="Resources\librarylogo.png" />
+    <BundleResource Include="Resources\newslogo.png" />
+    <BundleResource Include="Resources\safeswinlogo.png" />
+    <BundleResource Include="Resources\ssaalogo.png" />
+    <BundleResource Include="Resources\studyspaceslogo.png" />
+    <BundleResource Include="Resources\swinburnelogo.png" />
   </ItemGroup>
   <Import Project="..\SwinApp\SwinApp.projitems" Label="Shared" Condition="Exists('..\SwinApp\SwinApp.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

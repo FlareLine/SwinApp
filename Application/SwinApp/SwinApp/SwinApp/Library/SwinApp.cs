@@ -4,6 +4,7 @@ using System.Text;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace SwinApp.Library
 {
@@ -37,5 +38,52 @@ namespace SwinApp.Library
                 return JsonConvert.DeserializeObject<T>(await client.GetStringAsync(endpoint));
             }
         }
+    }
+
+    public static class SwinIO<T>
+    {
+        /// <summary>
+        /// Read a file's contents and serialize
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        public static T Read(string filename)
+        {
+            string filePath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.Personal),
+                    filename);
+            if (File.Exists(filePath))
+                return JsonConvert.DeserializeObject<T>(File.ReadAllText(filePath));
+            else
+                return default(T);
+        }
+        /// <summary>
+        /// Read a file's contents and serialize it asynchronously
+        /// </summary>
+        /// <param name="filename">the name of the you're reading</param>
+        /// <returns></returns>
+        public static async Task<T> ReadAsync(string filename) => await Task.Run(() => Read(filename));
+        /// <summary>
+        /// Write a file's contents as serialized JSON
+        /// </summary>
+        /// <param name="filename">the filename of what you're writing to</param>
+        /// <param name="obj">the object you're saving</param>
+        public static void Write(string filename, T obj)
+        {
+            string filePath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.Personal),
+                filename);
+#if DEBUG
+            filePath.Dump();
+#endif
+            File.WriteAllText(filePath, JsonConvert.SerializeObject(obj));
+        }
+        /// <summary>
+        /// Write a file's content as serialized json asynchronously
+        /// </summary>
+        /// <param name="filename">the filename of what you're writing to</param>
+        /// <param name="obj">the object you're saving</param>
+        /// <returns></returns>
+        public static async Task WriteAsync(string filename, T obj) => await Task.Run(() => Write(filename, obj));
     }
 }
