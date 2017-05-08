@@ -43,10 +43,6 @@ namespace SwinApp.Library
 
         public static List<Reminder> Reminders => _reminders;
 
-        private static List<Lesson> _lessons = new List<Lesson>();
-
-        public static List<Lesson> Lessons => _lessons;
-
         public static Dictionary<string, string> UnitPairs => _units.ToDictionary(u => u.Name, u => u.UUID);
 
         public static async Task AddDashCard(IDashCard card)
@@ -86,43 +82,18 @@ namespace SwinApp.Library
             AddDashItemSafe(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
             LoadBlackboardAnnouncements();
             LoadBlackboardUnits();
-            LoadLessons();
             foreach (BlackboardAnnouncement a in Announcements)
                 AddDashItemSafe(new BBAnnouncementCard(a));
             if (USE_PROTOTYPE_DATA)
             {
                 AddDashItemSafe(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
-                AddDashItemSafe(new UpNextCard(NextPlanned));
+                AddDashItemSafe(new UpNextCard(new SamplePlanned("Test Event", DateTime.Now.AddMinutes(5))));
                 AddDashItemSafe(new WeatherCard());
             }
             //if the file doesn't exist, set _reminders to be an empty List of Reminder
             _reminders = SwinIO<List<Reminder>>.Read("reminders.json") ?? new List<Reminder>();
 
             RefreshReminders();
-        }
-
-        public static void LoadLessons()
-        {
-            if (USE_PROTOTYPE_DATA)
-            {
-                _lessons.Add(new Lesson("Sick Lad 101", DateTime.Now.AddMinutes(30), "LAD0101", "EN420", "Tute"));
-            }
-            foreach (Lesson l in _lessons)
-                AddDashItemSafe(new LessonCard(l));
-        }
-
-        private static IPlanned NextPlanned
-        {
-            get
-            {
-                List<IPlanned> _events = new List<IPlanned>();
-                foreach (var l in _lessons)
-                    _events.Add(l);
-                foreach (var r in _reminders)
-                    _events.Add(r);
-                _events.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
-                return _events[0];
-            }
         }
 
         public static async void WriteReminder(Reminder reminder)
@@ -170,7 +141,7 @@ namespace SwinApp.Library
         }
 
         public static void RemoveScheduleItem(Grid grid)
-        {
+        {          
             int index = -1;
 
             foreach (IDashCard c in _scheduleItems)
