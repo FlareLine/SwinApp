@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SwinApp.Library
 {
-    class TransportLink
+    public class TransportLink
     {
 		public async Task<Departure> GetNextDeparture(int r, int d)
 		{

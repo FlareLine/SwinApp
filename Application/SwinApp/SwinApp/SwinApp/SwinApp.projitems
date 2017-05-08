@@ -41,7 +41,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Library\DashItems.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Planning.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\PTV.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\TransportCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\TransportLink.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SwinApp.cs" />

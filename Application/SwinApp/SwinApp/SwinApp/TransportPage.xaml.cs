@@ -1,4 +1,5 @@
 ﻿using SwinApp.Components;
+using SwinApp.Components.UI;
 using SwinApp.Library;
 using System;
 using System.Collections.Generic;
@@ -15,22 +16,23 @@ namespace SwinApp
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TransportPage : ContentPage
 	{
-		List<TrainCardViewModel> viewModelList = new List<TrainCardViewModel> { new TrainCardViewModel(0, 1), new TrainCardViewModel(1, 0), new TrainCardViewModel(2, 3), new TrainCardViewModel(9, 9) };
-	
 
+		public List<Grid> Trains = new List<Grid>();
+		
         public TransportPage()
         {
-            InitializeComponent();
-			TrainCity.BindingContext = viewModelList[0];
-			TrainAlamein.BindingContext = viewModelList[1];
-			TrainBelgrave.BindingContext = viewModelList[2];
-			TrainLilydale.BindingContext = viewModelList[3];
+			Trains.Add(new CardTransport(0, 1));
+			Trains.Add(new CardTransport(1, 0));
+			Trains.Add(new CardTransport(2, 3));
+			Trains.Add(new CardTransport(9, 9));
+			InitializeComponent();
+			TransportList.ItemsSource = Trains;
 		}
 
 		protected async override void OnAppearing()
 		{
-			foreach (TrainCardViewModel vm in viewModelList)
-				await vm.GetDeparture();
+			foreach (CardTransport card in Trains)
+				card.Update();
 		}
 	}
 }
