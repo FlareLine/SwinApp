@@ -10,7 +10,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <StackLayout x:Name="TransportStack" VerticalOptions="FillAndExpand" HorizontalOptions="Center" Grid.Column="1">
-            <ListView x:Name="TransportList" RowHeight="150" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+            <ListView x:Name="TransportList" RowHeight="300" SeparatorVisibility="None" Margin="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

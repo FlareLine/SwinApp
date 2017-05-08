@@ -18,9 +18,9 @@ namespace SwinApp.Components.UI
 		public CardTransport (int route, int direction)
 		{
 			_viewmodel = new TrainCardViewModel(route, direction);
-			Update();
 			BindingContext = _viewmodel;
 			InitializeComponent ();
+			Update();
 		}
 
 		public async void Update()
