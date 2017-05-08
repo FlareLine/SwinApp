@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwinApp.Components.CardLesson">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Column="0">
+            <Label Text="{Binding Day}"></Label>
+            <Label Text="{Binding TimeOfDay}"></Label>
+            <Label Text="{Binding Date}"></Label>
+        </StackLayout>
+        <Frame Grid.Column="1" BackgroundColor="#E0443E">
+            <StackLayout>
+                <!--What is currently binding Name should display both Name and UnitCode-->
+                <Label Text="{Binding Name}"></Label>
+                <Label Text="{Binding Type}"></Label>
+                <Label Text="{Binding Location}"></Label>
+            </StackLayout>
+        </Frame>
+    </Grid>
+    
+</Grid>
