@@ -18,6 +18,9 @@ namespace SwinApp.Library
         /// <summary>
         /// Used to allow for prototype dummy data
         /// </summary>
+        /// 
+        static bool ClassesLoaded = false;
+
         public const bool USE_PROTOTYPE_DATA = true;
 
         private static ObservableCollection<IDashCard> _dashBoardItems = new ObservableCollection<IDashCard>();
@@ -88,7 +91,15 @@ namespace SwinApp.Library
             AddDashItemSafe(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
             LoadBlackboardAnnouncements();
             LoadBlackboardUnits();
-            LoadLessons();
+
+            if (!ClassesLoaded)
+            {
+                LoadLessons();
+                ClassesLoaded = true;
+            }
+            
+
+
             foreach (BlackboardAnnouncement a in Announcements)
                 AddDashItemSafe(new BBAnnouncementCard(a));
             if (USE_PROTOTYPE_DATA)
@@ -207,6 +218,8 @@ namespace SwinApp.Library
             {
                 AddScheduleItemSafe(new ScheduledReminderCard(r));
             }
+
+
 
         }
 

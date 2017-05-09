@@ -4,13 +4,13 @@
              x:Class="SwinApp.Components.CardLesson">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
-        <StackLayout Grid.Column="0">
-            <Label Text="{Binding Day}"></Label>
-            <Label Text="{Binding TimeOfDay}"></Label>
-            <Label Text="{Binding Date}"></Label>
+        <StackLayout Grid.Column="0" VerticalOptions="Center">
+            <Label Text="{Binding Day}" FontSize="Medium"></Label>
+            <Label Text="{Binding TimeOfDay}" FontSize="Medium"></Label>
+            <Label Text="{Binding Date}" FontSize="Medium"></Label>
         </StackLayout>
         <Frame Grid.Column="1" BackgroundColor="{Binding LessonColor}">
             <Frame.Resources>
@@ -20,9 +20,9 @@
                     </Style>
                 </ResourceDictionary>
             </Frame.Resources>
-            <StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand">
                 <!--What is currently binding Name should display both Name and UnitCode-->
-                <Label Text="{Binding Description}"></Label>
+                <Label Text="{Binding Description}" FontSize="Medium"></Label>
                 <Label Text="{Binding Location}"></Label>
             </StackLayout>
         </Frame>

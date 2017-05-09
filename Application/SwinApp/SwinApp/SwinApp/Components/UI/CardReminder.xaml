@@ -8,7 +8,7 @@
             <ColumnDefinition Width="7*" />
         </Grid.ColumnDefinitions>
     
-        <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout Grid.Column="0" VerticalOptions="Center">
             <Label Text="{Binding Day}" FontSize="Medium"></Label>
             <Label Text="{Binding TimeOfDay}" FontSize="Medium"></Label>
             <Label Text="{Binding DateMonth}" FontSize="Medium"></Label>
