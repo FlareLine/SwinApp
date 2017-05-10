@@ -22,7 +22,10 @@ namespace SwinApp
                 {
                     Page = new GoogleMapPage()
                 },
-                new MenuItem("Transport", "Get home easily"),
+                new MenuItem("Transport", "Get home easily")
+                {
+                    Page = new TransportPage()
+                },
                 new MenuItem("Announcements", "Keep in the loop with all going on at Uni")
                 {
                     Page = new AnnouncementPage()
