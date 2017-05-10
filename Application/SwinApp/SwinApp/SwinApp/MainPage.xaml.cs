@@ -50,8 +50,9 @@ namespace SwinApp
 
         protected override void OnAppearing()
         {
-            NavigationPage.SetHasNavigationBar(this, false);
             base.OnAppearing();
+            if (Device.OS == TargetPlatform.Android)
+                NavigationPage.SetHasNavigationBar(this, false);
             try
             {
                 User.LoadUserData();

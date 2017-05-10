@@ -19,6 +19,7 @@ namespace SwinApp
             MainPage = new NavigationPage(new MainPage())
             {
                 BarBackgroundColor = Color.FromHex("#dc2d27"),
+                BarTextColor = Color.White
             };
 		}
 
