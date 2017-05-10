@@ -27,6 +27,7 @@ namespace SwinApp
             Links.Add(new CardExternalLink("Library", "Get the books you need for that last minute assingment cram", new Uri("http://www.swinburne.edu.au/library/"), "librarylogo.png"));
             Links.Add(new CardExternalLink("Safe@Swin", "Everyone deserves a right to be comfortable at university", new Uri("https://play.google.com/store/apps/details?id=com.cutcom.apparmor.swin&hl=en"), "safeswinlogo.png"));
             Links.Add(new CardExternalLink("SSAA", "There to make your time at Swinburne as enjoyable as it can be", new Uri("https://www.swinburne.edu.au/current-students/life/student-organisations/"), "ssaalogo.png"));
+            Links.Add(new CardExternalLink("3SSR Radio", "The official student media of Swinburne", new Uri("http://3ssr.org/radio/"), "radio.png"));
             InitializeComponent ();
             ListLinks.ItemsSource = Links;
         }
