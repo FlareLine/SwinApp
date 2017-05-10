@@ -33,7 +33,7 @@ namespace SwinApp
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
-
+            ListDashboard.ItemTapped += (send, ev) => ListDashboard.SelectedItem = null;
         }
 
         private void RefreshSchedule()
