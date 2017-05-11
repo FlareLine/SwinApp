@@ -27,5 +27,9 @@ namespace SwinApp.Components.UI
 		{
 			await _viewmodel.GetDeparture();
 		}
-	}
+
+        public string Line => _viewmodel.Line;
+        public string Time => _viewmodel.Time;
+        public string Platform => _viewmodel.Platform;
+    }
 }
