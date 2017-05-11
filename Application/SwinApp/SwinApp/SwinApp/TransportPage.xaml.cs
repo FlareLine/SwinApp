@@ -27,15 +27,19 @@ namespace SwinApp
 			Trains.Add(new CardTransport(9, 9));
 			InitializeComponent();
 			TransportList.ItemsSource = Trains;
+            RefreshButton.Clicked += RefreshTimes();
 		}
 
 		protected async override void OnAppearing()
 		{
 			base.OnAppearing();
-			foreach (CardTransport card in Trains)
-			{
-				card.Update();
-			}
+            RefreshTimes();
 		}
+
+        private void RefreshTimes()
+        {
+            foreach (CardTransport ct in Trains)
+                ct.Update();
+        }
 	}
 }

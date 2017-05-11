@@ -26,5 +26,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
+        <Button x:Name="RefreshButton" Text="Refresh" BorderWidth="1" HorizontalOptions="FillAndExpand" />
     </Grid>
 </ContentPage>
