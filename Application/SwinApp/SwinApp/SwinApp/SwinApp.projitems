@@ -40,6 +40,10 @@
       <DependentUpon>CardUpNext.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardTransport.xaml.cs">
+      <DependentUpon>CardTransport.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardWeather.xaml.cs">
       <DependentUpon>CardWeather.xaml</DependentUpon>
       <SubType>Code</SubType>
