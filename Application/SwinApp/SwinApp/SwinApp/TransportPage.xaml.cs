@@ -27,7 +27,7 @@ namespace SwinApp
 			Trains.Add(new CardTransport(9, 9));
 			InitializeComponent();
 			TransportList.ItemsSource = Trains;
-            RefreshButton.Clicked += RefreshTimes();
+            //RefreshButton.Clicked += RefreshTimes();
 		}
 
 		protected override void OnAppearing()
