@@ -36,7 +36,7 @@ namespace SwinApp
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
-
+            ListDashboard.ItemTapped += (send, ev) => ListDashboard.SelectedItem = null;
         }
 
         private void RefreshSchedule()
@@ -53,8 +53,9 @@ namespace SwinApp
 
         protected override void OnAppearing()
         {
-            NavigationPage.SetHasNavigationBar(this, false);
             base.OnAppearing();
+            if (Device.OS == TargetPlatform.Android)
+                NavigationPage.SetHasNavigationBar(this, false);
             try
             {
                 User.LoadUserData();

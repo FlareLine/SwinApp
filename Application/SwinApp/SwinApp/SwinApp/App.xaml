@@ -10,13 +10,28 @@
             <Color x:Key="SwinburneRed">#dc2d27</Color>
             
             <Style TargetType="TabbedPage">
-                <Setter Property="BarBackgroundColor" Value="{StaticResource SwinburneRed}"/>
+                <!--<Setter Property="BarBackgroundColor" Value="{StaticResource SwinburneRed}"/>-->
+                <Setter Property="BarBackgroundColor">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}" iOS="White"/>
+                    </Setter.Value>
+                </Setter>
                 <Setter Property="BarTextColor" Value="White"/>
             </Style>
             
+            
+            
             <Style TargetType="Frame" x:Key="FrameCard">
-                <Setter Property="HasShadow" Value="True"/>
-                <Setter Property="OutlineColor" Value="{StaticResource SwinburneRed}"/>
+                <Setter Property="HasShadow">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Boolean" Android="true" iOS="false"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="OutlineColor">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}" iOS="White"/>
+                    </Setter.Value>
+                </Setter>
             </Style>
             
             <x:String x:Key="PTV_DEV_ID">3000193</x:String>

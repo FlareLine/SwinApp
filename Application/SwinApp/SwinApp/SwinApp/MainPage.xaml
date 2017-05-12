@@ -4,22 +4,22 @@
             xmlns:local="clr-namespace:SwinApp"
             x:Class="SwinApp.MainPage"
             Title="SwinApp"
-            BarBackgroundColor="{StaticResource SwinburneRed}"
             >
+    <TabbedPage.BarBackgroundColor>
+        <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}"/>
+    </TabbedPage.BarBackgroundColor>
     <!--Dashboard Page-->
     <ContentPage Title="Dashboard">
         <StackLayout x:Name="StackMain" VerticalOptions="FillAndExpand">
-            <!--<Image Source="http://emspace.com.au/sites/emspace.com.au/files/imagecache/client_teaser/content/project/image_small/swinburne-logo.png" />
-            <Label Text="Welcome to SwinApp" 
-               VerticalOptions="Center" 
-               HorizontalOptions="Center" />
-            <Button x:Name="ButtonWeather" Text="View Weather"/>-->
             <ScrollView x:Name="ScrollFeed" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
-                <ListView x:Name="ListDashboard" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+                <ListView x:Name="ListDashboard" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+                    <ListView.RowHeight>
+                        <OnPlatform x:TypeArguments="x:Int32" Android="80" iOS="180"/>
+                    </ListView.RowHeight>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid Padding="0">
+                                <Grid Padding="0" VerticalOptions="CenterAndExpand">
                                     <Frame Style="{StaticResource FrameCard}" Margin="5">
                                         <StackLayout Orientation="Vertical" Padding="1">
                                             <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"/>
