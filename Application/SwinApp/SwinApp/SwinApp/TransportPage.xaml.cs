@@ -29,7 +29,7 @@ namespace SwinApp
 			TransportList.ItemsSource = Trains;
 		}
 
-		protected async override void OnAppearing()
+		protected override void OnAppearing()
 		{
 			base.OnAppearing();
 			foreach (CardTransport card in Trains)
