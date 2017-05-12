@@ -3,28 +3,28 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 x:Class="SwinApp.TransportPage"
 			 Title="Transport Guide">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="4*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <StackLayout x:Name="TransportStack" VerticalOptions="FillAndExpand" HorizontalOptions="Center" Grid.Column="1">
-            <ListView x:Name="TransportList" RowHeight="50" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="0">
-                                <Frame Margin="5">
-                                    <StackLayout Orientation="Vertical" Padding="1">
-                                        <ContentView Content="{Binding Content}" />
-                                    </StackLayout>
-                                </Frame>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-    </Grid>
+    <StackLayout x:Name="TransportStack" VerticalOptions="FillAndExpand"  Grid.Column="1">
+        <ListView x:Name="TransportList" RowHeight="50" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid x:Name="CardGrid">
+                            <Frame Style="{StaticResource FrameCard}" Margin="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding Time}" />
+                                    <Label Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding Line}" />
+                                    <Label Grid.Column="2" Font="Normal" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding Platform}" />
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
