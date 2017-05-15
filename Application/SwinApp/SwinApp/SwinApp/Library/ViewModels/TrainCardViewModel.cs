@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
@@ -112,7 +113,7 @@ namespace SwinApp.Library
             Time = wholeTime;
             Platform = "Platform " + (dep.platform_number ?? "--");
 
-            Console.WriteLine($"XX {Line}, {Platform}, {Time} XX");
+            Debug.WriteLine($"XX {Line}, {Platform}, {Time} XX");
         }
 
 	}

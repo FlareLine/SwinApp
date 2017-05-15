@@ -17,11 +17,11 @@ namespace SwinApp.Components.UI
 
 		public CardTransport (int route, int direction)
 		{
-			_viewmodel = new TrainCardViewModel(route, direction);
-			BindingContext = _viewmodel;
-			InitializeComponent ();
-			Update();
-		}
+            _viewmodel = new TrainCardViewModel(route, direction);
+            BindingContext = _viewmodel;
+            InitializeComponent ();
+            Update();
+        }
 
 		public async void Update()
 		{
