@@ -37,6 +37,15 @@ namespace SwinApp
             };
             ListMenu.ItemTapped += MenuSelection;
             ListDashboard.ItemTapped += (send, ev) => ListDashboard.SelectedItem = null;
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                ToolbarItems.Add(new ToolbarItem()
+                {
+                    Icon = "Plus.png",
+                    Command = new Command(() => AddNewReminder())
+                });
+                PageMore.Title = "Menu";
+            }
         }
 
         private void RefreshSchedule()
