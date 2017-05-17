@@ -9,7 +9,7 @@
         <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}"/>
     </TabbedPage.BarBackgroundColor>
     <!--Dashboard Page-->
-    <ContentPage Title="Dashboard" Icon="Home.png">
+    <ContentPage x:Name="PageDashboard"  Title="Dashboard">
         <StackLayout x:Name="StackMain" VerticalOptions="FillAndExpand">
             <ScrollView x:Name="ScrollFeed" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
                 <ListView x:Name="ListDashboard" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
@@ -41,7 +41,7 @@
         </StackLayout>
     </ContentPage>
     <!--Schedule Page-->
-    <ContentPage Title="Schedule" Icon="Calendar.png">
+    <ContentPage x:Name="PageCalendar"  Title="Schedule" >
         <StackLayout x:Name="StackSchedule" VerticalOptions="FillAndExpand">
             <ScrollView x:Name="ScrollSchedule" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
                 <ListView x:Name="ListSchedule" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
@@ -73,7 +73,7 @@
         </StackLayout>
     </ContentPage>
     <!--Menu/More Page-->
-    <ContentPage x:Name="PageMore" Icon="Menu.png" Title="&#9776;">
+    <ContentPage x:Name="PageMore" Title="&#9776;">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -83,10 +83,6 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
-                                <!--<StackLayout Margin="10,12">
-                                    <Label VerticalOptions="CenterAndExpand" FontSize="Medium" Text="{Binding Title}"/>
-                                    <Label VerticalOptions="End" Text="{Binding Desc}"/>
-                                </StackLayout>-->
                                 <!-- ALTERNATIVE RENDERING, RESULTS IN A ~1 Second Faster Loading Time -->
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="2"/>

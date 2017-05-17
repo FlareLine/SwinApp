@@ -45,6 +45,9 @@ namespace SwinApp
                     Command = new Command(() => AddNewReminder())
                 });
                 PageMore.Title = "Menu";
+                PageMore.Icon = "Menu.png";
+                PageCalendar.Icon = "Calendar.png";
+                PageDashboard.Icon = "Home.png";
             }
         }
 
