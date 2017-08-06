@@ -1,20 +1,46 @@
-﻿using System;
-using System.Linq;
-using System.Xml.Linq;
+<Query Kind="Program" />
 
-namespace SwinApp.Library
+void Main()
 {
-
-    public interface ITimetableData
-    {
-        void Import(string data);
-    }
-
+	string testData = @"<allocation>
+        <subject>
+            <code>CVE40006</code>
+            <description>Infrastructure Design &amp; Project</description>
+        </subject>
+        <campus code=""HAW"" />
+        <activityType>LE1</activityType>
+        <activityCode>01</activityCode>
+        <staff/>
+        <schedule>
+            <startDate>04/08/2014</startDate>
+            <endDate>27/10/2014</endDate>
+            <startTime>12:30</startTime>
+            <duration>180</duration>
+            <daysOfWeek>
+                <weekDay day=""Monday"" hasSchedule=""true""/>
+                <weekDay day=""Tuesday"" hasSchedule=""false""/>
+                <weekDay day=""Wednesday"" hasSchedule=""false""/>
+                <weekDay day=""Thursday"" hasSchedule=""false""/>
+                <weekDay day=""Friday"" hasSchedule=""false""/>
+                <weekDay day=""Saturday"" hasSchedule=""false""/>
+                <weekDay day=""Sunday"" hasSchedule=""false""/>
+            </daysOfWeek>
+            <room code=""HAW_EN413"" />
+            <excludedDates>
+                <exDate start=""15/09/2014"" end=""15/09/2014"" />
+            </excludedDates>
+        </schedule>
+    </allocation>";
+	Allocation testAlloc = new Allocation();
+	testAlloc.Import(testData);
+	testAlloc.Dump();
+	}
+// Define other methods and classes here
     /// <summary>
     /// The standard element of a Timetable payload, is basically the allocated session
     /// such as a tutorial, lecture, workshop etc...
     /// </summary>
-    public class Allocation : ITimetableData
+    public class Allocation
     {
         public Subject Subject { get; set; }
 
@@ -27,8 +53,8 @@ namespace SwinApp.Library
         public Staff Staff { get; set; }
 
         public Schedule Schedule { get; set; }
-
-        public void Import(string data)
+		
+		public void Import(string data)
         {
             XDocument doc = XDocument.Parse(data);
             ActivityCode = doc.Root.Element("activityCode").Value;
@@ -103,7 +129,7 @@ namespace SwinApp.Library
     {
         public string Code { get; set; }
     }
-
+    
     /// <summary>
     /// The excluded date details for an allocation
     /// </summary>
@@ -113,4 +139,3 @@ namespace SwinApp.Library
 
         public DateTime End { get; set; }
     }
-}
