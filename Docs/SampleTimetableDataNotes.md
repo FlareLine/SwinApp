@@ -12,3 +12,30 @@
     - At most will contain 2 children
         - `<code>`: the Subject code
         - `<description>`: the Subject description
+- `<campus />`
+    - Self closing, has a single attribute of the campus code (`<code>`)
+        - Will probably need to enumerate this value
+- `<activityType>`
+    - The type of allocation, the value enclosed in the tags
+    - This will need to be enumerated
+- `<activityCode>`
+    - The code for the activity
+    - Not sure what they mean
+- `<staff />`
+    - In the example, this was blank and self closing
+- `<schedule>`
+    - Very weirdly structured, basically has the following notable tags
+    - `<startDate>` and `<endDate>`
+        - Both date values, contained within the tags
+    - `<startTime>`
+        - 24 hour starting time for the allocation, contained within the tags
+    - `<duration>`
+        - An integer value of the allocation's length in minutes
+    - `<daysOfWeek>`
+        - A collection of `<weekDay>` elements, these elements having two attributes
+            - `day` (the name of the day)
+            - `hasSchedule` (a boolean value dictating whether it has a schedule)
+    - `<room />`
+        - The room code of the allocation is kept in this self closing tag under the attribute `code`
+    - `<excludedDates>`
+        - A collection of `<exDate>` tags, containing `start` and `end` attributes
