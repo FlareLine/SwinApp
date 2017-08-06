@@ -5,6 +5,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.IO;
+using System.Xml.Linq;
 
 namespace SwinApp.Library
 {
@@ -85,5 +86,18 @@ namespace SwinApp.Library
         /// <param name="obj">the object you're saving</param>
         /// <returns></returns>
         public static async Task WriteAsync(string filename, T obj) => await Task.Run(() => Write(filename, obj));
+    }
+
+    /// <summary>
+    /// XML Extension Methods for making my life less annoying
+    /// </summary>
+    public static class SwinXML
+    {
+        /// <summary>
+        /// Easily retrieve the value of an element as a string, if no value is a defined then an attribute with the same name is returned
+        /// </summary>
+        /// <param name="name">The name of the element</param>
+        /// <returns></returns>
+        public static string ElementValue(this XElement obj, string name) => obj.Element(name)?.Value ?? obj.Attribute(name)?.Value;
     }
 }

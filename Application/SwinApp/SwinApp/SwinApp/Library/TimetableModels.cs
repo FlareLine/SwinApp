@@ -7,7 +7,7 @@ namespace SwinApp.Library
 
     public interface ITimetableData
     {
-        void Import(string data);
+        void Import(string data, XDocument xdoc = null);
     }
 
     /// <summary>
@@ -28,29 +28,47 @@ namespace SwinApp.Library
 
         public Schedule Schedule { get; set; }
 
-        public void Import(string data)
+        public void Import(string data, XDocument xdoc = null)
         {
-            XDocument doc = XDocument.Parse(data);
-            ActivityCode = doc.Root.Element("activityCode").Value;
+            XDocument doc = xdoc ?? XDocument.Parse(data);
+            ActivityCode = doc.Root.ElementValue("activityCode");
+            Subject = new Subject();
+            Subject.Import(data, doc);
+            Campus = new Campus();
+            Campus.Import(data, doc);
         }
     }
 
     /// <summary>
     /// The subject details of an allocation, including code and description
     /// </summary>
-    public class Subject
+    public class Subject : ITimetableData
     {
         public string Code { get; set; }
 
         public string Description { get; set; }
+
+        public void Import(string data, XDocument xdoc = null)
+        {
+            XDocument doc = xdoc ?? XDocument.Parse(data);
+            XElement node = doc.Root.Element("subject");
+            Code = node.ElementValue("code");
+            Description = node.ElementValue("description");
+        }
     }
 
     /// <summary>
     /// Campus details such as the code
     /// </summary>
-    public class Campus
+    public class Campus : ITimetableData
     {
         public string Code { get; set; }
+
+        public void Import(string data, XDocument xdoc)
+        {
+            XDocument doc = xdoc ?? XDocument.Parse(data);
+            Code = doc.Root.Element("campus").ElementValue("code");
+        }
     }
 
     /// <summary>
@@ -68,7 +86,7 @@ namespace SwinApp.Library
     /// Schedule contains data relating to the time of an allocation such as the start/end time,
     /// allocated day/s, duration and excluded dates
     /// </summary>
-    public class Schedule
+    public class Schedule : ITimetableData
     {
         public DateTime StartDate { get; set; }
 
@@ -83,6 +101,31 @@ namespace SwinApp.Library
         public Room Room { get; set; }
 
         public ExDate[] ExcludedDates { get; set; }
+
+        public void Import(string data, XDocument xdoc)
+        {
+            XDocument doc = xdoc ?? XDocument.Parse(data);
+            XElement node = xdoc.Element("schedule");
+            StartDate = DateTime.Parse(node.ElementValue("startDate"));
+            EndDate = DateTime.Parse(node.ElementValue("endDate"));
+            StartTime = DateTime.Parse(node.ElementValue("startTime"));
+            try
+            {
+                Duration = Int32.Parse(node.ElementValue("duration"));
+            }
+            catch
+            {
+                Duration = -1;
+            }
+            // TODO: Properly Implement
+            DaysOfWeek = new WeekDay[7];
+            ExcludedDates = new ExDate[0];
+
+            Room = new Room()
+            {
+                Code = node.Element("room").ElementValue("code")
+            };
+        }
     }
 
     /// <summary>

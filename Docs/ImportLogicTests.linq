@@ -35,6 +35,15 @@ void Main()
 	testAlloc.Import(testData);
 	testAlloc.Dump();
 	}
+	public static class SwinXML
+	{
+	    /// <summary>
+        /// Easily retrieve the value of an element as a string, if no value is a defined then an attribute with the same name is returned
+        /// </summary>
+        /// <param name="name">The name of the element</param>
+        /// <returns></returns>
+        public static string ElementValue(this XElement obj, string name) => obj.Element(name)?.Value ?? obj.Attribute(name)?.Value;
+}
 // Define other methods and classes here
     /// <summary>
     /// The standard element of a Timetable payload, is basically the allocated session
@@ -57,7 +66,9 @@ void Main()
 		public void Import(string data)
         {
             XDocument doc = XDocument.Parse(data);
-            ActivityCode = doc.Root.Element("activityCode").Value;
+            ActivityCode = doc.Root.ElementValue("activityCode");
+			Subject = new Subject();
+			Subject.Import(data);
         }
     }
 
@@ -69,6 +80,14 @@ void Main()
         public string Code { get; set; }
 
         public string Description { get; set; }
+		
+		public void Import(string data)
+		{
+			XDocument doc = XDocument.Parse(data);
+			XElement node = doc.Root.Element("subject");
+			Code = node.ElementValue("code");
+			Description = node.ElementValue("description");
+		}
     }
 
     /// <summary>
