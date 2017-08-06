@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -32,10 +33,13 @@ namespace SwinApp.Library
         {
             XDocument doc = xdoc ?? XDocument.Parse(data);
             ActivityCode = doc.Root.ElementValue("activityCode");
+            ActivityType = doc.Root.ElementValue("activityType");
             Subject = new Subject();
             Subject.Import(data, doc);
             Campus = new Campus();
             Campus.Import(data, doc);
+            Schedule = new Schedule();
+            Schedule.Import(data, doc);
         }
     }
 
@@ -105,9 +109,9 @@ namespace SwinApp.Library
         public void Import(string data, XDocument xdoc)
         {
             XDocument doc = xdoc ?? XDocument.Parse(data);
-            XElement node = xdoc.Element("schedule");
-            StartDate = DateTime.Parse(node.ElementValue("startDate"));
-            EndDate = DateTime.Parse(node.ElementValue("endDate"));
+            XElement node = xdoc.Root.Element("schedule");
+            StartDate = DateTime.ParseExact(node.ElementValue("startDate"), "dd/MM/yyyy", CultureInfo.GetCultureInfo("en-AU"));
+            EndDate = DateTime.ParseExact(node.ElementValue("endDate"), "dd/MM/yyyy", CultureInfo.GetCultureInfo("en-AU"));
             StartTime = DateTime.Parse(node.ElementValue("startTime"));
             try
             {
