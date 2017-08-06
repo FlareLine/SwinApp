@@ -64,8 +64,6 @@ namespace SwinApp.Library
 		public int Route { get; set; }
 		public int Direction { get; set; }
 
-		public event PropertyChangedEventHandler PropertyChanged;
-
 		TransportLink tl = new TransportLink();
 
 		public TrainCardViewModel(int r, int d)

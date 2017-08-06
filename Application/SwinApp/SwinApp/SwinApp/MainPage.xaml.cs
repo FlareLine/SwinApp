@@ -24,7 +24,7 @@ namespace SwinApp
                 },
                 new MenuItem("Transport", "Get home easily")
                 {
-                    Page = new TransportPage()
+                    Page = new TransportationPage()
                 },
                 new MenuItem("Announcements", "Keep in the loop with all going on at Uni")
                 {

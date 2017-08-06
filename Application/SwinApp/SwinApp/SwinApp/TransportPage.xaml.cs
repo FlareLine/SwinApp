@@ -4,6 +4,7 @@ using SwinApp.Library;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,19 +28,21 @@ namespace SwinApp
 			Trains.Add(new CardTransport(9, 9));
 			InitializeComponent();
 			TransportList.ItemsSource = Trains;
-            //RefreshButton.Clicked += RefreshTimes();
 		}
 
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-            RefreshTimes();
+			RefreshTimes();
+			TransportList.ItemsSource = Trains;
+			foreach(CardTransport ct in Trains)
+				ct.BindingContext = new TrainCardViewModel(ct._viewmodel.Route, ct._viewmodel.Direction);
 		}
 
         private void RefreshTimes()
         {
-            foreach (CardTransport ct in Trains)
-                ct.Update();
-        }
+			foreach (CardTransport ct in Trains)
+				ct.Update();
+		}
 	}
 }

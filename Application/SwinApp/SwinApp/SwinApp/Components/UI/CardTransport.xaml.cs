@@ -1,8 +1,10 @@
 ﻿using SwinApp.Library;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -14,6 +16,11 @@ namespace SwinApp.Components.UI
 	public partial class CardTransport : Grid
 	{
 		public TrainCardViewModel _viewmodel;
+		public string[] _information = new string[3];
+
+		public string Line => _information[0];
+		public string Time => _information[1];
+		public string Platform => _information[2];
 
 		public CardTransport (int route, int direction)
 		{
@@ -26,10 +33,13 @@ namespace SwinApp.Components.UI
 		public async void Update()
 		{
 			await _viewmodel.GetDeparture();
+			_information = new string[3] { _viewmodel.Line, _viewmodel.Time, _viewmodel.Platform };
 		}
 
-        public string Line => _viewmodel.Line;
-        public string Time => _viewmodel.Time;
-        public string Platform => _viewmodel.Platform;
+		public string[] Info {
+			get {
+				return _information;
+			}
+		}
     }
 }
