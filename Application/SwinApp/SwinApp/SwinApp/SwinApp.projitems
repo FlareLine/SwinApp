@@ -52,6 +52,7 @@
       <DependentUpon>GoogleMapPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Library\INotification.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\TimetableModels.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\BBAnnouncementCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\BlackboardAnnouncement.cs" />

@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using SwinApp.Library;
 
 namespace SwinApp.Droid
 {
@@ -26,5 +27,18 @@ namespace SwinApp.Droid
 			LoadApplication (new SwinApp.App ());
 		}
 	}
+
+    public class INotificationImplementation : INotification
+    {
+        public void ShowTextNotification(string text)
+        {
+            Notification.Builder builder = new Notification.Builder(Application.Context)
+                .SetContentTitle("SwinApp")
+                .SetContentText(text)
+                .SetSmallIcon(Resource.Drawable.ic_play_dark);
+
+            Notification notification = builder.Build();
+        }
+    }
 }
 
