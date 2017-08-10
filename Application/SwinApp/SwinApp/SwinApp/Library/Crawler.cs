@@ -10,18 +10,23 @@ namespace SwinApp.Library
 	public static class Crawler
 	{
 
+		/// <summary>
+		/// Gets the events of the specified year
+		/// </summary>
+		/// <param name="year">The year to check for events</param>
+		/// <returns></returns>
 		public static object GetYearEvents(string year)
 		{
 			throw new NotImplementedException();
 		}
 
 		/// <summary>
-		/// Crawls the academic calendar page to retreive the list of events and their dates
+		/// Crawls the academic calendar page to find academic calendar information and parses this data
 		/// </summary>
 		/// <param name="year">The year to retrieve the data from</param>
 		/// <remarks>The 'year' parameter exists only for compatibility purposes</remarks>
-		/// <returns>a JSON object of the events</returns>
-		static object GetCalendarData(string year)
+		/// <returns>String containing months, and the dates and information about each month's events</returns>
+		static object GetAndParseData(string year)
 		{
 			throw new NotImplementedException();
 		}
