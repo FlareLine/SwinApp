@@ -91,7 +91,7 @@ namespace SwinApp.Library
         public string platform_number { get; set; }
 
         /// <summary>
-        /// Creates a new <see cref="T:Departure"/>with the specified parameters.
+        /// Creates a new <see cref="T:Departure"/> with the specified parameters.
         /// </summary>
         /// <param name="r">The route the train is travelling on</param>
         /// <param name="d">The direction of train towards {station id}</param>
