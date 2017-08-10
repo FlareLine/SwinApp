@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace SwinApp.Library
 {
@@ -14,10 +16,10 @@ namespace SwinApp.Library
 		/// Gets the events of the specified year
 		/// </summary>
 		/// <param name="year">The year to check for events</param>
-		/// <returns></returns>
-		public static object GetYearEvents(string year)
+		/// <returns>A Calendar event containing all the year's event</returns>
+		public async static Task<Calendar> GetYearEvents(string year)
 		{
-			throw new NotImplementedException();
+			return ParseData(await GetData(year));
 		}
 
 		/// <summary>
@@ -26,7 +28,20 @@ namespace SwinApp.Library
 		/// <param name="year">The year to retrieve the data from</param>
 		/// <remarks>The 'year' parameter exists only for compatibility purposes</remarks>
 		/// <returns>String containing months, and the dates and information about each month's events</returns>
-		static object GetAndParseData(string year)
+		static async Task<string> GetData(string year)
+		{
+			using (var client = new HttpClient())
+			{
+				return await client.GetStringAsync($"https://www.swinburne.edu.au/student-administration/calendar/?year={year}");
+			}
+		}
+
+		/// <summary>
+		/// Parses the string received from the page into a readable object
+		/// </summary>
+		/// <param name="data">the data string</param>
+		/// <returns>Parsed data string in a Calendar object</returns>
+		static Calendar ParseData(string data)
 		{
 			throw new NotImplementedException();
 		}
