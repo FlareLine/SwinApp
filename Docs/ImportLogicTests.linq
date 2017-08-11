@@ -69,7 +69,6 @@ void Main()
 	{
 		Allocation temp = new Allocation();
 		temp.Import(a.ToString());
-		temp.Dump();
 	}	
 //	Allocation testAlloc = new Allocation();
 //	testAlloc.Import(testData);
@@ -179,6 +178,7 @@ void Main()
         public string Day { get; set; }
 
         public bool HasSchedule { get; set; }
+		
     }
 
     /// <summary>

@@ -15,9 +15,12 @@ namespace SwinApp
         public MainPage()
         {
             InitializeComponent();
-            ListMenu.ItemsSource = new List<MenuItem>
+            ListMenu.ItemsSource = new List<MenuItem>()
             {
-                new MenuItem("Timetable", "See your classes"),
+                new MenuItem("Timetable", "See your classes")
+                {
+                    Page = new TimetablePage()
+                },
                 new MenuItem("Campus Map", "Find your way around")
                 {
                     Page = new GoogleMapPage()

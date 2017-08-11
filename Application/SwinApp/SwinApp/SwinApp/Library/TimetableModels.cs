@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Xml.Linq;
@@ -121,8 +122,12 @@ namespace SwinApp.Library
             {
                 Duration = -1;
             }
-            // TODO: Properly Implement
-            DaysOfWeek = new WeekDay[7];
+            var tempDayList = new List<WeekDay>();
+            foreach (var w in node.Elements("daysOfWeek"))
+            {
+                WeekDay wRes = new WeekDay();
+                wRes.Import(w.ToString());
+            }
             ExcludedDates = new ExDate[0];
 
             Room = new Room()
@@ -136,11 +141,26 @@ namespace SwinApp.Library
     /// Used by schedule, WeekDay is used to note which day of the week the allocation takes
     /// place on.
     /// </summary>
-    public class WeekDay
+    public class WeekDay : ITimetableData
     {
         public string Day { get; set; }
 
         public bool HasSchedule { get; set; }
+
+        public void Import(string data, XDocument xdoc = null)
+        {
+            XDocument doc = xdoc ?? XDocument.Load(data);
+            XElement element = doc.Root;
+            Day = element.ElementValue("day");
+            try
+            {
+                HasSchedule = Boolean.Parse(element.ElementValue("hasSchedule"));
+            }
+            catch
+            {
+                HasSchedule = false;
+            }
+        }
     }
 
     /// <summary>

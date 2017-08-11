@@ -137,12 +137,13 @@ namespace SwinApp.Library
         {
             if (USE_PROTOTYPE_DATA)
             {
-                _lessons = new List<Lesson>();
-                _lessons.Add(new Lesson("Epic Lecture", DateTime.Today.AddHours(1), "EP1010", "EN1001", "Lecture"));
-                _lessons.Add(new Lesson("Awesome Tute", DateTime.Today.AddHours(1.5), "AT1234", "ATC0420", "Tutorial", Color.FromHex("#E0B4E8")));
-                _lessons.Add(new Lesson("Powerful Tute", DateTime.Today.AddMinutes(40), "AT1235", "ATC0430", "Tutorial", Color.FromHex("#6E9685")));
-                _lessons.Add(new Lesson("Inspirational Lecture", DateTime.Today.AddHours(3.5), "AT1234", "ATC0420", "Tutorial", Color.FromHex("#818BFF")));
-
+                _lessons = new List<Lesson>
+                {
+                    new Lesson("Epic Lecture", DateTime.Today.AddHours(1), "EP1010", "EN1001", "Lecture"),
+                    new Lesson("Awesome Tute", DateTime.Today.AddHours(1.5), "AT1234", "ATC0420", "Tutorial", Color.FromHex("#E0B4E8")),
+                    new Lesson("Powerful Tute", DateTime.Today.AddMinutes(40), "AT1235", "ATC0430", "Tutorial", Color.FromHex("#6E9685")),
+                    new Lesson("Inspirational Lecture", DateTime.Today.AddHours(3.5), "AT1234", "ATC0420", "Tutorial", Color.FromHex("#818BFF"))
+                };
             }
         }
 
