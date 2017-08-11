@@ -64,6 +64,7 @@ namespace SwinApp.Library
         {
             await Task.Run(() => _dashBoardItems.Add(card));
         }
+
         private static void LoadBlackboardAnnouncements()
         {
             _announcements = new List<BlackboardAnnouncement>();
@@ -78,6 +79,7 @@ namespace SwinApp.Library
                 });
             }
         }
+
         private static void LoadBlackboardUnits()
         {
             _units = new List<BlackboardUnit>();
@@ -91,6 +93,7 @@ namespace SwinApp.Library
                 });
             }
         }
+
         public static void LoadUserData()
         {
             ClearDashItemsSafe();
@@ -113,6 +116,7 @@ namespace SwinApp.Library
 
             RefreshSchedule();
         }
+
         private static IPlanned NextPlanned
         {
             get
@@ -180,7 +184,10 @@ namespace SwinApp.Library
 
         public static void AddScheduleItemSafe(IDashCard card) => Device.BeginInvokeOnMainThread(() => _scheduleItems.Add(card));
 
-        //Causes unhanded exception
+        /// <summary>
+        /// Causes unhanded exception
+        /// </summary>
+        /// <param name="cardToDelete"></param>
         public static void RemoveDashItemSafe(IDashCard cardToDelete)
         {
             _dashBoardItems.Remove(cardToDelete);
@@ -200,12 +207,14 @@ namespace SwinApp.Library
                 _scheduleItems.RemoveAt(index);
         }
 
-        //clear reminders, re add from array
+        /// <summary>
+        /// Clear reminders, re-add from array
+        /// </summary>
         public static void RefreshSchedule()
         {
             _scheduleItems.Clear();
 
-            //sort by date
+            
             _reminders.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
             _lessons.Sort((l1, l2) => DateTime.Compare(l1.Time, l2.Time));
 
