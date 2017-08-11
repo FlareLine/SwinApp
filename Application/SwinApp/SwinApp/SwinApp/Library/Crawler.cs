@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -30,9 +31,9 @@ namespace SwinApp.Library
 		/// <returns>String containing months, and the dates and information about each month's events</returns>
 		static async Task<string> GetData(string year)
 		{
-			using (var client = new HttpClient())
+            using (var client = new HttpClient())
 			{
-				return await client.GetStringAsync($"https://www.swinburne.edu.au/student-administration/calendar/?year={year}");
+				return await client.GetStringAsync($"http://www.swinburne.edu.au/student-administration/calendar/?year={year}");
 			}
 		}
 
@@ -43,7 +44,13 @@ namespace SwinApp.Library
 		/// <returns>Parsed data string in a Calendar object</returns>
 		static Calendar ParseData(string data)
 		{
-			throw new NotImplementedException();
+            return new Calendar()
+            {
+                Events = new List<CalendarEvent>()
+                {
+                    new CalendarEvent("thisisthedate", "thisisthename", data)
+                }
+            };
 		}
 	}
 

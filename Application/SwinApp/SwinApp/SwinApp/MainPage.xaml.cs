@@ -30,6 +30,10 @@ namespace SwinApp
                 {
                     Page = new AnnouncementPage()
                 },
+                new MenuItem("Calendar", "View the Swinburne Academic Calendar")
+                {
+                    Page = new CalendarPage()
+                },
                 new MenuItem("More from Swinburne", "Other apps and links from Swinburne")
                 {
                     Page = new LinksPage()
