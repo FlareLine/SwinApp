@@ -5,8 +5,10 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using System.Xml.Linq;
 using System.Threading;
 using Xamarin.Forms;
+using System.Net.Http;
 
 namespace SwinApp.Library
 {
@@ -46,6 +48,13 @@ namespace SwinApp.Library
         public static List<Lesson> Lessons => _lessons;
 
         public static List<Reminder> Reminders => _reminders;
+
+        private static List<Allocation> _allocations = new List<Allocation>();
+
+        public static List<Allocation> Allocations => _allocations;
+
+        public static List<Allocation> CurrentSemesterAllocations => _allocations
+                .Where(a => a.Schedule.StartDate < DateTime.Today && a.Schedule.EndDate > DateTime.Today).ToList();
 
         public static Dictionary<string, string> UnitPairs => _units.ToDictionary(u => u.Name, u => u.UUID);
 
@@ -89,6 +98,7 @@ namespace SwinApp.Library
             LoadBlackboardAnnouncements();
             LoadBlackboardUnits();
             LoadLessons();
+            LoadUserTimetable();
             foreach (BlackboardAnnouncement a in Announcements)
                 AddDashItemSafe(new BBAnnouncementCard(a));
             if (USE_PROTOTYPE_DATA)
@@ -209,6 +219,41 @@ namespace SwinApp.Library
                 AddScheduleItemSafe(new ScheduledReminderCard(r));
             }
 
+        }
+        /// <summary>
+        /// Asynchronously load the user timetable data, assign it to the User's
+        /// Allocation variable
+        /// </summary>
+        /// <returns></returns>
+        public static async void LoadUserTimetable()
+        {
+            const bool USE_REAL_DATA = false;
+            const string TEST_ENDPOINT = USE_REAL_DATA ? "https://api-sit-proxy.swin.edu.au/v2/timetable/student/101091995" : "https://gist.githubusercontent.com/pielegacy/a0e81e05118f8eefb38283419cee1539/raw/9d716456c6331e5d587acd16cc5ef44fdfe3f920/alex-timetable-payload.xml";
+            using (HttpClient client = new HttpClient())
+            {
+                string res = await client.GetStringAsync(TEST_ENDPOINT);
+                _allocations = ProcessTimetableDump(res);
+            }
+        }
+
+        /// <summary>
+        /// Using XMLDocument process the timetable payload into usable
+        /// Allocation objects
+        /// </summary>
+        /// <param name="data">The XML string</param>
+        /// <returns></returns>
+        private static List<Allocation> ProcessTimetableDump(string data)
+        {
+            XDocument doc = XDocument.Parse(data);
+            List<Allocation> list = new List<Allocation>();
+            var allocations = doc.Root.Elements("allocation");
+            foreach (var a in allocations)
+            {
+                Allocation temp = new Allocation();
+                temp.Import(a.ToString());
+                list.Add(temp);
+            }
+            return list;
         }
 
         static User()

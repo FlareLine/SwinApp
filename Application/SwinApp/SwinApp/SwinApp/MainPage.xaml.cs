@@ -35,41 +35,6 @@ namespace SwinApp
                     Page = new LinksPage()
                 }
             };
-#if DEBUG
-            // TODO: REMOVE
-            string testData = @"<allocation>
-        <subject>
-            <code>CVE40006</code>
-            <description>Infrastructure Design &amp; Project</description>
-        </subject>
-        <campus code=""HAW"" />
-        <activityType>LE1</activityType>
-        <activityCode>01</activityCode>
-        <staff/>
-        <schedule>
-            <startDate>04/08/2014</startDate>
-            <endDate>27/10/2014</endDate>
-            <startTime>12:30</startTime>
-            <duration>180</duration>
-            <daysOfWeek>
-                <weekDay day=""Monday"" hasSchedule=""true""/>
-                <weekDay day=""Tuesday"" hasSchedule=""false""/>
-                <weekDay day=""Wednesday"" hasSchedule=""false""/>
-                <weekDay day=""Thursday"" hasSchedule=""false""/>
-                <weekDay day=""Friday"" hasSchedule=""false""/>
-                <weekDay day=""Saturday"" hasSchedule=""false""/>
-                <weekDay day=""Sunday"" hasSchedule=""false""/>
-            </daysOfWeek>
-            <room code=""HAW_EN413"" />
-            <excludedDates>
-                <exDate start=""15/09/2014"" end=""15/09/2014"" />
-            </excludedDates>
-        </schedule>
-    </allocation>";
-
-            Allocation testAllocation = new Allocation();
-            testAllocation.Import(testData);
-#endif
             ListMenu.ItemTapped += MenuSelection;
             ListDashboard.ItemTapped += (send, ev) => ListDashboard.SelectedItem = null;
             if (Device.OS == TargetPlatform.iOS)

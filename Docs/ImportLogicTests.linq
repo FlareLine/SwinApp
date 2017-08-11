@@ -2,7 +2,9 @@
 
 void Main()
 {
-	string testData = @"<allocation>
+	string testData = @"
+	<ns3:timetable xmlns:ns2=""http://www.w3.org/2005/Atom"" xmlns:ns3=""http://swin.edu.au/esb/timetable/timetableservice/v2/xsd"">
+	<allocation>
         <subject>
             <code>CVE40006</code>
             <description>Infrastructure Design &amp; Project</description>
@@ -30,10 +32,48 @@ void Main()
                 <exDate start=""15/09/2014"" end=""15/09/2014"" />
             </excludedDates>
         </schedule>
-    </allocation>";
-	Allocation testAlloc = new Allocation();
-	testAlloc.Import(testData);
-	testAlloc.Dump();
+    </allocation>
+	<allocation>
+        <subject>
+            <code>CVE40006</code>
+            <description>Infrastructudre Design &amp; Project</description>
+        </subject>
+        <campus code=""HAW"" />
+        <activityType>LE1</activityType>
+        <activityCode>01</activityCode>
+        <staff/>
+        <schedule>
+            <startDate>04/08/2014</startDate>
+            <endDate>27/10/2014</endDate>
+            <startTime>12:30</startTime>
+            <duration>180</duration>
+            <daysOfWeek>
+                <weekDay day=""Monday"" hasSchedule=""true""/>
+                <weekDay day=""Tuesday"" hasSchedule=""false""/>
+                <weekDay day=""Wednesday"" hasSchedule=""false""/>
+                <weekDay day=""Thursday"" hasSchedule=""false""/>
+                <weekDay day=""Friday"" hasSchedule=""false""/>
+                <weekDay day=""Saturday"" hasSchedule=""false""/>
+                <weekDay day=""Sunday"" hasSchedule=""false""/>
+            </daysOfWeek>
+            <room code=""HAW_EN413"" />
+            <excludedDates>
+                <exDate start=""15/09/2014"" end=""15/09/2014"" />
+            </excludedDates>
+        </schedule>
+    </allocation>
+	</ns3:timetable>";
+	XDocument doc = XDocument.Parse(testData);
+	var allocations = doc.Root.Elements("allocation");
+	foreach (var a in allocations)
+	{
+		Allocation temp = new Allocation();
+		temp.Import(a.ToString());
+		temp.Dump();
+	}	
+//	Allocation testAlloc = new Allocation();
+//	testAlloc.Import(testData);
+//	testAlloc.Dump();
 	}
 	public static class SwinXML
 	{
