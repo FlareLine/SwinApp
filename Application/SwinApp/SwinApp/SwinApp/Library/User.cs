@@ -229,6 +229,7 @@ namespace SwinApp.Library
             }
 
         }
+
         /// <summary>
         /// Asynchronously load the user timetable data, assign it to the User's
         /// Allocation variable
