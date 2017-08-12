@@ -149,7 +149,7 @@ namespace SwinApp.Library
 
         public void Import(string data, XDocument xdoc = null)
         {
-            XDocument doc = xdoc ?? XDocument.Load(data);
+            XDocument doc = xdoc ?? XDocument.Parse(data);
             XElement element = doc.Root;
             Day = element.ElementValue("day");
             try

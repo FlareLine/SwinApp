@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SwinApp.Library;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,14 @@ namespace SwinApp
 		{
 			InitializeComponent ();
 		}
-	}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (ListAllocations.ItemsSource == null)
+                ListAllocations.ItemsSource = User.CurrentSemesterAllocations
+                    .Select(a => new AllocationViewModel(a));
+        }
+    }
 }
