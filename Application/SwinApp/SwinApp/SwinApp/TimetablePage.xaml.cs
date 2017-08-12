@@ -18,6 +18,9 @@ namespace SwinApp
 			InitializeComponent ();
 		}
 
+        /// <summary>
+        /// On the first appearance of the timetable page, load the Current's semester allocations into view
+        /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
