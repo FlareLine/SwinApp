@@ -12,7 +12,7 @@
             <Label Text="{Binding TimeOfDay}"></Label>
             <Label Text="{Binding Date}"></Label>
         </StackLayout>-->
-        <Frame Grid.Column="1">
+        <Frame Grid.Column="1" BackgroundColor="Red">
             <Frame.Resources>
                 <ResourceDictionary>
                     <Style TargetType="Label">
@@ -24,6 +24,7 @@
                 <!--What is currently binding Name should display both Name and UnitCode-->
                 <Label Text="{Binding Description}"></Label>
                 <Label Text="{Binding Code}"></Label>
+                <Button Text="More..."></Button>
             </StackLayout>
         </Frame>
     </Grid>

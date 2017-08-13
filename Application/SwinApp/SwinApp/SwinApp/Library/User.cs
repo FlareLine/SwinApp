@@ -257,7 +257,7 @@ namespace SwinApp.Library
         /// </summary>
         private static void PopulateTimetableCards()
         {
-            TimetableCards = new ObservableCollection<AllocationCard>(_allocations
+            TimetableCards = new ObservableCollection<AllocationCard>(CurrentSemesterAllocations
                 .Select(a => new AllocationCard(a)));
         }
 
