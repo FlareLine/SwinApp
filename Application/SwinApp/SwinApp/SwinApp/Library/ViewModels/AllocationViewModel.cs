@@ -13,6 +13,8 @@ namespace SwinApp.Library
 
         public string Description => _allocation.Subject.Description ?? "Invalid Allocation";
 
+        public string Code => _allocation.Subject.Code ?? "Invalid Allocation";
+
         public AllocationViewModel(Allocation allocation)
         {
             _allocation = allocation;

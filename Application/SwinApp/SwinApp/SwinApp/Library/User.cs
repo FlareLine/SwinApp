@@ -56,6 +56,8 @@ namespace SwinApp.Library
         public static List<Allocation> CurrentSemesterAllocations => _allocations
                 .Where(a => a.Schedule.StartDate < DateTime.Today && a.Schedule.EndDate > DateTime.Today).ToList();
 
+        public static ObservableCollection<AllocationCard> TimetableCards;
+
         public static Dictionary<string, string> UnitPairs => _units.ToDictionary(u => u.Name, u => u.UUID);
 
         private static UpNextCard _upNextCard;
@@ -93,7 +95,9 @@ namespace SwinApp.Library
                 });
             }
         }
-
+        /// <summary>
+        /// Loads all data relating to the User including blackboard data, timetables, trains, reminders etc...
+        /// </summary>
         public static void LoadUserData()
         {
             ClearDashItemsSafe();
@@ -243,8 +247,18 @@ namespace SwinApp.Library
             using (HttpClient client = new HttpClient())
             {
                 string res = await client.GetStringAsync(TEST_ENDPOINT);
-                _allocations = ProcessTimetableDump(res);
+                ProcessTimetableDump(res);
+                PopulateTimetableCards();
             }
+        }
+        
+        /// <summary>
+        /// Using timetable data, populate the TimetableCards table with IDashCards
+        /// </summary>
+        private static void PopulateTimetableCards()
+        {
+            TimetableCards = new ObservableCollection<AllocationCard>(_allocations
+                .Select(a => new AllocationCard(a)));
         }
 
         /// <summary>
@@ -253,18 +267,17 @@ namespace SwinApp.Library
         /// </summary>
         /// <param name="data">The XML string</param>
         /// <returns></returns>
-        private static List<Allocation> ProcessTimetableDump(string data)
+        private static void ProcessTimetableDump(string data)
         {
             XDocument doc = XDocument.Parse(data);
-            List<Allocation> list = new List<Allocation>();
+            _allocations = new List<Allocation>();
             var allocations = doc.Root.Elements("allocation");
             foreach (var a in allocations)
             {
                 Allocation temp = new Allocation();
                 temp.Import(a.ToString());
-                list.Add(temp);
+                _allocations.Add(temp);
             }
-            return list;
         }
 
         static User()
