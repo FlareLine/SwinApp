@@ -101,7 +101,7 @@ namespace SwinApp.Library
 
         public int Duration { get; set; }
 
-        public WeekDay[] DaysOfWeek { get; set; }
+        public List<WeekDay> DaysOfWeek { get; set; }
 
         public Room Room { get; set; }
 
@@ -127,7 +127,9 @@ namespace SwinApp.Library
             {
                 WeekDay wRes = new WeekDay();
                 wRes.Import(w.ToString());
+                tempDayList.Add(wRes);
             }
+            DaysOfWeek = tempDayList.Where(d => d.HasSchedule).ToList();
             ExcludedDates = new ExDate[0];
 
             Room = new Room()

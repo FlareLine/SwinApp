@@ -7,11 +7,11 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <!--<StackLayout Grid.Column="0">
+        <StackLayout Grid.Column="0">
             <Label Text="{Binding Day}"></Label>
             <Label Text="{Binding TimeOfDay}"></Label>
-            <Label Text="{Binding Date}"></Label>
-        </StackLayout>-->
+            <!--<Label Text="{Binding Date}"></Label>-->
+        </StackLayout>
         <Frame Grid.Column="1" BackgroundColor="Red">
             <Frame.Resources>
                 <ResourceDictionary>

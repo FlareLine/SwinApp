@@ -56,7 +56,7 @@ namespace SwinApp.Library
         public static List<Allocation> CurrentSemesterAllocations => _allocations
                 .Where(a => a.Schedule.StartDate < DateTime.Today && a.Schedule.EndDate > DateTime.Today).ToList();
 
-        public static ObservableCollection<AllocationCard> TimetableCards;
+        public static ObservableCollection<AllocationCard> TimetableCards = new ObservableCollection<AllocationCard>();
 
         public static Dictionary<string, string> UnitPairs => _units.ToDictionary(u => u.Name, u => u.UUID);
 
@@ -257,8 +257,11 @@ namespace SwinApp.Library
         /// </summary>
         private static void PopulateTimetableCards()
         {
-            TimetableCards = new ObservableCollection<AllocationCard>(CurrentSemesterAllocations
-                .Select(a => new AllocationCard(a)));
+            foreach (AllocationCard card in CurrentSemesterAllocations
+                .Select(a => new AllocationCard(a)))
+            {
+                TimetableCards.Add(card);
+            }
         }
 
         /// <summary>
