@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace SwinApp.Library
 {
@@ -11,19 +8,25 @@ namespace SwinApp.Library
     public class TransportLink
     {
         /// <summary>
-        /// Requests the next departure for the specified route, direction and stop id
+        /// Requests the next departure for the specified route, direction, stop id and route type
         /// </summary>
         /// <param name="r">Route id</param>
         /// <param name="d">Direction id</param>
         /// <param name="s">Stop id</param>
+        /// <param name="t">Route type</param>
         /// <returns>The next departure in a Departure object</returns>
-        /// <remarks>
-        /// Does not differentiate between train and trams as the three parameters in
-        /// combination should be enough to determine the route type.
-        /// </remarks>
-		public async Task<Departure> GetNextDeparture(int r, int d, int s)
+		public async Task<Departure> GetNextDeparture(int r, int d, int s, RouteType t)
 		{
-            return (await PTV.RequestPTVPayloadAsync($"departures/route_type/0/stop/1080/route/{r}?direction_id={d}&max_results=1")).Departures[0];
+            return (await PTV.RequestPTVPayloadAsync($"departures/route_type/{(int) t}/stop/{s}/route/{r}?direction_id={d}&max_results=1")).Departures[0];
 		}
+    }
+
+    /// <summary>
+    /// Route Type enumeration used to specify a type of service
+    /// </summary>
+    public enum RouteType
+    {
+        Train = 0,
+        Tram = 1
     }
 }
