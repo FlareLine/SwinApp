@@ -48,10 +48,6 @@
       <DependentUpon>DialogBBAnnouncement.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\TransportCard.xaml.cs">
-      <DependentUpon>TransportCard.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)GoogleMapPage.xaml.cs">
       <DependentUpon>GoogleMapPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -66,13 +62,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Library\Reminder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ScheduledReminderCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Lesson.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\TransportationLib.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\TransportLib.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SwinApp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\TransportCardViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\WeatherViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\TrainCardViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\TransportLink.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\WeatherCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\UpNextCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Weather.cs" />
@@ -85,10 +79,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)NewReminderPage.xaml.cs">
       <DependentUpon>NewReminderPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)TransportationPage.xaml.cs">
-      <DependentUpon>TransportationPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)TransportPage.xaml.cs">
@@ -189,18 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardLesson.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)TransportationPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\TransportCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

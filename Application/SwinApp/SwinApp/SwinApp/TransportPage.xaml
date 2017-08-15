@@ -16,9 +16,9 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding Time}" />
-                                    <Label Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding Line}" />
-                                    <Label Grid.Column="2" Font="Normal" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding Platform}" />
+                                    <Label Grid.Column="0" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding Direction}" />
+                                    <Label Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding Time}" />
+                                    <Label Grid.Column="2" Font="Normal" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding Type}" />
                                 </Grid>
                             </Frame>
                         </Grid>

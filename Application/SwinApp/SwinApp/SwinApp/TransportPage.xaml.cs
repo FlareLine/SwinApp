@@ -18,30 +18,30 @@ namespace SwinApp
 	public partial class TransportPage : ContentPage
 	{
 
-		public List<Grid> Trains = new List<Grid>();
+		public List<Grid> Transports = new List<Grid>();
 		
         public TransportPage()
         {
-			Trains.Add(new CardTransport(0, 1));
-			Trains.Add(new CardTransport(1, 0));
-			Trains.Add(new CardTransport(2, 3));
-			Trains.Add(new CardTransport(9, 9));
-			InitializeComponent();
-			TransportList.ItemsSource = Trains;
+            Transports.Add(new CardTransport(DirectionId.City, RouteType.Train, RouteId.City));
+            Transports.Add(new CardTransport(DirectionId.Lilydale, RouteType.Train, RouteId.Lilydale));
+            Transports.Add(new CardTransport(DirectionId.Belgrave, RouteType.Train, RouteId.Belgrave));
+            Transports.Add(new CardTransport(DirectionId.Alamein, RouteType.Train, RouteId.Alamein));
+            Transports.Add(new CardTransport(DirectionId.KewViaStKilda, RouteType.Tram, RouteId.MelbUniKewViaStKilda));
+            Transports.Add(new CardTransport(DirectionId.MelbUniViaStKilda, RouteType.Tram, RouteId.MelbUniKewViaStKilda));
+            InitializeComponent();
+			TransportList.ItemsSource = Transports;
 		}
 
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
 			RefreshTimes();
-			TransportList.ItemsSource = Trains;
-			foreach(CardTransport ct in Trains)
-				ct.BindingContext = new TrainCardViewModel(ct._viewmodel.Route, ct._viewmodel.Direction);
+			TransportList.ItemsSource = Transports;
 		}
 
         private void RefreshTimes()
         {
-			foreach (CardTransport ct in Trains)
+			foreach (CardTransport ct in Transports)
 				ct.Update();
 		}
 	}

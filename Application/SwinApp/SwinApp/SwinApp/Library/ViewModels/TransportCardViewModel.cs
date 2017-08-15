@@ -1,88 +1,101 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace SwinApp.Library
 {
-	public class TransportCardViewModel : ViewModel
-	{
-		private string _time;
-		private string _line;
-		private string _platform;
+    public class TransportCardViewModel : ViewModel
+    {
+        private string _time;
+        private DirectionId _direction;
+        private RouteType _type;
 
-		private int Route;
-		private int Direction;	
+        public string Time {
+            get {
+                return _time;
+            }
+            set {
+                if (value != _time)
+                {
+                    _time = value;
+                    NotifyPropertyChanged("Time");
 
-		public string Time {
-			get {
-				return _time;
-			}
-			set {
-				if(_time != value)
-				{
-					_time = value;
-					NotifyPropertyChanged("Time");
-				}
-			}
-		}
+                }
+            }
+        }
+        public DirectionId Direction {
+            get {
+                return _direction;
+            }
+            set {
+                if (value != _direction)
+                {
+                    _direction = value;
+                    NotifyPropertyChanged("Direction");
 
-		public string Line {
-			get {
-				return _line;
-			}
-			set {
-				if (_line != value)
-				{
-					_line = value;
-					NotifyPropertyChanged("Line");
-				}
-			}
-		}
+                }
+            }
+        }
+        public RouteType Type {
+            get {
+                return _type;
+            }
+            set {
+                if (value != _type)
+                {
+                    _type = value;
+                    NotifyPropertyChanged("Type");
+                }
+            }
+        }
 
-		public string Platform {
-			get {
-				return _platform;
-			}
-			set {
-				if (_platform != value)
-				{
-					_platform = value;
-					NotifyPropertyChanged("Platform");
-				}
-			}
-		}
+        private RouteId Route { get; set; }
 
-		TransportLink link = new TransportLink();
+        /// <summary>
+        /// Constructor to create a new Transport Card View Model
+        /// </summary>
+        /// <param name="direction">Direction id for the card</param>
+        /// <param name="type"></param>
+		public TransportCardViewModel(DirectionId direction, RouteType type, RouteId route)
+        {
+            Direction = direction;
+            Type = type;
+            Time = "--";
 
-		public TransportCardViewModel(RouteID route, DirectionID direction)
-		{
-			Route = (int) route;
-			Direction = (int) direction;
-		}
+            Route = route;
+        }
 
-		public async Task GetNextDeparture()
-		{
-			Departure next = await link.GetNextDeparture(Route, Direction);
+        /// <summary>
+        /// Gets the information for the next departure
+        /// </summary>
+        /// <returns>The updated information in the properties of the view model</returns>
+        public async Task GetDeparture()
+        {
+            Departure dep = await TransportLib.GetNextDeparture(Route, Direction, Type);
 
-			string timeToParse = next.estimated_departure_utc ?? next.scheduled_departure_utc;
-			int minsLeft = (int)DateTime.Parse(timeToParse).Subtract(DateTime.Now).TotalMinutes;
-			if (minsLeft > 60) Time = ">60 mins";
-			else
-			{
-				switch (minsLeft)
-				{
-					case 1:
-						Time = "1 min";
-						break;
-					case 0:
-						Time = "Now!";
-						break;
-					default:
-						Time = $"{minsLeft} mins";
-						break;
-				}
-			}
-			Line = Enum.Parse(typeof(DirectionID), next.direction_id).ToString();
-			Platform = "Platform " + (next.platform_number ?? "--");
-			}
-	}
+            int arrivalTime = 0;
+
+            if (dep.estimated_departure_utc == null)
+                arrivalTime = (int)DateTime.Parse(dep.scheduled_departure_utc).Subtract(DateTime.Now).TotalMinutes;
+            else
+                arrivalTime = (int)DateTime.Parse(dep.estimated_departure_utc).Subtract(DateTime.Now).TotalMinutes;
+
+            Time = arrivalTime > 60 ? ">60 mins" : $"{arrivalTime} mins";
+        }
+
+        /// <summary>
+        /// Direction id Language Key - used for translating direction ids into readable names
+        /// </summary>
+        public Dictionary<DirectionId, string> DirLangKey = new Dictionary<DirectionId, string>(){
+            { DirectionId.City, "To City" },
+            { DirectionId.Alamein, "To Alamein" },
+            { DirectionId.Lilydale, "To Lilydale" },
+            { DirectionId.Belgrave, "To Belgrave" },
+            { DirectionId.KewViaStKilda, "Kew (St Kilda)" },
+            { DirectionId.MelbUniViaStKilda, "Melb Uni (St Kilda)" }
+        };
+    }
 }

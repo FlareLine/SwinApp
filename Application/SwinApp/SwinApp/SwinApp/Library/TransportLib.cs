@@ -1,4 +1,5 @@
 ﻿using SwinApp.Library;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SwinApp
@@ -16,8 +17,9 @@ namespace SwinApp
         /// <param name="s">Stop id</param>
         /// <param name="t">Route type</param>
         /// <returns>The next departure in a Departure object</returns>
-		public static async Task<Departure> GetNextDeparture(RouteId r, DirectionId d, StopId s, RouteType t)
+		public static async Task<Departure> GetNextDeparture(RouteId r, DirectionId d, RouteType t)
         {
+            StopId s = t == RouteType.Train ? StopId.GlenferrieTrain : StopId.GlenferrieTram;
             return (await PTV.RequestPTVPayloadAsync($"departures/route_type/{(int)t}/stop/{(int)s}/route/{(int)r}?direction_id={(int)d}&max_results=1")).Departures[0];
         }
     }
