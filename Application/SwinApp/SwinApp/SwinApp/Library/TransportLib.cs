@@ -19,9 +19,22 @@ namespace SwinApp
         /// <returns>The next departure in a Departure object</returns>
 		public static async Task<Departure> GetNextDeparture(RouteId r, DirectionId d, RouteType t)
         {
-            StopId s = t == RouteType.Train ? StopId.GlenferrieTrain : StopId.GlenferrieTram;
-            return (await PTV.RequestPTVPayloadAsync($"departures/route_type/{(int)t}/stop/{(int)s}/route/{(int)r}?direction_id={(int)d}&max_results=1")).Departures[0];
+            StopId s = t == RouteType.Train ? StopId.GlenferrieTrain : d == DirectionId.MelbUniViaStKilda ? StopId.GlenferrieTramMelbUni : StopId.GlenferrieTramKew;
+            Departure departure = (await PTV.RequestPTVPayloadAsync($"departures/route_type/{(int)t}/stop/{(int)s}/route/{(int)r}?direction_id={(int)d}&max_results=1")).Departures[0];
+            return departure;
         }
+
+        /// <summary>
+        /// Direction id Language Key - used for translating direction ids into readable names
+        /// </summary>
+        public static Dictionary<DirectionId, string> DirLangKey = new Dictionary<DirectionId, string>(){
+            { DirectionId.City, "To City" },
+            { DirectionId.Alamein, "To Alamein" },
+            { DirectionId.Lilydale, "To Lilydale" },
+            { DirectionId.Belgrave, "To Belgrave" },
+            { DirectionId.KewViaStKilda, "Kew (St Kilda)" },
+            { DirectionId.MelbUniViaStKilda, "Melb Uni (St Kilda)" }
+        };
     }
 
     /// <summary>
@@ -64,6 +77,7 @@ namespace SwinApp
     public enum StopId
     {
         GlenferrieTrain = 1080,
-        GlenferrieTram = 2923
+        GlenferrieTramMelbUni = 2923,
+        GlenferrieTramKew = 2924
     }
 }

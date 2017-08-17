@@ -85,17 +85,5 @@ namespace SwinApp.Library
 
             Time = arrivalTime > 60 ? ">60 mins" : $"{arrivalTime} mins";
         }
-
-        /// <summary>
-        /// Direction id Language Key - used for translating direction ids into readable names
-        /// </summary>
-        public Dictionary<DirectionId, string> DirLangKey = new Dictionary<DirectionId, string>(){
-            { DirectionId.City, "To City" },
-            { DirectionId.Alamein, "To Alamein" },
-            { DirectionId.Lilydale, "To Lilydale" },
-            { DirectionId.Belgrave, "To Belgrave" },
-            { DirectionId.KewViaStKilda, "Kew (St Kilda)" },
-            { DirectionId.MelbUniViaStKilda, "Melb Uni (St Kilda)" }
-        };
     }
 }

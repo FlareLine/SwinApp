@@ -23,7 +23,7 @@ namespace SwinApp.Components.UI
 			await _viewmodel.GetDeparture();
 		}
 
-        public string Direction => _viewmodel.DirLangKey[_viewmodel.Direction];
+        public string Direction => TransportLib.DirLangKey[_viewmodel.Direction];
         public string Time => _viewmodel.Time;
         public string Type => Enum.GetName(typeof(RouteType), _viewmodel.Type);
     }
