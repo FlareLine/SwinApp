@@ -3,29 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.Components.CardAllocation">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <StackLayout Grid.Column="0">
-            <Label Text="{Binding Day}"></Label>
-            <Label Text="{Binding TimeOfDay}"></Label>
-            <!--<Label Text="{Binding Date}"></Label>-->
-        </StackLayout>
-        <Frame Grid.Column="1" BackgroundColor="Red">
-            <Frame.Resources>
-                <ResourceDictionary>
-                    <Style TargetType="Label">
-                        <Setter Property="TextColor" Value="#fff"/>
-                    </Style>
-                </ResourceDictionary>
-            </Frame.Resources>
-            <StackLayout>
-                <!--What is currently binding Name should display both Name and UnitCode-->
-                <Label Text="{Binding Description}"></Label>
-                <Label Text="{Binding Code}"></Label>
-                <Button Text="More..."></Button>
-            </StackLayout>
+        <!--<Grid.Resources>
+            <ResourceDictionary>
+                <Style x:Name="TimeLabel" TargetType="Label">
+                    <Setter Property="FontSize" Value="22"/>
+                </Style>
+            </ResourceDictionary>
+        </Grid.Resources>-->
+        <Frame BackgroundColor="Red">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0">
+                    <Label Text="{Binding Day}"></Label>
+                    <Label Text="{Binding TimeOfDay}"></Label>
+                    <!--<Label Text="{Binding Date}"></Label>-->
+                </StackLayout>
+                <Frame.Resources>
+                    <ResourceDictionary>
+                        <Style TargetType="Label">
+                            <Setter Property="TextColor" Value="#fff"/>
+                        </Style>
+                    </ResourceDictionary>
+                </Frame.Resources>
+                <StackLayout Grid.Column="1">
+                    <!--What is currently binding Name should display both Name and UnitCode-->
+                    <Label Text="{Binding Description}"></Label>
+                    <Label Text="{Binding Code}"></Label>
+                    <Button Text="More..."></Button>
+                </StackLayout>
+            </Grid>
         </Frame>
     </Grid>
 </Grid>
