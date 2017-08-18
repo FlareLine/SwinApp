@@ -16,6 +16,9 @@
                         <Style TargetType="Label">
                             <Setter Property="FontSize" Value="Medium"/>
                         </Style>
+                        <Style TargetType="Label" x:Key="XLLabel">
+                            <Setter Property="FontSize" Value="38"/>
+                        </Style>
                     </ResourceDictionary>
                 </Grid.Resources>
                 <Grid.RowDefinitions>
@@ -23,8 +26,8 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label FontSize="Large" Text="{Binding Code}"/>
-                <Label Grid.Row="1" FontSize="Large" Text="{Binding TimeOfDay}"/>
+                <Label Style="{StaticResource XLLabel}" Text="{Binding Summary}"/>
+                <Label Grid.Row="1" Text="{Binding TimeOfDay}"/>
                 <StackLayout Grid.Row="2">
                     <Label Text="{Binding Room}"/>
                     <Label Text="{Binding Description}"/>

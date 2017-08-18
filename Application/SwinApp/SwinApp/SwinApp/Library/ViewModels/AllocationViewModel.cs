@@ -22,6 +22,8 @@ namespace SwinApp.Library
 
         public string Type => _allocation.ActivityTypeReadable();
 
+        public string Summary => $"{Type} in {Room}";
+
         public AllocationViewModel(Allocation allocation)
         {
             _allocation = allocation;

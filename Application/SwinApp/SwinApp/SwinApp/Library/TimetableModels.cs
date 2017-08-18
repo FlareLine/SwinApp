@@ -158,7 +158,10 @@ namespace SwinApp.Library
                 Duration = -1;
             }
             var tempDayList = new List<WeekDay>();
-            foreach (var w in node.Elements("daysOfWeek"))
+            //TODO: Figure out why I can't call this basic ass method
+            var days = doc.Root.Elements("weekDay");
+
+            foreach (var w in node.Elements("weekDay"))
             {
                 WeekDay wRes = new WeekDay();
                 wRes.Import(w.ToString());
