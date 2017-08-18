@@ -26,8 +26,14 @@ namespace SwinApp.Components
         private void AddFrameTapGestureRecognizer()
         {
             TapGestureRecognizer gest = new TapGestureRecognizer();
-            gest.Tapped += async (send, ev) => await Navigation.PushAsync(new TimetablePage());
+            gest.Tapped += OpenAllocationDetails;
             FrameAllocation.GestureRecognizers.Add(gest);
         }
-	}
+
+        private async void OpenAllocationDetails(object sender, EventArgs e)
+        {
+            DebuggingTools.Dump("Works");
+            await Application.Current.MainPage.Navigation.PushAsync(new AllocationViewPage(_vm));
+        }
+    }
 }

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwinApp.AllocationViewPage"
+             Title="{Binding Description}">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Image Source="http://www.universitiesnews.com/wp-content/uploads/2012/07/Swinburne-University-of-Technology.jpg" Aspect="AspectFill"/>
+            <Grid Grid.Row="1" Margin="20,0">
+                <Grid.Resources>
+                    <ResourceDictionary>
+                        <Style TargetType="Label">
+                            <Setter Property="FontSize" Value="Medium"/>
+                        </Style>
+                    </ResourceDictionary>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label FontSize="Large" Text="{Binding Code}"/>
+                <Label Grid.Row="1" FontSize="Large" Text="{Binding TimeOfDay}"/>
+                <StackLayout Grid.Row="2">
+                    <Label Text="{Binding Room}"/>
+                    <Label Text="{Binding Description}"/>
+                    <Label Text="{Binding Type}"/>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

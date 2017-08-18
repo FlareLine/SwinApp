@@ -18,8 +18,9 @@ namespace SwinApp.Library
 
         public string TimeOfDay => _allocation.Schedule.StartTime.ToString("hh:mm tt");
 
-        public string Type => _allocation.ActivityTypeReadable();
+        public string Room => _allocation.Schedule.Room.Code.Replace("HAW_", "");
 
+        public string Type => _allocation.ActivityTypeReadable();
 
         public AllocationViewModel(Allocation allocation)
         {
