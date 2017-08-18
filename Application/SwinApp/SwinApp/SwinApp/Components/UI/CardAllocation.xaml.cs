@@ -20,6 +20,14 @@ namespace SwinApp.Components
 			InitializeComponent ();
             _vm = vm;
             BindingContext = _vm;
+            AddFrameTapGestureRecognizer();
 		}
+
+        private void AddFrameTapGestureRecognizer()
+        {
+            TapGestureRecognizer gest = new TapGestureRecognizer();
+            gest.Tapped += async (send, ev) => await Navigation.PushAsync(new TimetablePage());
+            FrameAllocation.GestureRecognizers.Add(gest);
+        }
 	}
 }
