@@ -6,9 +6,19 @@ using System.Xml.Linq;
 
 namespace SwinApp.Library
 {
-
+    /// <summary>
+    /// Classes that implement ITimetableData are implied
+    /// to model data found in the S1 Timetable Dump.
+    /// </summary>
     public interface ITimetableData
     {
+        /// <summary>
+        /// Import the timetable XML as an implementation of 
+        /// ITimetableData. This can either be from a string source
+        /// or from an already parsed XDocument.
+        /// </summary>
+        /// <param name="data">The XML in string form</param>
+        /// <param name="xdoc">The XDocument of the pre-parsed timetable data</param>
         void Import(string data, XDocument xdoc = null);
     }
 
@@ -41,6 +51,31 @@ namespace SwinApp.Library
             Campus.Import(data, doc);
             Schedule = new Schedule();
             Schedule.Import(data, doc);
+        }
+    }
+
+    public static class AllocationExtensions
+    {
+        /// <summary>
+        /// Return a human readble variant of the ActivityType code
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string ActivityTypeReadable(this Allocation obj)
+        {
+            if (obj != null)
+            {
+                string type = obj.ActivityType.ToLower();
+
+                if (type.Contains("le"))
+                    return "Lecture";
+                else if (type.Contains("tu"))
+                    return "Tutorial";
+                else
+                    return "Allocation";
+            }
+            else
+                return "Invalid Allocation";
         }
     }
 

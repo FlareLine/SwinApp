@@ -18,7 +18,8 @@ namespace SwinApp.Library
 
         public string TimeOfDay => _allocation.Schedule.StartTime.ToString("hh:mm tt");
 
-        //public string Day => _allocation.Schedule.DaysOfWeek.First().Day;
+        public string Type => _allocation.ActivityTypeReadable();
+
 
         public AllocationViewModel(Allocation allocation)
         {

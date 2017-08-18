@@ -15,7 +15,7 @@ namespace SwinApp.Library
         private AllocationViewModel _vm;
         private Grid _content;
 
-        public string Title => "Allocation";
+        public string Title => _vm.Type;
 
         public Grid Content => _content;
 
