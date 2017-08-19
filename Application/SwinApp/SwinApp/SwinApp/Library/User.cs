@@ -81,7 +81,10 @@ namespace SwinApp.Library
                 });
             }
         }
-
+        /// <summary>
+        /// [DEPRECATED]
+        /// Load data from BlackBoard
+        /// </summary>
         private static void LoadBlackboardUnits()
         {
             _units = new List<BlackboardUnit>();
@@ -111,7 +114,7 @@ namespace SwinApp.Library
             if (USE_PROTOTYPE_DATA)
             {
                 AddDashItemSafe(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
-                _upNextCard = new UpNextCard(NextPlanned);
+                _upNextCard = new UpNextCard(INextPlanned);
                 AddDashItemSafe(_upNextCard);
                 AddDashItemSafe(new WeatherCard());
             }
@@ -121,7 +124,7 @@ namespace SwinApp.Library
             RefreshSchedule();
         }
 
-        private static IPlanned NextPlanned
+        private static IPlanned INextPlanned
         {
             get
             {
