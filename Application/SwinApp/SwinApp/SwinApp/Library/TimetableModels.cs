@@ -57,8 +57,14 @@ namespace SwinApp.Library
     public static class AllocationExtensions
     {
         /// <summary>
-        /// Return a human readble variant of the ActivityType code
+        /// Return a human readble variant of the ActivityType code/description
         /// </summary>
+        /// <remarks>
+        /// Newer versions of the API return 'Lecture 1' and 'Lab 1'. The reason this method
+        /// doesn't just remove the space and the number is because older versions of the API
+        /// would represent those pieces of dat as 'LE1' and 'LA1' respectively, so this 
+        /// method of scanning the start of the string is version independent.
+        /// </remarks>
         /// <returns>A human readable translation of an ActivityType enumeration</returns>
         public static string ActivityTypeReadable(this Allocation obj)
         {
@@ -67,10 +73,14 @@ namespace SwinApp.Library
 
             string type = obj.ActivityType.ToLower();
 
-            if (type.Contains("le"))
+            if (type.Contains("le")) // Lecture 
                 return "Lecture";
-            else if (type.Contains("tu"))
+            else if (type.Contains("tu")) // Tutorial
                 return "Tutorial";
+            else if (type.Contains("la")) // Lab
+                return "Lab";
+            else if (type.Contains("pr")) // Practical
+                return "Practical";
             else
                 return "Allocation";
         }

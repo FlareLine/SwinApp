@@ -19,7 +19,7 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <StackLayout Grid.Column="0">
-                    <Label Text="{Binding Day}" Style="{StaticResource LabelTimeStyle}"></Label>
+                    <Label Text="{Binding DayShortened}" FontSize="Medium"></Label>
                     <Label Text="{Binding TimeOfDay}" Style="{StaticResource LabelTimeStyle}"></Label>
                     <!--<Label Text="{Binding Date}"></Label>-->
                 </StackLayout>
