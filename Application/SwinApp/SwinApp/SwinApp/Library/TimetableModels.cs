@@ -59,23 +59,36 @@ namespace SwinApp.Library
         /// <summary>
         /// Return a human readble variant of the ActivityType code
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <returns>A human readable translation of an ActivityType enumeration</returns>
         public static string ActivityTypeReadable(this Allocation obj)
         {
-            if (obj != null)
-            {
-                string type = obj.ActivityType.ToLower();
-
-                if (type.Contains("le"))
-                    return "Lecture";
-                else if (type.Contains("tu"))
-                    return "Tutorial";
-                else
-                    return "Allocation";
-            }
-            else
+            if (obj == null)
                 return "Invalid Allocation";
+
+            string type = obj.ActivityType.ToLower();
+
+            if (type.Contains("le"))
+                return "Lecture";
+            else if (type.Contains("tu"))
+                return "Tutorial";
+            else
+                return "Allocation";
+        }
+
+        /// <summary>
+        /// Get the first day of the week an allocation occurs on and return it.
+        /// This is considered the day of the allocation as a majority of cases a unit allocation
+        /// will only fall on a single day of the week.
+        /// </summary>
+        /// <returns>
+        /// The day of the week which the allocation falls on
+        /// </returns>
+        public static string DayOfWeek(this Allocation obj)
+        {
+            if (obj == null)
+                return "Invalid Allocation";
+
+            return obj.Schedule.DaysOfWeek.First().Day;
         }
     }
 
@@ -159,9 +172,7 @@ namespace SwinApp.Library
             }
             var tempDayList = new List<WeekDay>();
             //TODO: Figure out why I can't call this basic ass method
-            var days = doc.Root.Elements("weekDay");
-
-            foreach (var w in node.Elements("weekDay"))
+            foreach (var w in node.Element("daysOfWeek").Elements("weekDay"))
             {
                 WeekDay wRes = new WeekDay();
                 wRes.Import(w.ToString());
