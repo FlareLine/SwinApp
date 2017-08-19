@@ -114,7 +114,7 @@ namespace SwinApp.Library
             if (USE_PROTOTYPE_DATA)
             {
                 AddDashItemSafe(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
-                _upNextCard = new UpNextCard(INextPlanned);
+                _upNextCard = new UpNextCard(NextPlanned);
                 AddDashItemSafe(_upNextCard);
                 AddDashItemSafe(new WeatherCard());
             }
@@ -124,7 +124,7 @@ namespace SwinApp.Library
             RefreshSchedule();
         }
 
-        private static IPlanned INextPlanned
+        private static IPlanned NextPlanned
         {
             get
             {
