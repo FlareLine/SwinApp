@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Grid xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.Components.CardAllocation">
@@ -12,7 +12,7 @@
                 </Style>
             </ResourceDictionary>
         </Grid.Resources>
-        <Frame x:Name="FrameAllocation" BackgroundColor="Red">
+        <Frame x:Name="FrameAllocation" BackgroundColor="{Binding Color}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.App">
@@ -6,8 +6,18 @@
 
 		<!-- Application resource dictionary -->
         <ResourceDictionary>
-            
+
+
+            <!-- Color Definitions -->
             <Color x:Key="SwinburneRed">#dc2d27</Color>
+
+            <!-- Timetable Colors -->
+            <Color x:Key="TimeColor0">#00cccc</Color>
+            <Color x:Key="TimeColor1">#ccccff</Color>
+            <Color x:Key="TimeColor2">#ff99cc</Color>
+            <Color x:Key="TimeColor3">#cccc99</Color>
+
+            <!-- Clrs Definitions -->
             
             <Style TargetType="TabbedPage">
                 <!--<Setter Property="BarBackgroundColor" Value="{StaticResource SwinburneRed}"/>-->
@@ -20,7 +30,7 @@
             </Style>
             
             
-            
+            <!-- FrameCard styles -->
             <Style TargetType="Frame" x:Key="FrameCard">
                 <Setter Property="HasShadow">
                     <Setter.Value>
@@ -33,6 +43,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
             
             <x:String x:Key="PTV_DEV_ID">3000193</x:String>
             <x:String x:Key="PTV_DEV_KEY">6baf66a7-8816-4056-8e93-94c3b66ec822</x:String>

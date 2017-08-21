@@ -1,7 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 
 namespace SwinApp.Library
 {
@@ -29,6 +31,16 @@ namespace SwinApp.Library
         public string DayShortened => Day.Substring(0, 3);
 
         public string Summary => $"{Type} in {Room}";
+
+        public Xamarin.Forms.Color Color
+        {
+            get
+            {
+                int colorIndex = new Random().Next(0, 4);
+                string colorHex = (Xamarin.Forms.Color)Application.Current.Resources[$"HexTimeColor{colorIndex}"];
+                return colorHex;
+            }
+        }
 
         public AllocationViewModel(Allocation allocation)
         {
