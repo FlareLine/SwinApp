@@ -6,8 +6,30 @@
 
 		<!-- Application resource dictionary -->
         <ResourceDictionary>
-
-
+            
+            <!--
+                "Colors" Implementation
+                    http://clrs.cc/
+                    Considered to be a nicer pallette for the web, I translated them into XAML
+            -->
+            <Color x:Key="Navy">#001F3F</Color>
+            <Color x:Key="Blue">#0074D9</Color>
+            <Color x:Key="Aqua">#7FDBFF</Color>
+            <Color x:Key="Teal">#39CCCC</Color>
+            <Color x:Key="Olive">#3D9970</Color>
+            <Color x:Key="Green">#2ECC40</Color>
+            <Color x:Key="Lime">#01FF70</Color>
+            <Color x:Key="Yellow">#FFDC00</Color>
+            <Color x:Key="Orange">#FF851B</Color>
+            <Color x:Key="Red">#FF4136</Color>
+            <Color x:Key="Fuchsia">#F012BE</Color>
+            <Color x:Key="Purple">#B10DC9</Color>
+            <Color x:Key="Maroon">#85144B</Color>
+            <Color x:Key="White">#FFFFFF</Color>
+            <Color x:Key="Silver">#DDDDDD</Color>
+            <Color x:Key="Gray">#AAAAAA</Color>
+            <Color x:Key="Black">#111111</Color>
+            
             <!-- Color Definitions -->
             <Color x:Key="SwinburneRed">#dc2d27</Color>
 
