@@ -57,25 +57,48 @@ namespace SwinApp.Library
     public static class AllocationExtensions
     {
         /// <summary>
-        /// Return a human readble variant of the ActivityType code
+        /// Return a human readble variant of the ActivityType code/description
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Newer versions of the API return 'Lecture 1' and 'Lab 1'. The reason this method
+        /// doesn't just remove the space and the number is because older versions of the API
+        /// would represent those pieces of dat as 'LE1' and 'LA1' respectively, so this 
+        /// method of scanning the start of the string is version independent.
+        /// </remarks>
+        /// <returns>A human readable translation of an ActivityType enumeration</returns>
         public static string ActivityTypeReadable(this Allocation obj)
         {
-            if (obj != null)
-            {
-                string type = obj.ActivityType.ToLower();
-
-                if (type.Contains("le"))
-                    return "Lecture";
-                else if (type.Contains("tu"))
-                    return "Tutorial";
-                else
-                    return "Allocation";
-            }
-            else
+            if (obj == null)
                 return "Invalid Allocation";
+
+            string type = obj.ActivityType.ToLower();
+
+            if (type.Contains("le")) // Lecture 
+                return "Lecture";
+            else if (type.Contains("tu")) // Tutorial
+                return "Tutorial";
+            else if (type.Contains("la")) // Lab
+                return "Lab";
+            else if (type.Contains("pr")) // Practical
+                return "Practical";
+            else
+                return "Allocation";
+        }
+
+        /// <summary>
+        /// Get the first day of the week an allocation occurs on and return it.
+        /// This is considered the day of the allocation as a majority of cases a unit allocation
+        /// will only fall on a single day of the week.
+        /// </summary>
+        /// <returns>
+        /// The day of the week which the allocation falls on
+        /// </returns>
+        public static string DayOfWeek(this Allocation obj)
+        {
+            if (obj == null)
+                return "Invalid Allocation";
+
+            return obj.Schedule.DaysOfWeek.First().Day;
         }
     }
 
@@ -159,9 +182,7 @@ namespace SwinApp.Library
             }
             var tempDayList = new List<WeekDay>();
             //TODO: Figure out why I can't call this basic ass method
-            var days = doc.Root.Elements("weekDay");
-
-            foreach (var w in node.Elements("weekDay"))
+            foreach (var w in node.Element("daysOfWeek").Elements("weekDay"))
             {
                 WeekDay wRes = new WeekDay();
                 wRes.Import(w.ToString());

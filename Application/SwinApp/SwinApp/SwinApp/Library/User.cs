@@ -81,7 +81,10 @@ namespace SwinApp.Library
                 });
             }
         }
-
+        /// <summary>
+        /// [DEPRECATED]
+        /// Load data from BlackBoard
+        /// </summary>
         private static void LoadBlackboardUnits()
         {
             _units = new List<BlackboardUnit>();

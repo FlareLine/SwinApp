@@ -27,11 +27,9 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Label Style="{StaticResource XLLabel}" Text="{Binding Summary}"/>
-                <Label Grid.Row="1" Text="{Binding TimeOfDay}"/>
+                <Label Grid.Row="1" Text="{Binding When}"/>
                 <StackLayout Grid.Row="2">
-                    <Label Text="{Binding Room}"/>
                     <Label Text="{Binding Description}"/>
-                    <Label Text="{Binding Type}"/>
                 </StackLayout>
             </Grid>
         </Grid>

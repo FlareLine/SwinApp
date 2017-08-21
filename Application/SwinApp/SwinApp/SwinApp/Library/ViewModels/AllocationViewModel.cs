@@ -18,9 +18,15 @@ namespace SwinApp.Library
 
         public string TimeOfDay => _allocation.Schedule.StartTime.ToString("hh:mm tt");
 
+        public string When => $"{Day}, {TimeOfDay}";
+
         public string Room => _allocation.Schedule.Room.Code.Replace("HAW_", "");
 
         public string Type => _allocation.ActivityTypeReadable();
+
+        public string Day => _allocation.DayOfWeek();
+
+        public string DayShortened => Day.Substring(0, 3);
 
         public string Summary => $"{Type} in {Room}";
 
