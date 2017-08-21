@@ -37,7 +37,7 @@ namespace SwinApp.Library
             get
             {
                 int colorIndex = new Random().Next(0, 4);
-                string colorHex = (Xamarin.Forms.Color)Application.Current.Resources[$"HexTimeColor{colorIndex}"];
+                Xamarin.Forms.Color colorHex = (Xamarin.Forms.Color)Application.Current.Resources[$"HexTimeColor{colorIndex}"];
                 return colorHex;
             }
         }
