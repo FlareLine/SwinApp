@@ -1,4 +1,4 @@
-﻿using SwinApp.Library;
+using SwinApp.Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,20 +20,33 @@ namespace SwinApp.Components
 			InitializeComponent ();
             _vm = vm;
             BindingContext = _vm;
-            AddFrameTapGestureRecognizer();
 		}
 
+        /// <summary>
+        /// Add a touch listener 
+        /// </summary>
         private void AddFrameTapGestureRecognizer()
         {
-            TapGestureRecognizer gest = new TapGestureRecognizer();
-            gest.Tapped += OpenAllocationDetails;
-            FrameAllocation.GestureRecognizers.Add(gest);
+            if (FrameAllocation.GestureRecognizers.Count == 0)
+            {
+                TapGestureRecognizer gest = new TapGestureRecognizer();
+                gest.Tapped += async (send, ev) => await NavigateToViewPage();
+                FrameAllocation.GestureRecognizers.Add(gest);
+            }
         }
 
-        private async void OpenAllocationDetails(object sender, EventArgs e)
+        /// <summary>
+        /// Navigate to the associated details page for the Allocation
+        /// </summary>
+        private async Task NavigateToViewPage() => await Application.Current.MainPage.Navigation.PushAsync(new AllocationViewPage(_vm));
+
+        /// <summary>
+        /// Only apply gesture recognizers upon the parent being visible
+        /// </summary>
+        protected override void OnParentSet()
         {
-            DebuggingTools.Dump("Works");
-            await Application.Current.MainPage.Navigation.PushAsync(new AllocationViewPage(_vm));
+            base.OnParentSet();
+            AddFrameTapGestureRecognizer();
         }
     }
 }

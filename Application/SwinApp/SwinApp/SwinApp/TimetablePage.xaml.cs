@@ -1,4 +1,4 @@
-﻿using SwinApp.Library;
+using SwinApp.Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
