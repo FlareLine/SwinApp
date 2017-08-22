@@ -13,6 +13,7 @@
       <DependentUpon>AllocationViewPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Library\Analytics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardAllocation.xaml.cs">
       <DependentUpon>CardAllocation.xaml</DependentUpon>
       <SubType>Code</SubType>
