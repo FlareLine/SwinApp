@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Linq;
+using SQLite;
 
 namespace SwinApp.Library
 {
@@ -99,5 +100,28 @@ namespace SwinApp.Library
         /// <param name="name">The name of the element</param>
         /// <returns></returns>
         public static string ElementValue(this XElement obj, string name) => obj.Element(name)?.Value ?? obj.Attribute(name)?.Value;
+    }
+
+    /// <summary>
+    /// Provides easy methods for working with SQLite.NET
+    /// </summary>
+    public static class SwinDB
+    {
+        private static string _path = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.Personal),
+                "SwinApp.db");
+
+        private static SQLiteConnection _conn;
+
+        /// <summary>
+        /// Lazy load a new SQLiteConnection
+        /// </summary>
+        /// <returns></returns>
+        public static SQLiteConnection Conn
+        {
+            get {
+                return _conn ?? (_conn = new SQLiteConnection(_path));
+            }
+        }
     }
 }
