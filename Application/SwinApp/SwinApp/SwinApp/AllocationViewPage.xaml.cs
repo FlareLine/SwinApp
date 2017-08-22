@@ -20,5 +20,17 @@ namespace SwinApp
 			InitializeComponent ();
             BindingContext = _vm = vm;
 		}
-	}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var conn = SwinDB.Conn;
+            conn.CreateTable<AllocationVisitModel>();
+            conn.Insert(new AllocationVisitModel()
+            {
+                Description = _vm.Description
+            });
+            conn.Table<AllocationVisitModel>().ToList().Dump();
+        }
+    }
 }

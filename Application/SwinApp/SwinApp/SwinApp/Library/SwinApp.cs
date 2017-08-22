@@ -111,7 +111,7 @@ namespace SwinApp.Library
                 Environment.GetFolderPath(Environment.SpecialFolder.Personal),
                 "SwinApp.db");
 
-        private static SQLiteConnection _conn;
+        private static SQLiteConnection _conn = null;
 
         /// <summary>
         /// Lazy load a new SQLiteConnection
