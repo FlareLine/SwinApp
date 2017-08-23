@@ -71,15 +71,19 @@ namespace SwinApp
             base.OnAppearing();
             if (Device.OS == TargetPlatform.Android)
                 NavigationPage.SetHasNavigationBar(this, false);
-            try
+            // Ensure this only loads once
+            if (ListSchedule.ItemsSource == null)
             {
-                User.LoadUserData();
-                ListDashboard.ItemsSource = User.DashBoardItems;
-                ListSchedule.ItemsSource = User.TimetableCards;
-            }
-            catch (Exception e)
-            {
-                User.DashBoardItems.Add(new TextContentDashCard("An Error Occurred", $"Details: {e.Message}"));
+                try
+                {
+                    User.LoadUserData();
+                    ListDashboard.ItemsSource = User.DashBoardItems;
+                    ListSchedule.ItemsSource = User.TimetableCards;
+                }
+                catch (Exception e)
+                {
+                    User.DashBoardItems.Add(new TextContentDashCard("An Error Occurred", $"Details: {e.Message}"));
+                }
             }
         }
 

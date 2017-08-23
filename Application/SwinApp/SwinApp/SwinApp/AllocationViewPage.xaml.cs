@@ -30,7 +30,6 @@ namespace SwinApp
             {
                 Description = _vm.Description
             });
-            conn.Table<AllocationVisitModel>().ToList().Dump();
         }
     }
 }
