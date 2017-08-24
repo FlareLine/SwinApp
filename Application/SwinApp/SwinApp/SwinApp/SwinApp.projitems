@@ -75,12 +75,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Library\Reminder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ScheduledReminderCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Lesson.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\TransportLib.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SwinApp.cs" />
+<<<<<<< HEAD
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\AllocationViewModel.cs" />
+=======
+    <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\TransportCardViewModel.cs" />
+>>>>>>> 0ce61a814a0570d71c66b84ba4919fc5a0345300
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\WeatherViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\TrainCardViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\TransportLink.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\WeatherCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\UpNextCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Weather.cs" />
