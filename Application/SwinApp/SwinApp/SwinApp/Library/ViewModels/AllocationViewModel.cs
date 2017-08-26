@@ -29,25 +29,29 @@ namespace SwinApp.Library
 
         public string Summary => $"{Type} in {Room}";
 
-        public Xamarin.Forms.Color Color
+        public Color Color
         {
             get
             {
                 // Create table if not exists
                 var conn = SwinDB.Conn;
                 conn.CreateTable<AllocationColour>();
-
+                // Assign the unit a colour code if not set already
                 if (conn.Table<AllocationColour>().FirstOrDefault(a => a.SubjectCode == _allocation.Subject.Code) == null)
                 {
                     int colorIndex = new Random().Next(0, 4);
                     string hexCode = $"TimeColor{colorIndex}";
-                    Xamarin.Forms.Color colorHex = (Xamarin.Forms.Color)Application.Current.Resources[$"TimeColor{colorIndex}"];
-                    return colorHex;
+                    conn.Insert(new AllocationColour()
+                    {
+                        SubjectCode = _allocation.Subject.Code,
+                        HexCode = hexCode
+                    });
                 }
-                else
-                {
-                    return Color.Black;
-                }
+
+                return (Color)Application.Current.Resources[conn.Table<AllocationColour>()
+                    .First(a => a.SubjectCode == _allocation.Subject.Code).HexCode
+                    ];
+
             }
         }
 

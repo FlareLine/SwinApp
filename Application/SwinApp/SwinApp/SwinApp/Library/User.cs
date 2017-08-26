@@ -22,6 +22,14 @@ namespace SwinApp.Library
         /// </summary>
         public const bool USE_PROTOTYPE_DATA = true;
 
+        private static Dictionary<string, int> DayCompValues = new Dictionary<string, int>()
+        {
+            ["Monday"] = 0,
+            ["Tuesday"] = 1,
+            ["Wednesday"] = 2,
+            ["Thursday"] = 3,
+            ["Friday"] = 4
+        };
         private static ObservableCollection<IDashCard> _dashBoardItems = new ObservableCollection<IDashCard>();
 
         public static ObservableCollection<IDashCard> DashBoardItems
@@ -53,8 +61,14 @@ namespace SwinApp.Library
 
         public static List<Allocation> Allocations => _allocations;
 
+        /// <summary>
+        /// Get the allocations for the current semester ordered by day and time
+        /// </summary>
         public static List<Allocation> CurrentSemesterAllocations => _allocations
-                .Where(a => a.Schedule.StartDate < DateTime.Today && a.Schedule.EndDate > DateTime.Today).ToList();
+            .Where(a => a.Schedule.StartDate < DateTime.Today && a.Schedule.EndDate > DateTime.Today)
+            .OrderBy(a => DayCompValues[a.DayOfWeek()])
+            .ThenBy(a => a.Schedule.StartTime)
+            .ToList();
 
         public static ObservableCollection<AllocationCard> TimetableCards = new ObservableCollection<AllocationCard>();
 
