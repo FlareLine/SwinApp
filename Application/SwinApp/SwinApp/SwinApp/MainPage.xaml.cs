@@ -89,13 +89,21 @@ namespace SwinApp
 
         private async void ShowContextMenu(object sender, EventArgs e)
         {
-            string check = await DisplayActionSheet("Add New...", "Close", "", new string[] { "Reminder" });
-            if (check == "Reminder")
+            string check = await DisplayActionSheet("Add New...", "Close", "", 
+                new string[] {
+                    "Reminder",
+                    "Test Notification"
+                });
+            switch (check)
             {
-                //create new reminder through use of pop up window, then add it to the users reminders
-                //after this, re-write reminders to the json file
-                AddNewReminder();
-
+                case "Reminder":
+                    //create new reminder through use of pop up window, then add it to the users reminders
+                    //after this, re-write reminders to the json file
+                    AddNewReminder();
+                    break;
+                case "Test Notification":
+                    DependencyService.Get<INotification>().ShowTextNotification("Test Notification");
+                    break;
             }
         }
 

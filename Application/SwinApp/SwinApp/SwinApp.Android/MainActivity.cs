@@ -28,17 +28,5 @@ namespace SwinApp.Droid
 		}
 	}
 
-    public class INotificationImplementation : INotification
-    {
-        public void ShowTextNotification(string text)
-        {
-            Notification.Builder builder = new Notification.Builder(Application.Context)
-                .SetContentTitle("SwinApp")
-                .SetContentText(text)
-                .SetSmallIcon(Resource.Drawable.ic_play_dark);
-
-            Notification notification = builder.Build();
-        }
-    }
 }
 
