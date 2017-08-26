@@ -1,5 +1,6 @@
 using System;
 using Xamarin.Forms;
+using SQLite;
 
 namespace SwinApp.Library
 {
@@ -32,9 +33,21 @@ namespace SwinApp.Library
         {
             get
             {
-                int colorIndex = new Random().Next(0, 4);
-                Xamarin.Forms.Color colorHex = (Xamarin.Forms.Color)Application.Current.Resources[$"TimeColor{colorIndex}"];
-                return colorHex;
+                // Create table if not exists
+                var conn = SwinDB.Conn;
+                conn.CreateTable<AllocationColour>();
+
+                if (conn.Table<AllocationColour>().FirstOrDefault(a => a.SubjectCode == _allocation.Subject.Code) == null)
+                {
+                    int colorIndex = new Random().Next(0, 4);
+                    string hexCode = $"TimeColor{colorIndex}";
+                    Xamarin.Forms.Color colorHex = (Xamarin.Forms.Color)Application.Current.Resources[$"TimeColor{colorIndex}"];
+                    return colorHex;
+                }
+                else
+                {
+                    return Color.Black;
+                }
             }
         }
 
