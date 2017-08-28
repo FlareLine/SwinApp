@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwinApp.OffersPage"
+             Title="Student Offers">
+     <Image Source="@drawable/StudentOffers/StudentEdge.jpg"></Image>
+     <Label Text="Student Edge is Australia's largest member-based organisation of high school and tertiary students, with more than 900,000 members nationally.
+Join now (for FREE) to access super sweet student discounts on Apple, McDonald's, Microsoft, Chatime and more of your faves!"/>
+</ContentPage>
