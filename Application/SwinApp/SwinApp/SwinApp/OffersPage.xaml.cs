@@ -15,6 +15,7 @@ namespace SwinApp
         public OffersPage()
         {
             InitializeComponent();
+            StudentEdgeImage.Source = ImageSource.FromFile("@drawable/studentedge.jpg");
         }
     }
 }
