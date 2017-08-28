@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using Android.App;
 using Android.Content.PM;
@@ -7,6 +7,9 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using SwinApp.Library;
+using SwinApp.Droid.Notifications;
+
+[assembly: Xamarin.Forms.Dependency(typeof(NotificationImplementation))]
 
 namespace SwinApp.Droid
 {

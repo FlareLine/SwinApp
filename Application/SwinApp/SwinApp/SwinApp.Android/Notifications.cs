@@ -1,29 +1,30 @@
-﻿using Android.App;
+using Android.App;
 using SwinApp.Library;
+using SwinApp.Droid;
+using Xamarin.Forms;
 
-[assembly: Xamarin.Forms.Dependency(typeof(INotification))]
-namespace SwinApp.Droid
+namespace SwinApp.Droid.Notifications
 {
-    public class INotificationImplementation : INotification
+    public class NotificationImplementation : INotification
     {
+        public NotificationImplementation() { }
         /// <summary>
         /// Show a simple text notification, using native Android Notification APIs
         /// </summary>
         /// <param name="text"></param>
         public void ShowTextNotification(string text)
         {
-            Notification.Builder builder = new Notification.Builder(Application.Context)
+            Notification.Builder builder = new Notification.Builder(Forms.Context)
                 .SetContentTitle("SwinApp")
                 .SetContentText(text)
+                .SetWhen(Java.Lang.JavaSystem.CurrentTimeMillis() + 10000000)
                 .SetSmallIcon(Resource.Drawable.ic_play_dark);
 
-            Notification notification = builder.Build();
-
             NotificationManager notificationManager =
-                Application.Context.GetSystemService(Android.Content.Context.NotificationService) as NotificationManager;
+                Forms.Context.GetSystemService(Android.Content.Context.NotificationService) as NotificationManager;
             const int id = 0;
 
-            notificationManager.Notify(id, notification);
+            notificationManager.Notify(id, builder.Build());
         }
     }
 }
