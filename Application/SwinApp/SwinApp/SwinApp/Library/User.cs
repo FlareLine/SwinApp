@@ -70,7 +70,7 @@ namespace SwinApp.Library
             .ThenBy(a => a.Schedule.StartTime)
             .ToList();
 
-        public static ObservableCollection<AllocationCard> TimetableCards = new ObservableCollection<AllocationCard>();
+        public static ObservableCollection<IDashCard> ScheduleCards = new ObservableCollection<IDashCard>();
 
         public static Dictionary<string, string> UnitPairs => _units.ToDictionary(u => u.Name, u => u.UUID);
 
@@ -265,20 +265,28 @@ namespace SwinApp.Library
             {
                 string res = await client.GetStringAsync(TEST_ENDPOINT);
                 ProcessTimetableDump(res);
-                PopulateTimetableCards();
+                PopulateSchedule();
             }
         }
         
         /// <summary>
-        /// Using timetable data, populate the TimetableCards table with IDashCards
+        /// Using timetable data, populate the ScheduleCards table with IDashCards
         /// </summary>
-        private static void PopulateTimetableCards()
+        public static void PopulateSchedule()
         {
+            //bit of a butched solution to make sure that we don't get duplicates of classes whenever a new reminder is added, should be fixed later
+            ScheduleCards.Clear();
+
             foreach (AllocationCard card in CurrentSemesterAllocations
                 .Select(a => new AllocationCard(a)))
             {
-                TimetableCards.Add(card);
+                ScheduleCards.Add(card);
             }
+
+            foreach (Reminder r in Reminders)
+                ScheduleCards.Add(new ScheduledReminderCard(r));
+
+            
         }
 
         /// <summary>
