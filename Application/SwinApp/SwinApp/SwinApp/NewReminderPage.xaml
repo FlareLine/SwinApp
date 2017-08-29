@@ -4,6 +4,11 @@
              x:Class="SwinApp.NewReminderPage"
              Title="New Reminder">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="18*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -11,23 +16,23 @@
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackLayout Grid.Row="0">
+        <StackLayout Grid.Row="0" Grid.Column="1">
             <Label Text="Date:" FontSize="Medium"></Label>
             <DatePicker x:Name="dateField" Format="dd-MM-yyyy"></DatePicker>
         </StackLayout>
-        <StackLayout Grid.Row="1">
+        <StackLayout Grid.Row="1" Grid.Column="1">
             <Label Text="Time: " FontSize="Medium"></Label>
             <TimePicker x:Name="timeField"></TimePicker>
         </StackLayout>
-        <StackLayout Grid.Row="2">
+        <StackLayout Grid.Row="2" Grid.Column="1">
             <Label Text="Title:" FontSize="Medium"></Label>
             <Entry x:Name="titleField"></Entry>
         </StackLayout>
-        <StackLayout Grid.Row="3">
+        <StackLayout Grid.Row="3" Grid.Column="1">
             <Label Text="Description:" FontSize="Medium"></Label>
             <Editor x:Name="descriptionField"></Editor>
         </StackLayout>
-        <StackLayout Grid.Row="4">
+        <StackLayout Grid.Row="4" Grid.Column="1">
             <Button x:Name="ButtonSubmit" Text="Submit"></Button>
         </StackLayout>
     </Grid>
