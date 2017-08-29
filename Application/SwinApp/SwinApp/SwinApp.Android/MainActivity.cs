@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using SwinApp.Library;
 using SwinApp.Droid.Notifications;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 [assembly: Xamarin.Forms.Dependency(typeof(NotificationImplementation))]
 
@@ -28,7 +29,11 @@ namespace SwinApp.Droid
 			base.OnCreate (bundle);
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new SwinApp.App ());
-		}
+
+            // Soft keyboard
+            Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Pan);
+
+        }
 	}
 
 }
