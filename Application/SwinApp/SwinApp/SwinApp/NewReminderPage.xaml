@@ -4,17 +4,29 @@
              x:Class="SwinApp.NewReminderPage"
              Title="New Reminder">
     <Frame Style="{StaticResource FrameCard}" Margin="5">
-        <Grid>
+       
 
-           <StackLayout>
-               
-                <Label Text="Date:" HorizontalOptions="FillAndExpand"></Label>
-                <DatePicker x:Name="dateField" Format="dd-MM-yyyy" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></DatePicker>
+            <StackLayout>
 
+                <Grid>
 
-                <Label Text="Time:" HorizontalOptions="FillAndExpand"></Label>
-                <TimePicker x:Name="timeField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></TimePicker>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
+                <StackLayout Grid.Column="0">
+                    <Label  Text="Date:" HorizontalOptions="FillAndExpand"></Label>
+                    <DatePicker x:Name="dateField" Format="dd-MM-yyyy" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></DatePicker>
+
+                </StackLayout>
+                <StackLayout Grid.Column="1">
+
+                    <Label Text="Time:" HorizontalOptions="FillAndExpand"></Label>
+                    <TimePicker x:Name="timeField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></TimePicker>
+                </StackLayout>
+
+                </Grid>
 
                 <Label Text="Title:" HorizontalOptions="FillAndExpand"></Label>
                 <Entry x:Name="titleField" Placeholder="Enter a title" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
@@ -28,6 +40,6 @@
                
             </StackLayout>
            
-        </Grid>
+        
     </Frame>
 </ContentPage>
