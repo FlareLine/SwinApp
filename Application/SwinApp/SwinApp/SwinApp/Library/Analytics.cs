@@ -20,13 +20,22 @@ namespace SwinApp.Library.Analytics
         /// <remarks>Should return 1 for most calls</remarks>
         public static async Task<int> LogEventAsync(AppEvent e)
         {
-            if (conn == null) conn = new SQLiteAsyncConnection(path);
+            try
+            {
+                if (conn == null) conn = new SQLiteAsyncConnection(path);
 
-            await conn.CreateTableAsync<AppEvent>();
+                await conn.CreateTableAsync<AppEvent>();
 
-            Debug.Write($"Inserted new {e.Type} event!");
+                Debug.Write($"PATH: {path}");
 
-            return await conn.InsertAsync(e);
+                Debug.Write($"Inserted new {e.Type} event!");
+
+                return await conn.InsertAsync(e);
+            } catch (Exception ex)
+            {
+                Debug.Write(ex.StackTrace);
+                return -1;
+            }
         }
     }
 }
