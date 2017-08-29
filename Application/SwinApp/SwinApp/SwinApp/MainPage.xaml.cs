@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using SwinApp.Library;
 using Xamarin.Forms.Xaml;
+using SwinApp.Library.Analytics;
 
 namespace SwinApp
 {
@@ -63,7 +64,15 @@ namespace SwinApp
         {
             var menuItem = ListMenu.SelectedItem as MenuItem;
             if (menuItem.Page != null)
+            {
+                await Analytics.LogEventAsync(new AppEvent()
+                {
+                    TimeStamp = DateTime.Now,
+                    Type = EventType.LINK_INTERNAL,
+                    Info = menuItem.Title
+                });
                 await Navigation.PushAsync(menuItem.Page);
+            }
         }
 
         protected override void OnAppearing()

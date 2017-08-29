@@ -15,6 +15,14 @@ namespace SwinApp.Library.Analytics
         public DateTime TimeStamp { get; set; }
 
         /// <summary>
+        /// Blank AppEvent constructor for SQLite usage
+        /// </summary>
+        public AppEvent()
+        {
+
+        }
+
+        /// <summary>
         /// Creates a new <see cref="AppEvent"/> with the specified parameters
         /// </summary>
         /// <param name="t">Type of event</param>
