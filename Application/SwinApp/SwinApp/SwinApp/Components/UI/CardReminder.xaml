@@ -8,17 +8,19 @@
             <ColumnDefinition Width="7*" />
         </Grid.ColumnDefinitions>
     
-        <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="{Binding Day}" FontSize="Medium"></Label>
-            <Label Text="{Binding TimeOfDay}" FontSize="Medium"></Label>
-            <Label Text="{Binding DateMonth}" FontSize="Medium"></Label>
+    <Frame Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#E0443E">
+        <StackLayout Orientation="Horizontal">
+            <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="{Binding Day}" TextColor="White" FontSize="Medium"></Label>
+                <Label Text="{Binding TimeOfDay}" TextColor="White" FontSize="Medium"></Label>
+                <Label Text="{Binding DateMonth}" TextColor="White" FontSize="Medium"></Label>
+            </StackLayout>
+            <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Label Text="{Binding Name}" Font="Bold" FontSize="Medium" TextColor="White"></Label>
+                <Label Text="{Binding Description}" TextColor="White"></Label>
+                <Label Text="Delete" x:Name="ButtonDeleteReminder" HorizontalOptions="End" Font="Bold" FontSize="Medium" TextColor="#660000"></Label>
+            </StackLayout>
         </StackLayout>
-    
-    <Frame Grid.Column="1" BackgroundColor="#E0443E">
-        <StackLayout VerticalOptions="FillAndExpand">
-            <Label Text="{Binding Name}" Font="Bold" FontSize="Medium" TextColor="White"></Label>
-            <Label Text="{Binding Description}" TextColor="White"></Label>
-            <Label Text="Delete" x:Name="ButtonDeleteReminder" HorizontalOptions="End" Font="Bold" FontSize="Medium" TextColor="#660000"></Label>
-        </StackLayout>
+        
     </Frame>
 </Grid>
