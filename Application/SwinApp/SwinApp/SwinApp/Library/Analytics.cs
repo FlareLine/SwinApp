@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using SQLite;
 using System.IO;
 using System.Threading.Tasks;
@@ -58,6 +58,7 @@ namespace SwinApp.Library.Analytics
         {
             if (conn == null) conn = new SQLiteAsyncConnection(path);
 
+            await conn.CreateTableAsync<AppEvent>();
             AsyncTableQuery<AppEvent> query = (lim == null ? conn.Table<AppEvent>() : conn.Table<AppEvent>().Where(a => a.Id < lim));
 
             return await query.ToListAsync();
