@@ -1,4 +1,4 @@
-﻿using SwinApp.Library.Analytics;
+using SwinApp.Library.Analytics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +31,7 @@ namespace SwinApp
         {
             List<AppEvent> result = await Analytics.RetrieveLog();
             events = result ?? new List<AppEvent>();
+            AnalyticsList.ItemsSource = events;
         }
 
         private async void ClearData(object sender, EventArgs e)

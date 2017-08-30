@@ -1,4 +1,4 @@
-﻿using SQLite;
+using SQLite;
 using System;
 
 namespace SwinApp.Library.Analytics
@@ -10,8 +10,11 @@ namespace SwinApp.Library.Analytics
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+
         public EventType Type { get; set; }
+
         public string Info { get; set; }
+
         public DateTime TimeStamp { get; set; }
 
         /// <summary>
