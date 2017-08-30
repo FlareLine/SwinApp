@@ -17,8 +17,8 @@ namespace SwinApp
 
 		public AnalyticsPage ()
 		{
-            LoadData();
             InitializeComponent ();
+            AnalyticsList.ItemsSource = events;
             ButtonClear.Clicked += ClearData;
 		}
 
@@ -32,7 +32,6 @@ namespace SwinApp
         {
             List<AppEvent> result = await Analytics.RetrieveLog();
             events = result ?? new List<AppEvent>();
-            AnalyticsList.ItemsSource = events;
         }
 
         private async void ClearData(object sender, EventArgs e)
