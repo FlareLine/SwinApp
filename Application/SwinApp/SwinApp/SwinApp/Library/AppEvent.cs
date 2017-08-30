@@ -10,8 +10,11 @@ namespace SwinApp.Library.Analytics
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+
         public string Type { get; set; }
+
         public string Info { get; set; }
+
         public string TimeStamp { get; set; }
 
         /// <summary>

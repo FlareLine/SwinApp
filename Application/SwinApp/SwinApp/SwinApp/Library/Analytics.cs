@@ -32,7 +32,8 @@ namespace SwinApp.Library.Analytics
                 Debug.Write($"Inserted new {e.Type} event!");
 
                 return await conn.InsertAsync(e);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Debug.Write("Couldn't insert event!");
                 Debug.Write(ex.StackTrace);
