@@ -30,8 +30,8 @@ namespace SwinApp
 
         private async void LoadData()
         {
-            events = new List<AppEvent>();
-            events = await Analytics.RetrieveLog();
+            List<AppEvent> result = await Analytics.RetrieveLog();
+            events = result ?? new List<AppEvent>();
             AnalyticsList.ItemsSource = events;
         }
 
