@@ -37,6 +37,10 @@ namespace SwinApp
                 new MenuItem("More from Swinburne", "Other apps and links from Swinburne")
                 {
                     Page = new LinksPage()
+                },
+                new MenuItem("Analytics", "View Analytics data")
+                {
+                    Page = new AnalyticsPage()
                 }
             };
             ListMenu.ItemTapped += MenuSelection;

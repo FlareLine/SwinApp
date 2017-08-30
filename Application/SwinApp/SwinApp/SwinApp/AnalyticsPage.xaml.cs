@@ -1,0 +1,52 @@
+﻿using SwinApp.Library.Analytics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace SwinApp
+{
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class AnalyticsPage : ContentPage
+	{
+        List<AppEvent> events = new List<AppEvent>();
+
+		public AnalyticsPage ()
+		{
+            LoadData();
+            InitializeComponent ();
+            ButtonClear.Clicked += ClearData;
+		}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            LoadData();
+        }
+
+        private async void LoadData()
+        {
+            events = new List<AppEvent>();
+            events = await Analytics.RetrieveLog();
+            AnalyticsList.ItemsSource = events;
+        }
+
+        private async void ClearData(object sender, EventArgs e)
+        {
+            int result = await Analytics.ClearLog();
+            if (result != 0)
+            {
+                await DisplayAlert("Success!", "Analytics log was cleared", "close");
+                return;
+            } else
+            {
+                await DisplayAlert("Success!", "Analytics log was cleared", "close");
+                return;
+            } 
+        }
+    }
+}

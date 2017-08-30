@@ -3,6 +3,7 @@ using SQLite;
 using System.IO;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace SwinApp.Library.Analytics
 {
@@ -33,9 +34,44 @@ namespace SwinApp.Library.Analytics
                 return await conn.InsertAsync(e);
             } catch (Exception ex)
             {
+                Debug.Write("Couldn't insert event!");
                 Debug.Write(ex.StackTrace);
                 return -1;
             }
+        }
+
+        /// <summary>
+        /// RetrieveLog wrapper without return limit
+        /// </summary>
+        /// <returns>List of all AppEvents stored in database</returns>
+        public static async Task<List<AppEvent>> RetrieveLog()
+        {
+            return await RetrieveLog(null);
+        }
+
+        /// <summary>
+        /// RetrieveLog wrapper with a return length limit
+        /// </summary>
+        /// <param name="lim">Limit number of returned rows</param>
+        /// <returns>Returns AppEvents up to the specified limit, or no limit if <paramref name="lim"/> is <see langword="null"/></returns>
+        public static async Task<List<AppEvent>> RetrieveLog(int? lim)
+        {
+            if (conn == null) conn = new SQLiteAsyncConnection(path);
+
+            AsyncTableQuery<AppEvent> query = (lim == null ? conn.Table<AppEvent>() : conn.Table<AppEvent>().Where(a => a.Id < lim));
+
+            return await query.ToListAsync();
+        }
+
+        /// <summary>
+        /// Method to clear the Analytics log
+        /// </summary>
+        /// <returns>Success or failure</returns>
+        public static async Task<int> ClearLog()
+        {
+            if (conn == null) conn = new SQLiteAsyncConnection(path);
+
+            return await conn.DeleteAllAsync(new TableMapping(typeof(AppEvent)));
         }
     }
 }
