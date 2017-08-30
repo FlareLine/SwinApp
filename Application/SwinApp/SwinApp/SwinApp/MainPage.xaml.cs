@@ -69,12 +69,7 @@ namespace SwinApp
             var menuItem = ListMenu.SelectedItem as MenuItem;
             if (menuItem.Page != null)
             {
-                await Analytics.LogEventAsync(new AppEvent()
-                {
-                    TimeStamp = DateTime.Now,
-                    Type = EventType.LINK_INTERNAL,
-                    Info = menuItem.Title
-                });
+                await Analytics.LogEventAsync(new AppEvent(EventType.LINK_INTERNAL, DateTime.Now, menuItem.Title));
                 await Navigation.PushAsync(menuItem.Page);
             }
         }

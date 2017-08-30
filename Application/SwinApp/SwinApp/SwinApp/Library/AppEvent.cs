@@ -10,9 +10,9 @@ namespace SwinApp.Library.Analytics
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public EventType Type { get; set; }
+        public string Type { get; set; }
         public string Info { get; set; }
-        public DateTime TimeStamp { get; set; }
+        public string TimeStamp { get; set; }
 
         /// <summary>
         /// Blank AppEvent constructor for SQLite usage
@@ -29,8 +29,8 @@ namespace SwinApp.Library.Analytics
         /// <param name="d">Event date and time</param>
         public AppEvent(EventType t, DateTime d)
         {
-            Type = t;
-            TimeStamp = d;
+            Type = Enum.GetName(typeof(EventType), t);
+            TimeStamp = d.ToShortDateString() + "." + d.ToShortTimeString();
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace SwinApp.Library.Analytics
         /// <returns></returns>
         public string Deserialize(char d)
         {
-            return Enum.GetName(typeof(EventType), Type) + d + TimeStamp.ToShortDateString() + '-' + TimeStamp.ToShortTimeString() + d + Info;
+            return Enum.GetName(typeof(EventType), Type) + d + TimeStamp + d + Info;
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace SwinApp.Library.Analytics
         /// <returns></returns>
         public static string Deserialize(AppEvent e, char d)
         {
-            return Enum.GetName(typeof(EventType), e.Type) + d + e.TimeStamp.ToShortDateString() + '-' + e.TimeStamp.ToShortTimeString() + d + e.Info;
+            return Enum.GetName(typeof(EventType), e.Type) + d + e.TimeStamp + d + e.Info;
         }
     }
 
