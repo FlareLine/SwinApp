@@ -24,7 +24,6 @@ namespace SwinApp
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
             LoadData();
         }
 
