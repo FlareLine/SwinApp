@@ -134,8 +134,6 @@ namespace SwinApp.Library
             }
             //if the file doesn't exist, set _reminders to be an empty List of Reminder
             _reminders = SwinIO<List<Reminder>>.Read("reminders.json") ?? new List<Reminder>();
-
-            RefreshSchedule();
         }
 
         private static IPlanned NextPlanned
@@ -172,7 +170,7 @@ namespace SwinApp.Library
         {
             _reminders.Add(reminder);
             await SwinIO<List<Reminder>>.WriteAsync("reminders.json", _reminders);
-            RefreshSchedule();
+            User.PopulateSchedule();
 
             //test code to see if remindrs are being stored, leave here for now in case it is needed later
             //_reminders.Clear();
@@ -232,25 +230,7 @@ namespace SwinApp.Library
         /// <summary>
         /// Clear reminders, re-add from array
         /// </summary>
-        public static void RefreshSchedule()
-        {
-            _scheduleItems.Clear();
-
-            
-            _reminders.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
-            _lessons.Sort((l1, l2) => DateTime.Compare(l1.Time, l2.Time));
-
-            foreach (Lesson l in _lessons)
-            {
-                AddScheduleItemSafe(new LessonCard(l));
-            }
-
-            foreach (Reminder r in _reminders)
-            {
-                AddScheduleItemSafe(new ScheduledReminderCard(r));
-            }
-
-        }
+       
 
         /// <summary>
         /// Asynchronously load the user timetable data, assign it to the User's
