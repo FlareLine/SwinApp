@@ -30,7 +30,7 @@ namespace SwinApp.Library.Analytics
         /// </summary>
         /// <param name="t">Type of event</param>
         /// <param name="d">Event date and time</param>
-        public AppEvent(EventType t, DateTime d)
+        public AppEvent(EventType t, DateTime d) : this()
         {
             Type = Enum.GetName(typeof(EventType), t);
             TimeStamp = d.ToShortDateString() + "." + d.ToShortTimeString();

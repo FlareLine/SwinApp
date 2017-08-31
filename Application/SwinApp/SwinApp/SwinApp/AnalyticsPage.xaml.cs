@@ -20,7 +20,7 @@ namespace SwinApp
             InitializeComponent ();
             AnalyticsList.ItemsSource = events;
             ButtonClear.Clicked += ClearData;
-		}
+        }
 
         protected override void OnAppearing()
         {
@@ -31,7 +31,6 @@ namespace SwinApp
         {
             List<AppEvent> result = await Analytics.RetrieveLog();
             events = result ?? new List<AppEvent>();
-            AnalyticsList.ItemsSource = events;
         }
 
         private async void ClearData(object sender, EventArgs e)

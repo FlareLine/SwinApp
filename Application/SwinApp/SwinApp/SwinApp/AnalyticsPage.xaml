@@ -9,10 +9,14 @@
             <ColumnDefinition Width="18*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackLayout x:Name="AnalyticsStack" VerticalOptions="FillAndExpand" Grid.Column="1">
-            <ListView x:Name="AnalyticsList" RowHeight="200" HasUnevenRows="True" Margin="0">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListView x:Name="AnalyticsList" RowHeight="200" HasUnevenRows="True" Margin="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -32,13 +36,13 @@
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0" HorizontalTextAlignment="Center" Text="{Binding TimeStamp}" />
-                                <Label Grid.Row="1" HorizontalTextAlignment="Center" Text="{Binding Info}" />
+                                <Label Grid.Row="1" HorizontalTextAlignment="Center" Text="{Binding}" />
                             </Grid>
                         </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button x:Name="ButtonClear" Text="Clear Data" Grid.Column="1"></Button>
-        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="ButtonClear" Text="Clear Data" Grid.Row="1" Grid.Column="1"></Button>
     </Grid>
 </ContentPage>
