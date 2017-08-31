@@ -36,7 +36,7 @@
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0" HorizontalTextAlignment="Center" Text="{Binding TimeStamp}" />
-                                <Label Grid.Row="1" HorizontalTextAlignment="Center" Text="{Binding}" />
+                                <Label Grid.Row="1" HorizontalTextAlignment="Center" Text="{Binding Info}" />
                             </Grid>
                         </Grid>
                     </ViewCell>
