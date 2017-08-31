@@ -190,6 +190,7 @@ namespace SwinApp.Library
         {
             User.Reminders.RemoveAll(r => r == reminder);
             await SwinIO<List<Reminder>>.WriteAsync("reminders.json", User.Reminders);
+            User.PopulateSchedule();
         }
 
         /// <summary>
