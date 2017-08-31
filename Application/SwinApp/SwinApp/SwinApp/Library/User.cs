@@ -41,19 +41,10 @@ namespace SwinApp.Library
 
         public static ObservableCollection<IDashCard> ScheduleItems => _scheduleItems;
 
-        private static List<BlackboardAnnouncement> _announcements = new List<BlackboardAnnouncement>();
-
-        public static List<BlackboardAnnouncement> Announcements => _announcements;
-
-        private static List<BlackboardUnit> _units = new List<BlackboardUnit>();
-
-        public static List<BlackboardUnit> Units => _units;
 
         private static List<Reminder> _reminders = new List<Reminder>();
 
-        private static List<Lesson> _lessons = new List<Lesson>();
-
-        public static List<Lesson> Lessons => _lessons;
+        //Lessons need to be removed as they are deprecated, however keep for now as they are a part of NextPlanned (see comment above NextPlanned)
 
         public static List<Reminder> Reminders => _reminders;
 
@@ -72,46 +63,13 @@ namespace SwinApp.Library
 
         public static ObservableCollection<IDashCard> ScheduleCards = new ObservableCollection<IDashCard>();
 
-        public static Dictionary<string, string> UnitPairs => _units.ToDictionary(u => u.Name, u => u.UUID);
-
         private static UpNextCard _upNextCard;
 
         public static async Task AddDashCard(IDashCard card)
         {
             await Task.Run(() => _dashBoardItems.Add(card));
         }
-
-        private static void LoadBlackboardAnnouncements()
-        {
-            _announcements = new List<BlackboardAnnouncement>();
-            if (USE_PROTOTYPE_DATA)
-            {
-                _announcements.Add(new BlackboardAnnouncement()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Title = "Test Blackboard Announcement",
-                    Body = "Welcome to Blackboard, it's pretty sweet aye? Lots of cool stuff to mess with. \n Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem  \n Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem \n Lorem ",
-                    Created = DateTime.Now
-                });
-            }
-        }
-        /// <summary>
-        /// [DEPRECATED]
-        /// Load data from BlackBoard
-        /// </summary>
-        private static void LoadBlackboardUnits()
-        {
-            _units = new List<BlackboardUnit>();
-            if (USE_PROTOTYPE_DATA)
-            {
-                _units.Add(new BlackboardUnit()
-                {
-                    Name = "Test Unit",
-                    Id = new Random().Next(100).ToString(),
-                    UUID = Guid.NewGuid().ToString(),
-                });
-            }
-        }
+        
         /// <summary>
         /// Loads all data relating to the User including blackboard data, timetables, trains, reminders etc...
         /// </summary>
@@ -119,16 +77,10 @@ namespace SwinApp.Library
         {
             ClearDashItemsSafe();
             AddDashItemSafe(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
-            LoadBlackboardAnnouncements();
-            LoadBlackboardUnits();
-            LoadLessons();
             LoadUserTimetable();
-            foreach (BlackboardAnnouncement a in Announcements)
-                AddDashItemSafe(new BBAnnouncementCard(a));
             if (USE_PROTOTYPE_DATA)
             {
                 AddDashItemSafe(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
-                _upNextCard = new UpNextCard(NextPlanned);
                 AddDashItemSafe(_upNextCard);
                 AddDashItemSafe(new WeatherCard());
             }
@@ -136,13 +88,13 @@ namespace SwinApp.Library
             _reminders = SwinIO<List<Reminder>>.Read("reminders.json") ?? new List<Reminder>();
         }
 
+        //is broken, as _lessons are no longer used. Need to find a way to either convert reminders to allocations, or alternatively allow allocations to act as iPlanned
         private static IPlanned NextPlanned
         {
             get
             {
                 List<IPlanned> _events = new List<IPlanned>();
-                foreach (var l in _lessons)
-                    _events.Add(l);
+               //need to put in allocations here
                 foreach (var r in _reminders)
                     _events.Add(r);
                 _events.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
@@ -152,19 +104,7 @@ namespace SwinApp.Library
         /// <summary>
         /// Load lesson data
         /// </summary>
-        public static void LoadLessons()
-        {
-            if (USE_PROTOTYPE_DATA)
-            {
-                _lessons = new List<Lesson>
-                {
-                    new Lesson("Epic Lecture", DateTime.Today.AddHours(1), "EP1010", "EN1001", "Lecture"),
-                    new Lesson("Awesome Tute", DateTime.Today.AddHours(1.5), "AT1234", "ATC0420", "Tutorial", Color.FromHex("#E0B4E8")),
-                    new Lesson("Powerful Tute", DateTime.Today.AddMinutes(40), "AT1235", "ATC0430", "Tutorial", Color.FromHex("#6E9685")),
-                    new Lesson("Inspirational Lecture", DateTime.Today.AddHours(3.5), "AT1234", "ATC0420", "Tutorial", Color.FromHex("#818BFF"))
-                };
-            }
-        }
+
 
         public static async void WriteReminder(Reminder reminder)
         {
@@ -203,8 +143,6 @@ namespace SwinApp.Library
         /// <param name="card"></param>
         public static void AddDashItemSafe(IDashCard card) => Device.BeginInvokeOnMainThread(() => _dashBoardItems.Add(card));
 
-        public static void AddScheduleItemSafe(IDashCard card) => Device.BeginInvokeOnMainThread(() => _scheduleItems.Add(card));
-
         /// <summary>
         /// Causes unhanded exception
         /// </summary>
@@ -212,20 +150,6 @@ namespace SwinApp.Library
         public static void RemoveDashItemSafe(IDashCard cardToDelete)
         {
             _dashBoardItems.Remove(cardToDelete);
-        }
-
-        public static void RemoveScheduleItem(Grid grid)
-        {
-            int index = -1;
-
-            foreach (IDashCard c in _scheduleItems)
-            {
-                if (c.Content == grid)
-                    index = _scheduleItems.IndexOf(c);
-            }
-
-            if (index != -1)
-                _scheduleItems.RemoveAt(index);
         }
 
         /// <summary>

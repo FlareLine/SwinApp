@@ -29,10 +29,6 @@ namespace SwinApp
                 {
                     Page = new TransportPage()
                 },
-                new MenuItem("Announcements", "Keep in the loop with all going on at Uni")
-                {
-                    Page = new AnnouncementPage()
-                },
                 new MenuItem("More from Swinburne", "Other apps and links from Swinburne")
                 {
                     Page = new LinksPage()
