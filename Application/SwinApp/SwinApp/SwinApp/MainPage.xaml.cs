@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using SwinApp.Library;
 using Xamarin.Forms.Xaml;
+using SwinApp.Library.Analytics;
 
 namespace SwinApp
 {
@@ -36,6 +37,10 @@ namespace SwinApp
                 new MenuItem("More from Swinburne", "Other apps and links from Swinburne")
                 {
                     Page = new LinksPage()
+                },
+                new MenuItem("Analytics", "View Analytics data")
+                {
+                    Page = new AnalyticsPage()
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
@@ -63,7 +68,10 @@ namespace SwinApp
         {
             var menuItem = ListMenu.SelectedItem as MenuItem;
             if (menuItem.Page != null)
+            {
+                await Analytics.LogEventAsync(new AppEvent(EventType.LINK_INTERNAL, DateTime.Now, menuItem.Title));
                 await Navigation.PushAsync(menuItem.Page);
+            }
         }
 
         protected override void OnAppearing()
