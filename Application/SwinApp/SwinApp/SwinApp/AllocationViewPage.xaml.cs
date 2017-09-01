@@ -1,4 +1,4 @@
-﻿using SwinApp.Library;
+using SwinApp.Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +30,7 @@ namespace SwinApp
             {
                 Description = _vm.Description
             });
+            //WebMap.Source = "https://www.google.com/maps/d/viewer?mid=1XWZ-gWAvWTQrkiVk_59U3GOu_8I";
         }
     }
 }

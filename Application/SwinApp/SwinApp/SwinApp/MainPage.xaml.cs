@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,10 +18,6 @@ namespace SwinApp
             InitializeComponent();
             ListMenu.ItemsSource = new List<MenuItem>()
             {
-                new MenuItem("Timetable", "See your classes")
-                {
-                    Page = new TimetablePage()
-                },
                 new MenuItem("Campus Map", "Find your way around")
                 {
                     Page = new GoogleMapPage()
