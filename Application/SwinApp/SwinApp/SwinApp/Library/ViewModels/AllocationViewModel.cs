@@ -33,7 +33,6 @@ namespace SwinApp.Library
         {
             get
             {
-<<<<<<< HEAD
                 // Create table if not exists
                 var conn = SwinDB.Conn;
                 conn.CreateTable<AllocationColour>();
@@ -52,12 +51,6 @@ namespace SwinApp.Library
                 return (Color)Application.Current.Resources[conn.Table<AllocationColour>()
                     .First(a => a.SubjectCode == _allocation.Subject.Code).HexCode
                     ];
-
-=======
-                int colorIndex = new Random().Next(0, 4);
-                Xamarin.Forms.Color colorHex = (Xamarin.Forms.Color)Application.Current.Resources[$"TimeColor{colorIndex}"];
-                return colorHex;
->>>>>>> dev-cleanup
             }
         }
 
