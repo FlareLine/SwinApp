@@ -9,7 +9,7 @@ namespace SwinApp.Library
         /// <summary>
         /// Set orientation to Horizontal
         /// </summary>
-        void Horizontal();
+        void Landscape();
 
         /// <summary>
         /// Set the orientation to portrait

@@ -19,7 +19,7 @@ namespace SwinApp.Droid.Notifications
             }
         }
 
-        public void Horizontal() => ((Activity)Forms.Context).RequestedOrientation = Android.Content.PM.ScreenOrientation.Landscape;
+        public void Landscape() => ((Activity)Forms.Context).RequestedOrientation = Android.Content.PM.ScreenOrientation.Landscape;
 
         public void Portrait() => ((Activity)Forms.Context).RequestedOrientation = Android.Content.PM.ScreenOrientation.Portrait;
     }

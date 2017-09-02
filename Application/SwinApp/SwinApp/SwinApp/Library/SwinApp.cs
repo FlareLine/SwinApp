@@ -42,7 +42,7 @@ namespace SwinApp.Library
                         switch (value)
                         {
                             case Orientation.Landscape:
-                                DependencyService.Get<IOrientationProvider>().Horizontal();
+                                DependencyService.Get<IOrientationProvider>().Landscape();
                                 break;
                             case Orientation.Portrait:
                                 DependencyService.Get<IOrientationProvider>().Portrait();

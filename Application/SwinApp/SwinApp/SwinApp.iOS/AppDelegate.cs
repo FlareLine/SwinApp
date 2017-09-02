@@ -1,9 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
 using UIKit;
+using SwinApp.iOS;
+
+[assembly: Xamarin.Forms.Dependency (typeof(OrientationImplementation))]
 
 namespace SwinApp.iOS
 {
