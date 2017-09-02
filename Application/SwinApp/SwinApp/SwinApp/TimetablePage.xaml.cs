@@ -28,6 +28,8 @@ namespace SwinApp
             if (ListAllocations.ItemsSource == null)
                 ListAllocations.ItemsSource = User.CurrentSemesterAllocations
                     .Select(a => new AllocationViewModel(a));
+
+            SwinDevice.Orientation = Orientation.Landscape;
         }
     }
 }

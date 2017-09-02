@@ -11,6 +11,7 @@ using SwinApp.Droid.Notifications;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 [assembly: Xamarin.Forms.Dependency(typeof(NotificationImplementation))]
+[assembly: Xamarin.Forms.Dependency(typeof(OrientationImplimentaion))]
 
 namespace SwinApp.Droid
 {

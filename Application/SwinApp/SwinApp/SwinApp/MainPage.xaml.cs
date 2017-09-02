@@ -37,6 +37,10 @@ namespace SwinApp
                 new MenuItem("Analytics", "View Analytics data")
                 {
                     Page = new AnalyticsPage()
+                },
+                new MenuItem("Timetable", "View Timetable")
+                {
+                    Page = new TimetablePage()
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
@@ -73,6 +77,7 @@ namespace SwinApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            SwinDevice.Orientation = Orientation.Portrait;
             if (Device.OS == TargetPlatform.Android)
                 NavigationPage.SetHasNavigationBar(this, false);
             // Ensure this only loads once
