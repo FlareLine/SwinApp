@@ -22,18 +22,38 @@ namespace SwinApp
                 {
                     Page = new GoogleMapPage()
                 },
-                new MenuItem("Transport", "Get home easily"),
+                new MenuItem("Transport", "Get home easily")
+                {
+                    Page = new TransportPage()
+                },
                 new MenuItem("Announcements", "Keep in the loop with all going on at Uni")
                 {
                     Page = new AnnouncementPage()
                 },
-                new MenuItem("Student Offers", "Discounts and other offers")
+                new MenuItem("More from Swinburne", "Other apps and links from Swinburne")
                 {
-                    Page = new OffersPage()
+                    Page = new LinksPage()
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
-            ListDashboard.ItemsSource = User.DashBoardItems;
+            ListDashboard.ItemTapped += (send, ev) => ListDashboard.SelectedItem = null;
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                ToolbarItems.Add(new ToolbarItem()
+                {
+                    Icon = "Plus.png",
+                    Command = new Command(() => AddNewReminder())
+                });
+                PageMore.Title = "Menu";
+                PageMore.Icon = "Menu.png";
+                PageCalendar.Icon = "Calendar.png";
+                PageDashboard.Icon = "Home.png";
+            }
+        }
+
+        private void RefreshSchedule()
+        {
+            ListSchedule.BeginRefresh();
         }
 
         private async void MenuSelection(object sender, ItemTappedEventArgs e)
@@ -45,11 +65,14 @@ namespace SwinApp
 
         protected override void OnAppearing()
         {
-            NavigationPage.SetHasNavigationBar(this, false);
             base.OnAppearing();
+            if (Device.OS == TargetPlatform.Android)
+                NavigationPage.SetHasNavigationBar(this, false);
             try
             {
                 User.LoadUserData();
+                ListDashboard.ItemsSource = User.DashBoardItems;
+                ListSchedule.ItemsSource = User.ScheduleItems;
             }
             catch (Exception e)
             {
@@ -57,9 +80,29 @@ namespace SwinApp
             }
         }
 
-        private async void ShowContextMenu(object sender, EventArgs e) => await DisplayActionSheet("Add New...", "Close", "", new string[] { "Reminder" });
+        private async void ShowContextMenu(object sender, EventArgs e)
+        {
+            string check = await DisplayActionSheet("Add New...", "Close", "", new string[] { "Reminder" });
+            if (check == "Reminder")
+            {
+                //create new reminder through use of pop up window, then add it to the users reminders
+                //after this, re-write reminders to the json file
+                AddNewReminder();
 
-        private void AssertPlusVisibility(object sender, ScrolledEventArgs e) => ButtonAndroidPlus.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
+            }
+        }
+
+        private async void AddNewReminder()
+        {
+            await Navigation.PushAsync(new NewReminderPage());
+        }
+
+        private void AssertPlusVisibility(object sender, ScrolledEventArgs e)
+        {
+            ButtonAndroidPlusFeed.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
+            ButtonAndroidPlusSchedule.IsVisible = ScrollFeed.ScrollY > 0 ? false : true;
+        }
+
     }
     public class MenuItem
     {

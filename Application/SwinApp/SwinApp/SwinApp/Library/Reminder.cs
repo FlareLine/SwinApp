@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Newtonsoft.Json;
 
 namespace SwinApp.Library
 {
@@ -10,9 +9,37 @@ namespace SwinApp.Library
 
         public DateTime Time { get; set; }
 
+        // Return how far in the future the event is
         public TimeSpan When => Time - DateTime.Now;
 
-        string Description { get; set; }
+        public string Description { get; set; }
+
+        [JsonIgnore]
+        public string DateMonth
+        {
+            get
+            {
+                return (Time.ToString("dd/MM/yy"));
+            }
+        }
+
+        [JsonIgnore]
+        public string TimeOfDay
+        {
+            get
+            {
+                return (Time.ToString("HH:mm tt"));
+            }
+        }
+
+        [JsonIgnore]
+        public string Day
+        {
+            get
+            {
+                return (Time.DayOfWeek.ToString());
+            }
+        }
 
         public Reminder(DateTime reminderDateTime, string title, string description)
         {
@@ -26,9 +53,5 @@ namespace SwinApp.Library
         public void Refresh()
         {
         }
-
-        
-
-        
     }
 }

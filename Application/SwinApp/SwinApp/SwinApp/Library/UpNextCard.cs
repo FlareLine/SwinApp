@@ -10,10 +10,12 @@ namespace SwinApp.Library
     {
         private IPlanned _planned;
         private Grid _content;
+        private CardUpNext _card;
         public UpNextCard(IPlanned planned)
         {
             _planned = planned;
-            _content = new CardUpNext(_planned);
+            _card = new CardUpNext(_planned);
+            _content = _card;
         }
         public string Title => "Up Next";
 
@@ -28,5 +30,11 @@ namespace SwinApp.Library
         {
             throw new NotImplementedException();
         }
+
+        //public void UpdateContext(IPlanned planned)
+        //{
+        //    _planned = planned;
+        //    _card.UpdateContext(_planned);
+        //}
     }
 }

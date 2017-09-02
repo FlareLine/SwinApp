@@ -8,7 +8,7 @@
     </Grid.RowDefinitions>
     <Frame>
         <StackLayout VerticalOptions="CenterAndExpand">
-            <Label  Text="{Binding Title}" FontSize="Medium" />
+            <Label x:Name="TextTitle"  Text="{Binding Title}" FontSize="Medium" />
             <Label x:Name="TextBody" Text="{Binding Body}" LineBreakMode="TailTruncation" FontSize="Small"/>
         </StackLayout>
     </Frame>

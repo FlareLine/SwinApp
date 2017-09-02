@@ -16,14 +16,19 @@ namespace SwinApp.Components
         private IPlanned _planned;
 		public CardUpNext (IPlanned planned)
 		{
-            _planned = planned;
-            BindingContext = _planned;
-			InitializeComponent ();
+            UpdateContext(planned);
+            InitializeComponent ();
 		}
 
         private void ModifyData(object sender, FocusEventArgs e)
         {
             _planned.Refresh();
+        }
+
+        public void UpdateContext(IPlanned planned)
+        {
+            _planned = planned;
+            BindingContext = _planned;
         }
     }
 }

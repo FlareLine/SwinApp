@@ -129,7 +129,18 @@
     <AndroidResource Include="Resources\Drawable\fa_sun.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\SplashScreen.9.png" />
+    <AndroidResource Include="Resources\Drawable\allocatelogo.png" />
+    <AndroidResource Include="Resources\Drawable\blackboardlogo.png" />
+    <AndroidResource Include="Resources\Drawable\contactslogo.png" />
+    <AndroidResource Include="Resources\Drawable\librarylogo.png" />
+    <AndroidResource Include="Resources\Drawable\newslogo.png" />
+    <AndroidResource Include="Resources\Drawable\safeswinlogo.png" />
+    <AndroidResource Include="Resources\Drawable\ssaalogo.png" />
+    <AndroidResource Include="Resources\Drawable\studyspaceslogo.png" />
+    <AndroidResource Include="Resources\Drawable\swinburnelogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\SplashScreen.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Drawable\studentedge.jpg" />

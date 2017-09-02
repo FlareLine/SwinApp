@@ -4,18 +4,50 @@
             xmlns:local="clr-namespace:SwinApp"
             x:Class="SwinApp.MainPage"
             Title="SwinApp"
-            BarBackgroundColor="{StaticResource SwinburneRed}"
             >
+    <TabbedPage.BarBackgroundColor>
+        <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}"/>
+    </TabbedPage.BarBackgroundColor>
     <!--Dashboard Page-->
-    <ContentPage Title="Dashboard">
+    <ContentPage x:Name="PageDashboard"  Title="Dashboard">
         <StackLayout x:Name="StackMain" VerticalOptions="FillAndExpand">
-            <!--<Image Source="http://emspace.com.au/sites/emspace.com.au/files/imagecache/client_teaser/content/project/image_small/swinburne-logo.png" />
-            <Label Text="Welcome to SwinApp" 
-               VerticalOptions="Center" 
-               HorizontalOptions="Center" />
-            <Button x:Name="ButtonWeather" Text="View Weather"/>-->
             <ScrollView x:Name="ScrollFeed" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
-                <ListView x:Name="ListDashboard" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+                <ListView x:Name="ListDashboard" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+                    <ListView.RowHeight>
+                        <OnPlatform x:TypeArguments="x:Int32" Android="80" iOS="180"/>
+                    </ListView.RowHeight>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="0" VerticalOptions="CenterAndExpand">
+                                    <Frame Style="{StaticResource FrameCard}" Margin="5">
+                                        <StackLayout Orientation="Vertical" Padding="1">
+                                            <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"/>
+                                            <ContentView Content="{Binding Content}"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+            <Grid Padding="0" BackgroundColor="Transparent">
+                <Grid.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean" Android="True" iOS="False"/>
+                </Grid.IsVisible>
+                <Button x:Name="ButtonAndroidPlusFeed" Clicked="ShowContextMenu" HorizontalOptions="FillAndExpand" Text="+" BackgroundColor="White" FontAttributes="Bold" FontSize="Large"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage>
+    <!--Schedule Page-->
+    <ContentPage x:Name="PageCalendar"  Title="Schedule" >
+        <StackLayout x:Name="StackSchedule" VerticalOptions="FillAndExpand">
+            <ScrollView x:Name="ScrollSchedule" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
+                <ListView x:Name="ListSchedule" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+                    <ListView.RowHeight>
+                        <OnPlatform x:TypeArguments="x:Int32" Android="80" iOS="180"/>
+                    </ListView.RowHeight>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -36,36 +68,21 @@
                 <Grid.IsVisible>
                     <OnPlatform x:TypeArguments="x:Boolean" Android="True" iOS="False"/>
                 </Grid.IsVisible>
-                <Button x:Name="ButtonAndroidPlus" Clicked="ShowContextMenu" HorizontalOptions="FillAndExpand" Text="+" BackgroundColor="White" FontAttributes="Bold" FontSize="Large"/>
+                <Button x:Name="ButtonAndroidPlusSchedule" Clicked="ShowContextMenu" HorizontalOptions="FillAndExpand" Text="+" BackgroundColor="White" FontAttributes="Bold" FontSize="Large"/>
             </Grid>
         </StackLayout>
     </ContentPage>
-    <!--Schedule Page-->
-    <ContentPage Title="Schedule">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Label FontSize="Medium" TextColor="Gray" HorizontalTextAlignment="Center" Grid.Row="1" Text="Welcome to my timetable harahar yes"/>
-        </Grid>
-    </ContentPage>
     <!--Menu/More Page-->
-    <ContentPage Title="&#9776;" >
+    <ContentPage x:Name="PageMore" Title="&#9776;">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ListView x:Name="ListMenu" HasUnevenRows="True">
+            <ListView x:Name="ListMenu" HasUnevenRows="True" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
-                                <!--<StackLayout Margin="10,12">
-                                    <Label VerticalOptions="CenterAndExpand" FontSize="Medium" Text="{Binding Title}"/>
-                                    <Label VerticalOptions="End" Text="{Binding Desc}"/>
-                                </StackLayout>-->
                                 <!-- ALTERNATIVE RENDERING, RESULTS IN A ~1 Second Faster Loading Time -->
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="2"/>
