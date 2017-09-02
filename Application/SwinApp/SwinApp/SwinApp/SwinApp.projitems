@@ -21,6 +21,9 @@
       <DependentUpon>CardReminder.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardStudentOffer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardTransport.xaml.cs">
       <DependentUpon>CardTransport.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -79,6 +82,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)NewReminderPage.xaml.cs">
       <DependentUpon>NewReminderPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)StudentOffersPage.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)TransportPage.xaml.cs">
@@ -180,6 +186,16 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardLesson.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)StudentOffersPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardStudentOffer.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

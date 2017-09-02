@@ -33,6 +33,10 @@ namespace SwinApp
                 new MenuItem("More from Swinburne", "Other apps and links from Swinburne")
                 {
                     Page = new LinksPage()
+                },
+                new MenuItem("Student Offers", "Student Discounts and Other Offers")
+                {
+                    Page = new StudentOffersPage()
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
