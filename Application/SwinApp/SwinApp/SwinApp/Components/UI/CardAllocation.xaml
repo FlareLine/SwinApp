@@ -8,7 +8,7 @@
                 <!--Specific TimeLabel styling-->
                 <Style x:Key="LabelTimeStyle" TargetType="Label">
                     <Setter Property="FontSize" Value="22"/>
-                    <Setter Property="TextColor" Value="White"/>
+                    <Setter Property="TextColor" Value="{DynamicResource backgroundColor}"/>
                 </Style>
             </ResourceDictionary>
         </Grid.Resources>
@@ -26,7 +26,7 @@
                 <Frame.Resources>
                     <ResourceDictionary>
                         <Style TargetType="Label">
-                            <Setter Property="TextColor" Value="{StaticResource White}"/>
+                            <Setter Property="TextColor" Value="{DynamicResource backgroundColor}"/>
                             <Setter Property="FontAttributes" Value="Bold"/>
                             <Setter Property="FontSize" Value="Medium"/>
                         </Style>

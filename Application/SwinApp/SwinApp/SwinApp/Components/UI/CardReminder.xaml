@@ -8,17 +8,17 @@
             <ColumnDefinition Width="7*" />
         </Grid.ColumnDefinitions>
     
-    <Frame Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#E0443E">
+    <Frame Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource SwinburneRed}">
         <StackLayout Orientation="Horizontal">
             <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="{Binding Day}" TextColor="White" FontSize="Medium"></Label>
-                <Label Text="{Binding TimeOfDay}" TextColor="White" FontSize="Medium"></Label>
-                <Label Text="{Binding DateMonth}" TextColor="White" FontSize="Medium"></Label>
+                <Label Text="{Binding Day}" TextColor="{DynamicResource backgroundColor}" Font="Bold" FontSize="Medium"></Label>
+                <Label Text="{Binding TimeOfDay}" TextColor="{DynamicResource backgroundColor}" FontSize="Medium"></Label>
+                <Label Text="{Binding DateMonth}" TextColor="{DynamicResource backgroundColor}" FontSize="Medium"></Label>
             </StackLayout>
             <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <Label Text="{Binding Name}" Font="Bold" FontSize="Medium" TextColor="White"></Label>
-                <Label Text="{Binding Description}" TextColor="White"></Label>
-                <Label Text="Delete" x:Name="ButtonDeleteReminder" HorizontalOptions="End" Font="Bold" FontSize="Medium" TextColor="#660000"></Label>
+                <Label Text="{Binding Name}" Font="Bold" FontSize="Medium" TextColor="{DynamicResource backgroundColor}"></Label>
+                <Label Text="{Binding Description}" TextColor="{DynamicResource backgroundColor}"></Label>
+                <Label Text="Delete" x:Name="ButtonDeleteReminder" HorizontalOptions="End" Font="Bold" FontSize="Medium" TextColor="Black"></Label>
             </StackLayout>
         </StackLayout>
         
