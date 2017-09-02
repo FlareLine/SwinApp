@@ -9,7 +9,7 @@
         <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}"/>
     </TabbedPage.BarBackgroundColor>
     <!--Dashboard Page-->
-    <ContentPage x:Name="PageDashboard"  Title="Dashboard" BackgroundColor="{StaticResource Black}">
+    <ContentPage x:Name="PageDashboard"  Title="Dashboard">
         <StackLayout x:Name="StackMain" VerticalOptions="FillAndExpand">
             <ScrollView x:Name="ScrollFeed" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
                 <ListView x:Name="ListDashboard" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
