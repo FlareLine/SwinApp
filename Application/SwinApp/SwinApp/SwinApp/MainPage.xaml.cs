@@ -32,7 +32,12 @@ namespace SwinApp
                 new MenuItem("More from Swinburne", "Other apps and links from Swinburne")
                 {
                     Page = new LinksPage()
+                },
+                new MenuItem("Settings", "Change colours and other stuff I guess")
+                {
+                    Page = new SettingsPage()
                 }
+                
             };
             ListMenu.ItemTapped += MenuSelection;
             ListDashboard.ItemTapped += (send, ev) => ListDashboard.SelectedItem = null;

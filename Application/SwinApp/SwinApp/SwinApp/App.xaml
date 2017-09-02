@@ -29,7 +29,11 @@
             <Color x:Key="Silver">#DDDDDD</Color>
             <Color x:Key="Gray">#AAAAAA</Color>
             <Color x:Key="Black">#111111</Color>
-            
+
+            <Color x:Key="backgroundColor">#33302E</Color>
+            <Color x:Key="textColor">White</Color>
+            <Color x:Key="frameCardColor">#595959</Color>
+
             <!-- Color Definitions -->
             <Color x:Key="SwinburneRed">#dc2d27</Color>
 
@@ -40,6 +44,26 @@
             <Color x:Key="TimeColor3">#cccc99</Color>
 
             <!-- Clrs Definitions -->
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource textColor}" />
+            </Style>
+            <Style TargetType="DatePicker">
+                <Setter Property="TextColor" Value="{DynamicResource textColor}"></Setter>
+            </Style>
+            <Style TargetType="TimePicker">
+                <Setter Property="TextColor" Value="{DynamicResource textColor}"></Setter>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="{DynamicResource textColor}"></Setter>
+            </Style>
+            <Style x:Key="backgroundStyle" TargetType="VisualElement">
+                <Setter Property="BackgroundColor" Value="{DynamicResource backgroundColor}" />
+            </Style>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource SwinburneRed}"></Setter>
+                <Setter Property="TextColor" Value="{DynamicResource textColor}"></Setter>
+            </Style>
             
             <Style TargetType="TabbedPage">
                 <!--<Setter Property="BarBackgroundColor" Value="{StaticResource SwinburneRed}"/>-->
@@ -64,6 +88,7 @@
                         <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}" iOS="White"/>
                     </Setter.Value>
                 </Setter>
+                <Setter Property="BackgroundColor" Value="{DynamicResource frameCardColor}"></Setter>
             </Style>
 
             
