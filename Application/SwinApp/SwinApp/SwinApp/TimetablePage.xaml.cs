@@ -13,6 +13,8 @@ namespace SwinApp
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TimetablePage : ContentPage
 	{
+        private bool _populated = false;
+
 		public TimetablePage ()
 		{
 			InitializeComponent ();
@@ -25,9 +27,14 @@ namespace SwinApp
         {
             SwinDevice.Orientation = Orientation.Landscape;
 
-            GridTimetable.Children.Clear();
-            foreach (var vm in User.CurrentSemesterAllocations.Select(a => new AllocationViewModel(a)))
-                GridTimetable.Children.Add(vm.AllocationEntry());
+            // Must manually use populated as otherwise we may clear off the default data
+            if (!_populated)
+            {
+                foreach (var vm in User.CurrentSemesterAllocations.Select(a => new AllocationViewModel(a)))
+                    GridTimetable.Children.Add(vm.AllocationEntry());
+                _populated = true;
+            }
+
         }
     }
 }

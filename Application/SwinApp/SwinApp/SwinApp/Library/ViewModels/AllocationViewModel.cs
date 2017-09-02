@@ -54,7 +54,9 @@ namespace SwinApp.Library
             }
         }
 
-        private int GridRow => (_allocation.Schedule.StartTime.Hour - 7) + (_allocation.Schedule.StartTime.Minute >= 30 ? 1 : 0);
+        private int GridRow => 
+            (_allocation.Schedule.StartTime.Hour - 7) + 
+            (_allocation.Schedule.StartTime.Minute >= 30 ? 1 : 0);
 
         private int GridColumn => User.DayCompValues[Day] + 1;
 
