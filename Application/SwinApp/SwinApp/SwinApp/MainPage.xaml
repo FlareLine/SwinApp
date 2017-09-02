@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:SwinApp"
@@ -9,7 +9,7 @@
         <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}"/>
     </TabbedPage.BarBackgroundColor>
     <!--Dashboard Page-->
-    <ContentPage x:Name="PageDashboard"  Title="Dashboard">
+    <ContentPage x:Name="PageDashboard"  Title="Dashboard" BackgroundColor="{StaticResource Black}">
         <StackLayout x:Name="StackMain" VerticalOptions="FillAndExpand">
             <ScrollView x:Name="ScrollFeed" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
                 <ListView x:Name="ListDashboard" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">

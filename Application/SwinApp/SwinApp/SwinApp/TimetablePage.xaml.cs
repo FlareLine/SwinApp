@@ -24,7 +24,10 @@ namespace SwinApp
         protected override void OnAppearing()
         {
             SwinDevice.Orientation = Orientation.Landscape;
-            base.OnAppearing();
+
+            GridTimetable.Children.Clear();
+            foreach (var vm in User.CurrentSemesterAllocations.Select(a => new AllocationViewModel(a)))
+                GridTimetable.Children.Add(vm.AllocationEntry());
         }
     }
 }

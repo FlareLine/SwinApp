@@ -54,6 +54,23 @@ namespace SwinApp.Library
             }
         }
 
+        /// <summary>
+        /// Generate an entry grid for the allocations
+        /// </summary>
+        /// <returns></returns>
+        public Grid AllocationEntry()
+        {
+            Grid resGrid = new Grid
+            {
+                MinimumHeightRequest = 100,
+                BackgroundColor = Color
+            };
+            Grid.SetColumn(resGrid, User.DayCompValues[Day]);
+            Grid.SetRow(resGrid, 1);
+            resGrid.Children.Add(new Label() { Text = Description });
+            return resGrid;
+        }
+
         public AllocationViewModel(Allocation allocation)
         {
             _allocation = allocation;
