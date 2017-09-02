@@ -23,13 +23,8 @@ namespace SwinApp
         /// </summary>
         protected override void OnAppearing()
         {
-            base.OnAppearing();
-
-            if (ListAllocations.ItemsSource == null)
-                ListAllocations.ItemsSource = User.CurrentSemesterAllocations
-                    .Select(a => new AllocationViewModel(a));
-
             SwinDevice.Orientation = Orientation.Landscape;
+            base.OnAppearing();
         }
     }
 }
