@@ -3,51 +3,61 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.TimetablePage"
              Title="Timetable">
-    <Grid x:Name="GridTimetable">
-        <Grid.Resources>
-            <ResourceDictionary>
-                <GridLength x:Key="TimetableHeaderHeight">40</GridLength>
-                <GridLength x:Key="TimetableRowHeight">30</GridLength>
-            </ResourceDictionary>
-        </Grid.Resources>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid x:Name="GridTimetable" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <GridLength x:Key="TimetableHeaderHeight">40</GridLength>
+                    <GridLength x:Key="TimetableRowHeight">30</GridLength>
+                </ResourceDictionary>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
 
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="{StaticResource TimetableHeaderHeight}"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{StaticResource TimetableHeaderHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+            </Grid.RowDefinitions>
+            <!--Day Labels-->
+            <Label Grid.Row="0" Grid.Column="1" Text="Monday"/>
+            <Label Grid.Row="0" Grid.Column="2" Text="Tuesday"/>
+            <Label Grid.Row="0" Grid.Column="3" Text="Wednesday"/>
+            <Label Grid.Row="0" Grid.Column="4" Text="Thursday"/>
+            <Label Grid.Row="0" Grid.Column="5" Text="Friday"/>
 
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-            <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
-        </Grid.RowDefinitions>
-        <!--Day Labels-->
-        <Label Grid.Row="0" Grid.Column="1" Text="Monday"/>
-        <Label Grid.Row="0" Grid.Column="2" Text="Tuesday"/>
-        <Label Grid.Row="0" Grid.Column="3" Text="Wednesday"/>
-        <Label Grid.Row="0" Grid.Column="4" Text="Thursday"/>
-        <Label Grid.Row="0" Grid.Column="5" Text="Friday"/>
-        <!--Time Labels-->
-    </Grid>
-
+            <Label Grid.Row="1" Grid.Column="1" Text="8:00AM"/>
+            <Label Grid.Row="2" Grid.Column="2" Text="8:30"/>
+            <Label Grid.Row="3" Grid.Column="3" Text="9:00"/>
+            <Label Grid.Row="4" Grid.Column="4" Text="9:30"/>
+            <Label Grid.Row="5" Grid.Column="5" Text="10:00"/>
+            <Label Grid.Row="5" Grid.Column="6" Text="10:30"/>
+            <Label Grid.Row="5" Grid.Column="7" Text="11:00"/>
+            <Label Grid.Row="5" Grid.Column="8" Text="11:30"/>
+            <Label Grid.Row="5" Grid.Column="9" Text="12:00PM"/>
+            <!--Time Labels-->
+        </Grid>
+    </ScrollView>
 </ContentPage>

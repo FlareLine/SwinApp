@@ -54,6 +54,12 @@ namespace SwinApp.Library
             }
         }
 
+        private int GridRow => (_allocation.Schedule.StartTime.Hour - 7) + (_allocation.Schedule.StartTime.Minute >= 30 ? 1 : 0);
+
+        private int GridColumn => User.DayCompValues[Day] + 1;
+
+        private int GridSpan => (int)Math.Floor((double)(_allocation.Schedule.Duration / 30));
+
         /// <summary>
         /// Generate an entry grid for the allocations
         /// </summary>
@@ -65,8 +71,11 @@ namespace SwinApp.Library
                 MinimumHeightRequest = 100,
                 BackgroundColor = Color
             };
-            Grid.SetColumn(resGrid, User.DayCompValues[Day]);
-            Grid.SetRow(resGrid, 1);
+
+            Grid.SetColumn(resGrid, GridColumn);
+            Grid.SetRow(resGrid, GridRow);
+            Grid.SetRowSpan(resGrid, GridSpan);
+
             resGrid.Children.Add(new Label() { Text = Description });
             return resGrid;
         }
