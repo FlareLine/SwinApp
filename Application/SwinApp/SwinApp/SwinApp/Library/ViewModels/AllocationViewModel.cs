@@ -1,4 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Text;
 using Xamarin.Forms;
 using SQLite;
 
@@ -21,6 +26,8 @@ namespace SwinApp.Library
 
         public string Room => _allocation.Schedule.Room.Code.Replace("HAW_", "");
 
+        public string BuildingCode => System.Text.RegularExpressions.Regex.Replace(Room, "[0-9]", "");
+
         public string Type => _allocation.ActivityTypeReadable();
 
         public string Day => _allocation.DayOfWeek();
@@ -28,6 +35,10 @@ namespace SwinApp.Library
         public string DayShortened => Day.Substring(0, 3);
 
         public string Summary => $"{Type} in {Room}";
+
+        public string MapSource => MapsLib.GetStaticMapURL(BuildingCode);
+
+        public string MapClickUrl => $"https://www.google.com/maps/search/?api=1&query={MapsLib.SwinBuildings_HAW[BuildingCode].XY}";
 
         public Color Color
         {

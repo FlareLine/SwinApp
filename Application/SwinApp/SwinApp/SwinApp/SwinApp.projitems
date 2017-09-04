@@ -71,6 +71,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Library\Clrs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\INotification.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\IOrientationProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\MapsLib.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SQLiteAsync.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\TimetableModels.cs" />
