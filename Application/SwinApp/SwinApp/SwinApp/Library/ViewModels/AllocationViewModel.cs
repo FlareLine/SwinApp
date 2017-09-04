@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
@@ -40,7 +39,7 @@ namespace SwinApp.Library
 
         public string MapClickUrl => $"https://www.google.com/maps/search/?api=1&query={MapsLib.SwinBuildings_HAW[BuildingCode].XY}";
 
-        public Color Color
+        public Xamarin.Forms.Color Color
         {
             get
             {
@@ -59,7 +58,7 @@ namespace SwinApp.Library
                     });
                 }
 
-                return (Color)Application.Current.Resources[conn.Table<AllocationColour>()
+                return (Xamarin.Forms.Color)Application.Current.Resources[conn.Table<AllocationColour>()
                     .First(a => a.SubjectCode == _allocation.Subject.Code).HexCode
                     ];
             }
