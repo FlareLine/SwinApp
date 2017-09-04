@@ -9,7 +9,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
-            <Image Source="http://www.universitiesnews.com/wp-content/uploads/2012/07/Swinburne-University-of-Technology.jpg" Aspect="AspectFill"/>
+            <Image Source="{Binding MapSource}" Aspect="AspectFill"/>
             <Grid Grid.Row="1" Margin="20,0">
                 <Grid.Resources>
                     <ResourceDictionary>

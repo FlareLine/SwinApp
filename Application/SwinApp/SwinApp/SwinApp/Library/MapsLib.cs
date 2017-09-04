@@ -17,8 +17,8 @@ namespace SwinApp.Library
             { "AMDC", new CoordinatePair("-37.8229691", "145.0389097") },
             { "BA", new CoordinatePair("-37.8221247", "145.0391443") },
             { "AD", new CoordinatePair("-37.822128", "145.038771") },
-            { "EN", new CoordinatePair("-37.8222208", "145.0374007") },
-            { "EW", new CoordinatePair("-37.82198", "145.0372464") },
+            { "EN", new CoordinatePair("-37.8221931", "145.0379109") },
+            { "EW", new CoordinatePair("-37.8220037", "145.0374358") },
             { "GS", new CoordinatePair("-37.821345", "145.0379552") },
             { "SPS", new CoordinatePair("-37.8212475", "145.0376922") },
             { "SPW", new CoordinatePair("-37.8209918", "145.0369032") },
@@ -34,12 +34,21 @@ namespace SwinApp.Library
             { "SA", new CoordinatePair("-37.8222579", "145.0368806") },
             { "CH", new CoordinatePair("-37.8226523", "145.0356731") }
         };
+
+        public static string GetStaticMapURL(string buildingCode)
+        {
+            if (!SwinBuildings_HAW.ContainsKey(buildingCode)) return "Invalid Building Code";
+            return $"http://maps.googleapis.com/maps/api/staticmap?center={SwinBuildings_HAW[buildingCode].XY}" +
+                $"&zoom=18&size=400x400&maptype=roadmap&markers=size:medium|color:red|" +
+                $"label:{buildingCode.Substring(0, 1)}|{SwinBuildings_HAW[buildingCode].XY}";
+        }
     }
 
     public class CoordinatePair
     {
         public string X { get; set; }
         public string Y { get; set; }
+        public string XY { get { return X + "," + Y; } }
 
         /// <summary>
         /// Creates a new coordinate pair with the specified coordinates

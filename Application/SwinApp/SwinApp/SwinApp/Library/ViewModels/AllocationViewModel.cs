@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,8 @@ namespace SwinApp.Library
         public string DayShortened => Day.Substring(0, 3);
 
         public string Summary => $"{Type} in {Room}";
+
+        public string MapSource => MapsLib.GetStaticMapURL(System.Text.RegularExpressions.Regex.Replace(Room, "[0-9]", ""));
 
         public Xamarin.Forms.Color Color
         {
