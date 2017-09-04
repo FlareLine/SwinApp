@@ -19,6 +19,13 @@ namespace SwinApp
 		{
 			InitializeComponent ();
             BindingContext = _vm = vm;
+            MapImage.GestureRecognizers.Add(new TapGestureRecognizer {
+                Command = new Command(() =>
+                {
+                    Device.OpenUri(new Uri(_vm.MapClickUrl));
+                }),
+                NumberOfTapsRequired = 1
+            });
 		}
 	}
 }

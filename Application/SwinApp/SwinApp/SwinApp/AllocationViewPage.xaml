@@ -9,7 +9,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
-            <Image Source="{Binding MapSource}" Aspect="AspectFill"/>
+            <Image x:Name="MapImage" Source="{Binding MapSource}" Aspect="AspectFill"/>
             <Grid Grid.Row="1" Margin="20,0">
                 <Grid.Resources>
                     <ResourceDictionary>
