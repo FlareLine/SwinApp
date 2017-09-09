@@ -182,3 +182,6 @@ FakesAssemblies/
 
 .DS_Store
 /Application/SwinApp/packages
+
+# Merge Resolution Files
+*.orig
