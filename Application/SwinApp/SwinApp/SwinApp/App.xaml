@@ -80,12 +80,12 @@
             <Style TargetType="Frame" x:Key="FrameCard">
                 <Setter Property="HasShadow">
                     <Setter.Value>
-                        <OnPlatform x:TypeArguments="x:Boolean" Android="true" iOS="false"/>
+                        <OnPlatform x:TypeArguments="x:Boolean" Android="true" iOS="true"/>
                     </Setter.Value>
                 </Setter>
                 <Setter Property="OutlineColor">
                     <Setter.Value>
-                        <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}" iOS="White"/>
+                        <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}" iOS="{StaticResource White}"/>
                     </Setter.Value>
                 </Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource frameCardColor}"></Setter>
