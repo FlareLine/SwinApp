@@ -5,9 +5,10 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.IO;
-using System.Xml.Linq;
+using System.Linq;
 using SQLite;
 using Xamarin.Forms;
+using System.Xml.Linq;
 
 namespace SwinApp.Library
 {
@@ -30,10 +31,7 @@ namespace SwinApp.Library
         /// <param name="or"></param>
         public static Orientation Orientation
         {
-            get
-            {
-                return DependencyService.Get<IOrientationProvider>().Current();
-            }
+            get => DependencyService.Get<IOrientationProvider>().Current();
             set
             {
                 try
