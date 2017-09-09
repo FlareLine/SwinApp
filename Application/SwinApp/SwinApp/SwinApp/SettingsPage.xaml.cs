@@ -13,10 +13,18 @@ namespace SwinApp
 	public partial class SettingsPage : ContentPage
 	{
         bool isDarkTheme = true;
+
+        public string Dark {
+            get {
+                return isDarkTheme ? "Dark Theme" : "Light Theme";
+            }
+        }
+
         public SettingsPage ()
 		{
 			InitializeComponent ();
             ButtonChangeTheme.Clicked += OnThemeButtonClicked;
+            BindingContext = this;
         }
 
         private void OnThemeButtonClicked(object sender, EventArgs e) => ChangeTheme();
@@ -39,6 +47,7 @@ namespace SwinApp
             }
 
             isDarkTheme = !isDarkTheme;
+            OnPropertyChanged("Dark");
         }
     }
 }
