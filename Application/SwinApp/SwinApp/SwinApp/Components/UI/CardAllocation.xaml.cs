@@ -19,6 +19,7 @@ namespace SwinApp.Components
 		{
 			InitializeComponent ();
             _vm = vm;
+            
             BindingContext = _vm;
 		}
 

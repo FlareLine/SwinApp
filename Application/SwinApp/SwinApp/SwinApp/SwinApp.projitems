@@ -13,6 +13,11 @@
       <DependentUpon>AllocationViewPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AnalyticsPage.xaml.cs">
+      <DependentUpon>AnalyticsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Library\Analytics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardAllocation.xaml.cs">
       <DependentUpon>CardAllocation.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -46,9 +51,11 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Library\AllocationCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\AllocationColour.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\AppEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Clrs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\INotification.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\SQLiteAsync.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\TimetableModels.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\DashItems.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Planning.cs" />
@@ -174,6 +181,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)TimetablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)AllocationViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -181,6 +194,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)AnalyticsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
