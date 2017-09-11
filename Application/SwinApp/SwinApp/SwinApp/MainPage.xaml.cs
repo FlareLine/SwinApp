@@ -76,6 +76,7 @@ namespace SwinApp
 
         protected override void OnAppearing()
         {
+            SwinDevice.Orientation = Orientation.Portrait;
             base.OnAppearing();
             if (Device.OS == TargetPlatform.Android)
                 NavigationPage.SetHasNavigationBar(this, false);

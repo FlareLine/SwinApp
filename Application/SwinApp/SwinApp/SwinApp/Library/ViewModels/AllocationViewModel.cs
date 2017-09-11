@@ -107,6 +107,10 @@ namespace SwinApp.Library
                 BackgroundColor = Color,
             };
 
+            var tapped = new TapGestureRecognizer();
+            tapped.Tapped += (send, ev) => Application.Current.MainPage.Navigation.PushAsync(new AllocationViewPage(this));
+            resGrid.GestureRecognizers.Add(tapped);
+
             Grid.SetColumn(resGrid, GridColumn);
             Grid.SetRow(resGrid, GridRow);
             Grid.SetRowSpan(resGrid, GridSpan);
@@ -117,6 +121,7 @@ namespace SwinApp.Library
                 FontSize = 14,
                 Margin = new Thickness(2)
             });
+            
             return resGrid;
         }
 

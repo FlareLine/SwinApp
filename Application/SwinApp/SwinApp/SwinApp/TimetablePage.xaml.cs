@@ -37,16 +37,6 @@ namespace SwinApp
                     GridTimetable.Children.Add(c);
                 _populated = true;
             }
-
-        }
-
-        /// <summary>
-        /// When leaving thee view, change the orientation
-        /// </summary>
-        protected override void OnDisappearing()
-        {
-            SwinDevice.Orientation = Orientation.Portrait;
-            base.OnDisappearing();
         }
 
         /// <summary>
