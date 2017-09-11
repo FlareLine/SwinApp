@@ -25,6 +25,8 @@ namespace SwinApp
         /// </summary>
         protected async override void OnAppearing()
         {
+            base.OnAppearing();
+
             SwinDevice.Orientation = Orientation.Landscape;
 
             // Must manually use populated as otherwise we may clear off the default data
@@ -38,6 +40,19 @@ namespace SwinApp
 
         }
 
+        /// <summary>
+        /// When leaving thee view, change the orientation
+        /// </summary>
+        protected override void OnDisappearing()
+        {
+            SwinDevice.Orientation = Orientation.Portrait;
+            base.OnDisappearing();
+        }
+
+        /// <summary>
+        /// Asynchronously retrieve a lost of Allocation entries
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<Grid>> GetGridContentsAsync() => await Task.Run(() => User.CurrentSemesterAllocations.Select(a => new AllocationViewModel(a).AllocationEntry()));
     }
 }

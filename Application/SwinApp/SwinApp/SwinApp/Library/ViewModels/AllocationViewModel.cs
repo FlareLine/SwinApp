@@ -29,6 +29,8 @@ namespace SwinApp.Library
 
         public string Type => _allocation.ActivityTypeReadable();
 
+        public string TimeCardDescription => $"{Type}\n {Room}";
+
         public string Day => _allocation.DayOfWeek();
 
         public string DayShortened => Day.Substring(0, 3);
@@ -102,14 +104,19 @@ namespace SwinApp.Library
             Grid resGrid = new Grid
             {
                 MinimumHeightRequest = 100,
-                BackgroundColor = Color
+                BackgroundColor = Color,
             };
 
             Grid.SetColumn(resGrid, GridColumn);
             Grid.SetRow(resGrid, GridRow);
             Grid.SetRowSpan(resGrid, GridSpan);
 
-            resGrid.Children.Add(new Label() { Text = Description });
+            resGrid.Children.Add(new Label()
+            {
+                Text = TimeCardDescription,
+                FontSize = 14,
+                Margin = new Thickness(2)
+            });
             return resGrid;
         }
 

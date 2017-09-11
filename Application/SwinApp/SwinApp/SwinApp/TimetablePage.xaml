@@ -4,7 +4,7 @@
              x:Class="SwinApp.TimetablePage"
              Title="Timetable">
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <Grid x:Name="GridTimetable" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid x:Name="GridTimetable" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2">
             <Grid.Resources>
                 <ResourceDictionary>
                     <GridLength x:Key="TimetableHeaderHeight">40</GridLength>
@@ -59,29 +59,31 @@
             <Label Grid.Row="0" Grid.Column="5" Text="Friday"/>
 
             <Label Style="{StaticResource RowLabel}" Grid.Row="1" Grid.Column="0" Text="8:00AM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="2" Grid.Column="0" Text="8:30"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="3" Grid.Column="0" Text="9:00"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="4" Grid.Column="0" Text="9:30"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="5" Grid.Column="0" Text="10:00"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="6" Grid.Column="0" Text="10:30"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="7" Grid.Column="0" Text="11:00"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="8" Grid.Column="0" Text="11:30"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="2" Grid.Column="0" Text="8:30AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="3" Grid.Column="0" Text="9:00AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="4" Grid.Column="0" Text="9:30AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="5" Grid.Column="0" Text="10:00AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="6" Grid.Column="0" Text="10:30AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="7" Grid.Column="0" Text="11:00AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="8" Grid.Column="0" Text="11:30AM"/>
             <Label Style="{StaticResource RowLabel}" Grid.Row="9" Grid.Column="0" Text="12:00PM"/>
             <Label Style="{StaticResource RowLabel}" Grid.Row="10" Grid.Column="0" Text="12:30PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="12" Grid.Column="0" Text="1:00PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="13" Grid.Column="0" Text="1:30PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="14" Grid.Column="0" Text="2:00PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="15" Grid.Column="0" Text="2:30PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="16" Grid.Column="0" Text="3:00PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="17" Grid.Column="0" Text="3:30PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="18" Grid.Column="0" Text="4:00PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="19" Grid.Column="0" Text="4:30PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="20" Grid.Column="0" Text="5:00PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="21" Grid.Column="0" Text="5:30PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="22" Grid.Column="0" Text="6:00PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="23" Grid.Column="0" Text="6:30PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="24" Grid.Column="0" Text="7:00PM"/>
-            <Label Style="{StaticResource RowLabel}" Grid.Row="25" Grid.Column="0" Text="7:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="11" Grid.Column="0" Text="1:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="12" Grid.Column="0" Text="1:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="13" Grid.Column="0" Text="2:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="14" Grid.Column="0" Text="2:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="15" Grid.Column="0" Text="3:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="16" Grid.Column="0" Text="3:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="17" Grid.Column="0" Text="4:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="18" Grid.Column="0" Text="4:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="19" Grid.Column="0" Text="5:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="20" Grid.Column="0" Text="5:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="21" Grid.Column="0" Text="6:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="22" Grid.Column="0" Text="6:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="23" Grid.Column="0" Text="7:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="24" Grid.Column="0" Text="7:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="25" Grid.Column="0" Text="8:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="26" Grid.Column="0" Text="8:30PM"/>
             <!--Time Labels-->
         </Grid>
     </ScrollView>
