@@ -6,7 +6,12 @@
              Style="{DynamicResource backgroundStyle}">
     <ContentPage.Content>
         <StackLayout>
-            <Button x:Name="ButtonChangeTheme" Text="Change theme!" FontSize="Large" HorizontalOptions="CenterAndExpand"></Button>
+            <Frame Style="{DynamicResource FrameCard}" Margin="5">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Use dark theme:" FontSize="Medium"></Label>
+                    <Switch x:Name="SwitchChangeTheme" HorizontalOptions="EndAndExpand"></Switch>
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -30,9 +30,9 @@
             <Color x:Key="Gray">#AAAAAA</Color>
             <Color x:Key="Black">#111111</Color>
 
-            <Color x:Key="backgroundColor">#33302E</Color>
-            <Color x:Key="textColor">White</Color>
-            <Color x:Key="frameCardColor">#595959</Color>
+            <Color x:Key="backgroundColor">White</Color>
+            <Color x:Key="textColor">Default</Color>
+            <Color x:Key="frameCardColor">White</Color>
 
             <!-- Color Definitions -->
             <Color x:Key="SwinburneRed">#dc2d27</Color>

@@ -7,8 +7,8 @@
             <ColumnDefinition Width="3*" />
             <ColumnDefinition Width="7*" />
         </Grid.ColumnDefinitions>
-    
-    <Frame Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource SwinburneRed}">
+
+    <Frame Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#ff6666">
         <StackLayout Orientation="Horizontal">
             <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
                 <Label Text="{Binding Day}" TextColor="{DynamicResource backgroundColor}" Font="Bold" FontSize="Medium"></Label>
