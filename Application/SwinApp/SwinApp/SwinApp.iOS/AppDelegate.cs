@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using UserNotifications;
 
 namespace SwinApp.iOS
 {
@@ -24,6 +25,13 @@ namespace SwinApp.iOS
 		{
 			global::Xamarin.Forms.Forms.Init ();
 			LoadApplication (new SwinApp.App ());
+
+            // Request authorization for notifications to be used on Xamarin.iOS devices
+            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound, (approved, error) =>
+            {
+                // Notifications are approved for iOS, how do we handle approval?
+            });
+
             var result = base.FinishedLaunching (app, options);
             UITabBar.Appearance.SelectedImageTintColor = UIColor.FromRGB(220, 45, 39);
             return result;

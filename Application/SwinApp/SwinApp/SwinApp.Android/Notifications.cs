@@ -5,13 +5,13 @@ using Xamarin.Forms;
 
 namespace SwinApp.Droid.Notifications
 {
-    public class NotificationImplementation : INotification
+    public class NotificationImplementationDroid : INotification
     {
-        public NotificationImplementation() { }
+        public NotificationImplementationDroid() { }
         /// <summary>
         /// Show a simple text notification, using native Android Notification APIs
         /// </summary>
-        /// <param name="text"></param>
+        /// <param name="text">Text to show in notification</param>
         public void ShowTextNotification(string text)
         {
             Notification.Builder builder = new Notification.Builder(Forms.Context)

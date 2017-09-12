@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using SwinApp.Library;
 using Xamarin.Forms.Xaml;
 using SwinApp.Library.Analytics;
+using System.Diagnostics;
 
 namespace SwinApp
 {
@@ -34,7 +35,7 @@ namespace SwinApp
                 {
                     Page = new LinksPage()
                 },
-		new MenuItem("Analytics", "View Analytics data")
+		        new MenuItem("Analytics", "View Analytics data")
                 {
                     Page = new AnalyticsPage()
                 },
@@ -51,7 +52,7 @@ namespace SwinApp
                 ToolbarItems.Add(new ToolbarItem()
                 {
                     Icon = "Plus.png",
-                    Command = new Command(() => AddNewReminder())
+                    Command = new Command(() => ShowContextMenu(this, null))
                 });
                 PageMore.Title = "Menu";
                 PageMore.Icon = "Menu.png";
@@ -94,15 +95,20 @@ namespace SwinApp
                     User.DashBoardItems.Add(new TextContentDashCard("An Error Occurred", $"Details: {e.Message}"));
                 }
             }
+			if (Device.OS == TargetPlatform.iOS)
+			{
+                // Code here to change the font size for iOS as it's a bit big
+			}
         }
 
         private async void ShowContextMenu(object sender, EventArgs e)
         {
-            string check = await DisplayActionSheet("Add New...", "Close", "", 
+            string check = await DisplayActionSheet("Add New...", "Close", (Device.OS == TargetPlatform.iOS) ? null : "Close",
                 new string[] {
                     "Reminder",
                     "Test Notification"
                 });
+            Console.Write(ListMenu.ItemsSource);
             switch (check)
             {
                 case "Reminder":
