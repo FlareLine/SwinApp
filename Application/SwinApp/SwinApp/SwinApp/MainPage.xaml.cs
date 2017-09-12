@@ -108,7 +108,6 @@ namespace SwinApp
                     "Reminder",
                     "Test Notification"
                 });
-            Console.Write(ListMenu.ItemsSource);
             switch (check)
             {
                 case "Reminder":
