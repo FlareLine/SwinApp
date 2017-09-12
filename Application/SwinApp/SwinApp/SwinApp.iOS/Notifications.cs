@@ -1,5 +1,5 @@
-﻿using System;
-using SwinApp.Library;
+﻿using SwinApp.Library;
+using UIKit;
 using UserNotifications;
 
 namespace SwinApp.iOS
@@ -19,19 +19,13 @@ namespace SwinApp.iOS
                 Badge = 1
             };
 
-            UNNotificationTrigger trigger = UNTimeIntervalNotificationTrigger.CreateTrigger(0, false);
+            UNNotificationTrigger trigger = UNTimeIntervalNotificationTrigger.CreateTrigger(5D, false);
 
             string requestID = "SwinApp-notification";
 
             UNNotificationRequest request = UNNotificationRequest.FromIdentifier(requestID, content, trigger);
 
-            UNUserNotificationCenter.Current.AddNotificationRequest(request, (error) =>
-            {
-                if (error != null)
-                {
-                    User.DashBoardItems.Add(new TextContentDashCard("Notifications", "Could not send a notification"));
-                }
-            });
+            UNUserNotificationCenter.Current.AddNotificationRequest(request, null);
         }
     }
 }

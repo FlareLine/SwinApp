@@ -95,10 +95,6 @@ namespace SwinApp
                     User.DashBoardItems.Add(new TextContentDashCard("An Error Occurred", $"Details: {e.Message}"));
                 }
             }
-			if (Device.OS == TargetPlatform.iOS)
-			{
-                // Code here to change the font size for iOS as it's a bit big
-			}
         }
 
         private async void ShowContextMenu(object sender, EventArgs e)

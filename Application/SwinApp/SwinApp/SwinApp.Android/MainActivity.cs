@@ -9,7 +9,7 @@ using Android.OS;
 using SwinApp.Library;
 using SwinApp.Droid.Notifications;
 
-[assembly: Xamarin.Forms.Dependency(typeof(NotificationImplementation))]
+[assembly: Xamarin.Forms.Dependency(typeof(NotificationImplementationDroid))]
 
 namespace SwinApp.Droid
 {

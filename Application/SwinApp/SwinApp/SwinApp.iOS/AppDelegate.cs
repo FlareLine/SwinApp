@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
+using SwinApp.iOS;
 using UIKit;
 using UserNotifications;
 
+[assembly: Xamarin.Forms.Dependency(typeof(NotificationImplementationIOS))]
 namespace SwinApp.iOS
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -27,7 +25,7 @@ namespace SwinApp.iOS
 			LoadApplication (new SwinApp.App ());
 
             // Request authorization for notifications to be used on Xamarin.iOS devices
-            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound, (approved, error) =>
+            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert, (approved, error) =>
             {
                 // Notifications are approved for iOS, how do we handle approval?
             });
