@@ -95,6 +95,7 @@ namespace SwinApp
                     User.DashBoardItems.Add(new TextContentDashCard("An Error Occurred", $"Details: {e.Message}"));
                 }
             }
+            SettingsPage.ApplyTheme();
         }
 
         private async void ShowContextMenu(object sender, EventArgs e)
