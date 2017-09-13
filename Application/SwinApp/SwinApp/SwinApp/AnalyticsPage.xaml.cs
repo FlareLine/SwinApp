@@ -18,6 +18,7 @@ namespace SwinApp
 		public AnalyticsPage ()
 		{
             InitializeComponent ();
+            BindingContext = this;
             AnalyticsList.ItemsSource = events;
             ButtonClear.Clicked += ClearData;
         }
