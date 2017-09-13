@@ -33,6 +33,7 @@
             <Color x:Key="backgroundColor">White</Color>
             <Color x:Key="textColor">Default</Color>
             <Color x:Key="frameCardColor">White</Color>
+			<Color x:Key="iosFrameOutline">White</Color>
 
             <!-- Color Definitions -->
             <Color x:Key="SwinburneRed">#dc2d27</Color>
@@ -85,7 +86,7 @@
                 </Setter>
                 <Setter Property="OutlineColor">
                     <Setter.Value>
-                        <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}" iOS="{StaticResource White}"/>
+                        <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}" iOS="{StaticResource iosFrameOutline}"/>
                     </Setter.Value>
                 </Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource frameCardColor}"></Setter>

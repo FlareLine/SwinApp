@@ -12,7 +12,7 @@
     <ContentPage x:Name="PageDashboard"  Title="Dashboard" Style="{DynamicResource backgroundStyle}">
         <StackLayout x:Name="StackMain" VerticalOptions="FillAndExpand">
             <ScrollView x:Name="ScrollFeed" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
-                <ListView x:Name="ListDashboard" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+                <ListView x:Name="ListDashboard" HasUnevenRows="True" SeparatorVisibility="None" Margin="0" BackgroundColor="Transparent">
                     <ListView.RowHeight>
                         <OnPlatform x:TypeArguments="x:Int32" Android="80" iOS="180"/>
                     </ListView.RowHeight>
@@ -41,10 +41,10 @@
         </StackLayout>
     </ContentPage>
     <!--Schedule Page-->
-    <ContentPage x:Name="PageCalendar"  Title="Schedule" Style="{DynamicResource backgroundStyle}" >
+    <ContentPage x:Name="PageCalendar"  Title="Schedule" Style="{DynamicResource backgroundStyle}">
         <StackLayout x:Name="StackSchedule" VerticalOptions="FillAndExpand">
             <ScrollView x:Name="ScrollSchedule" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
-                <ListView x:Name="ListSchedule" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+                <ListView x:Name="ListSchedule" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" Margin="0" BackgroundColor="Transparent">
                     <ListView.RowHeight>
                         <OnPlatform x:TypeArguments="x:Int32" Android="80" iOS="180"/>
                     </ListView.RowHeight>
@@ -78,7 +78,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ListView x:Name="ListMenu" HasUnevenRows="True" SeparatorVisibility="None">
+            <ListView x:Name="ListMenu" HasUnevenRows="True" SeparatorVisibility="None" BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
