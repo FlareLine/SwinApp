@@ -42,6 +42,7 @@
             <Color x:Key="TimeColor1">#ccccff</Color>
             <Color x:Key="TimeColor2">#ff99cc</Color>
             <Color x:Key="TimeColor3">#cccc99</Color>
+            
 
             <!-- Clrs Definitions -->
 
@@ -56,6 +57,7 @@
             </Style>
             <Style TargetType="Entry">
                 <Setter Property="TextColor" Value="{DynamicResource textColor}"></Setter>
+                <Setter Property="PlaceholderColor" Value="{DynamicResource textColor}"></Setter>
             </Style>
             <Style x:Key="backgroundStyle" TargetType="VisualElement">
                 <Setter Property="BackgroundColor" Value="{DynamicResource backgroundColor}" />
