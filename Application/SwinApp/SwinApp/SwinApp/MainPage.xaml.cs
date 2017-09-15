@@ -26,10 +26,6 @@ namespace SwinApp
                 {
                     Page = new TransportPage()
                 },
-                new MenuItem("Announcements", "Keep in the loop with all going on at Uni")
-                {
-                    Page = new AnnouncementPage()
-                },
                 new MenuItem("More from Swinburne", "Other apps and links from Swinburne")
                 {
                     Page = new LinksPage()
@@ -41,7 +37,12 @@ namespace SwinApp
                 new MenuItem("Timetable", "View Timetable")
                 {
                     Page = new TimetablePage()
+                },
+                new MenuItem("Settings", "Change colours and other stuff I guess")
+                {
+                    Page = new SettingsPage()
                 }
+                
             };
             ListMenu.ItemTapped += MenuSelection;
             ListDashboard.ItemTapped += (send, ev) => ListDashboard.SelectedItem = null;
@@ -94,6 +95,7 @@ namespace SwinApp
                     User.DashBoardItems.Add(new TextContentDashCard("An Error Occurred", $"Details: {e.Message}"));
                 }
             }
+            SettingsPage.ApplyTheme();
         }
 
         private async void ShowContextMenu(object sender, EventArgs e)

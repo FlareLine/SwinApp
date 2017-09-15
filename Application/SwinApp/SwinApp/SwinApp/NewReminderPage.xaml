@@ -2,36 +2,45 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.NewReminderPage"
-             Title="New Reminder">
+             Title="New Reminder"
+             Style="{DynamicResource backgroundStyle}">
     <Frame Style="{StaticResource FrameCard}" Margin="5">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="18*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="3*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0" Grid.Column="1">
-                <DatePicker x:Name="dateField" Format="dd-MM-yyyy"></DatePicker>
+       
+
+            <StackLayout>
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0">
+                    <Label  Text="Date:" HorizontalOptions="FillAndExpand"></Label>
+                    <DatePicker x:Name="dateField" Format="dd-MM-yyyy" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></DatePicker>
+
+                </StackLayout>
+                <StackLayout Grid.Column="1">
+
+                    <Label Text="Time:" HorizontalOptions="FillAndExpand"></Label>
+                    <TimePicker x:Name="timeField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></TimePicker>
+                </StackLayout>
+
+                </Grid>
+
+                <Label Text="Title:" HorizontalOptions="FillAndExpand"></Label>
+                <Entry x:Name="titleField" Placeholder="Enter a title" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
+
+
+                <Label Text="Description:" HorizontalOptions="FillAndExpand"></Label>
+                <Entry x:Name="descriptionField" Placeholder="Enter a description" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
+
+
+            <Button x:Name="ButtonSubmit" Style="{DynamicResource buttonStyle}" Text="Submit" HorizontalOptions="FillAndExpand"></Button>
+               
             </StackLayout>
-            <StackLayout Grid.Row="1" Grid.Column="1">
-                <TimePicker x:Name="timeField"></TimePicker>
-            </StackLayout>
-            <StackLayout Grid.Row="2" Grid.Column="1">
-                <Entry x:Name="titleField" Placeholder="Enter a title"></Entry>
-            </StackLayout>
-            <StackLayout Grid.Row="3" Grid.Column="1">
-                <Entry x:Name="descriptionField" Placeholder="Enter a description"></Entry>
-            </StackLayout>
-            <StackLayout Grid.Row="4" Grid.Column="1">
-                <Button x:Name="ButtonSubmit" Text="Submit"></Button>
-            </StackLayout>
-        </Grid>
+           
+        
     </Frame>
 </ContentPage>

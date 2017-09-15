@@ -27,10 +27,12 @@ namespace SwinApp.Components
             ButtonDeleteReminder.GestureRecognizers.Add(tap);
         }
 
-        public void DeleteReminder()
+        public async void DeleteReminder()
         {
+
+            var confirmDeletion = await App.Current.MainPage.DisplayAlert("Delete?", "Delete this reminder?", "Yes", "No");
+            if (confirmDeletion)
             User.DeleteReminder(_reminder);
-            User.PopulateSchedule();
         }
 
         private void ClickDelete(object sender, EventArgs e) => DeleteReminder();
