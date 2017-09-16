@@ -4,14 +4,38 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections.Generic;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace SwinApp.Library.Analytics
 {
     public static class Analytics
     {
+        /// <summary>
+        /// The endpoint the Analytics data will be sent to
+        /// </summary>
+        private const string POST_ENDPOINT = "http://localhost:3000/analytics";
+
+        /// <summary>
+        /// The threshold count of logs that needs to be reached before the system
+        /// posts the Analytics data to the server
+        /// </summary>
+        private const int LOG_THRESHOLD = 1;
+
+        /// <summary>
+        /// The filepath for the analytics database
+        /// </summary>
         private static string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SwinAppAnalytics.db");
 
+        /// <summary>
+        /// The database connection
+        /// </summary>
         private static SQLiteAsyncConnection conn;
+
+        /// <summary>
+        /// If true, analytics data will attempt to be sent on the startup of the application
+        /// </summary>
+        public const bool DELIVER_ON_STARTUP = true;
 
         /// <summary>
         /// Asynchronously logs an AppEvent in the SQLite database
@@ -45,10 +69,7 @@ namespace SwinApp.Library.Analytics
         /// RetrieveLog wrapper without return limit
         /// </summary>
         /// <returns>List of all AppEvents stored in database</returns>
-        public static async Task<List<AppEvent>> RetrieveLogAsync()
-        {
-            return await RetrieveLogAsync(null);
-        }
+        public static async Task<List<AppEvent>> RetrieveLogAsync() => await RetrieveLogAsync(null);
 
         /// <summary>
         /// RetrieveLog wrapper with a return length limit
@@ -74,6 +95,38 @@ namespace SwinApp.Library.Analytics
             if (conn == null) conn = new SQLiteAsyncConnection(path);
 
             return await conn.DeleteAllAsync(new TableMapping(typeof(AppEvent)));
+        }
+
+        /// <summary>
+        /// Post the log to a valid endpoint asynchronously
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<bool> DeliverLogAsync()
+        {
+            if (conn == null) conn = new SQLiteAsyncConnection(path);
+
+            var dbContents = await conn.Table<AppEvent>().ToListAsync();
+            bool hasSent = false;
+
+            if (dbContents.Count >= LOG_THRESHOLD)
+            {
+                try
+                {
+                    using (var http = new HttpClient())
+                    {
+                        var response = await http.PostAsync(POST_ENDPOINT, new StringContent(JsonConvert.SerializeObject(dbContents)));
+                        hasSent = response.IsSuccessStatusCode;
+                        if (hasSent)
+                            await ClearLogAsync();
+                    }
+                }
+                catch (Exception e)
+                {
+                    await LogEventAsync(new AppEvent(EventType.OTHER_EVENT, DateTime.Now, $"Error Posting {dbContents.Count} logs, Exception: {e.Message}"));
+                }
+            }
+
+            return hasSent;
         }
     }
 }
