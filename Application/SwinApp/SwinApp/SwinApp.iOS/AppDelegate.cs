@@ -30,9 +30,6 @@ namespace SwinApp.iOS
                 // Notifications are approved for iOS, how do we handle approval?
             });
 
-            // Set the background for UITableViewCells to not be white
-            UITableViewCell.Appearance.BackgroundColor = UIColor.Clear;
-
             var result = base.FinishedLaunching (app, options);
             UITabBar.Appearance.SelectedImageTintColor = UIColor.FromRGB(220, 45, 39);
             return result;

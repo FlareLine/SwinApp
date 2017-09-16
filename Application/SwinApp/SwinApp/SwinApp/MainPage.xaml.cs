@@ -8,6 +8,7 @@ using SwinApp.Library;
 using Xamarin.Forms.Xaml;
 using SwinApp.Library.Analytics;
 using System.Diagnostics;
+using UIKit;
 
 namespace SwinApp
 {
@@ -43,12 +44,12 @@ namespace SwinApp
                 {
                     Page = new SettingsPage()
                 }
-                
             };
             ListMenu.ItemTapped += MenuSelection;
             ListDashboard.ItemTapped += (send, ev) => ListDashboard.SelectedItem = null;
             if (Device.OS == TargetPlatform.iOS)
             {
+                ListMenu.SeparatorVisibility = SeparatorVisibility.Default;
                 ToolbarItems.Add(new ToolbarItem()
                 {
                     Icon = "Plus.png",
@@ -96,6 +97,9 @@ namespace SwinApp
                 }
             }
             SettingsPage.ApplyTheme();
+            List<MenuItem> menu = (List<MenuItem>) ListMenu.ItemsSource;
+            menu.Add(new MenuItem("COUNT", menu.Count().ToString()));
+            ListMenu.ItemsSource = menu;
         }
 
         private async void ShowContextMenu(object sender, EventArgs e)
