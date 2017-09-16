@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 using SQLite;
+using Xamarin.Forms.Internals;
 
 namespace SwinApp.Library
 {

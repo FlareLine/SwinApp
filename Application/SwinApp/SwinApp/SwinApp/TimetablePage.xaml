@@ -2,15 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.TimetablePage"
+             BackgroundColor="{DynamicResource backgroundColor}"
              Title="Timetable">
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <Grid x:Name="GridTimetable" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="2">
+        <Grid x:Name="GridTimetable" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="4,2">
             <Grid.Resources>
                 <ResourceDictionary>
                     <GridLength x:Key="TimetableHeaderHeight">40</GridLength>
                     <GridLength x:Key="TimetableRowHeight">40</GridLength>
                     <Style TargetType="Label" x:Key="RowLabel">
                         <Setter Property="MinimumHeightRequest" Value="40"/>
+                        <Setter Property="TextColor" Value="{DynamicResource textColor}"/>
+                    </Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="BackgroundColor" Value="{DynamicResource backgroundColor}"/>
                     </Style>
                 </ResourceDictionary>
             </Grid.Resources>
@@ -52,11 +57,11 @@
                 <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
             </Grid.RowDefinitions>
             <!--Day Labels-->
-            <Label Grid.Row="0" Grid.Column="1" Text="Monday"/>
-            <Label Grid.Row="0" Grid.Column="2" Text="Tuesday"/>
-            <Label Grid.Row="0" Grid.Column="3" Text="Wednesday"/>
-            <Label Grid.Row="0" Grid.Column="4" Text="Thursday"/>
-            <Label Grid.Row="0" Grid.Column="5" Text="Friday"/>
+            <Label Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Text="Monday"/>
+            <Label Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" Text="Tuesday"/>
+            <Label Grid.Row="0" Grid.Column="3" HorizontalTextAlignment="Center" Text="Wednesday"/>
+            <Label Grid.Row="0" Grid.Column="4" HorizontalTextAlignment="Center" Text="Thursday"/>
+            <Label Grid.Row="0" Grid.Column="5" HorizontalTextAlignment="Center" Text="Friday"/>
 
             <Label Style="{StaticResource RowLabel}" Grid.Row="1" Grid.Column="0" Text="8:00AM"/>
             <Label Style="{StaticResource RowLabel}" Grid.Row="2" Grid.Column="0" Text="8:30AM"/>
