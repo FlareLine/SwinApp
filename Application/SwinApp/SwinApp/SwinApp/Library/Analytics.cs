@@ -45,9 +45,9 @@ namespace SwinApp.Library.Analytics
         /// RetrieveLog wrapper without return limit
         /// </summary>
         /// <returns>List of all AppEvents stored in database</returns>
-        public static async Task<List<AppEvent>> RetrieveLog()
+        public static async Task<List<AppEvent>> RetrieveLogAsync()
         {
-            return await RetrieveLog(null);
+            return await RetrieveLogAsync(null);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace SwinApp.Library.Analytics
         /// </summary>
         /// <param name="lim">Limit number of returned rows</param>
         /// <returns>Returns AppEvents up to the specified limit, or no limit if <paramref name="lim"/> is <see langword="null"/></returns>
-        public static async Task<List<AppEvent>> RetrieveLog(int? lim)
+        public static async Task<List<AppEvent>> RetrieveLogAsync(int? lim)
         {
             if (conn == null) conn = new SQLiteAsyncConnection(path);
 
@@ -69,7 +69,7 @@ namespace SwinApp.Library.Analytics
         /// Method to clear the Analytics log
         /// </summary>
         /// <returns>Success or failure</returns>
-        public static async Task<int> ClearLog()
+        public static async Task<int> ClearLogAsync()
         {
             if (conn == null) conn = new SQLiteAsyncConnection(path);
 
