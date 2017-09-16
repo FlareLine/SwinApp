@@ -51,4 +51,36 @@ The structure of the `AppEvent` class consists of 3 major fields:
     - Is serialized as a string
 
 The only pieces of functionality attached to `AppEvent` directly are the `Serialize`
-and `Deserialize` methods.
+and `Deserialize` methods. These can be used for displaying the data as a plain 
+string, note that you can use the built in [JSON.Net](http://json.net) 
+`SerializeObject` and `DeserializeObject` methods for parsing the data as valid
+JSON objects.
+
+As the SwinApp Analytics functionality only uses the `AppEvent` object for passing
+around data this means that any endpoint is compliant to receive Swinburne analytics data assuming it can parse the following example object.
+
+```json
+{
+  "Id": 0,
+  "Type": "LINK_INTERNAL",
+  "Info": "Opened Timetable Page",
+  "TimeStamp": "9/16/2017.5:26 PM"
+}
+```
+
+## Configuring SwinApp's Analytics For Posting
+
+Out of the box SwinApp has functionality for reporting analytics logs to a server.
+Using the function `DeliverLogAsync` the contents of a log SQLite db can be sent to
+a backend server using an HTTP POST request. There are some constants which affect
+the delivery function including:
+
+-  `LOG_THRESHOLD`
+    - The amount of posts that need to be present in order for the delivery to occur
+    - This exists to space out the analytics being reported too frequently
+- `POST_ENDPOINT`
+    - This is the endpoint of the REST API which the application will post analytics data to
+    - Includes the port number and any additional route values
+
+If you wish to have the analytics data post on the application's startup, enable 
+the `DELIVER_ON_STARTUP` constant. 

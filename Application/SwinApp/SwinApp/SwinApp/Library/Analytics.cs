@@ -20,7 +20,7 @@ namespace SwinApp.Library.Analytics
         /// The threshold count of logs that needs to be reached before the system
         /// posts the Analytics data to the server
         /// </summary>
-        private const int LOG_THRESHOLD = 1;
+        private const int LOG_THRESHOLD = 5;
 
         /// <summary>
         /// The filepath for the analytics database
@@ -35,7 +35,7 @@ namespace SwinApp.Library.Analytics
         /// <summary>
         /// If true, analytics data will attempt to be sent on the startup of the application
         /// </summary>
-        public const bool DELIVER_ON_STARTUP = true;
+        public const bool DELIVER_ON_STARTUP = false;
 
         /// <summary>
         /// Asynchronously logs an AppEvent in the SQLite database
