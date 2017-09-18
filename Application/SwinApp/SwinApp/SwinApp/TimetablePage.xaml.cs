@@ -14,8 +14,10 @@ namespace SwinApp
 	public partial class TimetablePage : ContentPage
 	{
         private bool _populated = false;
+        private readonly Color CURRENT_DAY_COLOR = Color.FromHex("#f5f5f5");
+        
 
-		public TimetablePage ()
+        public TimetablePage ()
 		{
 			InitializeComponent ();
 		}
@@ -32,11 +34,42 @@ namespace SwinApp
             // Must manually use populated as otherwise we may clear off the default data
             if (!_populated)
             {
+                ApplyCurrentDayColor();
                 var contents = await GetGridContentsAsync();
                 foreach (var c in contents)
                     GridTimetable.Children.Add(c);
                 _populated = true;
             }
+        }
+
+        /// <summary>
+        /// Assign a darker background to the current day column
+        /// </summary>
+        private void ApplyCurrentDayColor()
+        {
+            BoxView currentDay = null;
+            switch (DateTime.Today.DayOfWeek)
+            {
+                case DayOfWeek.Friday:
+                    currentDay = BoxViewFriday;
+                    break;
+                case DayOfWeek.Monday:
+                    currentDay = BoxViewMonday;
+                    break;
+                case DayOfWeek.Thursday:
+                    currentDay = BoxViewThursday;
+                    break;
+                case DayOfWeek.Tuesday:
+                    currentDay = BoxViewTuesday;
+                    break;
+                case DayOfWeek.Wednesday:
+                    currentDay = BoxViewWednesday;
+                    break;
+                default:
+                    break;
+            }
+            if (currentDay != null)
+                currentDay.Color = CURRENT_DAY_COLOR;
         }
 
         /// <summary>

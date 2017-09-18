@@ -10,6 +10,7 @@
                 <ResourceDictionary>
                     <GridLength x:Key="TimetableHeaderHeight">40</GridLength>
                     <GridLength x:Key="TimetableRowHeight">40</GridLength>
+                    <x:Int32 x:Key="BoxViewRowSpan">27</x:Int32>
                     <Style TargetType="Label" x:Key="RowLabel">
                         <Setter Property="MinimumHeightRequest" Value="40"/>
                         <Setter Property="TextColor" Value="{DynamicResource textColor}"/>
@@ -56,6 +57,12 @@
                 <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
                 <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
             </Grid.RowDefinitions>
+            <!--Background Colors-->
+            <BoxView x:Name="BoxViewMonday" Grid.Row="0" Grid.Column="1" Grid.RowSpan="{StaticResource BoxViewRowSpan}"/>
+            <BoxView x:Name="BoxViewTuesday" Grid.Row="0" Grid.Column="2" Grid.RowSpan="{StaticResource BoxViewRowSpan}"/>
+            <BoxView x:Name="BoxViewWednesday" Grid.Row="0" Grid.Column="3" Grid.RowSpan="{StaticResource BoxViewRowSpan}"/>
+            <BoxView x:Name="BoxViewThursday" Grid.Row="0" Grid.Column="4" Grid.RowSpan="{StaticResource BoxViewRowSpan}"/>
+            <BoxView x:Name="BoxViewFriday" Grid.Row="0" Grid.Column="5" Grid.RowSpan="{StaticResource BoxViewRowSpan}"/>
             <!--Day Labels-->
             <Label Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Text="Monday"/>
             <Label Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" Text="Tuesday"/>

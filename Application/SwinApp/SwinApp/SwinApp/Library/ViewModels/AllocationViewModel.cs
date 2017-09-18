@@ -30,7 +30,7 @@ namespace SwinApp.Library
 
         public string Type => _allocation.ActivityTypeReadable();
 
-        public string TimeCardDescription => $"{Type}\n {Room}";
+        public string TimeCardDescription => $"{Type}\n{Room}";
 
         public string Day => _allocation.DayOfWeek();
 
@@ -102,10 +102,17 @@ namespace SwinApp.Library
         /// <returns></returns>
         public Grid AllocationEntry()
         {
+            const int FONT_SIZE = 14;
+            const int GRID_HEIGHT = 100;
+            const int GRID_PADDING = 4;
+            const int GRID_MARGIN = 4;
+
             Grid resGrid = new Grid
             {
-                MinimumHeightRequest = 100,
+                MinimumHeightRequest = GRID_HEIGHT,
                 BackgroundColor = Color,
+                Padding = GRID_PADDING,
+                Margin = GRID_MARGIN
             };
 
             var tapped = new TapGestureRecognizer();
@@ -116,11 +123,14 @@ namespace SwinApp.Library
             Grid.SetRow(resGrid, GridRow);
             Grid.SetRowSpan(resGrid, GridSpan);
 
+            var labelText = new FormattedString();
+            labelText.Spans.Add(new Span { Text = $"{Code}\n", FontAttributes = FontAttributes.Bold, FontSize = FONT_SIZE });
+            labelText.Spans.Add(new Span { Text = TimeCardDescription, FontSize = FONT_SIZE });
+
             resGrid.Children.Add(new Label()
             {
-                Text = TimeCardDescription,
-                FontSize = 14,
-                Margin = new Thickness(2)
+                FormattedText = labelText,
+                FontSize = FONT_SIZE,
             });
             
             return resGrid;

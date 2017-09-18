@@ -30,10 +30,10 @@ namespace SwinApp
                 {
                     Page = new LinksPage()
                 },
-                new MenuItem("Analytics", "View Analytics data")
-                {
-                    Page = new AnalyticsPage()
-                },
+                //new MenuItem("Analytics", "View Analytics data")
+                //{
+                //    Page = new AnalyticsPage()
+                //},
                 new MenuItem("Timetable", "View Timetable")
                 {
                     Page = new TimetablePage()
