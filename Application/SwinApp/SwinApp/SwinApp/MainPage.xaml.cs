@@ -49,7 +49,9 @@ namespace SwinApp
             ListDashboard.ItemTapped += (send, ev) => ListDashboard.SelectedItem = null;
             if (Device.OS == TargetPlatform.iOS)
             {
+                // Add a separator to the iOS 'More' menu to visually separate the list items
                 ListMenu.SeparatorVisibility = SeparatorVisibility.Default;
+
                 ToolbarItems.Add(new ToolbarItem()
                 {
                     Icon = "Plus.png",
