@@ -1,20 +1,61 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.IO;
-using System.Xml.Linq;
+using System.Linq;
 using SQLite;
+using Xamarin.Forms;
+using System.Xml.Linq;
 
 namespace SwinApp.Library
 {
     /// <summary>
-    /// A Standard SwinApp connection class
+    /// Provides possible types of screen orientation
     /// </summary>
-    public class SwinApp
+    public enum Orientation
     {
+        Landscape,
+        Portrait
+    }
+    /// <summary>
+    /// Holds device specific functionality
+    /// </summary>
+    public static class SwinDevice
+    {
+        /// <summary>
+        /// Cross platform property for working with the orientation
+        /// </summary>
+        /// <param name="or"></param>
+        public static Orientation Orientation
+        {
+            get => DependencyService.Get<IOrientationProvider>().Current();
+            set
+            {
+                try
+                {
+                    if (value != SwinDevice.Orientation)
+                        switch (value)
+                        {
+                            case Orientation.Landscape:
+                                DependencyService.Get<IOrientationProvider>().Landscape();
+                                break;
+                            case Orientation.Portrait:
+                                DependencyService.Get<IOrientationProvider>().Portrait();
+                                break;
+                        }
+                }
+                catch (Exception e)
+                {
+#if DEBUG
+                    e.Message.Dump();
+#endif
+                }
+            }
+        }
+
     }
     /// <summary>
     /// A generic API query class, needs the type provided for serialization
@@ -119,7 +160,8 @@ namespace SwinApp.Library
         /// <returns></returns>
         public static SQLiteConnection Conn
         {
-            get {
+            get
+            {
                 return _conn ?? (_conn = new SQLiteConnection(_path));
             }
         }

@@ -1,4 +1,4 @@
-﻿using SwinApp.Library;
+using SwinApp.Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +19,13 @@ namespace SwinApp
 		{
 			InitializeComponent ();
             BindingContext = _vm = vm;
+            MapImage.GestureRecognizers.Add(new TapGestureRecognizer {
+                Command = new Command(() =>
+                {
+                    Device.OpenUri(new Uri(_vm.MapClickUrl));
+                }),
+                NumberOfTapsRequired = 1
+            });
 		}
 
         protected override void OnAppearing()
@@ -30,6 +37,7 @@ namespace SwinApp
             {
                 Description = _vm.Description
             });
+            //WebMap.Source = "https://www.google.com/maps/d/viewer?mid=1XWZ-gWAvWTQrkiVk_59U3GOu_8I";
         }
     }
 }

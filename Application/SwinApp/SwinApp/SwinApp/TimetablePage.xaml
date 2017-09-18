@@ -1,20 +1,102 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.TimetablePage"
+             BackgroundColor="{DynamicResource backgroundColor}"
              Title="Timetable">
-    <ListView x:Name="ListAllocations">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <Grid HeightRequest="200">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Label Text="{Binding Description}"/>
-                    </Grid>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid x:Name="GridTimetable" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="4,2">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <GridLength x:Key="TimetableHeaderHeight">40</GridLength>
+                    <GridLength x:Key="TimetableRowHeight">40</GridLength>
+                    <x:Int32 x:Key="BoxViewRowSpan">27</x:Int32>
+                    <Style TargetType="Label" x:Key="RowLabel">
+                        <Setter Property="MinimumHeightRequest" Value="40"/>
+                        <Setter Property="TextColor" Value="{DynamicResource textColor}"/>
+                    </Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="BackgroundColor" Value="{DynamicResource backgroundColor}"/>
+                    </Style>
+                </ResourceDictionary>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{StaticResource TimetableHeaderHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+                <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
+            </Grid.RowDefinitions>
+            <!--Background Colors-->
+            <BoxView x:Name="BoxViewMonday" Grid.Row="0" Grid.Column="1" Grid.RowSpan="{StaticResource BoxViewRowSpan}"/>
+            <BoxView x:Name="BoxViewTuesday" Grid.Row="0" Grid.Column="2" Grid.RowSpan="{StaticResource BoxViewRowSpan}"/>
+            <BoxView x:Name="BoxViewWednesday" Grid.Row="0" Grid.Column="3" Grid.RowSpan="{StaticResource BoxViewRowSpan}"/>
+            <BoxView x:Name="BoxViewThursday" Grid.Row="0" Grid.Column="4" Grid.RowSpan="{StaticResource BoxViewRowSpan}"/>
+            <BoxView x:Name="BoxViewFriday" Grid.Row="0" Grid.Column="5" Grid.RowSpan="{StaticResource BoxViewRowSpan}"/>
+            <!--Day Labels-->
+            <Label Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Text="Monday"/>
+            <Label Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" Text="Tuesday"/>
+            <Label Grid.Row="0" Grid.Column="3" HorizontalTextAlignment="Center" Text="Wednesday"/>
+            <Label Grid.Row="0" Grid.Column="4" HorizontalTextAlignment="Center" Text="Thursday"/>
+            <Label Grid.Row="0" Grid.Column="5" HorizontalTextAlignment="Center" Text="Friday"/>
+
+            <Label Style="{StaticResource RowLabel}" Grid.Row="1" Grid.Column="0" Text="8:00AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="2" Grid.Column="0" Text="8:30AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="3" Grid.Column="0" Text="9:00AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="4" Grid.Column="0" Text="9:30AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="5" Grid.Column="0" Text="10:00AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="6" Grid.Column="0" Text="10:30AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="7" Grid.Column="0" Text="11:00AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="8" Grid.Column="0" Text="11:30AM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="9" Grid.Column="0" Text="12:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="10" Grid.Column="0" Text="12:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="11" Grid.Column="0" Text="1:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="12" Grid.Column="0" Text="1:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="13" Grid.Column="0" Text="2:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="14" Grid.Column="0" Text="2:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="15" Grid.Column="0" Text="3:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="16" Grid.Column="0" Text="3:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="17" Grid.Column="0" Text="4:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="18" Grid.Column="0" Text="4:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="19" Grid.Column="0" Text="5:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="20" Grid.Column="0" Text="5:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="21" Grid.Column="0" Text="6:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="22" Grid.Column="0" Text="6:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="23" Grid.Column="0" Text="7:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="24" Grid.Column="0" Text="7:30PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="25" Grid.Column="0" Text="8:00PM"/>
+            <Label Style="{StaticResource RowLabel}" Grid.Row="26" Grid.Column="0" Text="8:30PM"/>
+            <!--Time Labels-->
+        </Grid>
+    </ScrollView>
 </ContentPage>

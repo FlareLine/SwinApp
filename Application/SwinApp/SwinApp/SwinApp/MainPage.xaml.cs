@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +20,6 @@ namespace SwinApp
             InitializeComponent();
             ListMenu.ItemsSource = new List<MenuItem>()
             {
-                new MenuItem("Timetable", "See your classes")
-                {
-                    Page = new TimetablePage()
-                },
                 new MenuItem("Campus Map", "Find your way around")
                 {
                     Page = new GoogleMapPage()
@@ -36,9 +32,13 @@ namespace SwinApp
                 {
                     Page = new LinksPage()
                 },
-		        new MenuItem("Analytics", "View Analytics data")
+                //new MenuItem("Analytics", "View Analytics data")
+                //{
+                //    Page = new AnalyticsPage()
+                //},
+                new MenuItem("Timetable", "View Timetable")
                 {
-                    Page = new AnalyticsPage()
+                    Page = new TimetablePage()
                 },
                 new MenuItem("Settings", "Change colours and other stuff I guess")
                 {
@@ -81,6 +81,7 @@ namespace SwinApp
 
         protected override void OnAppearing()
         {
+            SwinDevice.Orientation = Orientation.Portrait;
             base.OnAppearing();
             if (Device.OS == TargetPlatform.Android)
                 NavigationPage.SetHasNavigationBar(this, false);
@@ -99,9 +100,6 @@ namespace SwinApp
                 }
             }
             SettingsPage.ApplyTheme();
-            List<MenuItem> menu = (List<MenuItem>) ListMenu.ItemsSource;
-            menu.Add(new MenuItem("COUNT", menu.Count().ToString()));
-            ListMenu.ItemsSource = menu;
         }
 
         private async void ShowContextMenu(object sender, EventArgs e)
@@ -119,7 +117,7 @@ namespace SwinApp
                     AddNewReminder();
                     break;
                 case "Test Notification":
-                    DependencyService.Get<INotification>().ShowTextNotification("Test Notification");
+                    DependencyService.Get<INotification>().SetTimedNotification("Test Notification", new TimeSpan(0,0,5));
                     break;
             }
         }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -22,7 +22,7 @@ namespace SwinApp.Library
         /// </summary>
         public const bool USE_PROTOTYPE_DATA = true;
 
-        private static Dictionary<string, int> DayCompValues = new Dictionary<string, int>()
+        public static Dictionary<string, int> DayCompValues = new Dictionary<string, int>()
         {
             ["Monday"] = 0,
             ["Tuesday"] = 1,

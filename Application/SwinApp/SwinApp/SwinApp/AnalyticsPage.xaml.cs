@@ -30,13 +30,13 @@ namespace SwinApp
 
         private async void LoadData()
         {
-            List<AppEvent> result = await Analytics.RetrieveLog();
+            List<AppEvent> result = await Analytics.RetrieveLogAsync();
             events = result ?? new List<AppEvent>();
         }
 
         private async void ClearData(object sender, EventArgs e)
         {
-            int result = await Analytics.ClearLog();
+            int result = await Analytics.ClearLogAsync();
             if (result != 0)
             {
                 await DisplayAlert("Success!", "Analytics log was cleared", "close");

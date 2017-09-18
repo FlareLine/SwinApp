@@ -2,12 +2,26 @@ using Android.App;
 using SwinApp.Library;
 using SwinApp.Droid;
 using Xamarin.Forms;
+using System;
+using Android.Content;
 
 namespace SwinApp.Droid.Notifications
 {
     public class NotificationImplementationDroid : INotification
     {
         public NotificationImplementationDroid() { }
+
+        public void SetTimedNotification(string text, TimeSpan when)
+        {
+            Intent alarmIntent = new Intent(Forms.Context, typeof(AlarmReceiver));
+            alarmIntent.PutExtra("text", text);
+
+            PendingIntent pendingIntent = PendingIntent.GetBroadcast(Forms.Context, 0, alarmIntent, PendingIntentFlags.UpdateCurrent);
+            AlarmManager alarmManager = (AlarmManager)Forms.Context.GetSystemService(Context.AlarmService);
+
+            alarmManager.Set(AlarmType.RtcWakeup, DateTime.Now.Millisecond + when.Milliseconds, pendingIntent);
+        }
+
         /// <summary>
         /// Show a simple text notification, using native Android Notification APIs
         /// </summary>
@@ -17,6 +31,26 @@ namespace SwinApp.Droid.Notifications
             Notification.Builder builder = new Notification.Builder(Forms.Context)
                 .SetContentTitle("SwinApp")
                 .SetContentText(text)
+                .SetWhen(Java.Lang.JavaSystem.CurrentTimeMillis() + 10000000)
+                .SetSmallIcon(Resource.Drawable.ic_play_dark);
+
+            NotificationManager notificationManager =
+                Forms.Context.GetSystemService(Android.Content.Context.NotificationService) as NotificationManager;
+            const int id = 0;
+
+            notificationManager.Notify(id, builder.Build());
+        }
+    }
+
+    [BroadcastReceiver]
+    [IntentFilter(new string[] { "android.intent.action.BOOT_COMPLETED" }, Priority = (int)IntentFilterPriority.LowPriority)]
+    public class AlarmReceiver : BroadcastReceiver
+    {
+        public override void OnReceive(Context context, Intent intent)
+        {
+            Notification.Builder builder = new Notification.Builder(Forms.Context)
+                .SetContentTitle("SwinApp")
+                .SetContentText(intent.GetStringExtra("text"))
                 .SetWhen(Java.Lang.JavaSystem.CurrentTimeMillis() + 10000000)
                 .SetSmallIcon(Resource.Drawable.ic_play_dark);
 

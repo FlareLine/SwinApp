@@ -4,6 +4,8 @@ using UIKit;
 using UserNotifications;
 
 [assembly: Xamarin.Forms.Dependency(typeof(NotificationImplementationIOS))]
+[assembly: Xamarin.Forms.Dependency (typeof(OrientationImplementation))]
+
 namespace SwinApp.iOS
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the 
