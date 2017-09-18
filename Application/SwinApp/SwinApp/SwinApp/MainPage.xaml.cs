@@ -113,7 +113,7 @@ namespace SwinApp
                     AddNewReminder();
                     break;
                 case "Test Notification":
-                    DependencyService.Get<INotification>().ShowTextNotification("Test Notification");
+                    DependencyService.Get<INotification>().SetTimedNotification("Test Notification", new TimeSpan(0,0,5));
                     break;
             }
         }
