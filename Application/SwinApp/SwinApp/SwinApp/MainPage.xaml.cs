@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -81,6 +81,7 @@ namespace SwinApp
 
         protected override void OnAppearing()
         {
+            ListMenu.SelectedItem = null;
             SwinDevice.Orientation = Orientation.Portrait;
             base.OnAppearing();
             if (Device.OS == TargetPlatform.Android)
