@@ -33,7 +33,7 @@
             <Color x:Key="backgroundColor">White</Color>
             <Color x:Key="textColor">Default</Color>
             <Color x:Key="frameCardColor">White</Color>
-			<Color x:Key="iosFrameOutline">White</Color>
+			<Color x:Key="iosFrameOutline">Gray</Color>
 
             <!-- Color Definitions -->
             <Color x:Key="SwinburneRed">#dc2d27</Color>

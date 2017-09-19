@@ -77,12 +77,14 @@ namespace SwinApp
                 App.Current.Resources["backgroundColor"] = Color.FromHex("33302E");
                 App.Current.Resources["textColor"] = Color.White;
                 App.Current.Resources["frameCardColor"] = Color.FromHex("595959");
+                App.Current.Resources["iosOutlineColor"] = Color.FromHex("595959");
             }
             else
             {
                 App.Current.Resources["backgroundColor"] = Color.White;
                 App.Current.Resources["textColor"] = Color.Default;
                 App.Current.Resources["frameCardColor"] = Color.White;
+                App.Current.Resources["iosOutlineColor"] = Color.White;
             }
         }
 
