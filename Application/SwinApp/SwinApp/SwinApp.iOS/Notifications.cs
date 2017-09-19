@@ -34,7 +34,7 @@ namespace SwinApp.iOS
 		/// </summary>
 		/// <param name="text">Text to show in notification</param>
 		/// <param name="time">Time to wait before sending notification</param>
-		public void ShowTimedNotification(string text, TimeSpan time)
+		public void SetTimedNotification(string text, TimeSpan time)
         {
 			UNMutableNotificationContent content = new UNMutableNotificationContent()
 			{
