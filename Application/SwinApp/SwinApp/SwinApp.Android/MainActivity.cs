@@ -24,6 +24,8 @@ namespace SwinApp.Droid
 
             RequestWindowFeature(WindowFeatures.NoTitle);
 
+            Window.SetSoftInputMode(SoftInput.AdjustPan);
+
             TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar; 
 
