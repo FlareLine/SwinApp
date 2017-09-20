@@ -185,3 +185,4 @@ FakesAssemblies/
 
 # Merge Resolution Files
 *.orig
+*.userprefs
