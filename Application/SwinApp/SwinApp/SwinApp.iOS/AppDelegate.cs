@@ -29,7 +29,7 @@ namespace SwinApp.iOS
             // Request authorization for notifications to be used on Xamarin.iOS devices
             UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert, (approved, error) =>
             {
-                // Notifications are approved for iOS, how do we handle approval?
+                (new NotificationImplementationIOS()).ShowTextNotification("SwinApp will now send you reminder notifications");
             });
 
             /* This is the fix for the ListSeparator being placed after a left-side margin, however
