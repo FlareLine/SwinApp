@@ -77,11 +77,11 @@ namespace SwinApp
                 await Analytics.LogEventAsync(new AppEvent(EventType.LINK_INTERNAL, DateTime.Now, menuItem.Title));
                 await Navigation.PushAsync(menuItem.Page);
             }
+            ((ListView)sender).SelectedItem = null;
         }
 
         protected override void OnAppearing()
         {
-            ListMenu.SelectedItem = null;
             SwinDevice.Orientation = Orientation.Portrait;
             base.OnAppearing();
             if (Device.OS == TargetPlatform.Android)

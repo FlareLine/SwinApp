@@ -14,7 +14,7 @@ namespace SwinApp
 	public partial class TimetablePage : ContentPage
 	{
         private bool _populated = false;
-        private readonly Color CURRENT_DAY_COLOR = Color.FromHex("#f5f5f5");
+        private readonly Color CURRENT_DAY_COLOR = (Device.OS == TargetPlatform.iOS) ? Color.FromHex("#e5e5e5"): Color.FromHex("#f5f5f5");
         
 
         public TimetablePage ()
