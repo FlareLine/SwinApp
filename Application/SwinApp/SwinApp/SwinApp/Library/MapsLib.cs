@@ -13,7 +13,7 @@ namespace SwinApp.Library
         public static Dictionary<string, CoordinatePair> SwinBuildings_HAW = new Dictionary<string, CoordinatePair>()
         {
             { "LIB", new CoordinatePair("-37.8224001" ,"145.0392368") },
-            { "ATC", new CoordinatePair("-37.8227126", "45.0383664") },
+            { "ATC", new CoordinatePair("-37.8227126", "145.0383664") },
             { "AMDC", new CoordinatePair("-37.8228562", "145.0392797") },
             { "BA", new CoordinatePair("-37.8221143", "145.0394156") },
             { "AD", new CoordinatePair("-37.8221052", "145.0387633") },
