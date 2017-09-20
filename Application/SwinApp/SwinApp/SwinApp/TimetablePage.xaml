@@ -57,7 +57,7 @@
                 <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
                 <RowDefinition Height="{StaticResource TimetableRowHeight}"/>
             </Grid.RowDefinitions>
-            <!--Background Colors-->
+            <!--Day Background Colors-->
             <BoxView x:Name="BoxViewMonday" Grid.Row="0" Grid.Column="1" Grid.RowSpan="{StaticResource BoxViewRowSpan}"/>
             <BoxView x:Name="BoxViewTuesday" Grid.Row="0" Grid.Column="2" Grid.RowSpan="{StaticResource BoxViewRowSpan}"/>
             <BoxView x:Name="BoxViewWednesday" Grid.Row="0" Grid.Column="3" Grid.RowSpan="{StaticResource BoxViewRowSpan}"/>
