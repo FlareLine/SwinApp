@@ -50,7 +50,7 @@ namespace SwinApp
             if (Device.OS == TargetPlatform.iOS)
             {
                 // Add a separator to the iOS 'More' menu to visually separate the list items
-                ListMenu.SeparatorVisibility = SeparatorVisibility.Default;
+                //ListMenu.SeparatorVisibility = SeparatorVisibility.Default;
 
                 ToolbarItems.Add(new ToolbarItem()
                 {

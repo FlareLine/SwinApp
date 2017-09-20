@@ -13,7 +13,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <ListView x:Name="AnalyticsList" RowHeight="200" HasUnevenRows="True" Margin="0">
+        <ListView x:Name="AnalyticsList" RowHeight="200" HasUnevenRows="True" Margin="0" BackgroundColor="Transparent">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
