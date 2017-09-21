@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
+using SwinApp.iOS;
 using UIKit;
+using UserNotifications;
+
+[assembly: Xamarin.Forms.Dependency(typeof(NotificationImplementationIOS))]
+[assembly: Xamarin.Forms.Dependency (typeof(OrientationImplementation))]
 
 namespace SwinApp.iOS
 {
@@ -24,6 +25,19 @@ namespace SwinApp.iOS
 		{
 			global::Xamarin.Forms.Forms.Init ();
 			LoadApplication (new SwinApp.App ());
+
+            // Request authorization for notifications to be used on Xamarin.iOS devices
+            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert, (approved, error) =>
+            {
+                // Notifications are approved for iOS, how do we handle approval?
+            });
+
+            /* This is the fix for the ListSeparator being placed after a left-side margin, however
+             * I'm unable to work out how to weave it into the solution without a custom renderer
+            UITableView vie = new UITableView();
+            vie.CellLayoutMarginsFollowReadableWidth = false;
+            */
+
             var result = base.FinishedLaunching (app, options);
             UITabBar.Appearance.SelectedImageTintColor = UIColor.FromRGB(220, 45, 39);
             return result;

@@ -1,11 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.LinksPage"
-             Title="More from Swinburne">
-    <StackLayout x:Name="StackLinks" VerticalOptions="FillAndExpand"> 
+             Title="More from Swinburne"
+             Style="{DynamicResource backgroundStyle}">
+    <StackLayout x:Name="StackLinks" VerticalOptions="FillAndExpand" > 
         <ScrollView x:Name="ScrollLinks" VerticalOptions="FillAndExpand" Margin="0">
-            <ListView x:Name="ListLinks" RowHeight="100" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+            <ListView x:Name="ListLinks" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

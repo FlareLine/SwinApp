@@ -1,10 +1,5 @@
 ﻿using SwinApp.Library;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,11 +8,11 @@ namespace SwinApp.Components.UI
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CardTransport : Grid
 	{
-		public TrainCardViewModel _viewmodel;
+		public TransportCardViewModel _viewmodel;
 
-		public CardTransport (int route, int direction)
+		public CardTransport (DirectionId direction, RouteType type, RouteId route)
 		{
-            _viewmodel = new TrainCardViewModel(route, direction);
+            _viewmodel = new TransportCardViewModel(direction, type, route);
             BindingContext = _viewmodel;
             InitializeComponent ();
             Update();
@@ -28,8 +23,8 @@ namespace SwinApp.Components.UI
 			await _viewmodel.GetDeparture();
 		}
 
-        public string Line => _viewmodel.Line;
+        public string Direction => TransportLib.DirLangKey[_viewmodel.Direction];
         public string Time => _viewmodel.Time;
-        public string Platform => _viewmodel.Platform;
+        public string Type => Enum.GetName(typeof(RouteType), _viewmodel.Type);
     }
 }

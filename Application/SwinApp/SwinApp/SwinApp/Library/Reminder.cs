@@ -37,7 +37,7 @@ namespace SwinApp.Library
         {
             get
             {
-                return (Time.DayOfWeek.ToString());
+                return (Time.ToString("ddd"));
             }
         }
 

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using SwinApp.Library;
 using Xamarin.Forms.Xaml;
+using SwinApp.Library.Analytics;
+using System.Diagnostics;
+using UIKit;
 
 namespace SwinApp
 {
@@ -15,9 +18,8 @@ namespace SwinApp
         public MainPage()
         {
             InitializeComponent();
-            ListMenu.ItemsSource = new List<MenuItem>
+            ListMenu.ItemsSource = new List<MenuItem>()
             {
-                new MenuItem("Timetable", "See your classes"),
                 new MenuItem("Campus Map", "Find your way around")
                 {
                     Page = new GoogleMapPage()
@@ -26,13 +28,21 @@ namespace SwinApp
                 {
                     Page = new TransportPage()
                 },
-                new MenuItem("Announcements", "Keep in the loop with all going on at Uni")
-                {
-                    Page = new AnnouncementPage()
-                },
                 new MenuItem("More from Swinburne", "Other apps and links from Swinburne")
                 {
                     Page = new LinksPage()
+                },
+                //new MenuItem("Analytics", "View Analytics data")
+                //{
+                //    Page = new AnalyticsPage()
+                //},
+                new MenuItem("Timetable", "View Timetable")
+                {
+                    Page = new TimetablePage()
+                },
+                new MenuItem("Settings", "Change colours and other stuff I guess")
+                {
+                    Page = new SettingsPage()
                 },
                 new MenuItem("Student Offers", "Student Discounts and Other Offers")
                 {
@@ -43,10 +53,13 @@ namespace SwinApp
             ListDashboard.ItemTapped += (send, ev) => ListDashboard.SelectedItem = null;
             if (Device.OS == TargetPlatform.iOS)
             {
+                // Add a separator to the iOS 'More' menu to visually separate the list items
+                //ListMenu.SeparatorVisibility = SeparatorVisibility.Default;
+
                 ToolbarItems.Add(new ToolbarItem()
                 {
                     Icon = "Plus.png",
-                    Command = new Command(() => AddNewReminder())
+                    Command = new Command(() => ShowContextMenu(this, null))
                 });
                 PageMore.Title = "Menu";
                 PageMore.Icon = "Menu.png";
@@ -64,35 +77,53 @@ namespace SwinApp
         {
             var menuItem = ListMenu.SelectedItem as MenuItem;
             if (menuItem.Page != null)
+            {
+                await Analytics.LogEventAsync(new AppEvent(EventType.LINK_INTERNAL, DateTime.Now, menuItem.Title));
                 await Navigation.PushAsync(menuItem.Page);
+            }
+            ((ListView)sender).SelectedItem = null;
         }
 
         protected override void OnAppearing()
         {
+            SwinDevice.Orientation = Orientation.Portrait;
             base.OnAppearing();
             if (Device.OS == TargetPlatform.Android)
                 NavigationPage.SetHasNavigationBar(this, false);
-            try
+            // Ensure this only loads once
+            if (ListSchedule.ItemsSource == null)
             {
-                User.LoadUserData();
-                ListDashboard.ItemsSource = User.DashBoardItems;
-                ListSchedule.ItemsSource = User.ScheduleItems;
+                try
+                {
+                    User.LoadUserData();
+                    ListDashboard.ItemsSource = User.DashBoardItems;
+                    ListSchedule.ItemsSource = User.ScheduleCards;
+                }
+                catch (Exception e)
+                {
+                    User.DashBoardItems.Add(new TextContentDashCard("An Error Occurred", $"Details: {e.Message}"));
+                }
             }
-            catch (Exception e)
-            {
-                User.DashBoardItems.Add(new TextContentDashCard("An Error Occurred", $"Details: {e.Message}"));
-            }
+            SettingsPage.ApplyTheme();
         }
 
         private async void ShowContextMenu(object sender, EventArgs e)
         {
-            string check = await DisplayActionSheet("Add New...", "Close", "", new string[] { "Reminder" });
-            if (check == "Reminder")
+            string check = await DisplayActionSheet("Add New...", "Close", (Device.OS == TargetPlatform.iOS) ? null : "Close",
+                new string[] {
+                    "Reminder",
+                    "Test Notification"
+                });
+            switch (check)
             {
-                //create new reminder through use of pop up window, then add it to the users reminders
-                //after this, re-write reminders to the json file
-                AddNewReminder();
-
+                case "Reminder":
+                    //create new reminder through use of pop up window, then add it to the users reminders
+                    //after this, re-write reminders to the json file
+                    AddNewReminder();
+                    break;
+                case "Test Notification":
+                    DependencyService.Get<INotification>().SetTimedNotification("Test Notification", new TimeSpan(0,0,5));
+                    break;
             }
         }
 

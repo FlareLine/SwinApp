@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Xamarin.Forms;
 using System.ComponentModel;
 using Xamarin.Forms.Xaml;
+using System.Threading.Tasks;
 
 namespace SwinApp
 {
@@ -23,10 +24,14 @@ namespace SwinApp
             };
 		}
 
-		protected override void OnStart ()
+		protected override async void OnStart ()
 		{
-			// Handle when your app starts
-		}
+            await Task.Run(async () =>
+            {
+                if (Library.Analytics.Analytics.DELIVER_ON_STARTUP)
+                    await Library.Analytics.Analytics.DeliverLogAsync();
+            });
+        }
 
 		protected override void OnSleep ()
 		{

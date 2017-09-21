@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace SwinApp.Library
 {
@@ -50,6 +51,7 @@ namespace SwinApp.Library
             // make the request to the API and await a response before returning some data
             using (var client = new HttpClient())
             {
+                Debug.Write($"http://timetableapi.ptv.vic.gov.au{url}");
                 return await client.GetStringAsync($"http://timetableapi.ptv.vic.gov.au{url}");
             }
         }

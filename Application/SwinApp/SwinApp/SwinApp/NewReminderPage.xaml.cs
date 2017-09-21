@@ -37,7 +37,7 @@ namespace SwinApp
             User.WriteReminder(new Reminder(_datetime, _title, _description));
             await DisplayAlert("Success!", "Reminder was added :)", "close");
             await Application.Current.MainPage.Navigation.PopAsync();
-            User.LoadUserData();
+            
 
         }
 	}

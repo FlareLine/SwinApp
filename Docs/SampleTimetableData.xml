@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tt:timetable 
+    xmlns:atom="http://www.w3.org/2005/Atom" 
+    xmlns:p="http://sixtree.com.au/esb/util/v1/xsd" 
+    xmlns:tt="http://swin.edu.au/esb/timetable/timetableservice/v2/xsd" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://swin.edu.au/esb/timetable/timetableservice/v2/xsd swin-schema-timetableservice-v2.xsd ">
+    <allocation>
+        <subject>
+            <code>CVE40006</code>
+            <description>Infrastructure Design &amp; Project</description>
+        </subject>
+        <campus code="HAW" />
+        <activityType>LE1</activityType>
+        <activityCode>01</activityCode>
+        <staff/>
+        <schedule>
+            <startDate>04/08/2014</startDate>
+            <endDate>27/10/2014</endDate>
+            <startTime>12:30</startTime>
+            <duration>180</duration>
+            <daysOfWeek>
+                <weekDay day="Monday" hasSchedule="true"/>
+                <weekDay day="Tuesday" hasSchedule="false"/>
+                <weekDay day="Wednesday" hasSchedule="false"/>
+                <weekDay day="Thursday" hasSchedule="false"/>
+                <weekDay day="Friday" hasSchedule="false"/>
+                <weekDay day="Saturday" hasSchedule="false"/>
+                <weekDay day="Sunday" hasSchedule="false"/>
+            </daysOfWeek>
+            <room code="HAW_EN413" />
+            <excludedDates>
+                <exDate start="15/09/2014" end="15/09/2014" />
+            </excludedDates>
+        </schedule>
+    </allocation>
+    <allocation>
+        <subject>
+            <code>CVE40006</code>
+            <description>Infrastructure Design &amp; Project</description>
+        </subject>
+        <campus code="HAW" />
+        <activityType>TU1</activityType>
+        <activityCode>07</activityCode>
+        <staff/>
+        <schedule>
+            <startDate>05/08/2014</startDate>
+            <endDate>12/08/2014</endDate>
+            <startTime>10:30</startTime>
+            <duration>120</duration>
+            <daysOfWeek>
+                <weekDay day="Tuesday" hasSchedule="true"/>
+            </daysOfWeek>
+            <room code = "HAW_ATC326" />
+        </schedule>
+        <schedule>
+            <startDate>19/08/2014</startDate>
+            <endDate>26/08/2014</endDate>
+            <startTime>10:30</startTime>
+            <duration>120</duration>
+            <daysOfWeek>
+                <weekDay day="Tuesday" hasSchedule="true"/>
+            </daysOfWeek>
+            <room code="HAW_EN207" />
+        </schedule>
+        <schedule>
+            <startDate>02/09/2014</startDate>
+            <endDate>28/10/2014</endDate>
+            <startTime>10:30</startTime>
+            <duration>120</duration>
+            <daysOfWeek>
+                <weekDay day="Tuesday" hasSchedule="true"/>
+            </daysOfWeek>
+            <room code="HAW_ATC326" />
+            <excludedDates>
+                <exDate start="16/09/2014" end ="16/09/2014" />
+            </excludedDates>
+        </schedule>
+    </allocation>
+    <allocation>
+        <subject>
+            <code>VU20153</code>
+            <description>Research and Apply Principles and Tools of Sustainability</description>
+        </subject>
+        <campus code = "HAW" />
+        <activityType>CL1</activityType>
+        <activityCode>01</activityCode>
+        <staff/>
+        <schedule>
+            <startDate>08/08/2014</startDate>
+            <endDate>10/10/2014</endDate>
+            <startTime>08:30</startTime>
+            <duration>240</duration>
+            <daysOfWeek>
+                <weekDay day="Friday" hasSchedule="true"/>
+            </daysOfWeek>
+            <room code="HAW_EN413" />
+            <excludedDates>
+                <exDate start="15/08/2014" end="05/09/2014" />
+                <exDate start="19/09/2014" end="03/10/2014" />
+            </excludedDates>
+        </schedule>
+    </allocation>
+</tt:timetable>
+
