@@ -95,8 +95,8 @@
       <DependentUpon>TimetablePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)StudentOffersPage.cs">
-      <DependentUpon>StudentOffersPage.xaml.cs</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)StudentOffersPage.xaml.cs">
+      <DependentUpon>StudentOffersPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)TransportPage.xaml.cs">
