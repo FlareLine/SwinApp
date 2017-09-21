@@ -43,6 +43,10 @@ namespace SwinApp
                 new MenuItem("Settings", "Change colours and other stuff I guess")
                 {
                     Page = new SettingsPage()
+                },
+                new MenuItem("Student Offers", "Student Discounts and Other Offers")
+                {
+                    Page = new StudentOffersPage()
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
