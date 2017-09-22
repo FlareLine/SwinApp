@@ -43,6 +43,10 @@ namespace SwinApp
                 new MenuItem("Settings", "Change colours and other stuff I guess")
                 {
                     Page = new SettingsPage()
+                },
+                new MenuItem("Student Offers", "Student Discounts and Other Offers")
+                {
+                    Page = new StudentOffersPage()
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
@@ -77,11 +81,11 @@ namespace SwinApp
                 await Analytics.LogEventAsync(new AppEvent(EventType.LINK_INTERNAL, DateTime.Now, menuItem.Title));
                 await Navigation.PushAsync(menuItem.Page);
             }
+            ((ListView)sender).SelectedItem = null;
         }
 
         protected override void OnAppearing()
         {
-            ListMenu.SelectedItem = null;
             SwinDevice.Orientation = Orientation.Portrait;
             base.OnAppearing();
             if (Device.OS == TargetPlatform.Android)
