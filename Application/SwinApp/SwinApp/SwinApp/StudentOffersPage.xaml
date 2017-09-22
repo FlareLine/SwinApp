@@ -5,7 +5,7 @@
              Title="Student Offers">
     <StackLayout x:Name="StackLinks" VerticalOptions="FillAndExpand">
         <ScrollView x:Name="ScrollLinks" VerticalOptions="FillAndExpand" Margin="0">
-            <ListView x:Name="ListOffers" RowHeight="200" HasUnevenRows="True" SeparatorVisibility="None" VerticalOptions="FillAndExpand" Margin="0">
+            <ListView x:Name="ListOffers" RowHeight="-1" HasUnevenRows="True" SeparatorVisibility="None" VerticalOptions="FillAndExpand" Margin="0" BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

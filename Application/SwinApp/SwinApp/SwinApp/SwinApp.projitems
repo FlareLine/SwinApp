@@ -32,6 +32,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardStudentOffer.xaml.cs">
       <SubType>Code</SubType>
+      <DependentUpon>CardStudentOffer.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardTransport.xaml.cs">
       <DependentUpon>CardTransport.xaml</DependentUpon>
