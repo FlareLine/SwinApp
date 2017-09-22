@@ -4,43 +4,39 @@
              x:Class="SwinApp.NewReminderPage"
              Title="New Reminder"
              Style="{DynamicResource backgroundStyle}">
-    <Frame Style="{StaticResource FrameCard}" Margin="5">
-       
-
+	<StackLayout>
+        <Frame Style="{StaticResource FrameCard}" Margin="5">
             <StackLayout>
-
                 <Grid>
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-
+					
                 <StackLayout Grid.Column="0">
                     <Label  Text="Date:" HorizontalOptions="FillAndExpand"></Label>
-                    <DatePicker x:Name="dateField" Format="dd-MM-yyyy" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></DatePicker>
+                    <DatePicker x:Name="dateField" Format="dd-MM-yyyy" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10" TextColor="Black"></DatePicker>
 
                 </StackLayout>
                 <StackLayout Grid.Column="1">
 
                     <Label Text="Time:" HorizontalOptions="FillAndExpand"></Label>
-                    <TimePicker x:Name="timeField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></TimePicker>
+                    <TimePicker x:Name="timeField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10" TextColor="Black"></TimePicker>
                 </StackLayout>
 
                 </Grid>
 
                 <Label Text="Title:" HorizontalOptions="FillAndExpand"></Label>
-                <Entry x:Name="titleField" Placeholder="Enter a title" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
+                <Entry x:Name="titleField" Placeholder="Enter a title" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10" TextColor="Black"></Entry>
 
 
                 <Label Text="Description:" HorizontalOptions="FillAndExpand"></Label>
-                <Entry x:Name="descriptionField" Placeholder="Enter a description" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
+                <Entry x:Name="descriptionField" Placeholder="Enter a description" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10" TextColor="Black"></Entry>
 
 
             <Button x:Name="ButtonSubmit" Style="{DynamicResource buttonStyle}" Text="Submit" HorizontalOptions="FillAndExpand"></Button>
                
             </StackLayout>
-           
-        
-    </Frame>
+        </Frame>
+	</StackLayout>
 </ContentPage>
