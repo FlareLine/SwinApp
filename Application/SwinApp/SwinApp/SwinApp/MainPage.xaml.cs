@@ -51,6 +51,7 @@ namespace SwinApp
             };
             ListMenu.ItemTapped += MenuSelection;
             ListDashboard.ItemTapped += (send, ev) => ListDashboard.SelectedItem = null;
+            ListSchedule.ItemTapped += (send, ev) => ListSchedule.SelectedItem = null;
             if (Device.OS == TargetPlatform.iOS)
             {
                 // Add a separator to the iOS 'More' menu to visually separate the list items
