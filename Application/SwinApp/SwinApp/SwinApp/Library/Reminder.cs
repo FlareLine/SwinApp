@@ -15,31 +15,13 @@ namespace SwinApp.Library
         public string Description { get; set; }
 
         [JsonIgnore]
-        public string DateMonth
-        {
-            get
-            {
-                return (Time.ToString("dd/MM/yy"));
-            }
-        }
+        public string DateMonth => (Time.ToString("dd/MM/yy"));
 
         [JsonIgnore]
-        public string TimeOfDay
-        {
-            get
-            {
-                return (Time.ToString("HH:mm tt"));
-            }
-        }
+        public string TimeOfDay => (Time.ToString("HH:mm tt"));
 
         [JsonIgnore]
-        public string Day
-        {
-            get
-            {
-                return (Time.ToString("ddd"));
-            }
-        }
+        public string Day => (Time.ToString("ddd"));
 
         public Reminder(DateTime reminderDateTime, string title, string description)
         {
