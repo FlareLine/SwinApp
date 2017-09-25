@@ -166,4 +166,28 @@ namespace SwinApp.Library
             }
         }
     }
+
+	/// <summary>
+	/// Provides easy methods for working with SQLite.NET asynchronously
+	/// </summary>
+	public static class SwinDBAsync
+	{
+		private static string _path = Path.Combine(
+				Environment.GetFolderPath(Environment.SpecialFolder.Personal),
+				"SwinApp.db");
+
+		private static SQLiteAsyncConnection _conn = null;
+
+		/// <summary>
+		/// Lazy load a new asynchronous SQLiteConnection
+		/// </summary>
+		/// <returns></returns>
+		public static SQLiteAsyncConnection Conn
+		{
+			get
+			{
+				return _conn ?? (_conn = new SQLiteAsyncConnection(_path));
+			}
+		}
+	}
 }
