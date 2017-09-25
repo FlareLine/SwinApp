@@ -154,6 +154,8 @@ namespace SwinApp.Library
 
         private static SQLiteConnection _conn = null;
 
+		private static SQLiteAsyncConnection _connasync = null;
+
         /// <summary>
         /// Lazy load a new SQLiteConnection
         /// </summary>
@@ -165,29 +167,17 @@ namespace SwinApp.Library
                 return _conn ?? (_conn = new SQLiteConnection(_path));
             }
         }
-    }
-
-	/// <summary>
-	/// Provides easy methods for working with SQLite.NET asynchronously
-	/// </summary>
-	public static class SwinDBAsync
-	{
-		private static string _path = Path.Combine(
-				Environment.GetFolderPath(Environment.SpecialFolder.Personal),
-				"SwinApp.db");
-
-		private static SQLiteAsyncConnection _conn = null;
 
 		/// <summary>
-		/// Lazy load a new asynchronous SQLiteConnection
+		/// Lazy load a new SQLiteAsyncConnection
 		/// </summary>
 		/// <returns></returns>
-		public static SQLiteAsyncConnection Conn
+		public static SQLiteAsyncConnection ConnAsync
 		{
 			get
 			{
-				return _conn ?? (_conn = new SQLiteAsyncConnection(_path));
+				return _connasync ?? (_connasync = new SQLiteAsyncConnection(_path));
 			}
 		}
-	}
+    }
 }
