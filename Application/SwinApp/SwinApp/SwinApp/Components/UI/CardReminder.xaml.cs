@@ -7,17 +7,18 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SwinApp.Library;
+using SwinApp.Library.ViewModels;
 
 namespace SwinApp.Components
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CardReminder : Grid
 	{
-        public Reminder _reminder;
+        ReminderViewModel _vm;
 		public CardReminder (Reminder reminder)
 		{
-            _reminder = reminder;
-            BindingContext = _reminder;
+            _vm = new ReminderViewModel(reminder);
+            BindingContext = _vm;
 			InitializeComponent ();
 
             TapGestureRecognizer tap = new TapGestureRecognizer();
@@ -32,7 +33,7 @@ namespace SwinApp.Components
 
             var confirmDeletion = await App.Current.MainPage.DisplayAlert("Delete?", "Delete this reminder?", "Yes", "No");
             if (confirmDeletion)
-            User.DeleteReminder(_reminder);
+                _vm.DeleteReminder();
         }
 
         private void ClickDelete(object sender, EventArgs e) => DeleteReminder();

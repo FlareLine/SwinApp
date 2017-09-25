@@ -12,8 +12,8 @@
         <StackLayout Orientation="Horizontal">
             <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
                 <Label Text="{Binding Day}" TextColor="{DynamicResource backgroundColor}" Font="Bold" FontSize="Medium"></Label>
-                <Label Text="{Binding TimeOfDay}" TextColor="{DynamicResource backgroundColor}" FontSize="Medium"></Label>
-                <Label Text="{Binding DateMonth}" TextColor="{DynamicResource backgroundColor}" FontSize="Medium"></Label>
+                <Label Text="{Binding Time}" TextColor="{DynamicResource backgroundColor}" FontSize="Medium"></Label>
+                <Label Text="{Binding Date}" TextColor="{DynamicResource backgroundColor}" FontSize="Medium"></Label>
             </StackLayout>
             <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Label Text="{Binding Name}" Font="Bold" FontSize="Medium" TextColor="{DynamicResource backgroundColor}"></Label>
