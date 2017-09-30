@@ -80,6 +80,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)NewAllocationPage.xaml.cs">
+      <DependentUpon>NewAllocationPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)NewReminderPage.xaml.cs">
       <DependentUpon>NewReminderPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -195,7 +199,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)AnalyticsPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)NewAllocationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
