@@ -28,16 +28,15 @@
 
             </Grid>
 
-            <Label x:Name="textWeeks" Text="Weeks including first class: 1" HorizontalOptions="FillAndExpand"></Label>
-            <Stepper x:Name="stepperWeeks" Minimum="1" Maximum="52" Increment="1" HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, 10"></Stepper>
-            
+            <Label x:Name="textWeeks" Text="Weeks occurring:" HorizontalOptions="FillAndExpand"></Label>
+            <Picker x:Name="pickerWeeks" Title="Weeks" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Picker>
 
             <Label Text="Name:" HorizontalOptions="FillAndExpand"></Label>
-            <Entry x:Name="nameField" Placeholder="Enter a name" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
+            <Entry x:Name="nameField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
 
 
             <Label Text="Room:" HorizontalOptions="FillAndExpand"></Label>
-            <Entry x:Name="roomField" Placeholder="Enter a room" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
+            <Entry x:Name="roomField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
 
 
             <Button x:Name="ButtonSubmit" Style="{DynamicResource buttonStyle}" Text="Submit" HorizontalOptions="FillAndExpand"></Button>

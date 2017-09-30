@@ -16,13 +16,13 @@ namespace SwinApp
 		{
 			InitializeComponent ();
 
-            stepperWeeks.ValueChanged += onWeeksChange;
+            for (int i = 1; i <= 52; i++)
+                pickerWeeks.Items.Add(i.ToString());
+
+            pickerWeeks.SelectedIndex = 0;
 
 		}
 
-        private void onWeeksChange(object sender, ValueChangedEventArgs e)
-        {
-            textWeeks.Text = String.Format("Weeks including first class: {0}", e.NewValue);
-        }
+        
 	}
 }
