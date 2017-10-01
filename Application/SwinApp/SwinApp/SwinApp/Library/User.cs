@@ -48,9 +48,9 @@ namespace SwinApp.Library
 
         //Lessons need to be removed as they are deprecated, however keep for now as they are a part of NextPlanned (see comment above NextPlanned)
 
-        private static List<Reminder> Reminders => _reminders;
+        public static List<Reminder> Reminders => _reminders;
 
-        private static List<TimetabledClass> Classes => _classes;
+        public static List<TimetabledClass> Classes => _classes;
 
         private static List<Allocation> _allocations = new List<Allocation>();
 
@@ -118,14 +118,14 @@ namespace SwinApp.Library
             _reminders.Add(reminder);
             _reminders.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
             await SwinIO<List<Reminder>>.WriteAsync("reminders.json", _reminders);         
-            User.PopulateSchedule();
+            PopulateSchedule();
         }
 
         public static async void DeleteReminder(Reminder reminder)
         {
-            User.Reminders.RemoveAll(r => r == reminder);
+            _reminders.RemoveAll(r => r == reminder);
             await SwinIO<List<Reminder>>.WriteAsync("reminders.json", User.Reminders);
-            User.PopulateSchedule();
+            PopulateSchedule();
         }
 
         public static async void WriteTimetabledClasses(List<TimetabledClass> cList)
@@ -134,7 +134,17 @@ namespace SwinApp.Library
                 _classes.Add(c);
             _classes.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
             await SwinIO<List<TimetabledClass>>.WriteAsync("classes.json", _classes);
-            User.PopulateSchedule();
+            PopulateSchedule();
+        }
+
+        public static async void DeleteTimetabledClasses(List<TimetabledClass> cList)
+        {
+           foreach (TimetabledClass c in cList)
+            {
+                _classes.Remove(c);
+            }
+            await SwinIO<List<TimetabledClass>>.WriteAsync("classes.json", _classes);
+            PopulateSchedule();
         }
 
 
