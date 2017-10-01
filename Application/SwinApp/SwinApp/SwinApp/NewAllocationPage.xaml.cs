@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SwinApp.Library;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,20 +10,45 @@ using Xamarin.Forms.Xaml;
 
 namespace SwinApp
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewAllocationPage : ContentPage
-	{
-		public NewAllocationPage ()
-		{
-			InitializeComponent ();
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class NewAllocationPage : ContentPage
+    {
+
+        private DateTime _datetime;
+        private string _name;
+        private string _room;
+        private int _occurences;
+
+        public NewAllocationPage()
+        {
+            InitializeComponent();
 
             for (int i = 1; i <= 52; i++)
                 pickerWeeks.Items.Add(i.ToString());
 
             pickerWeeks.SelectedIndex = 0;
 
-		}
+            dateField.MinimumDate = DateTime.Today;
+            ButtonSubmit.Clicked += ClickSubmit;
+        }
 
-        
-	}
+        private async void ClickSubmit(object sender, EventArgs e) => await Submit();
+
+
+        public async Task Submit()
+        {
+            _datetime = dateField.Date;
+            _datetime += timeField.Time;
+            _name = nameField.Text;
+            _room = roomField.Text;
+            _occurences = Int32.Parse(pickerWeeks.Items[pickerWeeks.SelectedIndex]);
+
+
+            User.WriteTimetabledClass(new TimetabledClass(_datetime, _name, _room, _occurences));
+            await DisplayAlert("Success!", "Class was added :)", "close");
+            await Application.Current.MainPage.Navigation.PopAsync();
+        }
+
+
+    }
 }

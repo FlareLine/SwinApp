@@ -44,9 +44,13 @@ namespace SwinApp.Library
 
         private static List<Reminder> _reminders = new List<Reminder>();
 
+        private static List<TimetabledClass> _classes = new List<TimetabledClass>();
+
         //Lessons need to be removed as they are deprecated, however keep for now as they are a part of NextPlanned (see comment above NextPlanned)
 
         public static List<Reminder> Reminders => _reminders;
+
+        public static List<TimetabledClass> Classes => _classes;
 
         private static List<Allocation> _allocations = new List<Allocation>();
 
@@ -111,19 +115,6 @@ namespace SwinApp.Library
             _reminders.Add(reminder);
             await SwinIO<List<Reminder>>.WriteAsync("reminders.json", _reminders);
             User.PopulateSchedule();
-
-            //test code to see if remindrs are being stored, leave here for now in case it is needed later
-            //_reminders.Clear();
-
-            //_reminders = SwinIO<List<Reminder>>.Read("reminders.json");
-
-            //string test = "";
-
-            //foreach (Reminder r in _reminders){
-            //    test += r.Name;
-            //}
-
-            //await Application.Current.MainPage.DisplayAlert("reminder output", test, "close");
         }
 
         public static async void DeleteReminder(Reminder reminder)
@@ -133,10 +124,19 @@ namespace SwinApp.Library
             User.PopulateSchedule();
         }
 
-        /// <summary>
-        /// Safely clear the dashitems of all its contents
-        /// </summary>
-        private static void ClearDashItemsSafe() => Device.BeginInvokeOnMainThread(() => _dashBoardItems.Clear());
+        public static async void WriteTimetabledClass(TimetabledClass c)
+        {
+            _classes.Add(c);
+            await SwinIO<List<TimetabledClass>>.WriteAsync("reminders.json", _classes);
+            User.PopulateSchedule();
+        }
+
+
+
+            /// <summary>
+            /// Safely clear the dashitems of all its contents
+            /// </summary>
+            private static void ClearDashItemsSafe() => Device.BeginInvokeOnMainThread(() => _dashBoardItems.Clear());
         /// <summary>
         /// Safely add DashItem when using asynchronous threads
         /// </summary>
