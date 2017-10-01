@@ -45,8 +45,15 @@ namespace SwinApp
             _type = typeField.Text;
             _occurences = Int32.Parse(pickerWeeks.Items[pickerWeeks.SelectedIndex]);
 
+            List<TimetabledClass> tempClasses = new List<TimetabledClass>();
 
-            User.WriteTimetabledClass(new TimetabledClass(_datetime, _name, _room, _occurences, _type));
+            for (int i = 0; i < _occurences; i++)
+            {
+                tempClasses.Add(new TimetabledClass(_datetime, _name, _room, _occurences, _type));
+                _datetime = _datetime.AddDays(7);
+            }
+
+            User.WriteTimetabledClasses(tempClasses);
             await DisplayAlert("Success!", "Class was added :)", "close");
             await Application.Current.MainPage.Navigation.PopAsync();
         }

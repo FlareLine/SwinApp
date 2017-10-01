@@ -48,9 +48,9 @@ namespace SwinApp.Library
 
         //Lessons need to be removed as they are deprecated, however keep for now as they are a part of NextPlanned (see comment above NextPlanned)
 
-        public static List<Reminder> Reminders => _reminders;
+        private static List<Reminder> Reminders => _reminders;
 
-        public static List<TimetabledClass> Classes => _classes;
+        private static List<TimetabledClass> Classes => _classes;
 
         private static List<Allocation> _allocations = new List<Allocation>();
 
@@ -125,9 +125,10 @@ namespace SwinApp.Library
             User.PopulateSchedule();
         }
 
-        public static async void WriteTimetabledClass(TimetabledClass c)
+        public static async void WriteTimetabledClasses(List<TimetabledClass> cList)
         {
-            _classes.Add(c);
+            foreach (TimetabledClass c in cList)
+                _classes.Add(c);
             await SwinIO<List<TimetabledClass>>.WriteAsync("classes.json", _classes);
             User.PopulateSchedule();
         }
