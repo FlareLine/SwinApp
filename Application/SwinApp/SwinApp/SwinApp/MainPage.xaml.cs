@@ -8,7 +8,6 @@ using SwinApp.Library;
 using Xamarin.Forms.Xaml;
 using SwinApp.Library.Analytics;
 using System.Diagnostics;
-using UIKit;
 
 namespace SwinApp
 {
@@ -123,7 +122,7 @@ namespace SwinApp
                     AddNewReminder();
                     break;
                 case "Test Notification":
-                    DependencyService.Get<INotification>().SetTimedNotification("Test Notification", new TimeSpan(0,0,5));
+                    DependencyService.Get<INotification>().SetTimedNotification("Test Notification", new TimeSpan(0,1,00));
                     break;
             }
         }

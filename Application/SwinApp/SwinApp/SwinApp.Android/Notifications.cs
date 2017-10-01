@@ -4,6 +4,8 @@ using SwinApp.Droid;
 using Xamarin.Forms;
 using System;
 using Android.Content;
+using Android.OS;
+using Android.Widget;
 
 namespace SwinApp.Droid.Notifications
 {
@@ -52,6 +54,7 @@ namespace SwinApp.Droid.Notifications
                 .SetContentTitle("SwinApp")
                 .SetContentText(intent.GetStringExtra("text"))
                 .SetWhen(Java.Lang.JavaSystem.CurrentTimeMillis())
+                .SetVibrate(new long[] { 1000, 1000})
                 .SetSmallIcon(Resource.Drawable.ic_play_dark);
 
             NotificationManager notificationManager =
@@ -60,5 +63,26 @@ namespace SwinApp.Droid.Notifications
 
             notificationManager.Notify(id, builder.Build());
         }
+    }
+
+    [Service]
+    public class NotificationService : Service
+    {
+        AlarmReceiver alarmReceiver;
+        public override void OnCreate()
+        {
+            base.OnCreate();
+            Toast.MakeText(Forms.Context, "Test Service", ToastLength.Long).Show();
+            alarmReceiver = new AlarmReceiver();
+            RegisterReceiver(alarmReceiver, new IntentFilter(Intent.ActionBootCompleted));
+        }
+
+        public override void OnDestroy()
+        {
+            UnregisterReceiver(alarmReceiver);
+            alarmReceiver = null;
+
+        }
+        public override IBinder OnBind(Intent intent) => null;
     }
 }
