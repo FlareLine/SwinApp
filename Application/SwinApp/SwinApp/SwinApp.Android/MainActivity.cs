@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using HockeyApp.Android;
+using HockeyApp.Android.Metrics;
 using SwinApp.Library;
 using SwinApp.Droid.Notifications;
 
@@ -28,8 +30,15 @@ namespace SwinApp.Droid
 			base.OnCreate (bundle);
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new SwinApp.App ());
+
+            MetricsManager.Register(Application, (string)Xamarin.Forms.Application.Current.Resources["HockeySDKAndroidID"]);
 		}
-	}
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            CrashManager.Register(this, (string)Xamarin.Forms.Application.Current.Resources["HockeySDKAndroidID"]);
+        }
+    }
 
 }
-

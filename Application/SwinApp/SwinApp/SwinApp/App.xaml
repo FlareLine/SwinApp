@@ -99,6 +99,8 @@
             
             <x:String x:Key="PTV_DEV_ID">3000193</x:String>
             <x:String x:Key="PTV_DEV_KEY">6baf66a7-8816-4056-8e93-94c3b66ec822</x:String>
+
+            <x:String x:Key="HockeySDKAndroidID">245e5565292846a08d91d3ef50fdecb3</x:String>
         </ResourceDictionary>
 	</Application.Resources>
 </Application>
