@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwinApp.Components.UI.CardScheduledTimetabledClass">
+
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="3*" />
+        <ColumnDefinition Width="7*" />
+    </Grid.ColumnDefinitions>
+
+    <Frame Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#ff6666">
+        <StackLayout Orientation="Horizontal">
+            <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="{Binding Day}" TextColor="{DynamicResource backgroundColor}" Font="Bold" FontSize="Medium"></Label>
+                <Label Text="{Binding TimeOfDay}" TextColor="{DynamicResource backgroundColor}" FontSize="Medium"></Label>
+                <Label Text="{Binding DateMonth}" TextColor="{DynamicResource backgroundColor}" FontSize="Medium"></Label>
+            </StackLayout>
+            <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Label Text="{Binding Name}" Font="Bold" FontSize="Medium" TextColor="{DynamicResource backgroundColor}"></Label>
+                <Label Text="{Binding Room}" TextColor="{DynamicResource backgroundColor}"></Label>
+                <Label Text="Delete" x:Name="ButtonDeleteReminder" HorizontalOptions="End" Font="Bold" FontSize="Medium" TextColor="Black"></Label>
+            </StackLayout>
+        </StackLayout>
+
+    </Frame>
+
+</Grid>

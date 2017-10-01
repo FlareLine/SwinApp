@@ -90,6 +90,7 @@ namespace SwinApp.Library
             }
             //if the file doesn't exist, set _reminders to be an empty List of Reminder
             _reminders = SwinIO<List<Reminder>>.Read("reminders.json") ?? new List<Reminder>();
+            _classes = SwinIO<List<TimetabledClass>>.Read("classes.json") ?? new List<TimetabledClass>();
         }
 
         //is broken, as _lessons are no longer used. Need to find a way to either convert reminders to allocations, or alternatively allow allocations to act as iPlanned
@@ -127,7 +128,7 @@ namespace SwinApp.Library
         public static async void WriteTimetabledClass(TimetabledClass c)
         {
             _classes.Add(c);
-            await SwinIO<List<TimetabledClass>>.WriteAsync("reminders.json", _classes);
+            await SwinIO<List<TimetabledClass>>.WriteAsync("classes.json", _classes);
             User.PopulateSchedule();
         }
 
@@ -191,6 +192,8 @@ namespace SwinApp.Library
             foreach (Reminder r in Reminders)
                 ScheduleCards.Add(new ScheduledReminderCard(r));
 
+            foreach (TimetabledClass c in Classes)
+                ScheduleCards.Add(new ScheduledTimetabledClassCard(c));
             
         }
 

@@ -25,6 +25,10 @@
       <DependentUpon>CardReminder.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardScheduledTimetabledClass.xaml.cs">
+      <DependentUpon>CardScheduledTimetabledClass.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardTransport.xaml.cs">
       <DependentUpon>CardTransport.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -48,6 +52,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Library\AllocationColour.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Clrs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\INotification.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\ScheduledTimetabledClassCard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\TimetabledClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\TimetableModels.cs" />
@@ -192,6 +197,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)NewAllocationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardScheduledTimetabledClass.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
