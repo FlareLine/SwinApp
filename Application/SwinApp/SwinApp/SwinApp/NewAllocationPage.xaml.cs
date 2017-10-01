@@ -19,6 +19,19 @@ namespace SwinApp
         private string _room;
         private int _occurences;
         private string _type;
+        private Color _color;
+
+        Dictionary<string, Color> nameToColor = new Dictionary<string, Color>
+        {
+            { "Aqua", Color.Aqua }, { "Black", Color.Black },
+            { "Blue", Color.Blue }, { "Pink", Color.Pink },
+            { "Gray", Color.Gray }, { "Green", Color.Green },
+            { "Lime", Color.Lime }, { "Maroon", Color.Maroon },
+            { "Navy", Color.Navy }, { "Olive", Color.Olive },
+            { "Purple", Color.Purple }, { "Red", Color.Red },
+            { "Silver", Color.Silver }, { "Teal", Color.Teal },
+            { "White", Color.White }, { "Yellow", Color.Yellow }
+        };
 
         public NewAllocationPage()
         {
@@ -31,6 +44,12 @@ namespace SwinApp
 
             dateField.MinimumDate = DateTime.Today;
             ButtonSubmit.Clicked += ClickSubmit;
+
+            foreach (string colorName in nameToColor.Keys)
+            {
+                pickerColor.Items.Add(colorName);
+            }
+
         }
 
         private async void ClickSubmit(object sender, EventArgs e) => await Submit();
@@ -44,12 +63,13 @@ namespace SwinApp
             _room = roomField.Text;
             _type = typeField.Text;
             _occurences = Int32.Parse(pickerWeeks.Items[pickerWeeks.SelectedIndex]);
+            _color = nameToColor[pickerColor.Items[pickerColor.SelectedIndex]];
 
             List<TimetabledClass> tempClasses = new List<TimetabledClass>();
 
             for (int i = 0; i < _occurences; i++)
             {
-                tempClasses.Add(new TimetabledClass(_datetime, _name, _room, _occurences, _type));
+                tempClasses.Add(new TimetabledClass(_datetime, _name, _room, _occurences, _type, _color));
                 _datetime = _datetime.AddDays(7);
             }
 

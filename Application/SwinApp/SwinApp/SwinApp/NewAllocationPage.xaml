@@ -40,6 +40,9 @@
             <Label Text="Room:" HorizontalOptions="FillAndExpand"></Label>
             <Entry x:Name="roomField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
 
+            <Label Text="Color:" HorizontalOptions="FillAndExpand"></Label>
+            <Picker x:Name="pickerColor" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Picker>
+
 
             <Button x:Name="ButtonSubmit" Style="{DynamicResource buttonStyle}" Text="Submit" HorizontalOptions="FillAndExpand"></Button>
         </StackLayout>
