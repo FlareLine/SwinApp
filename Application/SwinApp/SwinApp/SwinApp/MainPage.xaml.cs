@@ -79,7 +79,9 @@ namespace SwinApp
                 {
                     User.LoadUserData();
                     ListDashboard.ItemsSource = User.DashBoardItems;
-                    ListSchedule.ItemsSource = User.ScheduleCards;
+                    //ListSchedule.ItemsSource = User.ScheduleCards;
+                    ListSchedule.ItemsSource = User.ReminderCards;
+                    ListClasses.ItemsSource = User.ClassesCards;
                 }
                 catch (Exception e)
                 {

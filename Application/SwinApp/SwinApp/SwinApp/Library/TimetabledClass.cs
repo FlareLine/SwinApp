@@ -47,15 +47,7 @@ namespace SwinApp.Library
             }
         }
 
-        [JsonIgnore]
-        public string Summary
-        {
-            get
-            {
-                return (Room + " - " + Type);
-            }
-        }
-
+       
         public TimetabledClass(DateTime classDateTime, string name, string room, int occurences, string type)
         {
             Time = classDateTime;

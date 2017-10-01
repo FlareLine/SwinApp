@@ -17,7 +17,7 @@
             </StackLayout>
             <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Label Text="{Binding Name}" Font="Bold" FontSize="Medium" TextColor="{DynamicResource backgroundColor}"></Label>
-                <Label Text="{Binding Summary}" TextColor="{DynamicResource backgroundColor}"></Label>
+                <Label Text="{Binding Room}" TextColor="{DynamicResource backgroundColor}"></Label>
                 <Label Text="Delete" x:Name="ButtonDeleteReminder" HorizontalOptions="End" Font="Bold" FontSize="Medium" TextColor="Black"></Label>
             </StackLayout>
         </StackLayout>

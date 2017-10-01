@@ -18,7 +18,7 @@ namespace SwinApp.Library
             _content = new CardScheduledTimetabledClass(_class);
         }
 
-        public string Title => "Class";
+        public string Title => _class.Type;
 
         public Grid Content => _content;
 
