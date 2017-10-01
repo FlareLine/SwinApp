@@ -31,13 +31,30 @@ namespace SwinApp.Droid
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new SwinApp.App ());
 
+            // HockeyApp Integration, remove for store builds
             MetricsManager.Register(Application, (string)Xamarin.Forms.Application.Current.Resources["HockeySDKAndroidID"]);
+            UpdateManager.Register(this, (string)Xamarin.Forms.Application.Current.Resources["HockeySDKAndroidID"]);
 		}
 
         protected override void OnResume()
         {
             base.OnResume();
+            // HockeyApp Integration, remove for store builds
             CrashManager.Register(this, (string)Xamarin.Forms.Application.Current.Resources["HockeySDKAndroidID"]);
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            // HockeyApp Integration, remove for store builds
+            UpdateManager.Unregister();
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            // HockeyApp Integration, remove for store builds
+            UpdateManager.Unregister();
         }
     }
 
