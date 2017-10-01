@@ -18,6 +18,7 @@ namespace SwinApp
         private string _name;
         private string _room;
         private int _occurences;
+        private string _type;
 
         public NewAllocationPage()
         {
@@ -41,10 +42,11 @@ namespace SwinApp
             _datetime += timeField.Time;
             _name = nameField.Text;
             _room = roomField.Text;
+            _type = typeField.Text;
             _occurences = Int32.Parse(pickerWeeks.Items[pickerWeeks.SelectedIndex]);
 
 
-            User.WriteTimetabledClass(new TimetabledClass(_datetime, _name, _room, _occurences));
+            User.WriteTimetabledClass(new TimetabledClass(_datetime, _name, _room, _occurences, _type));
             await DisplayAlert("Success!", "Class was added :)", "close");
             await Application.Current.MainPage.Navigation.PopAsync();
         }

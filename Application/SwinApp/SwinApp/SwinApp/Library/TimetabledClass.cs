@@ -13,6 +13,8 @@ namespace SwinApp.Library
 
         public int Occurences { get; set; }
 
+        public string Type { get; set; }
+
         // Return how far in the future the event is
         public TimeSpan When => Time - DateTime.Now;
 
@@ -45,12 +47,22 @@ namespace SwinApp.Library
             }
         }
 
-        public TimetabledClass(DateTime classDateTime, string name, string room, int occurences)
+        [JsonIgnore]
+        public string Summary
+        {
+            get
+            {
+                return (Room + " - " + Type);
+            }
+        }
+
+        public TimetabledClass(DateTime classDateTime, string name, string room, int occurences, string type)
         {
             Time = classDateTime;
             Name = name;
             Room = room;
             Occurences = occurences;
+            Type = type;
         }
 
         // part of IPlanned but not needed for Reminders, as these are stored locally and do not need to be queried from
