@@ -19,7 +19,7 @@ namespace SwinApp.Droid.Notifications
             PendingIntent pendingIntent = PendingIntent.GetBroadcast(Forms.Context, 0, alarmIntent, PendingIntentFlags.UpdateCurrent);
             AlarmManager alarmManager = (AlarmManager)Forms.Context.GetSystemService(Context.AlarmService);
 
-            alarmManager.Set(AlarmType.RtcWakeup, DateTime.Now.Millisecond + when.Milliseconds, pendingIntent);
+            alarmManager.Set(AlarmType.RtcWakeup, DateTime.Now.Millisecond + (long)when.TotalMilliseconds, pendingIntent);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace SwinApp.Droid.Notifications
             Notification.Builder builder = new Notification.Builder(Forms.Context)
                 .SetContentTitle("SwinApp")
                 .SetContentText(text)
-                .SetWhen(Java.Lang.JavaSystem.CurrentTimeMillis() + 10000000)
+                .SetWhen(Java.Lang.JavaSystem.CurrentTimeMillis())
                 .SetSmallIcon(Resource.Drawable.ic_play_dark);
 
             NotificationManager notificationManager =
@@ -42,20 +42,20 @@ namespace SwinApp.Droid.Notifications
         }
     }
 
-    [BroadcastReceiver]
-    [IntentFilter(new string[] { "android.intent.action.BOOT_COMPLETED" }, Priority = (int)IntentFilterPriority.LowPriority)]
+    [BroadcastReceiver(Enabled = true)]
+    [IntentFilter(new [] { Intent.ActionBootCompleted }, Priority = (int)IntentFilterPriority.LowPriority)]
     public class AlarmReceiver : BroadcastReceiver
     {
         public override void OnReceive(Context context, Intent intent)
         {
-            Notification.Builder builder = new Notification.Builder(Forms.Context)
+            Notification.Builder builder = new Notification.Builder(context)
                 .SetContentTitle("SwinApp")
                 .SetContentText(intent.GetStringExtra("text"))
-                .SetWhen(Java.Lang.JavaSystem.CurrentTimeMillis() + 10000000)
+                .SetWhen(Java.Lang.JavaSystem.CurrentTimeMillis())
                 .SetSmallIcon(Resource.Drawable.ic_play_dark);
 
             NotificationManager notificationManager =
-                Forms.Context.GetSystemService(Android.Content.Context.NotificationService) as NotificationManager;
+                context.GetSystemService(Android.Content.Context.NotificationService) as NotificationManager;
             const int id = 0;
 
             notificationManager.Notify(id, builder.Build());
