@@ -50,6 +50,8 @@ namespace SwinApp
                 pickerColor.Items.Add(colorName);
             }
 
+            pickerColor.SelectedIndex = 0;
+
         }
 
         private async void ClickSubmit(object sender, EventArgs e) => await Submit();
