@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SwinApp.Library.Analytics;
 
 namespace SwinApp
 {
@@ -50,8 +51,9 @@ namespace SwinApp
 
         private void OnThemeButtonClicked(object sender, EventArgs e) => ChangeTheme();
 
-        void ChangeTheme()
+        async void ChangeTheme()
         {
+            await Analytics.LogEventAsync(new AppEvent(EventType.CHANGE_THEME, DateTime.Now));
 
             useDarkTheme = !useDarkTheme;
 

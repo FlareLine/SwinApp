@@ -47,9 +47,7 @@ namespace SwinApp.Library.Analytics
         {
             try
             {
-                if (conn == null) conn = new SQLiteAsyncConnection(path);
-
-                await conn.CreateTableAsync<AppEvent>();
+                await SwinDB.ConnAsync.CreateTableAsync<AppEvent>();
 
                 Debug.Write($"PATH: {path}");
 
@@ -78,9 +76,8 @@ namespace SwinApp.Library.Analytics
         /// <returns>Returns AppEvents up to the specified limit, or no limit if <paramref name="lim"/> is <see langword="null"/></returns>
         public static async Task<List<AppEvent>> RetrieveLogAsync(int? lim)
         {
-            if (conn == null) conn = new SQLiteAsyncConnection(path);
 
-            await conn.CreateTableAsync<AppEvent>();
+            await SwinDB.ConnAsync.CreateTableAsync<AppEvent>();
             AsyncTableQuery<AppEvent> query = (lim == null ? conn.Table<AppEvent>() : conn.Table<AppEvent>().Where(a => a.Id < lim));
 
             return await query.ToListAsync();
@@ -92,9 +89,7 @@ namespace SwinApp.Library.Analytics
         /// <returns>Success or failure</returns>
         public static async Task<int> ClearLogAsync()
         {
-            if (conn == null) conn = new SQLiteAsyncConnection(path);
-
-            return await conn.DeleteAllAsync(new TableMapping(typeof(AppEvent)));
+            return await SwinDB.ConnAsync.DeleteAllAsync(new TableMapping(typeof(AppEvent)));
         }
 
         /// <summary>
@@ -103,9 +98,7 @@ namespace SwinApp.Library.Analytics
         /// <returns></returns>
         public static async Task<bool> DeliverLogAsync()
         {
-            if (conn == null) conn = new SQLiteAsyncConnection(path);
-
-            var dbContents = await conn.Table<AppEvent>().ToListAsync();
+            var dbContents = await SwinDB.ConnAsync.Table<AppEvent>().ToListAsync();
             bool hasSent = false;
 
             if (dbContents.Count >= LOG_THRESHOLD)

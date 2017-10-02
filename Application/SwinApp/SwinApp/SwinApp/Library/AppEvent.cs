@@ -8,6 +8,8 @@ namespace SwinApp.Library.Analytics
     /// </summary>
     public class AppEvent
     {
+        #region TableFields
+
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
@@ -17,13 +19,12 @@ namespace SwinApp.Library.Analytics
 
         public string TimeStamp { get; set; }
 
-        /// <summary>
-        /// Blank AppEvent constructor for SQLite usage
-        /// </summary>
-        public AppEvent()
-        {
+		#endregion TableFields
 
-        }
+		/// <summary>
+		/// Blank <see cref="AppEvent"/> constructor for SQLite usage
+		/// </summary>
+		public AppEvent() { }
 
         /// <summary>
         /// Creates a new <see cref="AppEvent"/> with the specified parameters
@@ -48,7 +49,7 @@ namespace SwinApp.Library.Analytics
         }
 
         /// <summary>
-        /// Deserialize this AppEvent into a string delimited by <paramref name="d"/>
+        /// Deserialize this <see cref="AppEvent"/> into a <see langword="string"/> delimited by <paramref name="d"/>
         /// </summary>
         /// <param name="d">Delimiter <see langword="char"/> to use</param>
         /// <returns></returns>
@@ -69,14 +70,15 @@ namespace SwinApp.Library.Analytics
         }
     }
 
-    /// <summary>
-    /// Event Type, used to differentiate different kinds of events
-    /// </summary>
-    public enum EventType
+	/// <summary>
+	/// <see cref="AppEvent"/> event type, used to differentiate different kinds of events
+	/// </summary>
+	public enum EventType
     {
         APP_START,
         APP_CLOSE,
         APP_ERROR,
+        CHANGE_THEME,
         LINK_EXTERNAL,
         LINK_INTERNAL,
         REMINDER_CREATE,

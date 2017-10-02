@@ -105,10 +105,11 @@ namespace SwinApp.Library
         /// Load lesson data
         /// </summary>
 
-
         public static async void WriteReminder(Reminder reminder)
         {
             _reminders.Add(reminder);
+            if(reminder.When > new TimeSpan(0,0,0))
+                DependencyService.Get<INotification>().SetTimedNotification("SWINAPP", reminder.When);
             await SwinIO<List<Reminder>>.WriteAsync("reminders.json", _reminders);
             User.PopulateSchedule();
 

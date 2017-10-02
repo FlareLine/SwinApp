@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SwinApp.Library;
+using SwinApp.Library.Analytics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -29,6 +30,7 @@ namespace SwinApp
 
         public async Task Submit()
         {
+            
             _datetime = dateField.Date;
             _datetime += timeField.Time;
             _title = titleField.Text;
@@ -36,7 +38,7 @@ namespace SwinApp
 
             User.WriteReminder(new Reminder(_datetime, _title, _description));
             await DisplayAlert("Success!", "Reminder was added :)", "close");
-            DependencyService.Get<INotification>().SetTimedNotification("SWINAPP", _datetime - DateTime.Now);
+            await Analytics.LogEventAsync(new AppEvent(EventType.REMINDER_CREATE, DateTime.Now));
             await Application.Current.MainPage.Navigation.PopAsync();
             
 
