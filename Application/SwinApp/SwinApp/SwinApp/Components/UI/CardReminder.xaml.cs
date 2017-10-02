@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SwinApp.Library;
+using SwinApp.Library.ViewModels;
 
 namespace SwinApp.Components
 {

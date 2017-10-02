@@ -111,6 +111,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Library\IOrientationProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\MapsLib.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\TimetabledClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardScheduledTimetabledClass.xaml.cs">
+      <DependentUpon>CardScheduledTimetabledClass.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardStudentOffer.xaml.cs">
+      <DependentUpon>CardStudentOffer.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
