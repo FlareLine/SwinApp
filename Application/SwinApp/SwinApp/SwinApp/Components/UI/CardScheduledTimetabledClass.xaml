@@ -21,7 +21,8 @@
                 </Grid.ColumnDefinitions>
                 <StackLayout Grid.Column="0">
                     <Label Text="{Binding Day}" FontSize="Medium"></Label>
-                    <Label Text="{Binding TimeOfDay}" Style="{StaticResource LabelTimeStyle}"></Label>
+                    <Label Text="{Binding DateMonth}"></Label>
+                    <Label Text="{Binding TimeOfDay}"></Label>
                     <!--<Label Text="{Binding Date}"></Label>-->
                 </StackLayout>
                 <Frame.Resources>
@@ -35,7 +36,8 @@
                 </Frame.Resources>
                 <StackLayout Grid.Column="1">
                     <Label Text="{Binding Name}"></Label>
-                    <Label Text="{Binding Room}"></Label>
+                    <Label Text="{Binding Room}" FontSize="Small"></Label>
+                    <Label></Label>
                     <Label Text="Delete" x:Name="ButtonDeleteClass" HorizontalOptions="End" Font="Bold" FontSize="Medium" TextColor="Black"></Label>
                 </StackLayout>
             </Grid>

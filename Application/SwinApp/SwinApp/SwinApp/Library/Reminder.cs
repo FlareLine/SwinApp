@@ -32,7 +32,7 @@ namespace SwinApp.Library
         {
             get
             {
-                return (Time.ToString("dd/MM/yy"));
+                return (Time.ToString("dd/MM"));
             }
         }
 
@@ -41,7 +41,7 @@ namespace SwinApp.Library
         {
             get
             {
-                return (Time.ToString("HH:mm tt"));
+                return (Time.ToString("hh:mm tt"));
             }
         }
 

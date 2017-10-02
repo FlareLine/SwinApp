@@ -51,7 +51,11 @@ namespace SwinApp.Library
             { "Lilac", Color.FromHex("#ccccff") },
             { "Pink", Color.FromHex("#ff99cc") },
             { "Beige", Color.FromHex("#cccc99") },
-            { "Green", Color.FromHex("#40bf80")}
+            { "Green", Color.FromHex("#40bf80")},
+            { "Pink-Purple", Color.FromHex("#e085c2")},
+            { "Orange", Color.FromHex("#ffa64d")},
+            { "Teal", Color.FromHex("#00cccc")},
+            { "Pink-Red", Color.FromHex("#ff6666")}
 
         };
     }
