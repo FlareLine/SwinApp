@@ -23,14 +23,11 @@ namespace SwinApp
 
         Dictionary<string, Color> nameToColor = new Dictionary<string, Color>
         {
-            { "Aqua", Color.Aqua }, { "Black", Color.Black },
-            { "Blue", Color.Blue }, { "Pink", Color.Pink },
-            { "Gray", Color.Gray }, { "Green", Color.Green },
-            { "Lime", Color.Lime }, { "Maroon", Color.Maroon },
-            { "Navy", Color.Navy }, { "Olive", Color.Olive },
-            { "Purple", Color.Purple }, { "Red", Color.Red },
-            { "Silver", Color.Silver }, { "Teal", Color.Teal },
-            { "White", Color.White }, { "Yellow", Color.Yellow }
+            { "Aqua", Color.FromHex("#00cccc") },
+            { "Lilac", Color.FromHex("#ccccff") },
+            { "Pink", Color.FromHex("#ff99cc") },
+            { "Color4", Color.FromHex("#cccc99") }
+
         };
 
         public NewAllocationPage()
