@@ -17,25 +17,13 @@ namespace SwinApp
         private string _description;
         private Color _color;
 
-        Dictionary<string, Color> nameToColor = new Dictionary<string, Color>
-        {
-            { "Aqua", Color.Aqua }, { "Black", Color.Black },
-            { "Blue", Color.Blue }, { "Pink", Color.Pink },
-            { "Gray", Color.Gray }, { "Green", Color.Green },
-            { "Lime", Color.Lime }, { "Maroon", Color.Maroon },
-            { "Navy", Color.Navy }, { "Olive", Color.Olive },
-            { "Purple", Color.Purple }, { "Red", Color.Red },
-            { "Silver", Color.Silver }, { "Teal", Color.Teal },
-            { "White", Color.White }, { "Yellow", Color.Yellow }
-        };
-
         public NewReminderPage ()
 		{
 			InitializeComponent ();
             dateField.MinimumDate = DateTime.Today;
             ButtonSubmit.Clicked += ClickSubmit;
 
-            foreach (string colorName in nameToColor.Keys)
+            foreach (string colorName in Clrs.timetableNameToColor.Keys)
             {
                 pickerColor.Items.Add(colorName);
             }
@@ -51,7 +39,7 @@ namespace SwinApp
             _datetime += timeField.Time;
             _title = titleField.Text;
             _description = descriptionField.Text;
-            _color = nameToColor[pickerColor.Items[pickerColor.SelectedIndex]];
+            _color = Clrs.timetableNameToColor[pickerColor.Items[pickerColor.SelectedIndex]];
 
             User.WriteReminder(new Reminder(_datetime, _title, _description, _color));
             await DisplayAlert("Success!", "Reminder was added :)", "close");

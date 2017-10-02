@@ -21,15 +21,6 @@ namespace SwinApp
         private string _type;
         private Color _color;
 
-        Dictionary<string, Color> nameToColor = new Dictionary<string, Color>
-        {
-            { "Aqua", Color.FromHex("#00cccc") },
-            { "Lilac", Color.FromHex("#ccccff") },
-            { "Pink", Color.FromHex("#ff99cc") },
-            { "Color4", Color.FromHex("#cccc99") }
-
-        };
-
         public NewAllocationPage()
         {
             InitializeComponent();
@@ -42,7 +33,7 @@ namespace SwinApp
             dateField.MinimumDate = DateTime.Today;
             ButtonSubmit.Clicked += ClickSubmit;
 
-            foreach (string colorName in nameToColor.Keys)
+            foreach (string colorName in Clrs.timetableNameToColor.Keys)
             {
                 pickerColor.Items.Add(colorName);
             }
@@ -62,7 +53,7 @@ namespace SwinApp
             _room = roomField.Text;
             _type = typeField.Text;
             _occurences = Int32.Parse(pickerWeeks.Items[pickerWeeks.SelectedIndex]);
-            _color = nameToColor[pickerColor.Items[pickerColor.SelectedIndex]];
+            _color = Clrs.timetableNameToColor[pickerColor.Items[pickerColor.SelectedIndex]];
 
             List<TimetabledClass> tempClasses = new List<TimetabledClass>();
 

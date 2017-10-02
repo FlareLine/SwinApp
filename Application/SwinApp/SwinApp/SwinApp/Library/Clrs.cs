@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace SwinApp.Library
 {
@@ -43,5 +44,15 @@ namespace SwinApp.Library
             string val = clr.ToString();
             return (Xamarin.Forms.Color)Xamarin.Forms.Application.Current.Resources[val];
         }
+
+        public static Dictionary<string, Color> timetableNameToColor = new Dictionary<string, Color>
+        {
+            { "Aqua", Color.FromHex("#00cccc") },
+            { "Lilac", Color.FromHex("#ccccff") },
+            { "Pink", Color.FromHex("#ff99cc") },
+            { "Beige", Color.FromHex("#cccc99") },
+            { "Green", Color.FromHex("#40bf80")}
+
+        };
     }
 }
