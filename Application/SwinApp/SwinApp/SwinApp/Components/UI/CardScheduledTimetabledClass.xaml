@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SwinApp.Components.CardReminder">
+             x:Class="SwinApp.Components.UI.CardScheduledTimetabledClass">
+
     <Grid>
         <Grid.Resources>
             <ResourceDictionary>
@@ -12,7 +13,7 @@
                 </Style>
             </ResourceDictionary>
         </Grid.Resources>
-        <Frame x:Name="FrameAllocation" BackgroundColor="{Binding reminderColor}">
+        <Frame x:Name="FrameAllocation" BackgroundColor="{Binding classColor}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -21,7 +22,7 @@
                 <StackLayout Grid.Column="0">
                     <Label Text="{Binding Day}" FontSize="Medium"></Label>
                     <Label Text="{Binding DateMonth}"></Label>
-                    <Label Text="{Binding TimeOfDay}" ></Label>
+                    <Label Text="{Binding TimeOfDay}"></Label>
                     <!--<Label Text="{Binding Date}"></Label>-->
                 </StackLayout>
                 <Frame.Resources>
@@ -35,11 +36,12 @@
                 </Frame.Resources>
                 <StackLayout Grid.Column="1">
                     <Label Text="{Binding Name}"></Label>
-                    <Label Text="{Binding Description}" FontSize="Small" FontAttributes="None"></Label>
+                    <Label Text="{Binding Room}" FontSize="Small"></Label>
                     <Label></Label>
-                    <Label Text="Delete" x:Name="ButtonDeleteReminder" HorizontalOptions="End" Font="Bold" FontSize="Medium" TextColor="Black"></Label>
+                    <Label Text="Delete" x:Name="ButtonDeleteClass" HorizontalOptions="End" Font="Bold" FontSize="Medium" TextColor="Black"></Label>
                 </StackLayout>
             </Grid>
         </Frame>
     </Grid>
+
 </Grid>

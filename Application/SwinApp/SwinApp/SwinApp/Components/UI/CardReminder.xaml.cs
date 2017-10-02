@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SwinApp.Library;
-using SwinApp.Library.ViewModels;
 
 namespace SwinApp.Components
 {
@@ -31,9 +30,16 @@ namespace SwinApp.Components
         public async void DeleteReminder()
         {
 
-            var confirmDeletion = await App.Current.MainPage.DisplayAlert("Delete?", "Delete this reminder?", "Yes", "No");
+            var confirmDeletion = await App.Current.MainPage.DisplayAlert("Delete?", "Delete this reminder?", "Yes!", "No!");
             if (confirmDeletion)
-                _vm.DeleteReminder();
+            {
+                var secondconfirmDeletion = await App.Current.MainPage.DisplayAlert("Are you sure?", "Do you 110% want to delete this reminder?", "Yes!", "No!");
+                if (secondconfirmDeletion)
+                {
+                    User.DeleteReminder(_reminder);
+                }
+            }
+            
         }
 
         private void ClickDelete(object sender, EventArgs e) => DeleteReminder();

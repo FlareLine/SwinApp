@@ -22,7 +22,7 @@ namespace SwinApp.Library
         /// </summary>
         public const bool USE_PROTOTYPE_DATA = true;
 
-        public static Dictionary<string, int> DayCompValues = new Dictionary<string, int>()
+        private static Dictionary<string, int> DayCompValues = new Dictionary<string, int>()
         {
             ["Monday"] = 0,
             ["Tuesday"] = 1,
@@ -44,9 +44,13 @@ namespace SwinApp.Library
 
         private static List<Reminder> _reminders = new List<Reminder>();
 
+        private static List<TimetabledClass> _classes = new List<TimetabledClass>();
+
         //Lessons need to be removed as they are deprecated, however keep for now as they are a part of NextPlanned (see comment above NextPlanned)
 
         public static List<Reminder> Reminders => _reminders;
+
+        public static List<TimetabledClass> Classes => _classes;
 
         private static List<Allocation> _allocations = new List<Allocation>();
 
@@ -61,7 +65,9 @@ namespace SwinApp.Library
             .ThenBy(a => a.Schedule.StartTime)
             .ToList();
 
-        public static ObservableCollection<IDashCard> ScheduleCards = new ObservableCollection<IDashCard>();
+        public static ObservableCollection<IDashCard> ReminderCards = new ObservableCollection<IDashCard>();
+
+        public static ObservableCollection<IDashCard> ClassesCards = new ObservableCollection<IDashCard>();
 
         private static UpNextCard _upNextCard;
 
@@ -86,6 +92,7 @@ namespace SwinApp.Library
             }
             //if the file doesn't exist, set _reminders to be an empty List of Reminder
             _reminders = SwinIO<List<Reminder>>.Read("reminders.json") ?? new List<Reminder>();
+            _classes = SwinIO<List<TimetabledClass>>.Read("classes.json") ?? new List<TimetabledClass>();
         }
 
         //is broken, as _lessons are no longer used. Need to find a way to either convert reminders to allocations, or alternatively allow allocations to act as iPlanned
@@ -110,34 +117,43 @@ namespace SwinApp.Library
             _reminders.Add(reminder);
             if(reminder.When > new TimeSpan(0,0,0))
                 DependencyService.Get<INotification>().SetTimedNotification("SWINAPP", reminder.When);
-            await SwinIO<List<Reminder>>.WriteAsync("reminders.json", _reminders);
-            User.PopulateSchedule();
-
-            //test code to see if remindrs are being stored, leave here for now in case it is needed later
-            //_reminders.Clear();
-
-            //_reminders = SwinIO<List<Reminder>>.Read("reminders.json");
-
-            //string test = "";
-
-            //foreach (Reminder r in _reminders){
-            //    test += r.Name;
-            //}
-
-            //await Application.Current.MainPage.DisplayAlert("reminder output", test, "close");
+            _reminders.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
+            await SwinIO<List<Reminder>>.WriteAsync("reminders.json", _reminders);         
+            PopulateSchedule();
         }
 
         public static async void DeleteReminder(Reminder reminder)
         {
-            User.Reminders.RemoveAll(r => r == reminder);
+            _reminders.RemoveAll(r => r == reminder);
             await SwinIO<List<Reminder>>.WriteAsync("reminders.json", User.Reminders);
-            User.PopulateSchedule();
+            PopulateSchedule();
         }
 
-        /// <summary>
-        /// Safely clear the dashitems of all its contents
-        /// </summary>
-        private static void ClearDashItemsSafe() => Device.BeginInvokeOnMainThread(() => _dashBoardItems.Clear());
+        public static async void WriteTimetabledClasses(List<TimetabledClass> cList)
+        {
+            foreach (TimetabledClass c in cList)
+                _classes.Add(c);
+            _classes.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
+            await SwinIO<List<TimetabledClass>>.WriteAsync("classes.json", _classes);
+            PopulateSchedule();
+        }
+
+        public static async void DeleteTimetabledClasses(List<TimetabledClass> cList)
+        {
+           foreach (TimetabledClass c in cList)
+            {
+                _classes.Remove(c);
+            }
+            await SwinIO<List<TimetabledClass>>.WriteAsync("classes.json", _classes);
+            PopulateSchedule();
+        }
+
+
+
+            /// <summary>
+            /// Safely clear the dashitems of all its contents
+            /// </summary>
+            private static void ClearDashItemsSafe() => Device.BeginInvokeOnMainThread(() => _dashBoardItems.Clear());
         /// <summary>
         /// Safely add DashItem when using asynchronous threads
         /// </summary>
@@ -181,17 +197,22 @@ namespace SwinApp.Library
         public static void PopulateSchedule()
         {
             //bit of a butched solution to make sure that we don't get duplicates of classes whenever a new reminder is added, should be fixed later
-            ScheduleCards.Clear();
+            ReminderCards.Clear();
+            ClassesCards.Clear();
 
-            foreach (AllocationCard card in CurrentSemesterAllocations
-                .Select(a => new AllocationCard(a)))
-            {
-                ScheduleCards.Add(card);
-            }
+            //foreach (AllocationCard card in CurrentSemesterAllocations
+            //    .Select(a => new AllocationCard(a)))
+            //{
+            //    ScheduleCards.Add(card);
+            //}
+
+
 
             foreach (Reminder r in Reminders)
-                ScheduleCards.Add(new ScheduledReminderCard(r));
+                ReminderCards.Add(new ScheduledReminderCard(r));
 
+            foreach (TimetabledClass c in Classes)
+                ClassesCards.Add(new ScheduledTimetabledClassCard(c));
             
         }
 
