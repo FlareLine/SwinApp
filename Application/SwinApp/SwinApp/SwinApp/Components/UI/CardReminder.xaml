@@ -2,44 +2,25 @@
 <Grid xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.Components.CardReminder">
-    <Grid>
-        <Grid.Resources>
-            <ResourceDictionary>
-                <!--Specific TimeLabel styling-->
-                <Style x:Key="LabelTimeStyle" TargetType="Label">
-                    <Setter Property="FontSize" Value="22"/>
-                    <Setter Property="TextColor" Value="{DynamicResource backgroundColor}"/>
-                </Style>
-            </ResourceDictionary>
-        </Grid.Resources>
-        <Frame x:Name="FrameAllocation" BackgroundColor="{Binding reminderColor}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="0">
-                    <Label Text="{Binding Day}" FontSize="Medium"></Label>
-                    <Label Text="{Binding DateMonth}"></Label>
-                    <Label Text="{Binding TimeOfDay}" ></Label>
-                    <!--<Label Text="{Binding Date}"></Label>-->
-                </StackLayout>
-                <Frame.Resources>
-                    <ResourceDictionary>
-                        <Style TargetType="Label">
-                            <Setter Property="TextColor" Value="{DynamicResource backgroundColor}"/>
-                            <Setter Property="FontAttributes" Value="Bold"/>
-                            <Setter Property="FontSize" Value="Medium"/>
-                        </Style>
-                    </ResourceDictionary>
-                </Frame.Resources>
-                <StackLayout Grid.Column="1">
-                    <Label Text="{Binding Name}"></Label>
-                    <Label Text="{Binding Description}" FontSize="Small" FontAttributes="None"></Label>
-                    <Label></Label>
-                    <Label Text="Delete" x:Name="ButtonDeleteReminder" HorizontalOptions="End" Font="Bold" FontSize="Medium" TextColor="Black"></Label>
-                </StackLayout>
-            </Grid>
-        </Frame>
-    </Grid>
+    
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="7*" />
+        </Grid.ColumnDefinitions>
+
+    <Frame Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#ff6666">
+        <StackLayout Orientation="Horizontal">
+            <StackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="{Binding Day}" TextColor="{DynamicResource backgroundColor}" Font="Bold" FontSize="Medium"></Label>
+                <Label Text="{Binding Time}" TextColor="{DynamicResource backgroundColor}" FontSize="Medium"></Label>
+                <Label Text="{Binding Date}" TextColor="{DynamicResource backgroundColor}" FontSize="Medium"></Label>
+            </StackLayout>
+            <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Label Text="{Binding Name}" Font="Bold" FontSize="Medium" TextColor="{DynamicResource backgroundColor}"></Label>
+                <Label Text="{Binding Description}" TextColor="{DynamicResource backgroundColor}"></Label>
+                <Label Text="Delete" x:Name="ButtonDeleteReminder" HorizontalOptions="End" Font="Bold" FontSize="Medium" TextColor="Black"></Label>
+            </StackLayout>
+        </StackLayout>
+        
+    </Frame>
 </Grid>

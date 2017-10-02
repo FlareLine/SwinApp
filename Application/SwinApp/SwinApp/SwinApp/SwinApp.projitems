@@ -30,6 +30,10 @@
       <DependentUpon>CardReminder.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardStudentOffer.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>CardStudentOffer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardTransport.xaml.cs">
       <DependentUpon>CardTransport.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -54,7 +58,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Library\AppEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Clrs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\INotification.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\IOrientationProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\MapsLib.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\SQLiteAsync.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\TimetableModels.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\DashItems.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\Planning.cs" />
@@ -76,10 +83,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)NewAllocationPage.xaml.cs">
-      <DependentUpon>NewAllocationPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)NewReminderPage.xaml.cs">
       <DependentUpon>NewReminderPage.xaml</DependentUpon>
@@ -106,19 +109,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\ReminderViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\SQLiteAsync.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\ScheduledTimetabledClassCard.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\IOrientationProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\MapsLib.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Library\TimetabledClass.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardScheduledTimetabledClass.xaml.cs">
-      <DependentUpon>CardScheduledTimetabledClass.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Components\UI\CardStudentOffer.xaml.cs">
-      <DependentUpon>CardStudentOffer.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
@@ -209,18 +199,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)SettingsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)NewAllocationPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Components\UI\CardScheduledTimetabledClass.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

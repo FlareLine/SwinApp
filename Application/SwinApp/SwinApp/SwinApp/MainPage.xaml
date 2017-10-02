@@ -40,40 +40,8 @@
             </Grid>
         </StackLayout>
     </ContentPage>
-    <!--Classes Page-->
-    <ContentPage x:Name="PageClases" Title="Classes" Style="{DynamicResource backgroundStyle}">
-        <StackLayout x:Name="StackClasses" VerticalOptions="FillAndExpand">
-            <ScrollView x:Name="ScrollClasses" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
-                <ListView x:Name="ListClasses" HasUnevenRows="True" SeparatorVisibility="None" Margin="0" BackgroundColor="Transparent">
-                    <ListView.RowHeight>
-                        <OnPlatform x:TypeArguments="x:Int32" Android="80" iOS="-1"/>
-                    </ListView.RowHeight>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid Padding="0">
-                                    <Frame Style="{StaticResource FrameCard}" Margin="5">
-                                        <StackLayout Orientation="Vertical" Padding="1">
-                                            <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"/>
-                                            <ContentView Content="{Binding Content}"/>
-                                        </StackLayout>
-                                    </Frame>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollView>
-            <Grid Padding="0" BackgroundColor="Transparent">
-                <Grid.IsVisible>
-                    <OnPlatform x:TypeArguments="x:Boolean" Android="True" iOS="False"/>
-                </Grid.IsVisible>
-                <Button x:Name="ButtonAndroidPlusClasses" Style="{DynamicResource buttonStyle}" Clicked="ShowContextMenu" HorizontalOptions="FillAndExpand" Text="+" FontAttributes="Bold" FontSize="24"/>
-            </Grid>
-        </StackLayout>
-    </ContentPage>
     <!--Schedule Page-->
-    <ContentPage x:Name="PageCalendar"  Title="Schedule" Style="{DynamicResource backgroundStyle}" >
+    <ContentPage x:Name="PageCalendar"  Title="Schedule" Style="{DynamicResource backgroundStyle}">
         <StackLayout x:Name="StackSchedule" VerticalOptions="FillAndExpand">
             <ScrollView x:Name="ScrollSchedule" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
                 <ListView x:Name="ListSchedule" HasUnevenRows="True" SeparatorVisibility="None" Margin="0" BackgroundColor="Transparent">

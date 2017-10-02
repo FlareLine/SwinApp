@@ -98,9 +98,7 @@ namespace SwinApp
                 {
                     User.LoadUserData();
                     ListDashboard.ItemsSource = User.DashBoardItems;
-                    //ListSchedule.ItemsSource = User.ScheduleCards;
-                    ListSchedule.ItemsSource = User.ReminderCards;
-                    ListClasses.ItemsSource = User.ClassesCards;
+                    ListSchedule.ItemsSource = User.ScheduleCards;
                 }
                 catch (Exception e)
                 {
@@ -115,7 +113,6 @@ namespace SwinApp
             string check = await DisplayActionSheet("Add New...", "Close", (Device.OS == TargetPlatform.iOS) ? null : "Close",
                 new string[] {
                     "Reminder",
-                    "Class",
                     "Test Notification"
                 });
             switch (check)
@@ -128,20 +125,12 @@ namespace SwinApp
                 case "Test Notification":
                     DependencyService.Get<INotification>().SetTimedNotification("Test Notification", new TimeSpan(0,0,5));
                     break;
-                case "Class":
-                    AddNewAllocation();
-                    break;
             }
         }
 
         private async void AddNewReminder()
         {
             await Navigation.PushAsync(new NewReminderPage());
-        }
-
-        private async void AddNewAllocation()
-        {
-            await Navigation.PushAsync(new NewAllocationPage());
         }
 
         private void AssertPlusVisibility(object sender, ScrolledEventArgs e)

@@ -50,9 +50,6 @@
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{DynamicResource textColor}" />
             </Style>
-            <Style TargetType="Picker">
-                <Setter Property="TextColor" Value="{DynamicResource textColor}" />
-            </Style>
             <Style TargetType="DatePicker">
                 <Setter Property="TextColor" Value="{DynamicResource textColor}"></Setter>
             </Style>
@@ -70,7 +67,7 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource SwinburneRed}"></Setter>
                 <Setter Property="TextColor" Value="{DynamicResource textColor}"></Setter>
             </Style>
-
+            
             <Style TargetType="TabbedPage">
                 <!--<Setter Property="BarBackgroundColor" Value="{StaticResource SwinburneRed}"/>-->
                 <Setter Property="BarBackgroundColor">
