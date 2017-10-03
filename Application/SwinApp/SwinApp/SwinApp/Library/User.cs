@@ -206,13 +206,25 @@ namespace SwinApp.Library
             //}
 
 
-
+            //check if a reminder is from today or in the future, add it if it is, and delete it if it's not
             foreach (Reminder r in Reminders)
+            {
+                if (r.Time.Date < DateTime.Today.Date)
+                    DeleteReminder(r);
+                else 
                 ReminderCards.Add(new ScheduledReminderCard(r));
+            }
 
+            //check if a class is from today or in the future, add it if it is, and delete it if it's not
             foreach (TimetabledClass c in Classes)
-                ClassesCards.Add(new ScheduledTimetabledClassCard(c));
-            
+            {
+                if (c.Time.Date < DateTime.Today.Date)
+                    DeleteTimetabledClasses(new List<TimetabledClass>() { c });
+                else
+                    ClassesCards.Add(new ScheduledTimetabledClassCard(c));
+
+            }
+
         }
 
         /// <summary>
