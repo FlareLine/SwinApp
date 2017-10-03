@@ -46,7 +46,10 @@ namespace SwinApp.Library
         {
             get
             {
-                return (Time.ToString("hh:mm tt"));
+                if (SettingsPage.use12HourTime)
+                    return (Time.ToString("hh:mm tt"));
+                else
+                    return (Time.ToString("HH:mm"));
             }
         }
 
