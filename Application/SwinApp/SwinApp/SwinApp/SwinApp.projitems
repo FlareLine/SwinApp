@@ -40,10 +40,6 @@
       <DependentUpon>CardWeather.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)GoogleMapPage - Copy.xaml.cs">
-      <SubType>Code</SubType>
-      <DependentUpon>GoogleMapPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)GoogleMapPage.xaml.cs">
       <DependentUpon>GoogleMapPage.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -11,7 +11,7 @@ namespace SwinApp
         public WebsitePage(Uri URL)
         {
             InitializeComponent();
-            Website.Source = URL;
+            Website.Source = URL.AbsoluteUri;
         }
     }
 }
