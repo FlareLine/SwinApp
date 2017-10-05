@@ -27,16 +27,15 @@ namespace SwinApp
 
             SwinDB.Conn.CreateTable<AppSetting>();
 
-            try
-            {
-                
-                useDarkTheme = SwinDB.Conn.Table<AppSetting>().Where(a => a.SettingID == "DarkTheme").FirstOrDefault().SettingValue;
-            }
-            catch (Exception E)
-            {
-                useDarkTheme = false;
+            var darkThemeSetting = SwinDB.Conn.Table<AppSetting>().Where(a => a.SettingID == "DarkTheme").FirstOrDefault();
+            useDarkTheme = darkThemeSetting != null ? darkThemeSetting.SettingValue : false;
+            if (darkThemeSetting == null)
                 SwinDB.Conn.Insert(new AppSetting("DarkTheme", useDarkTheme));
-            }
+
+            var hourTimeSetting = SwinDB.Conn.Table<AppSetting>().Where(a => a.SettingID == "12HourTime").FirstOrDefault();
+            use12HourTime = hourTimeSetting != null ? hourTimeSetting.SettingValue : false;
+            if (hourTimeSetting == null)
+                SwinDB.Conn.Insert(new AppSetting("12HourTime", use12HourTime));
 
             SwitchChangeTheme.IsToggled = useDarkTheme;
 
