@@ -6,7 +6,7 @@
              Style="{DynamicResource backgroundStyle}">
     <StackLayout x:Name="StackLinks" VerticalOptions="FillAndExpand" > 
         <ScrollView x:Name="ScrollLinks" VerticalOptions="FillAndExpand" Margin="0">
-            <ListView x:Name="ListLinks" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+            <ListView x:Name="ListLinks" HasUnevenRows="True" SeparatorVisibility="None" Margin="0" BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
