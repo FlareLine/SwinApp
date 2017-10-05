@@ -12,12 +12,6 @@
                     <Switch x:Name="SwitchChangeTheme" HorizontalOptions="EndAndExpand"></Switch>
                 </StackLayout>
             </Frame>
-            <Frame Style="{DynamicResource FrameCard}" Margin="5">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Use 12 hour time:" FontSize="Medium"></Label>
-                    <Switch x:Name="SwitchChangeTime" HorizontalOptions="EndAndExpand"></Switch>
-                </StackLayout>
-            </Frame>
             <Frame x:Name="FrameAnalytics"  Style="{DynamicResource FrameCard}" Margin="5">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Manage Analytics" FontSize="Medium"></Label>
