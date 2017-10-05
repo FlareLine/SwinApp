@@ -40,6 +40,10 @@
       <DependentUpon>CardWeather.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)GoogleMapPage - Copy.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>GoogleMapPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)GoogleMapPage.xaml.cs">
       <DependentUpon>GoogleMapPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -94,6 +98,10 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)WeatherPage.xaml.cs">
       <DependentUpon>WeatherPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WebsitePage.xaml.cs">
+      <DependentUpon>WebsitePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -192,6 +200,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)NewAllocationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)WebsitePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

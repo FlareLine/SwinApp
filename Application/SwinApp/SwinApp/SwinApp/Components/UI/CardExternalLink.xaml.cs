@@ -34,14 +34,12 @@ namespace SwinApp.Components.UI
             this.GestureRecognizers.Add(tap);
 
             menuIcon.Source = ImageSource.FromFile(_imageAddress);
-              
-
-            
         }
 
-        private void OpenLink()
+        private async void OpenLink()
         {
-            Device.OpenUri(_URL);
+            await Navigation.PushAsync(new WebsitePage(_URL));
+            //Device.OpenUri(_URL);
         }
 
         public string Title => _title;
