@@ -8,6 +8,7 @@ using SwinApp.Library;
 using Xamarin.Forms.Xaml;
 using SwinApp.Library.Analytics;
 using System.Diagnostics;
+using UIKit;
 
 namespace SwinApp
 {
