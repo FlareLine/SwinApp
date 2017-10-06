@@ -15,14 +15,20 @@ namespace SwinApp
         private DateTime _datetime;
         private string _title;
         private string _description;
-        
-        
+        private Color _color;
 
-		public NewReminderPage ()
+        public NewReminderPage ()
 		{
 			InitializeComponent ();
             dateField.MinimumDate = DateTime.Today;
             ButtonSubmit.Clicked += ClickSubmit;
+
+            foreach (string colorName in Clrs.timetableNameToColor.Keys)
+            {
+                pickerColor.Items.Add(colorName);
+            }
+
+            pickerColor.SelectedIndex = 0;
         }
 
         private async void ClickSubmit(object sender, EventArgs e) => await Submit();
@@ -33,8 +39,9 @@ namespace SwinApp
             _datetime += timeField.Time;
             _title = titleField.Text;
             _description = descriptionField.Text;
+            _color = Clrs.timetableNameToColor[pickerColor.Items[pickerColor.SelectedIndex]];
 
-            User.WriteReminder(new Reminder(_datetime, _title, _description));
+            User.WriteReminder(new Reminder(_datetime, _title, _description, _color));
             await DisplayAlert("Success!", "Reminder was added :)", "close");
             DependencyService.Get<INotification>().SetTimedNotification("SWINAPP", _datetime - DateTime.Now);
             await Application.Current.MainPage.Navigation.PopAsync();

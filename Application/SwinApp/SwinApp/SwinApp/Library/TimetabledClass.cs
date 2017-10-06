@@ -4,21 +4,19 @@ using Xamarin.Forms;
 
 namespace SwinApp.Library
 {
-    public class Reminder : IPlanned
+    public class TimetabledClass : IPlanned
     {
         public string Name { get; set; }
 
         public DateTime Time { get; set; }
 
-        // Return how far in the future the event is
-        public TimeSpan When => Time - DateTime.Now;
+        public string Room { get; set; }
 
-        public string Description { get; set; }
+        public int Occurences { get; set; }
 
-        public string HexColor { get; set; }
+        public string Type { get; set; }
 
-        public Color reminderColor
-        {
+        public Color classColor { 
 
             get
             {
@@ -26,6 +24,13 @@ namespace SwinApp.Library
             }
 
         }
+
+        public string HexColor { get; set; }
+
+        // Return how far in the future the event is
+        public TimeSpan When => Time - DateTime.Now;
+
+        public string Description { get; set; }
 
         [JsonIgnore]
         public string DateMonth
@@ -57,12 +62,14 @@ namespace SwinApp.Library
             }
         }
 
-        public Reminder(DateTime reminderDateTime, string title, string description, Color color)
+       
+        public TimetabledClass(DateTime classDateTime, string name, string room, int occurences, string type, Color color)
         {
-            Time = reminderDateTime;
-            Name = title;
-            Description = description;
-
+            Time = classDateTime;
+            Name = name;
+            Room = room;
+            Occurences = occurences;
+            Type = type;
             int red = (int)(color.R * 255);
             int green = (int)(color.G * 255);
             int blue = (int)(color.B * 255);

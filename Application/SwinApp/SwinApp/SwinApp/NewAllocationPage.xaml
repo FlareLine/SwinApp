@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwinApp.NewAllocationPage"
+             Title="New Class"
+             Style="{DynamicResource backgroundStyle}">
+    <ScrollView>
+        <Frame Style="{StaticResource FrameCard}" Margin="5">
+            <StackLayout>
+
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Column="0">
+                        <Label  Text="Date:" HorizontalOptions="FillAndExpand"></Label>
+                        <DatePicker x:Name="dateField" Format="dd-MM-yyyy" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></DatePicker>
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="1">
+
+                        <Label Text="Time:" HorizontalOptions="FillAndExpand"></Label>
+                        <TimePicker x:Name="timeField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></TimePicker>
+                    </StackLayout>
+
+                </Grid>
+
+                <Label x:Name="textWeeks" Text="Weeks occurring:" HorizontalOptions="FillAndExpand"></Label>
+                <Picker x:Name="pickerWeeks" Title="Weeks" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Picker>
+
+                <Label Text="Name:" HorizontalOptions="FillAndExpand"></Label>
+                <Entry x:Name="nameField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
+
+                <Label Text="Class Type:" HorizontalOptions="FillAndExpand"></Label>
+                <Entry x:Name="typeField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
+
+                <Label Text="Room:" HorizontalOptions="FillAndExpand"></Label>
+                <Entry x:Name="roomField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
+
+                <Label Text="Color:" HorizontalOptions="FillAndExpand"></Label>
+                <Picker x:Name="pickerColor" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Picker>
+
+
+                <Button x:Name="ButtonSubmit" Style="{DynamicResource buttonStyle}" Text="Submit" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </Frame>
+    </ScrollView>
+
+</ContentPage>

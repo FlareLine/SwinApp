@@ -11,35 +11,38 @@ using Xamarin.Forms.Xaml;
 
 namespace SwinApp
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SettingsPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SettingsPage : ContentPage
+    {
         static bool useDarkTheme;
+        public static bool use12HourTime;
 
-       
-        
-        public SettingsPage ()
-		{
-			InitializeComponent ();
-            
-           
+
+
+        public SettingsPage()
+        {
+            InitializeComponent();
+
+
 
             SwinDB.Conn.CreateTable<AppSetting>();
 
-            try
-            {
-                
-                useDarkTheme = SwinDB.Conn.Table<AppSetting>().Where(a => a.SettingID == "DarkTheme").FirstOrDefault().SettingValue;
-            }
-            catch (Exception E)
-            {
-                useDarkTheme = false;
+            var darkThemeSetting = SwinDB.Conn.Table<AppSetting>().Where(a => a.SettingID == "DarkTheme").FirstOrDefault();
+            useDarkTheme = darkThemeSetting != null ? darkThemeSetting.SettingValue : false;
+            if (darkThemeSetting == null)
                 SwinDB.Conn.Insert(new AppSetting("DarkTheme", useDarkTheme));
-            }
+
+            var hourTimeSetting = SwinDB.Conn.Table<AppSetting>().Where(a => a.SettingID == "12HourTime").FirstOrDefault();
+            use12HourTime = hourTimeSetting != null ? hourTimeSetting.SettingValue : false;
+            if (hourTimeSetting == null)
+                SwinDB.Conn.Insert(new AppSetting("12HourTime", use12HourTime));
 
             SwitchChangeTheme.IsToggled = useDarkTheme;
 
+            SwitchChangeTime.IsToggled = use12HourTime;
+
             SwitchChangeTheme.Toggled += OnThemeButtonClicked;
+            SwitchChangeTime.Toggled += OnTimeButtonClicked;
 
             var analyticsTapped = new TapGestureRecognizer();
             analyticsTapped.Tapped += OpenAnalyticsPage;
@@ -49,6 +52,8 @@ namespace SwinApp
         private async void OpenAnalyticsPage(object sender, EventArgs e) => await Navigation.PushAsync(new AnalyticsPage());
 
         private void OnThemeButtonClicked(object sender, EventArgs e) => ChangeTheme();
+
+        private void OnTimeButtonClicked(object sender, EventArgs e) => ToggleTime();
 
         void ChangeTheme()
         {
@@ -86,6 +91,23 @@ namespace SwinApp
                 App.Current.Resources["frameCardColor"] = Color.White;
                 App.Current.Resources["iosOutlineColor"] = Color.White;
             }
+        }
+
+        private void ToggleTime()
+        {
+            use12HourTime = !use12HourTime;
+
+            AppSetting newTimeSetting = SwinDB.Conn.Table<AppSetting>().Where(a => a.SettingID == "12HourTime").FirstOrDefault();
+
+            newTimeSetting.SettingValue = useDarkTheme;
+
+            SwinDB.Conn.Update(newTimeSetting);
+
+            User.PopulateSchedule();
+
+            SwitchChangeTime.Toggled -= OnTimeButtonClicked;
+            SwitchChangeTime.IsToggled = use12HourTime;
+            SwitchChangeTime.Toggled += OnTimeButtonClicked;
         }
 
         public class AppSetting

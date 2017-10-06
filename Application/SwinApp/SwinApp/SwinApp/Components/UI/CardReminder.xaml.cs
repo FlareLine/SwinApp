@@ -31,9 +31,16 @@ namespace SwinApp.Components
         public async void DeleteReminder()
         {
 
-            var confirmDeletion = await App.Current.MainPage.DisplayAlert("Delete?", "Delete this reminder?", "Yes", "No");
+            var confirmDeletion = await App.Current.MainPage.DisplayAlert("Delete?", "Delete this reminder?", "Yes!", "No!");
             if (confirmDeletion)
-                _vm.DeleteReminder();
+            {
+                var secondconfirmDeletion = await App.Current.MainPage.DisplayAlert("Are you sure?", "Do you 110% want to delete this reminder?", "Yes!", "No!");
+                if (secondconfirmDeletion)
+                {
+                    _vm.DeleteReminder();
+                }
+            }
+            
         }
 
         private void ClickDelete(object sender, EventArgs e) => DeleteReminder();
