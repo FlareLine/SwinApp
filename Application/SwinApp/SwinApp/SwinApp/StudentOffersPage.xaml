@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.StudentOffersPage"
-             Title="Student Offers">
+             Title="Student Offers"
+	         Style="{DynamicResource backgroundStyle}">
     <StackLayout x:Name="StackLinks" VerticalOptions="FillAndExpand">
         <ScrollView x:Name="ScrollLinks" VerticalOptions="FillAndExpand" Margin="0">
             <ListView x:Name="ListOffers" RowHeight="-1" HasUnevenRows="True" SeparatorVisibility="None" VerticalOptions="FillAndExpand" Margin="0" BackgroundColor="Transparent">
