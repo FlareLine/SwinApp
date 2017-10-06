@@ -37,12 +37,16 @@ namespace SwinApp
         {
             _datetime = dateField.Date;
             _datetime += timeField.Time;
+            if(_datetime < DateTime.Now) {
+                await DisplayAlert("Error!", "Time and Date must be in the future!", "Retry :c");
+                return;
+            }
             _title = titleField.Text;
             _description = descriptionField.Text;
             _color = Clrs.timetableNameToColor[pickerColor.Items[pickerColor.SelectedIndex]];
 
             User.WriteReminder(new Reminder(_datetime, _title, _description, _color));
-            await DisplayAlert("Success!", "Reminder was added :)", "close");
+            await DisplayAlert("Success!", "Reminder was added :)", "Close");
             DependencyService.Get<INotification>().SetTimedNotification("SWINAPP", _datetime - DateTime.Now);
             await Application.Current.MainPage.Navigation.PopAsync();
             

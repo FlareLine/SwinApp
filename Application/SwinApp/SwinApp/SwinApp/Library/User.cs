@@ -180,14 +180,14 @@ namespace SwinApp.Library
         /// <returns></returns>
         public static async void LoadUserTimetable()
         {
-            const bool USE_REAL_DATA = false;
-            const string TEST_ENDPOINT = USE_REAL_DATA ? "https://api-sit-proxy.swin.edu.au/v2/timetable/student/101091995" : "https://gist.githubusercontent.com/pielegacy/a0e81e05118f8eefb38283419cee1539/raw/9d716456c6331e5d587acd16cc5ef44fdfe3f920/alex-timetable-payload.xml";
-            using (HttpClient client = new HttpClient())
-            {
-                string res = await client.GetStringAsync(TEST_ENDPOINT);
-                ProcessTimetableDump(res);
-                PopulateSchedule();
-            }
+            //const bool USE_REAL_DATA = false;
+            //const string TEST_ENDPOINT = USE_REAL_DATA ? "https://api-sit-proxy.swin.edu.au/v2/timetable/student/101091995" : "https://gist.githubusercontent.com/pielegacy/a0e81e05118f8eefb38283419cee1539/raw/9d716456c6331e5d587acd16cc5ef44fdfe3f920/alex-timetable-payload.xml";
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    string res = await client.GetStringAsync(TEST_ENDPOINT);
+            //    ProcessTimetableDump(res);
+            //    PopulateSchedule();
+            //}
         }
         
         /// <summary>

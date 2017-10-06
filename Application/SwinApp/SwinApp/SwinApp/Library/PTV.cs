@@ -13,15 +13,15 @@ namespace SwinApp.Library
     public static class PTV
     {
         // developer ID supplied by PTV
-        private static string _devID = (string)App.Current.Resources["PTV_DEV_ID"];
+        static string _devID = (string)App.Current.Resources["PTV_DEV_ID"];
         // developer KEY supplied by PTV
-        private static string _devKey = (string)App.Current.Resources["PTV_DEV_KEY"];
+        static string _devKey = (string)App.Current.Resources["PTV_DEV_KEY"];
 
         /// <summary>
-        /// Query the PTV api and return a string of 
+        /// Query the PTV api and return an encoded URL
         /// </summary>
         /// <param name="arguments"></param>
-        /// <returns></returns>
+        /// <returns>The encoded request URL</returns>
         public async static Task<string> GetPTVStringAsync(string req)
         {
             // base URL for API requests
@@ -55,28 +55,39 @@ namespace SwinApp.Library
                 return await client.GetStringAsync($"http://timetableapi.ptv.vic.gov.au{url}");
             }
         }
-        /// <summary>
-        /// Get the PTV pyaload as a C# object
-        /// </summary>
-        /// <param name="req"></param>
-        /// <returns></returns>
-        public static async Task<PTVPayload> RequestPTVPayloadAsync(string req)
+		/// <summary>
+		/// Get the PTV pyaload as a C# object
+		/// </summary>
+		/// <param name="req"></param>
+		/// <exception cref="HttpRequestException">Throws if the App can't access the internet</exception>
+		/// <returns>The PTV data</returns>
+		public static async Task<PTVPayload> RequestPTVPayloadAsync(string req)
         {
-            string results = await GetPTVStringAsync(req);
-            // list to store departures
-            return JsonConvert.DeserializeObject<PTVPayload>(results, new JsonSerializerSettings
+            try
             {
-                MissingMemberHandling = MissingMemberHandling.Ignore,
-                NullValueHandling = NullValueHandling.Ignore,
-                Error = HandleDeserializationError
-            });
+                string results = await GetPTVStringAsync(req);
+                // list to store departures
+                return JsonConvert.DeserializeObject<PTVPayload>(results, new JsonSerializerSettings
+                {
+                    MissingMemberHandling = MissingMemberHandling.Ignore,
+                    NullValueHandling = NullValueHandling.Ignore,
+                    Error = HandleDeserializationError
+                });
+            }
+            catch (HttpRequestException e)
+            {
+                // Couldn't retrieve transport data
+                Debug.Write(e.StackTrace);
+                // Return a null task object as we don't have the data yet.
+                return (PTVPayload) await Task.FromResult<object>(null);
+            }
         }
 
         /// <summary>
         /// Handle any errors regarding receiving a null routes{}
         /// This stops the program trying to put the null object into the Routes list
         /// </summary>
-        public static void HandleDeserializationError(object sender, ErrorEventArgs errorArgs)
+        static void HandleDeserializationError(object sender, ErrorEventArgs errorArgs)
 		{
 			var currentError = errorArgs.ErrorContext.Error.Message;
             errorArgs.ErrorContext.Handled = true;
@@ -96,7 +107,7 @@ namespace SwinApp.Library
         /// Creates a new <see cref="T:Departure"/>with the specified parameters.
         /// </summary>
         /// <param name="r">The route the train is travelling on</param>
-        /// <param name="d">The direction of train towards {station id}</param>
+        /// <param name="d">The direction of train on route</param>
         /// <param name="s">Scheduled time of arrival in UTC</param>
         /// <param name="e">Estimated time of arrival in UTC</param>
         /// <param name="a">If the train is at platform. Very approximate</param>
@@ -112,6 +123,9 @@ namespace SwinApp.Library
         }
     }
 
+    /// <summary>
+    /// PTVPayload object, containing all the <see cref="T:Departure"/> objects obtained from the request
+    /// </summary>
     public class PTVPayload
     {
         public List<Departure> Departures { get; set; }

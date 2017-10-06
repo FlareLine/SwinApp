@@ -7,7 +7,14 @@
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
-    <Label Grid.Column="0" HorizontalOptions="Center" Text="{Binding Direction}" />
+	<Grid Grid.Column="0" >
+		<Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Label Grid.Row="0" HorizontalOptions="Center" Text="{Binding Direction}" />
+		<Label Grid.Row="1" HorizontalOptions="Center" Text="{Binding Other}" />
+	</Grid>
     <Label Grid.Column="1" HorizontalOptions="Center" Font="Bold" Text="{Binding Time}" />
     <Label Grid.Column="2" HorizontalOptions="Center" Text="{Binding Type}" />
 </Grid>

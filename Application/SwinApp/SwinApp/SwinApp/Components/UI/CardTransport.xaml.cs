@@ -2,6 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Text.RegularExpressions;
 
 namespace SwinApp.Components.UI
 {
@@ -23,7 +24,8 @@ namespace SwinApp.Components.UI
 			await _viewmodel.GetDeparture();
 		}
 
-        public string Direction => TransportLib.DirLangKey[_viewmodel.Direction];
+        public string Direction => TransportLib.DirLangKey[_viewmodel.Direction].Direction;
+        public string Other => TransportLib.DirLangKey[_viewmodel.Direction].Other;
         public string Time => _viewmodel.Time;
         public string Type => Enum.GetName(typeof(RouteType), _viewmodel.Type);
     }

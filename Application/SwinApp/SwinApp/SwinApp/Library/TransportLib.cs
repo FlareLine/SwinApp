@@ -27,13 +27,13 @@ namespace SwinApp
         /// <summary>
         /// Direction id Language Key - used for translating direction ids into readable names
         /// </summary>
-        public static Dictionary<DirectionId, string> DirLangKey = new Dictionary<DirectionId, string>(){
-            { DirectionId.City, "To City" },
-            { DirectionId.Alamein, "To Alamein" },
-            { DirectionId.Lilydale, "To Lilydale" },
-            { DirectionId.Belgrave, "To Belgrave" },
-            { DirectionId.KewViaStKilda, "Kew (St Kilda)" },
-            { DirectionId.MelbUniViaStKilda, "Melb Uni (St Kilda)" }
+        public static Dictionary<DirectionId, DirectionInfo> DirLangKey = new Dictionary<DirectionId, DirectionInfo>(){
+            { DirectionId.City, new DirectionInfo("City") },
+            { DirectionId.Alamein, new DirectionInfo("Alamein") },
+            { DirectionId.Lilydale, new DirectionInfo("Lilydale") },
+            { DirectionId.Belgrave, new DirectionInfo("Belgrave") },
+            { DirectionId.KewViaStKilda, new DirectionInfo("Kew", "(St-Kilda)") },
+            { DirectionId.MelbUniViaStKilda, new DirectionInfo("Melb-Uni", "(St-Kilda)") }
         };
     }
 
@@ -79,5 +79,31 @@ namespace SwinApp
         GlenferrieTrain = 1080,
         GlenferrieTramMelbUni = 2923,
         GlenferrieTramKew = 2924
+    }
+
+    /// <summary>
+    /// Direction info class to hold direction string informatino
+    /// </summary>
+    public class DirectionInfo
+    {
+        public string Direction { get; set; }
+        public string Other { get; set; }
+
+		/// <summary>
+		/// Initializes a new <see cref="T:SwinApp.DirectionInfo"/> string pair
+		/// </summary>
+		/// <param name="d">Direction</param>
+		/// <param name="o">Other info</param>
+		public DirectionInfo(string d, string o)
+        {
+            Direction = d;
+            Other = o;
+        }
+
+        /// <summary>
+        /// Initializes a new <see cref="T:SwinApp.DirectionInfo"/> string pair with no info
+        /// </summary>
+        /// <param name="d">Direction</param>
+        public DirectionInfo(string d) : this(d, "") {}
     }
 }

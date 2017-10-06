@@ -42,6 +42,11 @@ namespace SwinApp
 		{
 			// Handle when your app resumes
 		}
+
+        public static async Task NoInternetWarn()
+        {
+            await Current.MainPage.DisplayAlert("No Internet!", "SwinApp could not connect to the internet :(", "OK");
+        }
 	}
     /// <summary>
     /// A set of Debugging tools for making development easier
