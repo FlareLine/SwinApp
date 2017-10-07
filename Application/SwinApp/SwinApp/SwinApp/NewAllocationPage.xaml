@@ -32,16 +32,16 @@
                 <Label x:Name="textWeeks" Text="Weeks occurring:" HorizontalOptions="FillAndExpand"></Label>
                 <Picker x:Name="pickerWeeks" Title="Weeks" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Picker>
 
-                <Label Text="Name:" HorizontalOptions="FillAndExpand"></Label>
+                <Label Text="Unit Name:" HorizontalOptions="FillAndExpand"></Label>
                 <Entry x:Name="nameField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
 
                 <Label Text="Class Type:" HorizontalOptions="FillAndExpand"></Label>
-                <Entry x:Name="typeField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
+                <Picker x:Name="pickerType" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Picker>
 
                 <Label Text="Room:" HorizontalOptions="FillAndExpand"></Label>
                 <Entry x:Name="roomField" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Entry>
 
-                <Label Text="Color:" HorizontalOptions="FillAndExpand"></Label>
+                <Label Text="Colour:" HorizontalOptions="FillAndExpand"></Label>
                 <Picker x:Name="pickerColor" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Picker>
 
 
