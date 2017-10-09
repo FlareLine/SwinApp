@@ -32,8 +32,7 @@ namespace SwinApp.Library
         };
         private static ObservableCollection<IDashCard> _dashBoardItems = new ObservableCollection<IDashCard>();
 
-        public static ObservableCollection<IDashCard> DashBoardItems
-        {
+        public static ObservableCollection<IDashCard> DashBoardItems {
             get { return _dashBoardItems; }
         }
 
@@ -75,7 +74,7 @@ namespace SwinApp.Library
         {
             await Task.Run(() => _dashBoardItems.Add(card));
         }
-        
+
         /// <summary>
         /// Loads all data relating to the User including blackboard data, timetables, trains, reminders etc...
         /// </summary>
@@ -96,12 +95,10 @@ namespace SwinApp.Library
         }
 
         //is broken, as _lessons are no longer used. Need to find a way to either convert reminders to allocations, or alternatively allow allocations to act as iPlanned
-        private static IPlanned NextPlanned
-        {
-            get
-            {
+        private static IPlanned NextPlanned {
+            get {
                 List<IPlanned> _events = new List<IPlanned>();
-               //need to put in allocations here
+                //need to put in allocations here
                 foreach (var r in _reminders)
                     _events.Add(r);
                 _events.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
@@ -117,7 +114,7 @@ namespace SwinApp.Library
         {
             _reminders.Add(reminder);
             _reminders.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
-            await SwinIO<List<Reminder>>.WriteAsync("reminders.json", _reminders);         
+            await SwinIO<List<Reminder>>.WriteAsync("reminders.json", _reminders);
             PopulateSchedule();
         }
 
@@ -139,12 +136,17 @@ namespace SwinApp.Library
 
         public static async void DeleteTimetabledClasses(List<TimetabledClass> cList)
         {
-           foreach (TimetabledClass c in cList)
+            foreach (TimetabledClass c in cList)
             {
                 _classes.Remove(c);
             }
             await SwinIO<List<TimetabledClass>>.WriteAsync("classes.json", _classes);
             PopulateSchedule();
+        }
+
+        public static void DeleteTimetabledClass(TimetabledClass c)
+        {
+            DeleteTimetabledClasses(new List<TimetabledClass>() { c });
         }
 
 
@@ -207,24 +209,28 @@ namespace SwinApp.Library
 
 
             //check if a reminder is from today or in the future, add it if it is, and delete it if it's not
-            foreach (Reminder r in Reminders)
+            List<Reminder> oldReminders = Reminders;
+
+            foreach (Reminder r in oldReminders)
             {
                 if (r.Time.Date < DateTime.Today.Date)
                     DeleteReminder(r);
                 else 
                 ReminderCards.Add(new ScheduledReminderCard(r));
             }
+            oldReminders = null;
 
             //check if a class is from today or in the future, add it if it is, and delete it if it's not
-            foreach (TimetabledClass c in Classes)
+            List<TimetabledClass> oldClasses = Classes;
+
+            foreach (TimetabledClass c in oldClasses)
             {
                 if (c.Time.Date < DateTime.Today.Date)
-                    DeleteTimetabledClasses(new List<TimetabledClass>() { c });
+                    DeleteTimetabledClass(c);
                 else
                     ClassesCards.Add(new ScheduledTimetabledClassCard(c));
-
             }
-
+            oldClasses = null;
         }
 
         /// <summary>
