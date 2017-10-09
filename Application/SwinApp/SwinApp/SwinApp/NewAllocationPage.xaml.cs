@@ -21,6 +21,17 @@ namespace SwinApp
         private string _type;
         private Color _color;
 
+        private List<String> classTypes = new List<string>()
+        {
+            "Lecture",
+            "Tutorial",
+            "Lab",
+            "Workshop",
+            "Seminar",
+            "Meeting",
+            "Other"
+        };
+
         public NewAllocationPage()
         {
             InitializeComponent();
@@ -38,7 +49,13 @@ namespace SwinApp
                 pickerColor.Items.Add(colorName);
             }
 
+            foreach (string type in classTypes)
+            {
+                pickerType.Items.Add(type);
+            }
+
             pickerColor.SelectedIndex = 0;
+            pickerType.SelectedIndex = 0;
 
         }
 
@@ -51,7 +68,7 @@ namespace SwinApp
             _datetime += timeField.Time;
             _name = nameField.Text;
             _room = roomField.Text;
-            _type = typeField.Text;
+            _type = pickerType.Items[pickerType.SelectedIndex];
             _occurences = Int32.Parse(pickerWeeks.Items[pickerWeeks.SelectedIndex]);
             _color = Clrs.timetableNameToColor[pickerColor.Items[pickerColor.SelectedIndex]];
 
