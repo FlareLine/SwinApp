@@ -38,9 +38,9 @@ namespace SwinApp
             if (ListLinks.SelectedItem is CardExternalLink selectedPage)
             {
                 var webPage = selectedPage.GetNewWebPage();
-                Navigation.InsertPageBefore(webPage, this);
+                await Navigation.PushAsync(webPage);
 
-                var linksPage = await Navigation.PopAsync();
+                //var linksPage = await Navigation.PopAsync();
                 //Navigation.InsertPageBefore(linksPage, webPage);  // Throws exceptions atm, may debug later
             }
         }

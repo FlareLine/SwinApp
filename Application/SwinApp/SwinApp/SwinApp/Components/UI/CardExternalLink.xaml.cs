@@ -37,16 +37,16 @@ namespace SwinApp.Components.UI
             menuIcon.Source = ImageSource.FromFile(_imageAddress);
         }
 
-        public async Task OpenLink()
-        {
-            await Navigation.PushAsync(new WebsitePage(_URL));
+        //public async Task OpenLink()
+        //{
+        //    await Navigation.PushAsync(new WebsitePage(_URL));
 
-            //Device.OpenUri(_URL);
-        }
+        //    //Device.OpenUri(_URL);
+        //}
 
         public Page GetNewWebPage()
         {
-            return new WebsitePage(_URL);
+            return new WebsitePage(_URL, _title);
         }
 
         public string Title => _title;
