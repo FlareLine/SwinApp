@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.SettingsPage"
@@ -18,9 +18,16 @@
                     <Switch x:Name="SwitchChangeTime" HorizontalOptions="EndAndExpand"></Switch>
                 </StackLayout>
             </Frame>
-	    <Frame x:Name="FrameAnalytics"  Style="{DynamicResource FrameCard}" Margin="5">
+
+           <Frame x:Name="FrameAnalytics"  Style="{DynamicResource FrameCard}" Margin="5">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Manage Analytics" FontSize="Medium"></Label>
+                    </StackLayout>
+            </Frame>
+            <Frame Style="{DynamicResource FrameCard}" Margin="5">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Send notification 15 minutes before every class:" FontSize="Medium"></Label>
+                    <Switch x:Name="SwitchAutoClassNotify" HorizontalOptions="EndAndExpand"></Switch>
                 </StackLayout>
             </Frame>
         </StackLayout>

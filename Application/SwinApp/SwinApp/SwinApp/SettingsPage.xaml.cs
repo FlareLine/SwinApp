@@ -16,6 +16,7 @@ namespace SwinApp
     {
         static bool useDarkTheme;
         public static bool use12HourTime;
+        public static bool autoClassNotify;
 
 
 
@@ -27,6 +28,7 @@ namespace SwinApp
 
             SwinDB.Conn.CreateTable<AppSetting>();
 
+
             var darkThemeSetting = SwinDB.Conn.Table<AppSetting>().Where(a => a.SettingID == "DarkTheme").FirstOrDefault();
             useDarkTheme = darkThemeSetting != null ? darkThemeSetting.SettingValue : false;
             if (darkThemeSetting == null)
@@ -37,12 +39,18 @@ namespace SwinApp
             if (hourTimeSetting == null)
                 SwinDB.Conn.Insert(new AppSetting("12HourTime", use12HourTime));
 
-            SwitchChangeTheme.IsToggled = useDarkTheme;
+			var autoNotifySetting = SwinDB.Conn.Table<AppSetting>().Where(a => a.SettingID == "AutoClassNotify").FirstOrDefault();
+			autoClassNotify = autoNotifySetting != null ? autoNotifySetting.SettingValue : false;
+			if (autoNotifySetting == null)
+				SwinDB.Conn.Insert(new AppSetting("AutoClassNotify", autoClassNotify));
 
+            SwitchChangeTheme.IsToggled = useDarkTheme;
             SwitchChangeTime.IsToggled = use12HourTime;
+            SwitchAutoClassNotify.IsToggled = autoClassNotify;
 
             SwitchChangeTheme.Toggled += OnThemeButtonClicked;
             SwitchChangeTime.Toggled += OnTimeButtonClicked;
+            SwitchAutoClassNotify.Toggled += OnAutoClassNotifyButtonClicked;
 
             var analyticsTapped = new TapGestureRecognizer();
             analyticsTapped.Tapped += OpenAnalyticsPage;
@@ -54,6 +62,8 @@ namespace SwinApp
         private void OnThemeButtonClicked(object sender, EventArgs e) => ChangeTheme();
 
         private void OnTimeButtonClicked(object sender, EventArgs e) => ToggleTime();
+
+        private void OnAutoClassNotifyButtonClicked(object sender, EventArgs e) => ToggleAutoClassNotify();
 
         void ChangeTheme()
         {
@@ -97,7 +107,7 @@ namespace SwinApp
         {
             use12HourTime = !use12HourTime;
 
-            AppSetting newTimeSetting = SwinDB.Conn.Table<AppSetting>().Where(a => a.SettingID == "12HourTime").FirstOrDefault();
+            AppSetting newTimeSetting = SwinDB.Conn.Table<AppSetting>().Where(a => a.SettingID == "Time").FirstOrDefault();
 
             newTimeSetting.SettingValue = useDarkTheme;
 
@@ -108,6 +118,18 @@ namespace SwinApp
             SwitchChangeTime.Toggled -= OnTimeButtonClicked;
             SwitchChangeTime.IsToggled = use12HourTime;
             SwitchChangeTime.Toggled += OnTimeButtonClicked;
+        }
+
+        private void ToggleAutoClassNotify()
+        {
+            autoClassNotify = !autoClassNotify;
+            /*AppSetting newAutoClassNotifySetting = SwinDB.Conn.Table<AppSetting>().Where(a => a.SettingID == "AutoClassNotify").FirstOrDefault();
+            newAutoClassNotifySetting.SettingValue = autoClassNotify;
+            SwinDB.Conn.Update(newAutoClassNotifySetting);*/
+
+            SwitchAutoClassNotify.Toggled -= OnAutoClassNotifyButtonClicked;
+            SwitchAutoClassNotify.IsToggled = autoClassNotify;
+            SwitchAutoClassNotify.Toggled += OnAutoClassNotifyButtonClicked;
         }
 
         public class AppSetting

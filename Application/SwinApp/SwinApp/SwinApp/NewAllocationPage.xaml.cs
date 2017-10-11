@@ -20,6 +20,7 @@ namespace SwinApp
         private int _occurences;
         private string _type;
         private Color _color;
+        private DateTime _scheduledDateTime;
 
         private List<String> classTypes = new List<string>()
         {
@@ -83,6 +84,14 @@ namespace SwinApp
             User.WriteTimetabledClasses(tempClasses);
             await DisplayAlert("Success!", "Class was added :)", "close");
             await Application.Current.MainPage.Navigation.PopAsync();
+
+            if (SettingsPage.autoClassNotify)
+			{
+                //add notification to occur 15 minutes before the class
+                _scheduledDateTime = _datetime.AddMinutes(-15); //Subtract 15 minutes from the actual time of the class
+				DependencyService.Get<INotification>().SetTimedNotification("SWINAPP", _datetime - DateTime.Now); //Schedule the notification
+				await Application.Current.MainPage.Navigation.PopAsync();
+                			}
         }
 
 

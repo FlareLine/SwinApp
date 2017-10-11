@@ -75,6 +75,8 @@ namespace SwinApp.Library
             int blue = (int)(color.B * 255);
             int alpha = (int)(color.A * 255);
             HexColor = String.Format("#{0:X2}{1:X2}{2:X2}{3:X2}", alpha, red, green, blue);
+
+
         }
 
         // part of IPlanned but not needed for Reminders, as these are stored locally and do not need to be queried from
