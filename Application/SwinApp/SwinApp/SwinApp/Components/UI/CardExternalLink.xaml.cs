@@ -27,21 +27,26 @@ namespace SwinApp.Components.UI
             BindingContext = this;
             InitializeComponent ();
 
-            TapGestureRecognizer tap = new TapGestureRecognizer();
-            tap.Tapped += (object sender, EventArgs e) => {
-                OpenLink();
-            };
-            this.GestureRecognizers.Add(tap);
+            
+            //TapGestureRecognizer tap = new TapGestureRecognizer();
+            //tap.Tapped += async (sender, e) => {
+            //    await OpenLink();
+            //};
+            //this.GestureRecognizers.Add(tap);
 
             menuIcon.Source = ImageSource.FromFile(_imageAddress);
-              
-
-            
         }
 
-        private void OpenLink()
+        public async Task OpenLink()
         {
-            Device.OpenUri(_URL);
+            await Navigation.PushAsync(new WebsitePage(_URL));
+
+            //Device.OpenUri(_URL);
+        }
+
+        public Page GetNewWebPage()
+        {
+            return new WebsitePage(_URL);
         }
 
         public string Title => _title;
@@ -49,7 +54,5 @@ namespace SwinApp.Components.UI
         public string Description => _descripion;
 
         public string ImageAddress => _imageAddress;
-
-        private void ClickOpen(object sender, EventArgs e) => OpenLink();
     }
 }

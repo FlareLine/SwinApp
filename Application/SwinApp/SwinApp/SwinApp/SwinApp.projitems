@@ -118,6 +118,10 @@
       <DependentUpon>WeatherPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WebsitePage.xaml.cs">
+      <DependentUpon>WebsitePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\ReminderViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +235,13 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)WebsitePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)StudentOffersPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

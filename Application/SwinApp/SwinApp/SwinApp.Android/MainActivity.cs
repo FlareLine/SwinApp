@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using HockeyApp.Android;
+using HockeyApp.Android.Metrics;
 using SwinApp.Library;
 using SwinApp.Droid.Notifications;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
@@ -33,11 +35,33 @@ namespace SwinApp.Droid
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new SwinApp.App ());
 
-            // Soft keyboard
+            // HockeyApp Integration, remove for store builds
+            MetricsManager.Register(Application, (string)Xamarin.Forms.Application.Current.Resources["HockeySDKAndroidID"]);
+            UpdateManager.Register(this, (string)Xamarin.Forms.Application.Current.Resources["HockeySDKAndroidID"]);
             Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Pan);
 
         }
-	}
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            // HockeyApp Integration, remove for store builds
+            CrashManager.Register(this, (string)Xamarin.Forms.Application.Current.Resources["HockeySDKAndroidID"]);
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            // HockeyApp Integration, remove for store builds
+            UpdateManager.Unregister();
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            // HockeyApp Integration, remove for store builds
+            UpdateManager.Unregister();
+        }
+    }
 
 }
-
