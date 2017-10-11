@@ -38,7 +38,7 @@ namespace SwinApp
             _datetime = dateField.Date;
             _datetime += timeField.Time;
             if(_datetime < DateTime.Now) {
-                await DisplayAlert("Error!", "Time and Date must be in the future!", "Retry :c");
+                await DisplayAlert("Error!", "Reminder must be scheduled for the future", "Okay");
                 return;
             }
             _title = titleField.Text;
@@ -47,7 +47,7 @@ namespace SwinApp
 
             User.WriteReminder(new Reminder(_datetime, _title, _description, _color));
             await DisplayAlert("Success!", "Reminder was added :)", "Close");
-            DependencyService.Get<INotification>().SetTimedNotification("SWINAPP", _datetime - DateTime.Now);
+            DependencyService.Get<INotification>().SetTimedNotification(_title + " - " + _description , _datetime - DateTime.Now);
             await Application.Current.MainPage.Navigation.PopAsync();
             
 

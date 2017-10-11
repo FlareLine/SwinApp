@@ -111,7 +111,7 @@ namespace SwinApp
 
         private async void ShowContextMenu(object sender, EventArgs e)
         {
-            string check = await DisplayActionSheet("Add New...", "Close", (Device.OS == TargetPlatform.iOS) ? null : "Close",
+            string check = await DisplayActionSheet("Add New...", "Close", (Device.OS == TargetPlatform.iOS) ? "Close" : null,
                 new string[] {
                     "Reminder",
                     "Class",

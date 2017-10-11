@@ -218,7 +218,7 @@ namespace SwinApp.Library
                 else 
                 ReminderCards.Add(new ScheduledReminderCard(r));
             }
-            oldReminders = null;
+           
 
             //check if a class is from today or in the future, add it if it is, and delete it if it's not
             List<TimetabledClass> oldClasses = Classes;
@@ -230,7 +230,7 @@ namespace SwinApp.Library
                 else
                     ClassesCards.Add(new ScheduledTimetabledClassCard(c));
             }
-            oldClasses = null;
+            
         }
 
         /// <summary>

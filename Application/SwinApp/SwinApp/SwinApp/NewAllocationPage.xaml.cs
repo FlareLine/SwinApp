@@ -81,6 +81,7 @@ namespace SwinApp
             }
 
             User.WriteTimetabledClasses(tempClasses);
+            DependencyService.Get<INotification>().SetTimedNotification(_name + "(" + _type + ")" + " - " + _room, _datetime.AddMinutes(30) - DateTime.Now);
             await DisplayAlert("Success!", "Class was added :)", "close");
             await Application.Current.MainPage.Navigation.PopAsync();
         }
