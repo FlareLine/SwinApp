@@ -47,6 +47,10 @@ namespace SwinApp
                 new MenuItem("Student Offers", "Student Discounts and Other Offers")
                 {
                     Page = new StudentOffersPage()
+                },
+                new MenuItem("Swinburne Contacts", "Handy email addresses and phone numbers")
+                {
+                    Page = new ContactsPage()
                 }
             };
             ListMenu.ItemTapped += MenuSelection;
