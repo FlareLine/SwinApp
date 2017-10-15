@@ -5,7 +5,7 @@ namespace SwinApp.Library.ViewModels
     {
         Reminder _reminder;
 
-        public string Time => _reminder.TimeOfDay;
+        public string TimeOfDay => _reminder.TimeOfDay;
 
         public string Date => _reminder.DateMonth;
 
