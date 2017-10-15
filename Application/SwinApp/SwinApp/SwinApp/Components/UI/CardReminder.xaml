@@ -12,7 +12,7 @@
                 </Style>
             </ResourceDictionary>
         </Grid.Resources>
-        <Frame x:Name="FrameAllocation" BackgroundColor="{Binding reminderColor}">
+        <Frame x:Name="FrameAllocation" BackgroundColor="{Binding HexColor}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

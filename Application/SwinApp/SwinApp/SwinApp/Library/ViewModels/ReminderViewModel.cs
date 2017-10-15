@@ -15,6 +15,8 @@ namespace SwinApp.Library.ViewModels
 
         public string Description => _reminder.Description;
 
+        public string HexColor => _reminder.HexColor;
+
         public ReminderViewModel(Reminder r)
         {
             _reminder = r;
