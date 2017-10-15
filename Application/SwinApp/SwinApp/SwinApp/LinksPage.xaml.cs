@@ -28,7 +28,7 @@ namespace SwinApp
             Links.Add(new CardExternalLink("Safe@Swin", "Everyone deserves a right to be comfortable at university", new Uri("https://play.google.com/store/apps/details?id=com.cutcom.apparmor.swin&hl=en"), "safeswinlogo.png"));
             Links.Add(new CardExternalLink("SSAA", "There to make your time at Swinburne as enjoyable as it can be", new Uri("https://www.swinburne.edu.au/current-students/life/student-organisations/"), "ssaalogo.png"));
             InitializeComponent ();
-            //Some code that may or may not work
+
             ListLinks.ItemsSource = Links;
             ListLinks.ItemTapped += OpenLink;
         }
@@ -37,11 +37,7 @@ namespace SwinApp
         {
             if (ListLinks.SelectedItem is CardExternalLink selectedPage)
             {
-                var webPage = selectedPage.GetNewWebPage();
-                await Navigation.PushAsync(webPage);
-
-                //var linksPage = await Navigation.PopAsync();
-                //Navigation.InsertPageBefore(linksPage, webPage);  // Throws exceptions atm, may debug later
+                await Navigation.PushAsync(selectedPage.GetNewWebPage());
             }
         }
 	}

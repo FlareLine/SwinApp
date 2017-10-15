@@ -1,19 +1,20 @@
-﻿using System;
-namespace SwinApp.Library.ViewModels
+﻿namespace SwinApp.Library.ViewModels
 {
     public class ReminderViewModel
     {
         Reminder _reminder;
 
-        public string Time => _reminder.TimeOfDay;
+        public string TimeOfDay => _reminder.TimeOfDay;
 
-        public string Date => _reminder.DateMonth;
+        public string DateMonth => _reminder.DateMonth;
 
         public string Day => _reminder.Day;
 
         public string Name => _reminder.Name;
 
         public string Description => _reminder.Description;
+
+        public Xamarin.Forms.Color reminderColor => _reminder.reminderColor;
 
         public ReminderViewModel(Reminder r)
         {

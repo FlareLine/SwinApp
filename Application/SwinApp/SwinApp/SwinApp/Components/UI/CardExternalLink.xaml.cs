@@ -39,9 +39,7 @@ namespace SwinApp.Components.UI
 
         //public async Task OpenLink()
         //{
-        //    await Navigation.PushAsync(new WebsitePage(_URL));
-
-        //    //Device.OpenUri(_URL);
+        //    Device.OpenUri(_URL);
         //}
 
         public Page GetNewWebPage()
