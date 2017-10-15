@@ -78,6 +78,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Library\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\SwinApp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\AllocationViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\ClassViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\TransportCardViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\ViewModels\WeatherViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Library\WeatherCard.cs" />
