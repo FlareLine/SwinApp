@@ -132,6 +132,7 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\ELMSLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -197,9 +198,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\StudentEdgeLogo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ELMSLogo.png" />
   </ItemGroup>
   <Import Project="..\SwinApp\SwinApp.projitems" Label="Shared" Condition="Exists('..\SwinApp\SwinApp.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
