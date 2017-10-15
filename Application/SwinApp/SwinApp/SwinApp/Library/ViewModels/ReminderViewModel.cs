@@ -14,7 +14,7 @@
 
         public string Description => _reminder.Description;
 
-        public Xamarin.Forms.Color reminderColor => _reminder.reminderColor;
+        public string HexColor => _reminder.HexColor;
 
         public ReminderViewModel(Reminder r)
         {

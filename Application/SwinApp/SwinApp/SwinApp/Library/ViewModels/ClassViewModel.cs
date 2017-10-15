@@ -7,7 +7,7 @@ namespace SwinApp.Library.ViewModels
 
         public string TimeOfDay => _class.TimeOfDay;
 
-        public string Date => _class.DateMonth;
+        public string DateMonth => _class.DateMonth;
 
         public string Day => _class.Day;
 
@@ -22,7 +22,7 @@ namespace SwinApp.Library.ViewModels
             _class = c;
         }
 
-        public void DeleteReminder()
+        public void DeleteTimetabledClass()
         {
             User.DeleteTimetabledClass(_class);
         }

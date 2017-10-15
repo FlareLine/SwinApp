@@ -54,7 +54,7 @@ namespace SwinApp.Components.UI
                     }
                     else
                     {
-                        _vm.DeleteReminder();
+                        _vm.DeleteTimetabledClass();
                     }
                 }
 

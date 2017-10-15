@@ -13,7 +13,7 @@
                 </Style>
             </ResourceDictionary>
         </Grid.Resources>
-        <Frame x:Name="FrameAllocation" BackgroundColor="{Binding classColor}">
+        <Frame x:Name="FrameTimetabledClass" BackgroundColor="{Binding HexColor}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
