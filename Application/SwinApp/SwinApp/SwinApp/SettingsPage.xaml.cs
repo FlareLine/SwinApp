@@ -1,4 +1,4 @@
-﻿using SQLite;
+using SQLite;
 using SwinApp.Library;
 using System;
 using System.Collections.Generic;
@@ -22,8 +22,6 @@ namespace SwinApp
         public SettingsPage()
         {
             InitializeComponent();
-
-
 
             SwinDB.Conn.CreateTable<AppSetting>();
 
@@ -108,22 +106,6 @@ namespace SwinApp
             SwitchChangeTime.Toggled -= OnTimeButtonClicked;
             SwitchChangeTime.IsToggled = use12HourTime;
             SwitchChangeTime.Toggled += OnTimeButtonClicked;
-        }
-
-        public class AppSetting
-        {
-            [PrimaryKey]
-            public string SettingID { get; set; }
-
-            public bool SettingValue { get; set; }
-
-            public AppSetting(string ID, bool value)
-            {
-                SettingID = ID;
-                SettingValue = value;
-            }
-
-            public AppSetting() { }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -84,9 +84,10 @@ namespace SwinApp
             ((ListView)sender).SelectedItem = null;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             SwinDevice.Orientation = Orientation.Portrait;
+
             base.OnAppearing();
             if (Device.OS == TargetPlatform.Android)
                 NavigationPage.SetHasNavigationBar(this, false);
@@ -97,7 +98,6 @@ namespace SwinApp
                 {
                     User.LoadUserData();
                     ListDashboard.ItemsSource = User.DashBoardItems;
-                    //ListSchedule.ItemsSource = User.ScheduleCards;
                     ListSchedule.ItemsSource = User.ReminderCards;
                     ListClasses.ItemsSource = User.ClassesCards;
                 }
@@ -107,6 +107,24 @@ namespace SwinApp
                 }
             }
             SettingsPage.ApplyTheme();
+            if (await IsFirstTimeAsync())
+            {
+                await DisplayAlert("Welcome to SwinApp", "Enjoy the Application", "Ok");
+                await Navigation.PushModalAsync(new WelcomePage());
+            }
+        }
+
+        /// <summary>
+        /// Check if it is the users first time opening the app asynchronously
+        /// </summary>
+        /// <returns></returns>
+        private async Task<bool> IsFirstTimeAsync()
+        {
+            SwinDB.Conn.CreateTable<AppSetting>();
+            var isFirstTime = await SwinDB.ConnAsync.Table<AppSetting>().Where(a => a.SettingID == "IsFirstTime").FirstOrDefaultAsync();
+            if (isFirstTime == null)
+                await SwinDB.ConnAsync.InsertAsync(new AppSetting("IsFirstTime", true));
+            return (await SwinDB.ConnAsync.Table<AppSetting>().Where(a => a.SettingID == "IsFirstTime").FirstOrDefaultAsync()).SettingValue;
         }
 
         private async void ShowContextMenu(object sender, EventArgs e)
