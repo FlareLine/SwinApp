@@ -29,7 +29,7 @@
             <Entry x:Name="descriptionField" Placeholder="Enter a description" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10" TextColor="Black"></Entry>
 
 			<Label Text="Color:" HorizontalOptions="FillAndExpand"></Label>
-            <Picker x:Name="pickerColor" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10"></Picker>
+            <Picker x:Name="pickerColor" HorizontalOptions="FillAndExpand" Margin="0, 0, 0, 10" TextColor="Black"></Picker>
 
             <Button x:Name="ButtonSubmit" Style="{DynamicResource buttonStyle}" Text="Submit" HorizontalOptions="FillAndExpand" TextColor="White"></Button>
                

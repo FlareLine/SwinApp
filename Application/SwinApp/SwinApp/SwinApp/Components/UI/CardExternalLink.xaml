@@ -6,9 +6,7 @@
         <ColumnDefinition Width="*"></ColumnDefinition>
         <ColumnDefinition Width="5*"></ColumnDefinition>
     </Grid.ColumnDefinitions>
-    
-    <Image Grid.Column="0" x:Name="menuIcon" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"></Image>
-    
+        <Image Grid.Column="0" x:Name="menuIcon" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="Center"></Image>
     <StackLayout Grid.Column="1">
     <Label Text="{Binding Title}" Font="Bold"></Label>
     <Label Text="{Binding Description}"></Label>

@@ -6,12 +6,7 @@
         <RowDefinition Height="*"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>
     </Grid.RowDefinitions>
-
-
     <Image Grid.Row="0" x:Name="OfferImage" HeightRequest="100" VerticalOptions="Center" HorizontalOptions="Center"></Image>
-
-
-
     <StackLayout Grid.Row="1" VerticalOptions="End">
         <Label Text="{Binding Title}" Font="Bold"></Label>
         <Label Text="{Binding Description}"></Label>
