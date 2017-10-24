@@ -44,9 +44,9 @@ namespace SwinApp
             SwitchChangeTheme.Toggled += OnThemeButtonClicked;
             SwitchChangeTime.Toggled += OnTimeButtonClicked;
 
-            var analyticsTapped = new TapGestureRecognizer();
-            analyticsTapped.Tapped += OpenAnalyticsPage;
-            FrameAnalytics.GestureRecognizers.Add(analyticsTapped);
+            //var analyticsTapped = new TapGestureRecognizer();
+            //analyticsTapped.Tapped += OpenAnalyticsPage;
+            //FrameAnalytics.GestureRecognizers.Add(analyticsTapped);
         }
 
         private async void OpenAnalyticsPage(object sender, EventArgs e) => await Navigation.PushAsync(new AnalyticsPage());

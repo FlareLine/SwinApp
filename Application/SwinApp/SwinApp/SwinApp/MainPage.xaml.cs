@@ -35,10 +35,10 @@ namespace SwinApp
                 //{
                 //    Page = new AnalyticsPage()
                 //},
-                new MenuItem("Timetable", "View Timetable")
-                {
-                    Page = new TimetablePage()
-                },
+                //new MenuItem("Timetable", "View Timetable")
+                //{
+                //    Page = new TimetablePage()
+                //},
                 new MenuItem("Settings", "Change colours and other stuff I guess")
                 {
                     Page = new SettingsPage()

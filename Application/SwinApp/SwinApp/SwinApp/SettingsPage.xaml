@@ -18,11 +18,11 @@
                     <Switch x:Name="SwitchChangeTime" HorizontalOptions="EndAndExpand"></Switch>
                 </StackLayout>
             </Frame>
-	    <Frame x:Name="FrameAnalytics"  Style="{DynamicResource FrameCard}" Margin="5">
+	    <!--<Frame x:Name="FrameAnalytics"  Style="{DynamicResource FrameCard}" Margin="5">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Manage Analytics" FontSize="Medium"></Label>
                 </StackLayout>
-            </Frame>
+            </Frame>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

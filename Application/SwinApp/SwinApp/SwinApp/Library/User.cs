@@ -86,7 +86,7 @@ namespace SwinApp.Library
             if (USE_PROTOTYPE_DATA)
             {
                 AddDashItemSafe(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
-                AddDashItemSafe(_upNextCard);
+                //AddDashItemSafe(_upNextCard);
                 AddDashItemSafe(new WeatherCard());
             }
             //if the file doesn't exist, set _reminders to be an empty List of Reminder
