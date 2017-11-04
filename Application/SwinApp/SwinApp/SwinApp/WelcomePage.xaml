@@ -2,19 +2,84 @@
 <CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.WelcomePage">
+    <CarouselPage.Resources>
+        <ResourceDictionary>
+            <Thickness x:Key="ThicknessWelcome">10</Thickness>
+            <x:String x:Key="WelcomeText1">The student companion app designed for students, by students.
+SwinApp is the ultimate tool for University, an easy to use mobile app available on all major platforms jam packed with all the things you'll need.</x:String>
+            <x:String x:Key="WelcomeText2">Campus Map, student service links, train times, up and coming events and deals. SwinApp is the ultimate piece of 
+mind for new students.
+If only it could do your homework too!</x:String>
+            <x:String x:Key="WelcomeText3">Timetabling can be the most stressful part of University, dump the screenshots and the clunky calendar files and
+let SwinApp connect you to your timetable. SwinApp is always up to date, week by week, providing upcoming classes with an easy to read interface.
+Need to add a school note? Use the built in reminders feature to partner your unit allocations with personal reminders that will ring off when you set them.</x:String>
+        </ResourceDictionary>
+    </CarouselPage.Resources>
     <CarouselPage.Children>
         <ContentPage
-            x:Name="Page1">
-            <Grid Padding="">
+            x:Name="Page1"
+            >
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
-                    <RowDefinition Height="3*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
-                <Grid BackgroundColor="{StaticResource Maroon}" Grid.Row="0">
-                    <Label TextColor="White" VerticalTextAlignment="End" FontAttributes="Bold" FontSize="Large" Text="Welcome to SwinApp"/>
+                <Grid BackgroundColor="{StaticResource Maroon}" Grid.Row="0" 
+                Padding="{StaticResource ThicknessWelcome}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Aspect="AspectFit"  Source="george_phone.png" VerticalOptions="End"/>
+                    <Label Grid.Row="1" TextColor="White" VerticalTextAlignment="End" FontAttributes="Bold" FontSize="Large" Text="For the Students."/>
                 </Grid>
-                
+                <Label Margin="{StaticResource ThicknessWelcome}" LineBreakMode="WordWrap" Grid.Row="1" Text="{StaticResource WelcomeText1}" TextColor="{StaticResource Black}"/>
+                <Label Margin="{StaticResource ThicknessWelcome}" FontSize="Large" Grid.Row="2" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Text="." TextColor="{StaticResource Gray}"/>
+            </Grid>
+        </ContentPage>
+        <ContentPage
+            x:Name="Page2"
+            >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid BackgroundColor="{StaticResource Purple}" Grid.Row="0" 
+                Padding="{StaticResource ThicknessWelcome}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Aspect="AspectFit" Source="george_reading.png" VerticalOptions="End"/>
+                    <Label Grid.Row="1" TextColor="White" VerticalTextAlignment="End" FontAttributes="Bold" FontSize="Large" Text="Help beyond 0-Week."/>
+                </Grid>
+                <Label Margin="{StaticResource ThicknessWelcome}" LineBreakMode="WordWrap" Grid.Row="1" Text="{StaticResource WelcomeText2}" TextColor="{StaticResource Black}"/>
+                <Label Margin="{StaticResource ThicknessWelcome}" FontSize="Large" Grid.Row="2" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Text=". ." TextColor="{StaticResource Gray}"/>
+            </Grid>
+        </ContentPage>
+        <ContentPage
+            x:Name="Page3"
+            >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid BackgroundColor="{StaticResource Red}" Grid.Row="0" 
+                Padding="{StaticResource ThicknessWelcome}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Aspect="AspectFit" Source="george_learning.png" VerticalOptions="End"/>
+                    <Label Grid.Row="1" TextColor="White" VerticalTextAlignment="End" FontAttributes="Bold" FontSize="Large" Text="Stay Organised."/>
+                </Grid>
+                <Label Margin="{StaticResource ThicknessWelcome}" LineBreakMode="WordWrap" Grid.Row="1" Text="{StaticResource WelcomeText3}" TextColor="{StaticResource Black}"/>
+                <Label Margin="{StaticResource ThicknessWelcome}" FontSize="Large" Grid.Row="2" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Text=". . ." TextColor="{StaticResource Gray}"/>
             </Grid>
         </ContentPage>
     </CarouselPage.Children>
