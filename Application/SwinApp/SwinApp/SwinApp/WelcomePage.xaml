@@ -82,5 +82,27 @@ Need to add a school note? Use the built in reminders feature to partner your un
                 <Label Margin="{StaticResource ThicknessWelcome}" FontSize="Large" Grid.Row="2" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Text=". . ." TextColor="{StaticResource Gray}"/>
             </Grid>
         </ContentPage>
+        <ContentPage
+            x:Name="Page4"
+            >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid BackgroundColor="{StaticResource Green}" Grid.Row="0" 
+                Padding="{StaticResource ThicknessWelcome}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <!--<Image Grid.Row="0" Aspect="AspectFit" Source="george_learning.png" VerticalOptions="End"/>-->
+                    <Label Grid.Row="1" TextColor="White" VerticalTextAlignment="End" FontAttributes="Bold" FontSize="Large" Text="Let's get started."/>
+                </Grid>
+                <Button Margin="{StaticResource ThicknessWelcome}" Text="Open SwinApp." Grid.Row="1" Clicked="OpenSwinAppClicked"/>
+                <Label Margin="{StaticResource ThicknessWelcome}" FontSize="Large" Grid.Row="2" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Text=". . . ." TextColor="{StaticResource Gray}"/>
+            </Grid>
+        </ContentPage>
     </CarouselPage.Children>
 </CarouselPage>

@@ -14,6 +14,7 @@ namespace SwinApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : TabbedPage
     {
+        private bool _forceHelp = false;
         public MainPage()
         {
             InitializeComponent();
@@ -107,11 +108,8 @@ namespace SwinApp
                 }
             }
             SettingsPage.ApplyTheme();
-            if (await IsFirstTimeAsync())
-            {
-                await DisplayAlert("Welcome to SwinApp", "Enjoy the Application", "Ok");
+            if (await IsFirstTimeAsync() || _forceHelp)
                 await Navigation.PushModalAsync(new WelcomePage());
-            }
         }
 
         /// <summary>

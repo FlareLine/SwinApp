@@ -1,3 +1,4 @@
+using SwinApp.Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,25 @@ namespace SwinApp
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void OpenSwinAppClicked(object sender, EventArgs e)
+        {
+            UpdateSetting();
+        }
+
+        /// <summary>
+        /// Set IsFirstTime and return home
+        /// </summary>
+        private async void UpdateSetting()
+        {
+            await SwinDB.ConnAsync.UpdateAsync(new AppSetting("IsFirstTime", false));
+            await Navigation.PopModalAsync();
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            UpdateSetting();
+            return true;
+        }
+    }
 }
