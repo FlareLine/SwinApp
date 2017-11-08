@@ -1,11 +1,12 @@
-using Android.App;
-using SwinApp.Library;
-using SwinApp.Droid;
-using Xamarin.Forms;
 using System;
+
+using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
+using Xamarin.Forms;
+
+using SwinApp.Library;
 
 namespace SwinApp.Droid.Notifications
 {

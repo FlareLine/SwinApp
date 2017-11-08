@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SwinApp.Library;
-using Newtonsoft.Json;
-using Xamarin.Forms;
 using System.ComponentModel;
-using Xamarin.Forms.Xaml;
 using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace SwinApp
 {

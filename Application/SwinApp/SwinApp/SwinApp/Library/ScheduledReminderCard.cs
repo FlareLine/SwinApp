@@ -1,5 +1,7 @@
 ﻿using System;
+
 using Xamarin.Forms;
+
 using SwinApp.Components;
 
 namespace SwinApp.Library

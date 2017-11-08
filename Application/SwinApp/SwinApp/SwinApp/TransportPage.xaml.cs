@@ -1,21 +1,13 @@
-﻿using SwinApp.Components;
-using SwinApp.Components.UI;
-using SwinApp.Library;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Net.Http;
+
+using SwinApp.Components.UI;
 
 namespace SwinApp
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TransportPage : ContentPage
 	{
 

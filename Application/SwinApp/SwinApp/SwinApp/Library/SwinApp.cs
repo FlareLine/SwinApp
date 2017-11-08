@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Net.Http;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
 using System.IO;
-using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+using Newtonsoft.Json;
 using SQLite;
 using Xamarin.Forms;
-using System.Xml.Linq;
 
 namespace SwinApp.Library
 {

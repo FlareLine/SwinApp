@@ -1,8 +1,8 @@
-﻿using SwinApp.Components.UI;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+
 using Xamarin.Forms;
+
+using SwinApp.Components.UI;
 
 namespace SwinApp.Library
 {

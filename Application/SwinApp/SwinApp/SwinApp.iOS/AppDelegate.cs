@@ -1,7 +1,8 @@
 ﻿using Foundation;
-using SwinApp.iOS;
 using UIKit;
 using UserNotifications;
+
+using SwinApp.iOS;
 
 [assembly: Xamarin.Forms.Dependency(typeof(NotificationImplementationIOS))]
 [assembly: Xamarin.Forms.Dependency (typeof(OrientationImplementation))]

@@ -1,16 +1,16 @@
-using SwinApp.Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using SwinApp.Library;
+
 namespace SwinApp
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TimetablePage : ContentPage
 	{
 		private bool _populated = false;

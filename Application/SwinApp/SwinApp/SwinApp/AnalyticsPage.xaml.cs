@@ -1,16 +1,14 @@
-using SwinApp.Library.Analytics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using SwinApp.Library.Analytics;
+
 namespace SwinApp
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AnalyticsPage : ContentPage
 	{
         List<AppEvent> events = new List<AppEvent>();

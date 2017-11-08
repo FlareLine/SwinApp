@@ -1,7 +1,7 @@
 using Android.App;
-using SwinApp.Library;
-using SwinApp.Droid;
 using Xamarin.Forms;
+
+using SwinApp.Library;
 
 namespace SwinApp.Droid.Notifications
 {

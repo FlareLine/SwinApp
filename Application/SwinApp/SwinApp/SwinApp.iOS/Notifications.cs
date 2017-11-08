@@ -1,7 +1,8 @@
 ﻿using System;
-using SwinApp.Library;
-using UIKit;
+
 using UserNotifications;
+
+using SwinApp.Library;
 
 namespace SwinApp.iOS
 {

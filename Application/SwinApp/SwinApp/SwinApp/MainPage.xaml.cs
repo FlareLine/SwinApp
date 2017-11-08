@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
-using SwinApp.Library;
 using Xamarin.Forms.Xaml;
+
+using SwinApp.Library;
 using SwinApp.Library.Analytics;
-using System.Diagnostics;
 
 namespace SwinApp
 {

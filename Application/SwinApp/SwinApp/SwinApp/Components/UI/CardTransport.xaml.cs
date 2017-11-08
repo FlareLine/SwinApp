@@ -1,12 +1,13 @@
-﻿using SwinApp.Library;
-using System;
+﻿using System;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Text.RegularExpressions;
+
+using SwinApp.Library;
 
 namespace SwinApp.Components.UI
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CardTransport : Grid
 	{
 		public TransportCardViewModel _viewmodel;

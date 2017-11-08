@@ -1,23 +1,19 @@
-using System;
-
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
 using Android.Views;
-using Android.Widget;
 using Android.OS;
 using HockeyApp.Android;
 using HockeyApp.Android.Metrics;
-using SwinApp.Library;
-using SwinApp.Droid.Notifications;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+
+using SwinApp.Droid.Notifications;
 
 [assembly: Xamarin.Forms.Dependency(typeof(NotificationImplementationDroid))]
 [assembly: Xamarin.Forms.Dependency(typeof(OrientationImplimentaion))]
 
 namespace SwinApp.Droid
 {
-	[Activity (Label = "SwinApp", Icon = "@drawable/icon", Theme="@style/SplashScreen", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity (Label = "SwinApp", Icon = "@drawable/icon", Theme="@style/SplashScreen", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		protected override void OnCreate (Bundle bundle)

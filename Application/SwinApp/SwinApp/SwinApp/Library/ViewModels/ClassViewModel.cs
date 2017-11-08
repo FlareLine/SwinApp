@@ -1,5 +1,4 @@
-﻿using System;
-namespace SwinApp.Library.ViewModels
+﻿namespace SwinApp.Library.ViewModels
 {
     public class ClassViewModel
     {

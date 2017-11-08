@@ -1,7 +1,4 @@
-﻿using Xamarin.Forms;
-using System.Threading.Tasks;
-using System.Net.Http;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SwinApp.Library
 {

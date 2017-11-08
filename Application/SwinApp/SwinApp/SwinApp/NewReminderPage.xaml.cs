@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using SwinApp.Library;
+
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+
+using SwinApp.Library;
 
 namespace SwinApp
 {
-	//[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewReminderPage : ContentPage
+    //[XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class NewReminderPage : ContentPage
 	{
         private DateTime _datetime;
         private string _title;
