@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwinApp.Components.UI.CardContact">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1.5*"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    
+    <StackLayout Grid.Column="0">
+    <Label Text="{Binding Title}" Font="Bold"></Label>
+    <Label Text="{Binding Description}"></Label>
+    <Label Text="{Binding Email}"></Label>
+    <Label Text="{Binding Phone}"></Label>
+    </StackLayout>
+    <StackLayout Grid.Column="1">
+        <Label Text="{Binding Campus}" HorizontalTextAlignment="End"></Label>
+    </StackLayout>
+</Grid>

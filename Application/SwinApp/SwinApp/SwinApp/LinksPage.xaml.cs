@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using SwinApp.Library;
+
 using SwinApp.Components.UI;
 
 namespace SwinApp
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LinksPage : ContentPage
 	{
         public List<Grid> Links = new List<Grid>();
@@ -28,7 +25,17 @@ namespace SwinApp
             Links.Add(new CardExternalLink("Safe@Swin", "Everyone deserves a right to be comfortable at university", new Uri("https://play.google.com/store/apps/details?id=com.cutcom.apparmor.swin&hl=en"), "safeswinlogo.png"));
             Links.Add(new CardExternalLink("SSAA", "There to make your time at Swinburne as enjoyable as it can be", new Uri("https://www.swinburne.edu.au/current-students/life/student-organisations/"), "ssaalogo.png"));
             InitializeComponent ();
+
             ListLinks.ItemsSource = Links;
+            ListLinks.ItemTapped += OpenLink;
+        }
+
+        private async void OpenLink(object sender, ItemTappedEventArgs e)
+        {
+            if (ListLinks.SelectedItem is CardExternalLink selectedPage)
+            {
+                await Navigation.PushAsync(selectedPage.GetNewWebPage());
+            }
         }
 	}
 }

@@ -1,18 +1,60 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Net.Http;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
 using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+using Newtonsoft.Json;
+using SQLite;
+using Xamarin.Forms;
 
 namespace SwinApp.Library
 {
     /// <summary>
-    /// A Standard SwinApp connection class
+    /// Provides possible types of screen orientation
     /// </summary>
-    public class SwinApp
+    public enum Orientation
     {
+        Landscape,
+        Portrait
+    }
+    /// <summary>
+    /// Holds device specific functionality
+    /// </summary>
+    public static class SwinDevice
+    {
+        /// <summary>
+        /// Cross platform property for working with the orientation
+        /// </summary>
+        /// <param name="or"></param>
+        public static Orientation Orientation
+        {
+            get => DependencyService.Get<IOrientationProvider>().Current();
+            set
+            {
+                try
+                {
+                    if (value != SwinDevice.Orientation)
+                        switch (value)
+                        {
+                            case Orientation.Landscape:
+                                DependencyService.Get<IOrientationProvider>().Landscape();
+                                break;
+                            case Orientation.Portrait:
+                                DependencyService.Get<IOrientationProvider>().Portrait();
+                                break;
+                        }
+                }
+                catch (Exception e)
+                {
+#if DEBUG
+                    e.Message.Dump();
+#endif
+                }
+            }
+        }
+
     }
     /// <summary>
     /// A generic API query class, needs the type provided for serialization
@@ -85,5 +127,56 @@ namespace SwinApp.Library
         /// <param name="obj">the object you're saving</param>
         /// <returns></returns>
         public static async Task WriteAsync(string filename, T obj) => await Task.Run(() => Write(filename, obj));
+    }
+
+    /// <summary>
+    /// XML Extension Methods for making my life less annoying
+    /// </summary>
+    public static class SwinXML
+    {
+        /// <summary>
+        /// Easily retrieve the value of an element as a string, if no value is a defined then an attribute with the same name is returned
+        /// </summary>
+        /// <param name="name">The name of the element</param>
+        /// <returns></returns>
+        public static string ElementValue(this XElement obj, string name) => obj.Element(name)?.Value ?? obj.Attribute(name)?.Value;
+    }
+
+    /// <summary>
+    /// Provides easy methods for working with SQLite.NET
+    /// </summary>
+    public static class SwinDB
+    {
+        private static string _path = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.Personal),
+                "SwinApp.db");
+
+        private static SQLiteConnection _conn = null;
+
+		private static SQLiteAsyncConnection _connasync = null;
+
+        /// <summary>
+        /// Lazy load a new SQLiteConnection
+        /// </summary>
+        /// <returns></returns>
+        public static SQLiteConnection Conn
+        {
+            get
+            {
+                return _conn ?? (_conn = new SQLiteConnection(_path));
+            }
+        }
+
+		/// <summary>
+		/// Lazy load a new SQLiteAsyncConnection
+		/// </summary>
+		/// <returns></returns>
+		public static SQLiteAsyncConnection ConnAsync
+		{
+			get
+			{
+				return _connasync ?? (_connasync = new SQLiteAsyncConnection(_path));
+			}
+		}
     }
 }

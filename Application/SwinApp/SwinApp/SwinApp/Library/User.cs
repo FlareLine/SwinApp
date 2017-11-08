@@ -1,11 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
-using System.IO;
-using System.Threading;
+using System.Xml.Linq;
+
 using Xamarin.Forms;
 
 namespace SwinApp.Library
@@ -20,10 +19,17 @@ namespace SwinApp.Library
         /// </summary>
         public const bool USE_PROTOTYPE_DATA = true;
 
+        public static Dictionary<string, int> DayCompValues = new Dictionary<string, int>()
+        {
+            ["Monday"] = 0,
+            ["Tuesday"] = 1,
+            ["Wednesday"] = 2,
+            ["Thursday"] = 3,
+            ["Friday"] = 4
+        };
         private static ObservableCollection<IDashCard> _dashBoardItems = new ObservableCollection<IDashCard>();
 
-        public static ObservableCollection<IDashCard> DashBoardItems
-        {
+        public static ObservableCollection<IDashCard> DashBoardItems {
             get { return _dashBoardItems; }
         }
 
@@ -31,23 +37,33 @@ namespace SwinApp.Library
 
         public static ObservableCollection<IDashCard> ScheduleItems => _scheduleItems;
 
-        private static List<BlackboardAnnouncement> _announcements = new List<BlackboardAnnouncement>();
-
-        public static List<BlackboardAnnouncement> Announcements => _announcements;
-
-        private static List<BlackboardUnit> _units = new List<BlackboardUnit>();
-
-        public static List<BlackboardUnit> Units => _units;
 
         private static List<Reminder> _reminders = new List<Reminder>();
 
-        private static List<Lesson> _lessons = new List<Lesson>();
+        private static List<TimetabledClass> _classes = new List<TimetabledClass>();
 
-        public static List<Lesson> Lessons => _lessons;
+        //Lessons need to be removed as they are deprecated, however keep for now as they are a part of NextPlanned (see comment above NextPlanned)
 
         public static List<Reminder> Reminders => _reminders;
 
-        public static Dictionary<string, string> UnitPairs => _units.ToDictionary(u => u.Name, u => u.UUID);
+        public static List<TimetabledClass> Classes => _classes;
+
+        private static List<Allocation> _allocations = new List<Allocation>();
+
+        public static List<Allocation> Allocations => _allocations;
+
+        /// <summary>
+        /// Get the allocations for the current semester ordered by day and time
+        /// </summary>
+        public static List<Allocation> CurrentSemesterAllocations => _allocations
+            .Where(a => a.Schedule.StartDate < DateTime.Today && a.Schedule.EndDate > DateTime.Today)
+            .OrderBy(a => DayCompValues[a.DayOfWeek()])
+            .ThenBy(a => a.Schedule.StartTime)
+            .ToList();
+
+        public static ObservableCollection<IDashCard> ReminderCards = new ObservableCollection<IDashCard>();
+
+        public static ObservableCollection<IDashCard> ClassesCards = new ObservableCollection<IDashCard>();
 
         private static UpNextCard _upNextCard;
 
@@ -55,61 +71,33 @@ namespace SwinApp.Library
         {
             await Task.Run(() => _dashBoardItems.Add(card));
         }
-        private static void LoadBlackboardAnnouncements()
-        {
-            _announcements = new List<BlackboardAnnouncement>();
-            if (USE_PROTOTYPE_DATA)
-            {
-                _announcements.Add(new BlackboardAnnouncement()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Title = "Test Blackboard Announcement",
-                    Body = "Welcome to Blackboard, it's pretty sweet aye? Lots of cool stuff to mess with. \n Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem  \n Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem \n Lorem ",
-                    Created = DateTime.Now
-                });
-            }
-        }
-        private static void LoadBlackboardUnits()
-        {
-            _units = new List<BlackboardUnit>();
-            if (USE_PROTOTYPE_DATA)
-            {
-                _units.Add(new BlackboardUnit()
-                {
-                    Name = "Test Unit",
-                    Id = new Random().Next(100).ToString(),
-                    UUID = Guid.NewGuid().ToString(),
-                });
-            }
-        }
+
+        /// <summary>
+        /// Loads all data relating to the User including blackboard data, timetables, trains, reminders etc...
+        /// </summary>
         public static void LoadUserData()
         {
             ClearDashItemsSafe();
             AddDashItemSafe(new TextContentDashCard("Welcome to SwinApp", "Creators of SwinApp"));
-            LoadBlackboardAnnouncements();
-            LoadBlackboardUnits();
-            LoadLessons();
-            foreach (BlackboardAnnouncement a in Announcements)
-                AddDashItemSafe(new BBAnnouncementCard(a));
+            LoadUserTimetable();
             if (USE_PROTOTYPE_DATA)
             {
                 AddDashItemSafe(new TextContentDashCard("Remember, learning is fun", "Creators of SwinApp"));
-                _upNextCard = new UpNextCard(NextPlanned);
-                AddDashItemSafe(_upNextCard);
+                //AddDashItemSafe(_upNextCard);
                 AddDashItemSafe(new WeatherCard());
             }
             //if the file doesn't exist, set _reminders to be an empty List of Reminder
             _reminders = SwinIO<List<Reminder>>.Read("reminders.json") ?? new List<Reminder>();
+            _classes = SwinIO<List<TimetabledClass>>.Read("classes.json") ?? new List<TimetabledClass>();
 
-            RefreshSchedule();
+            PopulateSchedule();
         }
-        private static IPlanned NextPlanned
-        {
-            get
-            {
+
+        //is broken, as _lessons are no longer used. Need to find a way to either convert reminders to allocations, or alternatively allow allocations to act as iPlanned
+        private static IPlanned NextPlanned {
+            get {
                 List<IPlanned> _events = new List<IPlanned>();
-                foreach (var l in _lessons)
-                    _events.Add(l);
+                //need to put in allocations here
                 foreach (var r in _reminders)
                     _events.Add(r);
                 _events.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
@@ -119,96 +107,148 @@ namespace SwinApp.Library
         /// <summary>
         /// Load lesson data
         /// </summary>
-        public static void LoadLessons()
-        {
-            if (USE_PROTOTYPE_DATA)
-            {
-                _lessons = new List<Lesson>();
-                _lessons.Add(new Lesson("Epic Lecture", DateTime.Today.AddHours(1), "EP1010", "EN1001", "Lecture"));
-                _lessons.Add(new Lesson("Awesome Tute", DateTime.Today.AddHours(1.5), "AT1234", "ATC0420", "Tutorial", Color.FromHex("#E0B4E8")));
-                _lessons.Add(new Lesson("Powerful Tute", DateTime.Today.AddMinutes(40), "AT1235", "ATC0430", "Tutorial", Color.FromHex("#6E9685")));
-                _lessons.Add(new Lesson("Inspirational Lecture", DateTime.Today.AddHours(3.5), "AT1234", "ATC0420", "Tutorial", Color.FromHex("#818BFF")));
 
-            }
-        }
 
         public static async void WriteReminder(Reminder reminder)
         {
             _reminders.Add(reminder);
+            _reminders.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
             await SwinIO<List<Reminder>>.WriteAsync("reminders.json", _reminders);
-            RefreshSchedule();
-
-            //test code to see if remindrs are being stored, leave here for now in case it is needed later
-            //_reminders.Clear();
-
-            //_reminders = SwinIO<List<Reminder>>.Read("reminders.json");
-
-            //string test = "";
-
-            //foreach (Reminder r in _reminders){
-            //    test += r.Name;
-            //}
-
-            //await Application.Current.MainPage.DisplayAlert("reminder output", test, "close");
+            PopulateSchedule();
         }
 
         public static async void DeleteReminder(Reminder reminder)
         {
-            User.Reminders.RemoveAll(r => r == reminder);
+            _reminders.RemoveAll(r => r == reminder);
             await SwinIO<List<Reminder>>.WriteAsync("reminders.json", User.Reminders);
+            PopulateSchedule();
         }
 
-        /// <summary>
-        /// Safely clear the dashitems of all its contents
-        /// </summary>
-        private static void ClearDashItemsSafe() => Device.BeginInvokeOnMainThread(() => _dashBoardItems.Clear());
+        public static async void WriteTimetabledClasses(List<TimetabledClass> cList)
+        {
+            foreach (TimetabledClass c in cList)
+                _classes.Add(c);
+            _classes.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
+            await SwinIO<List<TimetabledClass>>.WriteAsync("classes.json", _classes);
+            PopulateSchedule();
+        }
+
+        public static async void DeleteTimetabledClasses(List<TimetabledClass> cList)
+        {
+            foreach (TimetabledClass c in cList)
+            {
+                _classes.Remove(c);
+            }
+            await SwinIO<List<TimetabledClass>>.WriteAsync("classes.json", _classes);
+            PopulateSchedule();
+        }
+
+        public static void DeleteTimetabledClass(TimetabledClass c)
+        {
+            DeleteTimetabledClasses(new List<TimetabledClass>() { c });
+        }
+
+
+
+            /// <summary>
+            /// Safely clear the dashitems of all its contents
+            /// </summary>
+            private static void ClearDashItemsSafe() => Device.BeginInvokeOnMainThread(() => _dashBoardItems.Clear());
         /// <summary>
         /// Safely add DashItem when using asynchronous threads
         /// </summary>
         /// <param name="card"></param>
         public static void AddDashItemSafe(IDashCard card) => Device.BeginInvokeOnMainThread(() => _dashBoardItems.Add(card));
 
-        public static void AddScheduleItemSafe(IDashCard card) => Device.BeginInvokeOnMainThread(() => _scheduleItems.Add(card));
-
-        //Causes unhanded exception
+        /// <summary>
+        /// Causes unhanded exception
+        /// </summary>
+        /// <param name="cardToDelete"></param>
         public static void RemoveDashItemSafe(IDashCard cardToDelete)
         {
             _dashBoardItems.Remove(cardToDelete);
         }
 
-        public static void RemoveScheduleItem(Grid grid)
+        /// <summary>
+        /// Clear reminders, re-add from array
+        /// </summary>
+       
+
+        /// <summary>
+        /// Asynchronously load the user timetable data, assign it to the User's
+        /// Allocation variable
+        /// </summary>
+        /// <returns></returns>
+        public static async void LoadUserTimetable()
         {
-            int index = -1;
+            //const bool USE_REAL_DATA = false;
+            //const string TEST_ENDPOINT = USE_REAL_DATA ? "https://api-sit-proxy.swin.edu.au/v2/timetable/student/101091995" : "https://gist.githubusercontent.com/pielegacy/a0e81e05118f8eefb38283419cee1539/raw/9d716456c6331e5d587acd16cc5ef44fdfe3f920/alex-timetable-payload.xml";
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    string res = await client.GetStringAsync(TEST_ENDPOINT);
+            //    ProcessTimetableDump(res);
+            //    PopulateSchedule();
+            //}
+        }
+        
+        /// <summary>
+        /// Using timetable data, populate the ScheduleCards table with IDashCards
+        /// </summary>
+        public static void PopulateSchedule()
+        {
+            //bit of a butched solution to make sure that we don't get duplicates of classes whenever a new reminder is added, should be fixed later
+            ReminderCards.Clear();
+            ClassesCards.Clear();
 
-            foreach (IDashCard c in _scheduleItems)
+            //foreach (AllocationCard card in CurrentSemesterAllocations
+            //    .Select(a => new AllocationCard(a)))
+            //{
+            //    ScheduleCards.Add(card);
+            //}
+
+
+            //check if a reminder is from today or in the future, add it if it is, and delete it if it's not
+            List<Reminder> oldReminders = Reminders;
+
+            foreach (Reminder r in oldReminders)
             {
-                if (c.Content == grid)
-                    index = _scheduleItems.IndexOf(c);
+                if (r.Time.Date < DateTime.Today.Date)
+                    DeleteReminder(r);
+                else 
+                ReminderCards.Add(new ScheduledReminderCard(r));
             }
+           
 
-            if (index != -1)
-                _scheduleItems.RemoveAt(index);
+            //check if a class is from today or in the future, add it if it is, and delete it if it's not
+            List<TimetabledClass> oldClasses = Classes;
+
+            foreach (TimetabledClass c in oldClasses)
+            {
+                if (c.Time.Date < DateTime.Today.Date)
+                    DeleteTimetabledClass(c);
+                else
+                    ClassesCards.Add(new ScheduledTimetabledClassCard(c));
+            }
+            
         }
 
-        //clear reminders, re add from array
-        public static void RefreshSchedule()
+        /// <summary>
+        /// Using XMLDocument process the timetable payload into usable
+        /// Allocation objects
+        /// </summary>
+        /// <param name="data">The XML string</param>
+        /// <returns></returns>
+        private static void ProcessTimetableDump(string data)
         {
-            _scheduleItems.Clear();
-
-            //sort by date
-            _reminders.Sort((r1, r2) => DateTime.Compare(r1.Time, r2.Time));
-            _lessons.Sort((l1, l2) => DateTime.Compare(l1.Time, l2.Time));
-
-            foreach (Lesson l in _lessons)
+            XDocument doc = XDocument.Parse(data);
+            _allocations = new List<Allocation>();
+            var allocations = doc.Root.Elements("allocation");
+            foreach (var a in allocations)
             {
-                AddScheduleItemSafe(new LessonCard(l));
+                Allocation temp = new Allocation();
+                temp.Import(a.ToString());
+                _allocations.Add(temp);
             }
-
-            foreach (Reminder r in _reminders)
-            {
-                AddScheduleItemSafe(new ScheduledReminderCard(r));
-            }
-
         }
 
         static User()

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SwinApp.Library;
-using Newtonsoft.Json;
-using Xamarin.Forms;
 using System.ComponentModel;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace SwinApp
@@ -23,10 +19,14 @@ namespace SwinApp
             };
 		}
 
-		protected override void OnStart ()
+		protected override async void OnStart ()
 		{
-			// Handle when your app starts
-		}
+            await Task.Run(async () =>
+            {
+                if (Library.Analytics.Analytics.DELIVER_ON_STARTUP)
+                    await Library.Analytics.Analytics.DeliverLogAsync();
+            });
+        }
 
 		protected override void OnSleep ()
 		{
@@ -37,6 +37,11 @@ namespace SwinApp
 		{
 			// Handle when your app resumes
 		}
+
+        public static async Task NoInternetWarn()
+        {
+            await Current.MainPage.DisplayAlert("No Internet!", "SwinApp could not connect to the internet :(", "OK");
+        }
 	}
     /// <summary>
     /// A set of Debugging tools for making development easier

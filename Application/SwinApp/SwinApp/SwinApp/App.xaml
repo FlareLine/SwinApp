@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwinApp.App">
@@ -7,8 +7,70 @@
 		<!-- Application resource dictionary -->
         <ResourceDictionary>
             
+            <!--
+                "Colors" Implementation
+                    http://clrs.cc/
+                    Considered to be a nicer pallette for the web, I translated them into XAML
+            -->
+            <Color x:Key="Navy">#001F3F</Color>
+            <Color x:Key="Blue">#0074D9</Color>
+            <Color x:Key="Aqua">#7FDBFF</Color>
+            <Color x:Key="Teal">#39CCCC</Color>
+            <Color x:Key="Olive">#3D9970</Color>
+            <Color x:Key="Green">#2ECC40</Color>
+            <Color x:Key="Lime">#01FF70</Color>
+            <Color x:Key="Yellow">#FFDC00</Color>
+            <Color x:Key="Orange">#FF851B</Color>
+            <Color x:Key="Red">#FF4136</Color>
+            <Color x:Key="Fuchsia">#F012BE</Color>
+            <Color x:Key="Purple">#B10DC9</Color>
+            <Color x:Key="Maroon">#85144B</Color>
+            <Color x:Key="White">#FFFFFF</Color>
+            <Color x:Key="Silver">#DDDDDD</Color>
+            <Color x:Key="Gray">#AAAAAA</Color>
+            <Color x:Key="Black">#111111</Color>
+
+            <Color x:Key="backgroundColor">White</Color>
+            <Color x:Key="textColor">Default</Color>
+            <Color x:Key="frameCardColor">White</Color>
+			<Color x:Key="iosFrameOutline">Gray</Color>
+
+            <!-- Color Definitions -->
             <Color x:Key="SwinburneRed">#dc2d27</Color>
+
+            <!-- Timetable Colors -->
+            <Color x:Key="TimeColor0">#00cccc</Color>
+            <Color x:Key="TimeColor1">#ccccff</Color>
+            <Color x:Key="TimeColor2">#ff99cc</Color>
+            <Color x:Key="TimeColor3">#cccc99</Color>
             
+
+            <!-- Clrs Definitions -->
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource textColor}" />
+            </Style>
+            <Style TargetType="Picker">
+                <Setter Property="TextColor" Value="{DynamicResource textColor}" />
+            </Style>
+            <Style TargetType="DatePicker">
+                <Setter Property="TextColor" Value="{DynamicResource textColor}"></Setter>
+            </Style>
+            <Style TargetType="TimePicker">
+                <Setter Property="TextColor" Value="{DynamicResource textColor}"></Setter>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="{DynamicResource textColor}"></Setter>
+                <Setter Property="PlaceholderColor" Value="{DynamicResource textColor}"></Setter>
+            </Style>
+            <Style x:Key="backgroundStyle" TargetType="VisualElement">
+                <Setter Property="BackgroundColor" Value="{DynamicResource backgroundColor}" />
+            </Style>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource SwinburneRed}"></Setter>
+                <Setter Property="TextColor" Value="{DynamicResource textColor}"></Setter>
+            </Style>
+
             <Style TargetType="TabbedPage">
                 <!--<Setter Property="BarBackgroundColor" Value="{StaticResource SwinburneRed}"/>-->
                 <Setter Property="BarBackgroundColor">
@@ -20,22 +82,26 @@
             </Style>
             
             
-            
+            <!-- FrameCard styles -->
             <Style TargetType="Frame" x:Key="FrameCard">
                 <Setter Property="HasShadow">
                     <Setter.Value>
-                        <OnPlatform x:TypeArguments="x:Boolean" Android="true" iOS="false"/>
+                        <OnPlatform x:TypeArguments="x:Boolean" Android="true" iOS="true"/>
                     </Setter.Value>
                 </Setter>
                 <Setter Property="OutlineColor">
                     <Setter.Value>
-                        <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}" iOS="White"/>
+                        <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}" iOS="{StaticResource iosFrameOutline}"/>
                     </Setter.Value>
                 </Setter>
+                <Setter Property="BackgroundColor" Value="{DynamicResource frameCardColor}"></Setter>
             </Style>
+
             
             <x:String x:Key="PTV_DEV_ID">3000193</x:String>
             <x:String x:Key="PTV_DEV_KEY">6baf66a7-8816-4056-8e93-94c3b66ec822</x:String>
+
+            <x:String x:Key="HockeySDKAndroidID">245e5565292846a08d91d3ef50fdecb3</x:String>
         </ResourceDictionary>
 	</Application.Resources>
 </Application>

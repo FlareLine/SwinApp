@@ -5,10 +5,16 @@
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
-    <Label Grid.Column="1" VerticalOptions="Center" Text="{Binding Time}" />
-    <StackLayout VerticalOptions="Center" Grid.Column="2">
-        <Label FontSize="Medium" Font="Bold" Text="{Binding Line}" />
-        <Label FontSize="Small" Text="{Binding Platform}" />
-    </StackLayout>
+	<Grid Grid.Column="0" >
+		<Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Label Grid.Row="0" HorizontalOptions="Center" Text="{Binding Direction}" />
+		<Label Grid.Row="1" HorizontalOptions="Center" Text="{Binding Other}" />
+	</Grid>
+    <Label Grid.Column="1" HorizontalOptions="Center" Font="Bold" Text="{Binding Time}" />
+    <Label Grid.Column="2" HorizontalOptions="Center" Text="{Binding Type}" />
 </Grid>

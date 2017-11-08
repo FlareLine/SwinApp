@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwinApp.Components.UI.CardScheduledTimetabledClass">
+    <Grid>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <!--Specific TimeLabel styling-->
+                <Style x:Key="LabelTimeStyle" TargetType="Label">
+                    <Setter Property="FontSize" Value="22"/>
+                    <Setter Property="TextColor" Value="{DynamicResource backgroundColor}"/>
+                </Style>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <Frame x:Name="FrameTimetabledClass" BackgroundColor="{Binding HexColor}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0">
+                    <Label Text="{Binding Day}" FontSize="Medium"></Label>
+                    <Label Text="{Binding DateMonth}"></Label>
+                    <Label Text="{Binding TimeOfDay}"></Label>
+                    <!--<Label Text="{Binding Date}"></Label>-->
+                </StackLayout>
+                <Frame.Resources>
+                    <ResourceDictionary>
+                        <Style TargetType="Label">
+                            <Setter Property="TextColor" Value="{DynamicResource backgroundColor}"/>
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                            <Setter Property="FontSize" Value="Medium"/>
+                        </Style>
+                    </ResourceDictionary>
+                </Frame.Resources>
+                <StackLayout Grid.Column="1">
+                    <Label Text="{Binding Name}"></Label>
+                    <Label Text="{Binding Room}" FontSize="Small"></Label>
+                    <Label></Label>
+                    <Label Text="Delete" x:Name="ButtonDeleteClass" HorizontalOptions="End" Font="Bold" FontSize="Medium" TextColor="Black"></Label>
+                </StackLayout>
+            </Grid>
+        </Frame>
+    </Grid>
+</Grid>

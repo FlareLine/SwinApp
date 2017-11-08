@@ -9,12 +9,12 @@
         <OnPlatform x:TypeArguments="Color" Android="{StaticResource SwinburneRed}"/>
     </TabbedPage.BarBackgroundColor>
     <!--Dashboard Page-->
-    <ContentPage x:Name="PageDashboard"  Title="Dashboard">
+    <ContentPage x:Name="PageDashboard"  Title="Dashboard" Style="{DynamicResource backgroundStyle}">
         <StackLayout x:Name="StackMain" VerticalOptions="FillAndExpand">
             <ScrollView x:Name="ScrollFeed" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
-                <ListView x:Name="ListDashboard" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+                <ListView x:Name="ListDashboard" HasUnevenRows="True" SeparatorVisibility="None" Margin="0" BackgroundColor="Transparent">
                     <ListView.RowHeight>
-                        <OnPlatform x:TypeArguments="x:Int32" Android="80" iOS="180"/>
+                        <OnPlatform x:TypeArguments="x:Int32" Android="80" iOS="-1"/>
                     </ListView.RowHeight>
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -36,17 +36,17 @@
                 <Grid.IsVisible>
                     <OnPlatform x:TypeArguments="x:Boolean" Android="True" iOS="False"/>
                 </Grid.IsVisible>
-                <Button x:Name="ButtonAndroidPlusFeed" Clicked="ShowContextMenu" HorizontalOptions="FillAndExpand" Text="+" BackgroundColor="White" FontAttributes="Bold" FontSize="Large"/>
+                <Button x:Name="ButtonAndroidPlusFeed" Style="{DynamicResource buttonStyle}" Clicked="ShowContextMenu" HorizontalOptions="FillAndExpand" Text="+" FontAttributes="Bold" FontSize="24"/>
             </Grid>
         </StackLayout>
     </ContentPage>
-    <!--Schedule Page-->
-    <ContentPage x:Name="PageCalendar"  Title="Schedule" >
-        <StackLayout x:Name="StackSchedule" VerticalOptions="FillAndExpand">
-            <ScrollView x:Name="ScrollSchedule" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
-                <ListView x:Name="ListSchedule" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" Margin="0">
+    <!--Classes Page-->
+    <ContentPage x:Name="PageClases" Title="Classes" Style="{DynamicResource backgroundStyle}">
+        <StackLayout x:Name="StackClasses" VerticalOptions="FillAndExpand">
+            <ScrollView x:Name="ScrollClasses" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
+                <ListView x:Name="ListClasses" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" Margin="0" BackgroundColor="Transparent">
                     <ListView.RowHeight>
-                        <OnPlatform x:TypeArguments="x:Int32" Android="80" iOS="180"/>
+                        <OnPlatform x:TypeArguments="x:Int32" Android="80" iOS="-1"/>
                     </ListView.RowHeight>
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -68,40 +68,67 @@
                 <Grid.IsVisible>
                     <OnPlatform x:TypeArguments="x:Boolean" Android="True" iOS="False"/>
                 </Grid.IsVisible>
-                <Button x:Name="ButtonAndroidPlusSchedule" Clicked="ShowContextMenu" HorizontalOptions="FillAndExpand" Text="+" BackgroundColor="White" FontAttributes="Bold" FontSize="Large"/>
+                <Button x:Name="ButtonAndroidPlusClasses" Style="{DynamicResource buttonStyle}" Clicked="ShowContextMenu" HorizontalOptions="FillAndExpand" Text="+" FontAttributes="Bold" FontSize="24"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage>
+    <!--Schedule Page-->
+    <ContentPage x:Name="PageCalendar"  Title="Reminders" Style="{DynamicResource backgroundStyle}" >
+        <StackLayout x:Name="StackSchedule" VerticalOptions="FillAndExpand">
+            <ScrollView x:Name="ScrollSchedule" Scrolled="AssertPlusVisibility" VerticalOptions="FillAndExpand" Margin="0">
+                <ListView x:Name="ListSchedule" RowHeight="80" HasUnevenRows="True" SeparatorVisibility="None" Margin="0" BackgroundColor="Transparent">
+                    <ListView.RowHeight>
+                        <OnPlatform x:TypeArguments="x:Int32" Android="80" iOS="-1"/>
+                    </ListView.RowHeight>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="0">
+                                    <Frame Style="{StaticResource FrameCard}" Margin="5">
+                                        <StackLayout Orientation="Vertical" Padding="1">
+                                            <Label Text="{Binding Title}" FontSize="Large" FontAttributes="Bold"/>
+                                            <ContentView Content="{Binding Content}"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+            <Grid Padding="0" BackgroundColor="Transparent">
+                <Grid.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean" Android="True" iOS="False"/>
+                </Grid.IsVisible>
+                <Button x:Name="ButtonAndroidPlusSchedule" Style="{DynamicResource buttonStyle}" Clicked="ShowContextMenu" HorizontalOptions="FillAndExpand" Text="+" FontAttributes="Bold" FontSize="24"/>
             </Grid>
         </StackLayout>
     </ContentPage>
     <!--Menu/More Page-->
-    <ContentPage x:Name="PageMore" Title="&#9776;">
+    <ContentPage x:Name="PageMore" Title="&#9776;" Style="{DynamicResource backgroundStyle}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ListView x:Name="ListMenu" HasUnevenRows="True" SeparatorVisibility="None">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <!-- ALTERNATIVE RENDERING, RESULTS IN A ~1 Second Faster Loading Time -->
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="2"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="1"/>
-                                </Grid.ColumnDefinitions>
-                                <Label VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" FontSize="Medium" Text="{Binding Title}"/>
-                                <Label VerticalOptions="End" Grid.Row="2" Grid.Column="1" Text="{Binding Desc}"/>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ScrollView x:Name="ScrollMenu" VerticalOptions="FillAndExpand" Margin="0">
+                <ListView x:Name="ListMenu" HasUnevenRows="True" SeparatorVisibility="None" BackgroundColor="Transparent">
+					<ListView.RowHeight>
+                        <OnPlatform x:TypeArguments="x:Int32" iOS="-1" />
+					</ListView.RowHeight>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Style="{StaticResource FrameCard}" Margin="5">
+                                    <StackLayout Grid.Column="1">
+                                        <Label VerticalOptions="CenterAndExpand"  FontSize="Medium" Text="{Binding Title}"/>
+                                        <Label VerticalOptions="End" Text="{Binding Desc}"/>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
         </Grid>
     </ContentPage>
 </TabbedPage>
