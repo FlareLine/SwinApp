@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F7F285B2-ECE6-45E7-93C0-75B0EE4B35EB}</ProjectGuid>
@@ -198,6 +198,18 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\StudentEdgeLogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ELMSLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Georges\learning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Georges\phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Georges\reading.png" />
   </ItemGroup>
   <Import Project="..\SwinApp\SwinApp.projitems" Label="Shared" Condition="Exists('..\SwinApp\SwinApp.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

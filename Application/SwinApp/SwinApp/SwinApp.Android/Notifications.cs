@@ -54,7 +54,7 @@ namespace SwinApp.Droid.Notifications
                 .SetContentTitle("SwinApp")
                 .SetContentText(intent.GetStringExtra("text"))
                 .SetWhen(Java.Lang.JavaSystem.CurrentTimeMillis())
-                .SetVibrate(new long[] { 1000, 1000})
+                .SetVibrate(new long[] { 200, 200 })
                 .SetSmallIcon(Resource.Drawable.ic_play_dark);
 
             NotificationManager notificationManager =
