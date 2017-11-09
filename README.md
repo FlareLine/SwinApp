@@ -10,3 +10,11 @@ For working with SwinApp we recommend the usage of any flavour of [Visual Studio
 
 Note that for Xamarin.Forms development it is required that the user installs the *"Cross Platform Mobile Development with .NET"* Package
 as it will include all dependencies for working with Android and iOS. 
+
+## Contributors
+
+- [Ethan](https://github.com/FlareLine)
+- [Campbell](https://github.com/ChoiceKarpz)
+- [Alex](https://github.com/pielegacy)
+- [Kiran](https://github.com/narik)
+- [Josiah](https://github.com/josiahdean)
